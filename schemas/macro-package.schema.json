@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://getsayall.com/schemas/draft/macro-package.schema.json",
+  "title": "DRAFT SayAll Macro Package",
+  "description": "DRAFT — Not an implementation contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "macroID", "version", "name", "steps"],
+  "properties": {
+    "schemaVersion": { "const": "0.1-draft" },
+    "macroID": { "type": "string", "minLength": 8, "maxLength": 128 },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "summary": { "type": "string", "maxLength": 300 },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["global", "application"] },
+        "bundleIdentifiers": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3, "maxLength": 200 }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": { "$ref": "#/$defs/step" }
+    }
+  },
+  "$defs": {
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stepID", "action", "parameters"],
+      "properties": {
+        "stepID": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "action": {
+          "enum": [
+            "openApplication",
+            "waitForApplication",
+            "focusLearnedTarget",
+            "sendKeyboardShortcut",
+            "builtInAction"
+          ]
+        },
+        "timeoutMilliseconds": { "type": "integer", "minimum": 100, "maximum": 10000 },
+        "parameters": { "type": "object" }
+      }
+    }
+  }
+}

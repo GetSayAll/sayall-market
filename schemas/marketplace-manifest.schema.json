@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://getsayall.com/schemas/draft/marketplace-manifest.schema.json",
+  "title": "DRAFT SayAll Marketplace Manifest",
+  "description": "DRAFT — Not an implementation contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "packageID", "packageType", "version", "source", "author", "compatibility", "contentDigest"],
+  "properties": {
+    "schemaVersion": { "const": "0.1-draft" },
+    "packageID": { "type": "string", "minLength": 8, "maxLength": 160 },
+    "packageType": { "enum": ["macro", "layout"] },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "source": { "enum": ["system", "official", "community"] },
+    "author": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorID", "displayName"],
+      "properties": {
+        "authorID": { "type": "string" },
+        "displayName": { "type": "string", "maxLength": 80 }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimumRemoteMicVersion"],
+      "properties": {
+        "minimumRemoteMicVersion": { "type": "string" },
+        "minimumMacOSVersion": { "type": "string" },
+        "remoteModels": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "bundleIdentifiers": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "contentDigest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "releaseNotes": { "type": "string", "maxLength": 2000 },
+    "declaredCapabilities": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+  }
+}

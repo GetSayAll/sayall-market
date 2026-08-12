@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+*.local.*
+node_modules/
+.DS_Store
+*.db
+*.db-*
+*.log
+credentials.json
+token.json
+cookie.json
+*-secret.*
+.codex-screenshots/
+.build/
+DerivedData/

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.1-draft",
+  "macroID": "com.getsayall.example.open-codex-and-focus",
+  "version": "0.1.0",
+  "name": "打开 Codex 并聚焦输入框",
+  "summary": "激活 Codex，等待窗口就绪，再使用本机学习配置聚焦输入区域。",
+  "scope": {
+    "kind": "global"
+  },
+  "steps": [
+    {
+      "stepID": "open-codex",
+      "action": "openApplication",
+      "timeoutMilliseconds": 5000,
+      "parameters": { "bundleIdentifier": "com.openai.codex" }
+    },
+    {
+      "stepID": "wait-codex",
+      "action": "waitForApplication",
+      "timeoutMilliseconds": 5000,
+      "parameters": { "bundleIdentifier": "com.openai.codex", "state": "frontmostWindow" }
+    },
+    {
+      "stepID": "focus-local-target",
+      "action": "focusLearnedTarget",
+      "timeoutMilliseconds": 2000,
+      "parameters": { "bundleIdentifier": "com.openai.codex", "localProfileKey": "codex.default-input" }
+    }
+  ]
+}

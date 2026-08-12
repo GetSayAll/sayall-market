@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.1-draft",
+  "layoutID": "com.getsayall.example.xiaomi-2pro-codex",
+  "version": "0.1.0",
+  "name": "小米遥控器 2 Pro · Codex",
+  "remoteModel": "xiaomi-remote-2-pro",
+  "minimumRemoteMicVersion": "1.8.3",
+  "bindings": [
+    {
+      "controlID": "tv",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "macro",
+        "macroID": "com.getsayall.example.open-codex-and-focus",
+        "versionRequirement": "0.1.x"
+      }
+    },
+    {
+      "controlID": "back",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "escape"
+      }
+    }
+  ]
+}
