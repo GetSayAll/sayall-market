@@ -1,5 +1,11 @@
 # Repository Rules
 
+## 产品命名规范
+
+- App 中文名统一为「无线麦」，英文名统一为「SayAll」。
+- 面向用户的产品名称、界面文案、帮助文档、发布说明和宣传文案统一写作「无线麦SayAll.app」，以同时包含中文名、英文名和官网域名记忆点。
+- 代码标识符、Bundle ID 和历史兼容字段可保留既有技术名称，不应误改。
+
 ## Approval gate
 
 - 当前状态为 `Public Design Preview / Contributions Paused`。
