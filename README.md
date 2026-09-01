@@ -1,11 +1,11 @@
-# SayAll Macro Market
+# SayAll Market
 
 SayAll / 无线麦的公开宏、不同 App 键位方案与遥控器布局市场。
 
 > Status: **Public Design Preview / Contributions Paused**
 > 当前公开 Schema 和示例仍为 Draft。本仓库尚未上线运行，是第一版公开内容仓库；Schema 冻结和真实硬件验证完成前，仓库可公开审阅，但暂停正式社区内容投稿和客户端生产接入。
 
-> 命名计划：后续仓库计划更名为 **`GetSayAll/sayall-market`**。在 GitHub 实际改名前，仍使用当前仓库名和地址；改名后保留旧地址跳转并同步所有客户端、文档和 CI 引用。
+> 仓库名称：**`GetSayAll/sayall-market`**。本仓库于 2026-09-01 从 `GetSayAll/sayall-macro-market` 改名；旧 GitHub 地址仅作为平台重定向兼容，不再写入新文档或客户端配置。
 
 ## 这里存放什么
 
@@ -59,7 +59,7 @@ SayAll / 无线麦的公开宏、不同 App 键位方案与遥控器布局市场
 ## 后续归属
 
 - 本仓库继续保持公开、独立，不迁入 `sayall-private-platform`。
-- 未来更名为 `sayall-market` 后，范围扩展为宏、App 键位方案、布局和经过批准的脚本内容。
+- 内容范围为宏、App 键位方案、遥控器布局，以及未来经过批准的脚本内容。
 - 私有执行实现、会员/收费授权、审核后台、签名密钥和撤销控制不放在本仓库；这些能力按需进入私有大仓库。
 
 ## 本地校验
