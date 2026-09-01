@@ -5,8 +5,8 @@
 ## 计划中的投稿流程
 
 1. Fork 本仓库并从最新 `main` 创建分支。
-2. 使用 `examples/` 和已冻结 Schema 创建宏或遥控器布局。
-3. 在本机执行逐步骤、整宏和回退测试。
+2. 使用 `examples/` 和已冻结 Schema 创建宏、App 键位方案或遥控器布局。
+3. 在本机执行逐步骤、逐按键、完整内容和回退测试。
 4. 填写目标 App、遥控器型号、系统版本、无线麦版本和验证边界。
 5. 运行 `npm ci && npm run validate`，确认 Schema、引用、能力声明、摘要和敏感信息检查通过。
 6. 创建 Pull Request，由自动检查和维护者审核。
@@ -14,9 +14,9 @@
 
 ## 内容目录
 
-- 系统内容由维护者放入 `macros/system/` 或 `layouts/system/`。
-- 官方内容由维护者放入 `macros/official/` 或 `layouts/official/`。
-- 社区投稿放入 `macros/community/<author>/<package>/` 或 `layouts/community/<author>/<package>/`。
+- 系统内容由维护者放入 `macros/system/`、`profiles/system/` 或 `layouts/system/`。
+- 官方内容由维护者放入 `macros/official/`、`profiles/official/` 或 `layouts/official/`。
+- 社区投稿放入 `macros/community/<author>/<package>/`、`profiles/community/<author>/<package>/` 或 `layouts/community/<author>/<package>/`。
 - Draft、教程和未验证示例只能放在 `examples/`。
 
 ## PR 必须说明

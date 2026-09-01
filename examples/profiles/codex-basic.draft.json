@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "0.1-draft",
+  "profileID": "com.getsayall.example.codex-basic-profile",
+  "version": "0.1.0",
+  "name": "Codex 基础键位方案",
+  "summary": "为 Codex 提供打开应用和返回操作的最小示例键位方案。",
+  "remoteModel": "xiaomi-remote-2-pro",
+  "minimumRemoteMicVersion": "1.9.18",
+  "targetApplication": {
+    "bundleIdentifier": "com.openai.codex",
+    "displayName": "Codex"
+  },
+  "bindings": [
+    {
+      "controlID": "home",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "macro",
+        "macroID": "com.getsayall.example.open-codex-and-focus",
+        "versionRequirement": "0.1.x"
+      }
+    },
+    {
+      "controlID": "back",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "escape"
+      }
+    }
+  ]
+}

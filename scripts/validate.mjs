@@ -10,11 +10,12 @@ const errors = [];
 
 const schemaFiles = {
   macro: "schemas/macro-package.schema.json",
+  buttonProfile: "schemas/button-profile.schema.json",
   layout: "schemas/layout-template.schema.json",
   manifest: "schemas/marketplace-manifest.schema.json"
 };
 
-const contentDirectories = ["macros", "layouts", "catalog", "examples"];
+const contentDirectories = ["macros", "profiles", "layouts", "catalog", "examples"];
 const forbiddenContentExtensions = new Set([
   ".app",
   ".bin",
@@ -163,19 +164,25 @@ const layoutFiles = [
   ...(await listFiles("layouts")),
   ...(await listFiles("examples/layouts"))
 ].filter((filePath) => path.extname(filePath) === ".json");
+const buttonProfileFiles = [
+  ...(await listFiles("profiles")),
+  ...(await listFiles("examples/profiles"))
+].filter((filePath) => path.extname(filePath) === ".json");
 const manifestFiles = [
   ...(await listFiles("catalog/manifests")),
   ...(await listFiles("examples/manifests"))
 ].filter((filePath) => path.extname(filePath) === ".json");
 const classifiedJsonFiles = new Set(
-  [...macroFiles, ...layoutFiles, ...manifestFiles].map((filePath) => path.resolve(filePath))
+  [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles].map((filePath) => path.resolve(filePath))
 );
 
 const macros = new Map();
+const buttonProfiles = new Map();
 const layouts = new Map();
 
 for (const [schemaType, files, destination] of [
   ["macro", macroFiles, macros],
+  ["buttonProfile", buttonProfileFiles, buttonProfiles],
   ["layout", layoutFiles, layouts]
 ]) {
   for (const filePath of files) {
@@ -191,7 +198,12 @@ for (const [schemaType, files, destination] of [
       continue;
     }
 
-    const identifier = schemaType === "macro" ? content.macroID : content.layoutID;
+    const identifier =
+      schemaType === "macro"
+        ? content.macroID
+        : schemaType === "buttonProfile"
+          ? content.profileID
+          : content.layoutID;
     const key = `${identifier}@${content.version}`;
     if (destination.has(key)) {
       errors.push(`${relativePath(filePath)}: 内容身份与版本重复：${key}`);
@@ -211,17 +223,17 @@ for (const [schemaType, files, destination] of [
   }
 }
 
-for (const { content: layout, filePath } of layouts.values()) {
-  for (const binding of layout.bindings) {
+for (const { content: bindingCollection, filePath } of [...buttonProfiles.values(), ...layouts.values()]) {
+  for (const binding of bindingCollection.bindings) {
     if (binding.target.kind !== "macro") {
       continue;
     }
-    const layoutIsDraftExample = relativePath(filePath).startsWith("examples/");
+    const contentIsDraftExample = relativePath(filePath).startsWith("examples/");
     const candidates = [...macros.values()].filter(
       ({ content: macro, filePath: macroPath }) =>
         macro.macroID === binding.target.macroID &&
         versionMatches(macro.version, binding.target.versionRequirement) &&
-        (layoutIsDraftExample || !relativePath(macroPath).startsWith("examples/"))
+        (contentIsDraftExample || !relativePath(macroPath).startsWith("examples/"))
     );
     if (candidates.length === 0) {
       errors.push(
@@ -268,13 +280,22 @@ for (const filePath of manifestFiles) {
     continue;
   }
 
-  const expectedPathPrefix =
-    manifest.packageType === "macro" ? ["macros/", "examples/macros/"] : ["layouts/", "examples/layouts/"];
+  const expectedPathPrefixes = {
+    macro: ["macros/", "examples/macros/"],
+    buttonProfile: ["profiles/", "examples/profiles/"],
+    layout: ["layouts/", "examples/layouts/"]
+  };
+  const expectedPathPrefix = expectedPathPrefixes[manifest.packageType];
   if (!expectedPathPrefix.some((prefix) => manifest.contentPath.startsWith(prefix))) {
     errors.push(`${relativePath(filePath)}: packageType 与 contentPath 目录不一致`);
   }
 
-  const contentID = manifest.packageType === "macro" ? content.macroID : content.layoutID;
+  const contentID =
+    manifest.packageType === "macro"
+      ? content.macroID
+      : manifest.packageType === "buttonProfile"
+        ? content.profileID
+        : content.layoutID;
   if (contentID !== manifest.packageID || content.version !== manifest.version) {
     errors.push(`${relativePath(filePath)}: packageID/version 与目标内容不一致`);
   }
@@ -326,6 +347,6 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `校验通过：${macroFiles.length} 个宏、${layoutFiles.length} 个布局、${manifestFiles.length} 个 manifest。`
+    `校验通过：${macroFiles.length} 个宏、${buttonProfileFiles.length} 个键位方案、${layoutFiles.length} 个布局、${manifestFiles.length} 个 manifest。`
   );
 }

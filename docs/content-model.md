@@ -5,12 +5,14 @@
 ```text
 MacroDefinition（执行什么）
         ↓ 被引用
-RemoteLayoutTemplate（哪种遥控器的哪些触发方式执行哪些宏）
-        ↓ 被安装
+AppButtonProfile（某个 App 与遥控器型号的按键方案）
+        ↓ 可组合为完整布局
+RemoteLayoutTemplate（某种遥控器和场景的完整布局）
+        ↓ 安装后形成本机实例
 LocalInstalledLayout（某台 Mac / 某只遥控器的本地实例）
 ```
 
-只有前两层进入公开仓库。本地安装实例、设备身份和输入框学习数据始终留在用户设备。
+前三层可以进入公开仓库。本地安装实例、设备身份和输入框学习数据始终留在用户设备。
 
 ## 宏
 
@@ -28,13 +30,19 @@ Draft 白名单动作：
 
 动作参数由 JSON Schema 逐字段封闭，未知字段会被拒绝。公开内容不能借助参数携带 URL、脚本、命令、设备身份或用户数据。
 
+## App 键位方案
+
+App 键位方案使用稳定 `profileID`，绑定一个目标 App 的 bundle identifier 和一个标准遥控器型号。方案只声明按键、手势及其宏或内建动作引用，不携带 App 安装路径、窗口内容、用户快捷键库或设备身份。
+
+同一键位方案中的 `controlID + gesture` 必须唯一。Draft 示例放在 `examples/profiles/`；正式系统、官方和社区内容未来分别进入 `profiles/system/`、`profiles/official/` 与 `profiles/community/`。
+
 ## 布局
 
 布局声明遥控器标准型号、控制项、单击/双击/长按和宏引用。布局不包含具体遥控器序列号、蓝牙地址或用户本地覆盖。
 
 ## 发布版本
 
-- `packageID`、`macroID` 和 `layoutID` 是稳定身份；
+- `packageID`、`macroID`、`profileID` 和 `layoutID` 是稳定身份；
 - `version` 是不可变内容版本；
 - `schemaVersion` 是数据格式版本；
 - 发布版本不原地修改，修复通过新版本完成；

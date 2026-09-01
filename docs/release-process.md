@@ -7,15 +7,15 @@
 - 新格式和未验证内容只放在 `examples/`；
 - `schemaVersion` 使用 `0.1-draft`；
 - Draft Manifest 的 `status` 为 `draft`、验证状态为 `notVerified`；
-- Draft 不进入 `macros/`、`layouts/` 或生产 Catalog。
+- Draft 不进入 `macros/`、`profiles/`、`layouts/` 或生产 Catalog。
 
 ## 2. 内容验证
 
-候选宏和布局必须通过：
+候选宏、App 键位方案和布局必须通过：
 
 1. JSON Schema 和逐字段动作白名单；
 2. 稳定 ID、语义版本和重复项检查；
-3. 布局到宏的引用解析；
+3. 键位方案、布局到宏的引用解析；
 4. Manifest 内容路径、SHA-256 和能力声明一致性；
 5. 敏感字段、网络地址、脚本和可执行文件检查；
 6. 维护者人工审核权限、快捷键、失败状态与回退方式。

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://getsayall.com/schemas/draft/button-profile.schema.json",
+  "title": "DRAFT SayAll App Button Profile",
+  "description": "DRAFT — Not an implementation contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "profileID",
+    "version",
+    "name",
+    "remoteModel",
+    "minimumRemoteMicVersion",
+    "targetApplication",
+    "bindings"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1-draft" },
+    "profileID": { "$ref": "#/$defs/contentIdentifier" },
+    "version": { "$ref": "#/$defs/semanticVersion" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "summary": { "type": "string", "maxLength": 300 },
+    "remoteModel": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 100,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "minimumRemoteMicVersion": { "$ref": "#/$defs/semanticVersion" },
+    "targetApplication": { "$ref": "#/$defs/targetApplication" },
+    "bindings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 200,
+      "items": { "$ref": "#/$defs/binding" }
+    }
+  },
+  "$defs": {
+    "contentIdentifier": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)+$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "bundleIdentifier": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)+$"
+    },
+    "targetApplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bundleIdentifier"],
+      "properties": {
+        "bundleIdentifier": { "$ref": "#/$defs/bundleIdentifier" },
+        "displayName": { "type": "string", "minLength": 1, "maxLength": 100 }
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["controlID", "gesture", "target"],
+      "properties": {
+        "controlID": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "gesture": { "enum": ["singlePress", "doublePress", "longPress"] },
+        "target": {
+          "oneOf": [
+            { "$ref": "#/$defs/macroTarget" },
+            { "$ref": "#/$defs/builtInTarget" }
+          ]
+        }
+      }
+    },
+    "macroTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "macroID", "versionRequirement"],
+      "properties": {
+        "kind": { "const": "macro" },
+        "macroID": { "$ref": "#/$defs/contentIdentifier" },
+        "versionRequirement": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.(?:[0-9]+|x)$"
+        }
+      }
+    },
+    "builtInTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "actionID"],
+      "properties": {
+        "kind": { "const": "builtIn" },
+        "actionID": {
+          "enum": ["escape", "playPause", "volumeUp", "volumeDown", "mute"]
+        }
+      }
+    }
+  }
+}

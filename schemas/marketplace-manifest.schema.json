@@ -23,7 +23,7 @@
   "properties": {
     "schemaVersion": { "const": "0.1-draft" },
     "packageID": { "$ref": "#/$defs/contentIdentifier" },
-    "packageType": { "enum": ["macro", "layout"] },
+    "packageType": { "enum": ["macro", "buttonProfile", "layout"] },
     "version": { "$ref": "#/$defs/semanticVersion" },
     "status": { "enum": ["draft", "published"] },
     "source": { "enum": ["system", "official", "community"] },
@@ -75,7 +75,7 @@
     "contentPath": {
       "type": "string",
       "maxLength": 300,
-      "pattern": "^(?:macros|layouts|examples)/(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.json$"
+      "pattern": "^(?:macros|profiles|layouts|examples)/(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.json$"
     },
     "contentDigest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
     "license": { "const": "CC-BY-NC-4.0" },

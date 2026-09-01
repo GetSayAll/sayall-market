@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "0.1-draft",
+  "packageID": "com.getsayall.example.codex-basic-profile",
+  "packageType": "buttonProfile",
+  "version": "0.1.0",
+  "status": "draft",
+  "source": "community",
+  "author": {
+    "authorID": "getsayall-example",
+    "displayName": "GetSayAll Examples"
+  },
+  "compatibility": {
+    "minimumRemoteMicVersion": "1.9.18",
+    "remoteModels": ["xiaomi-remote-2-pro"],
+    "bundleIdentifiers": ["com.openai.codex"]
+  },
+  "contentPath": "examples/profiles/codex-basic.draft.json",
+  "contentDigest": "sha256:6a5f08e3acad5f2336ce4987db6389154825a61ab5a8dcbeef57e666f8b664c9",
+  "license": "CC-BY-NC-4.0",
+  "releaseNotes": "仅用于讨论 App 键位方案 Draft 格式，不代表已验证兼容性。",
+  "declaredCapabilities": ["builtInAction", "invokeMacro"],
+  "verification": {
+    "status": "notVerified"
+  }
+}
