@@ -18,13 +18,15 @@ LocalInstalledLayout（某台 Mac / 某只遥控器的本地实例）
 
 Draft 白名单动作：
 
-- `openApplication`
-- `waitForApplication`
-- `focusLearnedTarget`
-- `sendKeyboardShortcut`
-- `builtInAction`
+- `openApplication`：只接受目标 App 的 bundle identifier；
+- `waitForApplication`：只接受 bundle identifier 和有限状态；
+- `focusLearnedTarget`：只接受 bundle identifier 和本机 profile key；
+- `sendKeyboardShortcut`：只接受有限修饰键和普通按键名称；
+- `builtInAction`：只接受 Schema 中枚举的内建动作。
 
 `focusLearnedTarget` 只能引用本机 profile key；公开包不能携带实际 AX 学习数据。
+
+动作参数由 JSON Schema 逐字段封闭，未知字段会被拒绝。公开内容不能借助参数携带 URL、脚本、命令、设备身份或用户数据。
 
 ## 布局
 

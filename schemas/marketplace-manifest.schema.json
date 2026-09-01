@@ -5,20 +5,40 @@
   "description": "DRAFT — Not an implementation contract.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "packageID", "packageType", "version", "source", "author", "compatibility", "contentDigest"],
+  "required": [
+    "schemaVersion",
+    "packageID",
+    "packageType",
+    "version",
+    "status",
+    "source",
+    "author",
+    "compatibility",
+    "contentPath",
+    "contentDigest",
+    "license",
+    "declaredCapabilities",
+    "verification"
+  ],
   "properties": {
     "schemaVersion": { "const": "0.1-draft" },
-    "packageID": { "type": "string", "minLength": 8, "maxLength": 160 },
+    "packageID": { "$ref": "#/$defs/contentIdentifier" },
     "packageType": { "enum": ["macro", "layout"] },
-    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "version": { "$ref": "#/$defs/semanticVersion" },
+    "status": { "enum": ["draft", "published"] },
     "source": { "enum": ["system", "official", "community"] },
     "author": {
       "type": "object",
       "additionalProperties": false,
       "required": ["authorID", "displayName"],
       "properties": {
-        "authorID": { "type": "string" },
-        "displayName": { "type": "string", "maxLength": 80 }
+        "authorID": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+        },
+        "displayName": { "type": "string", "minLength": 1, "maxLength": 80 }
       }
     },
     "compatibility": {
@@ -26,14 +46,112 @@
       "additionalProperties": false,
       "required": ["minimumRemoteMicVersion"],
       "properties": {
-        "minimumRemoteMicVersion": { "type": "string" },
-        "minimumMacOSVersion": { "type": "string" },
-        "remoteModels": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "bundleIdentifiers": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+        "minimumRemoteMicVersion": { "$ref": "#/$defs/semanticVersion" },
+        "minimumMacOSVersion": { "$ref": "#/$defs/semanticVersion" },
+        "remoteModels": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "bundleIdentifiers": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 200,
+            "pattern": "^[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)+$"
+          }
+        }
       }
     },
+    "contentPath": {
+      "type": "string",
+      "maxLength": 300,
+      "pattern": "^(?:macros|layouts|examples)/(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.json$"
+    },
     "contentDigest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "license": { "const": "CC-BY-NC-4.0" },
     "releaseNotes": { "type": "string", "maxLength": 2000 },
-    "declaredCapabilities": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+    "declaredCapabilities": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "openApplication",
+          "waitForApplication",
+          "focusLearnedTarget",
+          "sendKeyboardShortcut",
+          "builtInAction",
+          "invokeMacro"
+        ]
+      }
+    },
+    "verification": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "const": "notVerified" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "recordPath"],
+          "properties": {
+            "status": { "const": "realHardware" },
+            "recordPath": {
+              "type": "string",
+              "maxLength": 300,
+              "pattern": "^docs/verification/[A-Za-z0-9._/-]+\\.md$"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "status": { "const": "published" },
+          "source": { "const": "official" }
+        },
+        "required": ["status", "source"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "verification": {
+            "type": "object",
+            "properties": { "status": { "const": "realHardware" } }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "contentIdentifier": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 160,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)+$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    }
   }
 }

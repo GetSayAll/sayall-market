@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "0.1-draft",
+  "packageID": "com.getsayall.example.open-codex-and-focus",
+  "packageType": "macro",
+  "version": "0.1.0",
+  "status": "draft",
+  "source": "community",
+  "author": {
+    "authorID": "getsayall-example",
+    "displayName": "GetSayAll Examples"
+  },
+  "compatibility": {
+    "minimumRemoteMicVersion": "1.8.3",
+    "bundleIdentifiers": ["com.openai.codex"]
+  },
+  "contentPath": "examples/macros/open-codex-and-focus.draft.json",
+  "contentDigest": "sha256:764a2cf6760cefe1bbc7af52a1ea32266b19efc878159bf5ac9af807e8a1fdb6",
+  "license": "CC-BY-NC-4.0",
+  "releaseNotes": "仅用于讨论 Draft 格式，不代表已验证兼容性。",
+  "declaredCapabilities": [
+    "openApplication",
+    "waitForApplication",
+    "focusLearnedTarget"
+  ],
+  "verification": {
+    "status": "notVerified"
+  }
+}

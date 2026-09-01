@@ -11,7 +11,7 @@
 - 当前状态为 `Public Design Preview / Contributions Paused`。
 - 未经产品负责人批准，只允许调整公开文档、Draft Schema、目录骨架和 Draft 示例。
 - 禁止把 Draft 示例移动到 `macros/`、`layouts/` 或 `catalog/` 形成生产内容。
-- License 未批准前不得擅自添加许可证或接受外部贡献。
+- 仓库许可已批准为 `CC BY-NC 4.0`；未经产品负责人批准不得更换许可或授予商业使用权。
 
 ## Content boundary
 
