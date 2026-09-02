@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "0.1-draft",
+  "status": "candidate",
+  "catalogVersion": 1,
+  "generatedAt": "2026-09-02T00:00:00Z",
+  "manifests": [
+    {
+      "manifestPath": "examples/manifests/codex-basic-profile.draft.json",
+      "manifestDigest": "sha256:4bd0fa955731465b876e819771007c7b3fa284866f1604f84eadd493b52793ac"
+    },
+    {
+      "manifestPath": "examples/manifests/netease-music-media-controls.candidate.draft.json",
+      "manifestDigest": "sha256:f37cbe6a3dc1271fdeb4fdd62780d56a6b112c258b532b050149e8f22d0ec72f"
+    },
+    {
+      "manifestPath": "examples/manifests/open-codex-and-focus.draft.json",
+      "manifestDigest": "sha256:13a466ac70d4f90ad04e57f15461edfa44afb1895eacea0138b5a5231fcca60f"
+    }
+  ],
+  "revocations": {
+    "revision": 0,
+    "entries": []
+  },
+  "signature": {
+    "algorithm": "ed25519",
+    "keyID": "draft-example-key-01",
+    "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+  }
+}

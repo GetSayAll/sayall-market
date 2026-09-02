@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "0.1-draft",
+  "packageID": "com.getsayall.candidate.netease-music-media-controls",
+  "packageType": "buttonProfile",
+  "version": "0.1.0",
+  "status": "draft",
+  "source": "official",
+  "author": {
+    "authorID": "getsayall",
+    "displayName": "GetSayAll"
+  },
+  "compatibility": {
+    "minimumRemoteMicVersion": "1.9.18",
+    "minimumMacOSVersion": "14.0.0",
+    "remoteModels": [
+      "xiaomi-remote-2-pro"
+    ],
+    "bundleIdentifiers": [
+      "com.netease.163music"
+    ]
+  },
+  "contentPath": "examples/profiles/netease-music-media-controls.candidate.draft.json",
+  "contentDigest": "sha256:ae32f67bf7c8856d9d6c2607d9f366aa329966664f73bc70158c670aecbb4500",
+  "license": "CC-BY-NC-4.0",
+  "releaseNotes": "无线麦SayAll.app 的首套官方 App 键位预设候选，仅完成公开合同与客户端 API 验证；尚未通过网易云音乐和实体遥控器验收，不是官方精选或正式发布内容。 First official App profile candidate for 无线麦SayAll.app; contract and client API validation only, with real App and hardware verification still required.",
+  "declaredCapabilities": [
+    "builtInAction"
+  ],
+  "verification": {
+    "status": "notVerified"
+  },
+  "signature": {
+    "algorithm": "ed25519",
+    "keyID": "draft-netease-fixture-key-01",
+    "value": "OLM40lZnej03PIhIY0V2CKqd7TatRDgJykFA9w7WQiGSECfUUuKjPJr9ydP5LYG/El9ekDMEtymQUOE26QLxCw=="
+  }
+}

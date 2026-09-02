@@ -5,6 +5,14 @@ import { fileURLToPath } from "node:url";
 
 import Ajv2020 from "ajv/dist/2020.js";
 
+import {
+  canonicalizeJson,
+  forbiddenContractKeyPattern,
+  forbiddenContractValuePattern,
+  isIso8601UtcDateTime,
+  sha256CanonicalJson
+} from "./marketplace-contract.mjs";
+
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
 
@@ -12,7 +20,8 @@ const schemaFiles = {
   macro: "schemas/macro-package.schema.json",
   buttonProfile: "schemas/button-profile.schema.json",
   layout: "schemas/layout-template.schema.json",
-  manifest: "schemas/marketplace-manifest.schema.json"
+  manifest: "schemas/marketplace-manifest.schema.json",
+  catalog: "schemas/marketplace-catalog.schema.json"
 };
 
 const contentDirectories = ["macros", "profiles", "layouts", "catalog", "examples"];
@@ -29,8 +38,6 @@ const forbiddenContentExtensions = new Set([
   ".ts"
 ]);
 const allowedContentExtensions = new Set([".json", ".md"]);
-const forbiddenKeyPattern = /(?:password|passwd|token|secret|credential|cookie|certificate|private[_-]?key|device[_-]?id|deviceidentifier|bluetooth[_-]?address|mac[_-]?address|serial[_-]?number|hid[_-]?fingerprint|accessibility[_-]?tree|ax[_-]?path)/i;
-const forbiddenValuePattern = /(?:https?:\/\/|file:\/\/|javascript:|data:|\/bin\/(?:sh|bash|zsh)|\bosascript\b|\bcurl\b|\bwget\b|\bpowershell\b)/i;
 
 function relativePath(filePath) {
   return path.relative(repositoryRoot, filePath).split(path.sep).join("/");
@@ -91,7 +98,7 @@ function scanSensitiveValues(value, filePath, jsonPath = "$") {
 
   if (value && typeof value === "object") {
     for (const [key, child] of Object.entries(value)) {
-      if (forbiddenKeyPattern.test(key)) {
+      if (forbiddenContractKeyPattern.test(key)) {
         errors.push(`${relativePath(filePath)}: ${jsonPath}.${key} 使用了禁止的敏感字段名`);
       }
       scanSensitiveValues(child, filePath, `${jsonPath}.${key}`);
@@ -99,8 +106,8 @@ function scanSensitiveValues(value, filePath, jsonPath = "$") {
     return;
   }
 
-  if (typeof value === "string" && forbiddenValuePattern.test(value)) {
-    errors.push(`${relativePath(filePath)}: ${jsonPath} 包含脚本、下载或网络地址特征`);
+  if (typeof value === "string" && forbiddenContractValuePattern.test(value)) {
+    errors.push(`${relativePath(filePath)}: ${jsonPath} 包含脚本、绝对路径、下载或网络地址特征`);
   }
 }
 
@@ -137,6 +144,7 @@ function arraysEqual(left, right) {
 }
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
+ajv.addFormat("date-time", { type: "string", validate: isIso8601UtcDateTime });
 const validators = {};
 
 for (const [schemaType, schemaFile] of Object.entries(schemaFiles)) {
@@ -172,8 +180,13 @@ const manifestFiles = [
   ...(await listFiles("catalog/manifests")),
   ...(await listFiles("examples/manifests"))
 ].filter((filePath) => path.extname(filePath) === ".json");
+const catalogFiles = (await listFiles("examples/catalog")).filter(
+  (filePath) => path.extname(filePath) === ".json"
+);
 const classifiedJsonFiles = new Set(
-  [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles].map((filePath) => path.resolve(filePath))
+  [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles, ...catalogFiles].map((filePath) =>
+    path.resolve(filePath)
+  )
 );
 
 const macros = new Map();
@@ -323,6 +336,47 @@ for (const filePath of manifestFiles) {
   }
 }
 
+for (const filePath of catalogFiles) {
+  const catalog = await loadJson(filePath);
+  if (!catalog) {
+    continue;
+  }
+  scanSensitiveValues(catalog, filePath);
+
+  const validate = validators.catalog;
+  if (!validate || !validate(catalog)) {
+    errors.push(`${relativePath(filePath)}: 不符合 catalog Schema：${formatAjvErrors(validate?.errors)}`);
+    continue;
+  }
+
+  assertUnique(
+    catalog.manifests.map((entry) => entry.manifestPath),
+    filePath,
+    "manifestPath"
+  );
+  assertUnique(
+    catalog.revocations.entries.map((entry) => canonicalizeJson(entry)),
+    filePath,
+    "撤销项"
+  );
+
+  for (const entry of catalog.manifests) {
+    const manifestPath = path.resolve(repositoryRoot, entry.manifestPath);
+    if (!manifestPath.startsWith(`${repositoryRoot}${path.sep}`) || !(await exists(manifestPath))) {
+      errors.push(`${relativePath(filePath)}: manifestPath 不存在或越出仓库：${entry.manifestPath}`);
+      continue;
+    }
+
+    const manifest = await loadJson(manifestPath);
+    if (!manifest) {
+      continue;
+    }
+    if (entry.manifestDigest !== sha256CanonicalJson(manifest)) {
+      errors.push(`${relativePath(filePath)}: manifestDigest 与 ${entry.manifestPath} 的 canonical JSON 不一致`);
+    }
+  }
+}
+
 for (const directory of contentDirectories) {
   for (const filePath of await listFiles(directory)) {
     const fileStat = await lstat(filePath);
@@ -347,6 +401,6 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `校验通过：${macroFiles.length} 个宏、${buttonProfileFiles.length} 个键位方案、${layoutFiles.length} 个布局、${manifestFiles.length} 个 manifest。`
+    `校验通过：${macroFiles.length} 个宏、${buttonProfileFiles.length} 个键位方案、${layoutFiles.length} 个布局、${manifestFiles.length} 个 manifest、${catalogFiles.length} 个 catalog。`
   );
 }

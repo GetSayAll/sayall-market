@@ -7,6 +7,7 @@
 - 新格式和未验证内容只放在 `examples/`；
 - `schemaVersion` 使用 `0.1-draft`；
 - Draft Manifest 的 `status` 为 `draft`、验证状态为 `notVerified`；
+- Draft Catalog 的 `status` 为 `candidate`，只放在 `examples/catalog/`；
 - Draft 不进入 `macros/`、`profiles/`、`layouts/` 或生产 Catalog。
 
 ## 2. 内容验证
@@ -18,9 +19,10 @@
 3. 键位方案、布局到宏的引用解析；
 4. Manifest 内容路径、SHA-256 和能力声明一致性；
 5. 敏感字段、网络地址、脚本和可执行文件检查；
-6. 维护者人工审核权限、快捷键、失败状态与回退方式。
+6. Manifest/Catalog canonical JSON 摘要、Ed25519 签名和撤销项匹配；
+7. 维护者人工审核权限、快捷键、失败状态与回退方式。
 
-`npm run validate` 负责前五项中的自动化部分。自动校验不能替代人工安全审核。
+`npm run validate` 负责前六项中的自动化部分。自动校验不能替代人工安全审核，也不配置生产信任根。
 
 ## 3. 真实硬件验证
 
@@ -39,9 +41,11 @@
 - 合并后的 `packageID + version` 不原地修改；
 - 修复通过新版本发布；
 - Manifest 使用目标文件原始字节的 SHA-256；
+- Manifest 和 Catalog 签名覆盖移除顶层 `signature` 后的 canonical JSON UTF-8；
+- Catalog 的 `manifestDigest` 使用包含签名的 Manifest canonical JSON SHA-256；
 - Catalog 根据已审核 Manifest 生成，不手工覆盖 `latest`；
 - 客户端只安装固定版本并在本机复核摘要、能力和授权。
 
 ## 6. 撤销
 
-发现明确安全风险时可以从后续 Catalog 中下架版本并发布风险提示，但不得静默替换原文件、远程执行替代宏或修改用户本地配置。
+发现明确安全风险时可以从后续 Catalog 中下架版本，并通过递增 `revocations.revision` 发布按 package/version、签名 key ID 或内容摘要匹配的撤销项与风险提示，但不得静默替换原文件、远程执行替代宏或修改用户本地配置。Draft Schema 和示例不定义生产信任根、密钥轮换或在线分发地址。

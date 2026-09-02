@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "0.1-draft",
+  "profileID": "com.getsayall.candidate.netease-music-media-controls",
+  "version": "0.1.0",
+  "name": "网易云音乐 Media",
+  "summary": "网易云音乐基础媒体控制候选：播放或暂停、调节系统音量与静音。Candidate media controls for NetEase Cloud Music: play or pause, system volume, and mute.",
+  "remoteModel": "xiaomi-remote-2-pro",
+  "minimumRemoteMicVersion": "1.9.18",
+  "targetApplication": {
+    "bundleIdentifier": "com.netease.163music",
+    "displayName": "网易云音乐 / NetEase Cloud Music"
+  },
+  "bindings": [
+    {
+      "controlID": "ok",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "playPause"
+      }
+    },
+    {
+      "controlID": "volume-up",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "volumeUp"
+      }
+    },
+    {
+      "controlID": "volume-down",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "volumeDown"
+      }
+    },
+    {
+      "controlID": "menu",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "mute"
+      }
+    }
+  ]
+}

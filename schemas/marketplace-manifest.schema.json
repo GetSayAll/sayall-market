@@ -18,7 +18,8 @@
     "contentDigest",
     "license",
     "declaredCapabilities",
-    "verification"
+    "verification",
+    "signature"
   ],
   "properties": {
     "schemaVersion": { "const": "0.1-draft" },
@@ -75,7 +76,7 @@
     "contentPath": {
       "type": "string",
       "maxLength": 300,
-      "pattern": "^(?:macros|profiles|layouts|examples)/(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.json$"
+      "pattern": "^(?:macros|profiles|layouts|examples)/(?!\\.{1,2}(?:/|$))(?:(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+/)*(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+\\.json$"
     },
     "contentDigest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
     "license": { "const": "CC-BY-NC-4.0" },
@@ -114,12 +115,13 @@
             "recordPath": {
               "type": "string",
               "maxLength": 300,
-              "pattern": "^docs/verification/[A-Za-z0-9._/-]+\\.md$"
+              "pattern": "^docs/verification/(?!\\.{1,2}(?:/|$))(?:(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+/)*(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+\\.md$"
             }
           }
         }
       ]
-    }
+    },
+    "signature": { "$ref": "#/$defs/signature" }
   },
   "allOf": [
     {
@@ -152,6 +154,24 @@
     "semanticVersion": {
       "type": "string",
       "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "keyID", "value"],
+      "properties": {
+        "algorithm": { "const": "ed25519" },
+        "keyID": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 120,
+          "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]{86}==$"
+        }
+      }
     }
   }
 }
