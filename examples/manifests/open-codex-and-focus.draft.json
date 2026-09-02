@@ -24,5 +24,10 @@
   ],
   "verification": {
     "status": "notVerified"
+  },
+  "signature": {
+    "algorithm": "ed25519",
+    "keyID": "draft-example-key-01",
+    "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
   }
 }

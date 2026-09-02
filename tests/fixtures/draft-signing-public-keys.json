@@ -1,0 +1,10 @@
+{
+  "keys": [
+    {
+      "keyID": "draft-netease-fixture-key-01",
+      "algorithm": "ed25519",
+      "format": "spki-der-base64",
+      "publicKey": "MCowBQYDK2VwAyEA29HK39zijNQ3iZ2Rpx0epi5kfeuf0L5772yCE7yrk5w="
+    }
+  ]
+}

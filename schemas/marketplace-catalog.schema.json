@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://getsayall.com/schemas/draft/marketplace-catalog.schema.json",
+  "title": "DRAFT SayAll Marketplace Catalog",
+  "description": "DRAFT — Not an implementation contract or production trust root.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "catalogVersion",
+    "generatedAt",
+    "manifests",
+    "revocations",
+    "signature"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1-draft" },
+    "status": { "const": "candidate" },
+    "catalogVersion": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,9})?Z$"
+    },
+    "manifests": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["manifestPath", "manifestDigest"],
+        "properties": {
+          "manifestPath": {
+            "type": "string",
+            "maxLength": 300,
+            "pattern": "^(?:catalog/manifests|examples/manifests)/(?!\\.{1,2}(?:/|$))(?:(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+/)*(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+\\.json$"
+          },
+          "manifestDigest": { "$ref": "#/$defs/sha256Digest" }
+        }
+      }
+    },
+    "revocations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "entries"],
+      "properties": {
+        "revision": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+        "entries": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": { "$ref": "#/$defs/revocationEntry" }
+        }
+      }
+    },
+    "signature": { "$ref": "#/$defs/signature" }
+  },
+  "$defs": {
+    "contentIdentifier": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 160,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)+$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "keyID": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "keyID", "value"],
+      "properties": {
+        "algorithm": { "const": "ed25519" },
+        "keyID": { "$ref": "#/$defs/keyID" },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]{86}==$"
+        }
+      }
+    },
+    "revocationEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 2,
+      "required": ["reason"],
+      "properties": {
+        "packageID": { "$ref": "#/$defs/contentIdentifier" },
+        "version": { "$ref": "#/$defs/semanticVersion" },
+        "keyID": { "$ref": "#/$defs/keyID" },
+        "contentDigest": { "$ref": "#/$defs/sha256Digest" },
+        "reason": {
+          "enum": [
+            "keyCompromise",
+            "contentIntegrity",
+            "maliciousContent",
+            "policyViolation"
+          ]
+        }
+      },
+      "dependentRequired": {
+        "version": ["packageID"]
+      }
+    }
+  }
+}
