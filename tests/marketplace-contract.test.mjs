@@ -54,7 +54,7 @@ function signed(document, keyID, privateKey) {
 
 function baseManifest() {
   return {
-    schemaVersion: "0.1-draft",
+    schemaVersion: "0.2-draft",
     packageID: "com.getsayall.example.fixture",
     packageType: "macro",
     version: "0.1.0",
@@ -90,7 +90,7 @@ test("Manifest 与 Catalog Ed25519 签名可验证且拒绝篡改", () => {
 
   const catalog = signed(
     {
-      schemaVersion: "0.1-draft",
+      schemaVersion: "0.2-draft",
       status: "candidate",
       catalogVersion: 1,
       generatedAt: "2026-09-02T00:00:00Z",
@@ -200,7 +200,7 @@ test("Schema 严格拒绝未知字段、URL、绝对路径、脚本路径和无�
   const signature = { algorithm: "ed25519", keyID: "fixture-key-01", value: "A".repeat(86) + "==" };
   const manifest = { ...baseManifest(), signature };
   const catalog = {
-    schemaVersion: "0.1-draft",
+    schemaVersion: "0.2-draft",
     status: "candidate",
     catalogVersion: 1,
     generatedAt: "2026-09-02T00:00:00Z",
@@ -251,7 +251,7 @@ test("共享路径 fixture 与 Catalog、Manifest Schema 保持一致", async ()
   for (const fixture of cases) {
     if (fixture.kind === "manifest") {
       const catalog = {
-        schemaVersion: "0.1-draft",
+        schemaVersion: "0.2-draft",
         status: "candidate",
         catalogVersion: 1,
         generatedAt: "2026-09-02T00:00:00Z",

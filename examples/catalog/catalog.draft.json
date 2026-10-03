@@ -1,20 +1,20 @@
 {
-  "schemaVersion": "0.1-draft",
+  "schemaVersion": "0.2-draft",
   "status": "candidate",
   "catalogVersion": 1,
   "generatedAt": "2026-09-02T00:00:00Z",
   "manifests": [
     {
       "manifestPath": "examples/manifests/codex-basic-profile.draft.json",
-      "manifestDigest": "sha256:4bd0fa955731465b876e819771007c7b3fa284866f1604f84eadd493b52793ac"
+      "manifestDigest": "sha256:75a07dae2afbcb29926ef9b1e9f3f003d839147c003af19a7c1d04267ca8d7ab"
     },
     {
       "manifestPath": "examples/manifests/netease-music-media-controls.candidate.draft.json",
-      "manifestDigest": "sha256:f37cbe6a3dc1271fdeb4fdd62780d56a6b112c258b532b050149e8f22d0ec72f"
+      "manifestDigest": "sha256:dbbec0770c2e335b1b81d587eaf403c7778b0a0c3a1294dcdebc3ede777391f5"
     },
     {
       "manifestPath": "examples/manifests/open-codex-and-focus.draft.json",
-      "manifestDigest": "sha256:13a466ac70d4f90ad04e57f15461edfa44afb1895eacea0138b5a5231fcca60f"
+      "manifestDigest": "sha256:62335347e6b036815e576e181200f3e86372b47c3d2fe3966309b02ddc26f15a"
     }
   ],
   "revocations": {
@@ -23,7 +23,7 @@
   },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "draft-example-key-01",
-    "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    "keyID": "draft-portable-transfer-fixture-01",
+    "value": "6X6ZLldkwKKo6xbyKPnc2pZAKWngq5X27Nqndo4kMlLw3wXJoezV/3EuEfxklvehjOpB/S40AjG14aGxu6iCCg=="
   }
 }

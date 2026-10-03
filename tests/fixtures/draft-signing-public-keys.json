@@ -1,10 +1,10 @@
 {
   "keys": [
     {
-      "keyID": "draft-netease-fixture-key-01",
+      "keyID": "draft-portable-transfer-fixture-01",
       "algorithm": "ed25519",
       "format": "spki-der-base64",
-      "publicKey": "MCowBQYDK2VwAyEA29HK39zijNQ3iZ2Rpx0epi5kfeuf0L5772yCE7yrk5w="
+      "publicKey": "MCowBQYDK2VwAyEARQnuMBsgpL5xTi8fUtFhQSw3o9cyEAtXuVABi+76ACY="
     }
   ]
 }

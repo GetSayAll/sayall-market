@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.1-draft",
+  "schemaVersion": "0.2-draft",
   "packageID": "com.getsayall.example.open-codex-and-focus",
   "packageType": "macro",
   "version": "0.1.0",
@@ -11,10 +11,12 @@
   },
   "compatibility": {
     "minimumRemoteMicVersion": "1.8.3",
-    "bundleIdentifiers": ["com.openai.codex"]
+    "bundleIdentifiers": [
+      "com.openai.codex"
+    ]
   },
   "contentPath": "examples/macros/open-codex-and-focus.draft.json",
-  "contentDigest": "sha256:764a2cf6760cefe1bbc7af52a1ea32266b19efc878159bf5ac9af807e8a1fdb6",
+  "contentDigest": "sha256:c1a88abb378aa43d22c74ce3a5f11243135f2fedc0af415ac60568a9d3e6948c",
   "license": "CC-BY-NC-4.0",
   "releaseNotes": "仅用于讨论 Draft 格式，不代表已验证兼容性。",
   "declaredCapabilities": [
@@ -27,7 +29,7 @@
   },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "draft-example-key-01",
-    "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    "keyID": "draft-portable-transfer-fixture-01",
+    "value": "1FBZOjuXLmye2m5IAJYRoinWWUhX8bqerENf2KJ5GmnyIjMHsBxDcKslikQa/yPf6GGlhJafZSeC7moZZpXTBA=="
   }
 }

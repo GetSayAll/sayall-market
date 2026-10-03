@@ -15,9 +15,17 @@
     "signature"
   ],
   "properties": {
-    "schemaVersion": { "const": "0.1-draft" },
-    "status": { "const": "candidate" },
-    "catalogVersion": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+    "schemaVersion": {
+      "const": "0.2-draft"
+    },
+    "status": {
+      "const": "candidate"
+    },
+    "catalogVersion": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
     "generatedAt": {
       "type": "string",
       "format": "date-time",
@@ -29,31 +37,47 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["manifestPath", "manifestDigest"],
+        "required": [
+          "manifestPath",
+          "manifestDigest"
+        ],
         "properties": {
           "manifestPath": {
             "type": "string",
             "maxLength": 300,
             "pattern": "^(?:catalog/manifests|examples/manifests)/(?!\\.{1,2}(?:/|$))(?:(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+/)*(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+\\.json$"
           },
-          "manifestDigest": { "$ref": "#/$defs/sha256Digest" }
+          "manifestDigest": {
+            "$ref": "#/$defs/sha256Digest"
+          }
         }
       }
     },
     "revocations": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["revision", "entries"],
+      "required": [
+        "revision",
+        "entries"
+      ],
       "properties": {
-        "revision": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
         "entries": {
           "type": "array",
           "maxItems": 10000,
-          "items": { "$ref": "#/$defs/revocationEntry" }
+          "items": {
+            "$ref": "#/$defs/revocationEntry"
+          }
         }
       }
     },
-    "signature": { "$ref": "#/$defs/signature" }
+    "signature": {
+      "$ref": "#/$defs/signature"
+    }
   },
   "$defs": {
     "contentIdentifier": {
@@ -79,10 +103,18 @@
     "signature": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["algorithm", "keyID", "value"],
+      "required": [
+        "algorithm",
+        "keyID",
+        "value"
+      ],
       "properties": {
-        "algorithm": { "const": "ed25519" },
-        "keyID": { "$ref": "#/$defs/keyID" },
+        "algorithm": {
+          "const": "ed25519"
+        },
+        "keyID": {
+          "$ref": "#/$defs/keyID"
+        },
         "value": {
           "type": "string",
           "pattern": "^[A-Za-z0-9+/]{86}==$"
@@ -93,12 +125,22 @@
       "type": "object",
       "additionalProperties": false,
       "minProperties": 2,
-      "required": ["reason"],
+      "required": [
+        "reason"
+      ],
       "properties": {
-        "packageID": { "$ref": "#/$defs/contentIdentifier" },
-        "version": { "$ref": "#/$defs/semanticVersion" },
-        "keyID": { "$ref": "#/$defs/keyID" },
-        "contentDigest": { "$ref": "#/$defs/sha256Digest" },
+        "packageID": {
+          "$ref": "#/$defs/contentIdentifier"
+        },
+        "version": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "keyID": {
+          "$ref": "#/$defs/keyID"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
         "reason": {
           "enum": [
             "keyCompromise",
@@ -109,7 +151,9 @@
         }
       },
       "dependentRequired": {
-        "version": ["packageID"]
+        "version": [
+          "packageID"
+        ]
       }
     }
   }

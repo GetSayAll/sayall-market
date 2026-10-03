@@ -87,3 +87,7 @@ npm run validate
 CC BY-NC 4.0 含“非商业”限制，因此不是 OSI 认可的开源软件许可证。
 
 Copyright © 2026 GetSayAll.
+
+## 导入导出合同
+
+单个/批量键位方案、组合动作、App 配置与本地个人备份遵循 [导入导出标准](docs/portable-transfer-standard.html)。共享包版本为 `0.2-draft`；公开市场只接受分享用途，个人备份不得提交。合同升级不构成生产接入或真实设备兼容声明。

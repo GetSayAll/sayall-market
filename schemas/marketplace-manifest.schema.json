@@ -22,16 +22,42 @@
     "signature"
   ],
   "properties": {
-    "schemaVersion": { "const": "0.1-draft" },
-    "packageID": { "$ref": "#/$defs/contentIdentifier" },
-    "packageType": { "enum": ["macro", "buttonProfile", "layout"] },
-    "version": { "$ref": "#/$defs/semanticVersion" },
-    "status": { "enum": ["draft", "published"] },
-    "source": { "enum": ["system", "official", "community"] },
+    "schemaVersion": {
+      "const": "0.2-draft"
+    },
+    "packageID": {
+      "$ref": "#/$defs/contentIdentifier"
+    },
+    "packageType": {
+      "enum": [
+        "macro",
+        "buttonProfile",
+        "layout"
+      ]
+    },
+    "version": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "published"
+      ]
+    },
+    "source": {
+      "enum": [
+        "system",
+        "official",
+        "community"
+      ]
+    },
     "author": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["authorID", "displayName"],
+      "required": [
+        "authorID",
+        "displayName"
+      ],
       "properties": {
         "authorID": {
           "type": "string",
@@ -39,16 +65,26 @@
           "maxLength": 80,
           "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
         },
-        "displayName": { "type": "string", "minLength": 1, "maxLength": 80 }
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        }
       }
     },
     "compatibility": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["minimumRemoteMicVersion"],
+      "required": [
+        "minimumRemoteMicVersion"
+      ],
       "properties": {
-        "minimumRemoteMicVersion": { "$ref": "#/$defs/semanticVersion" },
-        "minimumMacOSVersion": { "$ref": "#/$defs/semanticVersion" },
+        "minimumRemoteMicVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "minimumMacOSVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
         "remoteModels": {
           "type": "array",
           "maxItems": 32,
@@ -78,9 +114,17 @@
       "maxLength": 300,
       "pattern": "^(?:macros|profiles|layouts|examples)/(?!\\.{1,2}(?:/|$))(?:(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+/)*(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+\\.json$"
     },
-    "contentDigest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
-    "license": { "const": "CC-BY-NC-4.0" },
-    "releaseNotes": { "type": "string", "maxLength": 2000 },
+    "contentDigest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "license": {
+      "const": "CC-BY-NC-4.0"
+    },
+    "releaseNotes": {
+      "type": "string",
+      "maxLength": 2000
+    },
     "declaredCapabilities": {
       "type": "array",
       "maxItems": 16,
@@ -92,7 +136,10 @@
           "focusLearnedTarget",
           "sendKeyboardShortcut",
           "builtInAction",
-          "invokeMacro"
+          "invokeMacro",
+          "openURL",
+          "runShortcut",
+          "runMacro"
         ]
       }
     },
@@ -101,17 +148,26 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["status"],
+          "required": [
+            "status"
+          ],
           "properties": {
-            "status": { "const": "notVerified" }
+            "status": {
+              "const": "notVerified"
+            }
           }
         },
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["status", "recordPath"],
+          "required": [
+            "status",
+            "recordPath"
+          ],
           "properties": {
-            "status": { "const": "realHardware" },
+            "status": {
+              "const": "realHardware"
+            },
             "recordPath": {
               "type": "string",
               "maxLength": 300,
@@ -121,24 +177,37 @@
         }
       ]
     },
-    "signature": { "$ref": "#/$defs/signature" }
+    "signature": {
+      "$ref": "#/$defs/signature"
+    }
   },
   "allOf": [
     {
       "if": {
         "type": "object",
         "properties": {
-          "status": { "const": "published" },
-          "source": { "const": "official" }
+          "status": {
+            "const": "published"
+          },
+          "source": {
+            "const": "official"
+          }
         },
-        "required": ["status", "source"]
+        "required": [
+          "status",
+          "source"
+        ]
       },
       "then": {
         "type": "object",
         "properties": {
           "verification": {
             "type": "object",
-            "properties": { "status": { "const": "realHardware" } }
+            "properties": {
+              "status": {
+                "const": "realHardware"
+              }
+            }
           }
         }
       }
@@ -158,9 +227,15 @@
     "signature": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["algorithm", "keyID", "value"],
+      "required": [
+        "algorithm",
+        "keyID",
+        "value"
+      ],
       "properties": {
-        "algorithm": { "const": "ed25519" },
+        "algorithm": {
+          "const": "ed25519"
+        },
         "keyID": {
           "type": "string",
           "minLength": 8,

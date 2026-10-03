@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.1-draft",
+  "schemaVersion": "0.2-draft",
   "packageID": "com.getsayall.example.codex-basic-profile",
   "packageType": "buttonProfile",
   "version": "0.1.0",
@@ -11,20 +11,30 @@
   },
   "compatibility": {
     "minimumRemoteMicVersion": "1.9.18",
-    "remoteModels": ["xiaomi-remote-2-pro"],
-    "bundleIdentifiers": ["com.openai.codex"]
+    "remoteModels": [
+      "xiaomi-remote-2-pro"
+    ],
+    "bundleIdentifiers": [
+      "com.openai.codex"
+    ]
   },
   "contentPath": "examples/profiles/codex-basic.draft.json",
-  "contentDigest": "sha256:6a5f08e3acad5f2336ce4987db6389154825a61ab5a8dcbeef57e666f8b664c9",
+  "contentDigest": "sha256:dd9183183421e18c86ab914cca4ff6b26e15835d3e765cba31893b7b94137537",
   "license": "CC-BY-NC-4.0",
   "releaseNotes": "仅用于讨论 App 键位方案 Draft 格式，不代表已验证兼容性。",
-  "declaredCapabilities": ["builtInAction", "invokeMacro"],
+  "declaredCapabilities": [
+    "builtInAction",
+    "invokeMacro",
+    "openApplication",
+    "waitForApplication",
+    "focusLearnedTarget"
+  ],
   "verification": {
     "status": "notVerified"
   },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "draft-example-key-01",
-    "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    "keyID": "draft-portable-transfer-fixture-01",
+    "value": "BUy+eX/9MyAn6E6MZBbhHduK41dbQX5JflHWunoekge6ARsKEm0KF57gTPdoDkbQe1s+j5z21O+7MuyEnRyvBg=="
   }
 }

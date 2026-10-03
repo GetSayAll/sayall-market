@@ -1,0 +1,76 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>无线麦SayAll.app 导入导出标准</title><style>body{max-width:960px;margin:40px auto;padding:0 24px;font:16px/1.7 system-ui;color:#17202a;background:#fff}h1,h2,h3{line-height:1.35}h2{margin-top:36px}code{background:#f0f3f6;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}th,td{border:1px solid #d5dde5;padding:9px;text-align:left;vertical-align:top}a{color:#075eb7}li{margin:8px 0}@media(prefers-color-scheme:dark){body{background:#161b22;color:#e4eaf0}code{background:#29313d}th,td{border-color:#444f5d}a{color:#79b8ff}}</style></head><body><main>
+<h1>无线麦SayAll.app 导入导出标准</h1>
+<p>版本：<code>sayall-transfer / 0.2-draft</code>。本标准定义本地文件交换合同；不代表市场已上线、正式版本已支持或已通过真实设备验收。</p>
+<h2>合同与版本</h2>
+<ul>
+<li>唯一 Schema：<a href="../schemas/transfer-package.schema.json"><code>transfer-package.schema.json</code></a>。键位方案包通过 <a href="../schemas/button-profile.schema.json"><code>button-profile.schema.json</code></a> 引用同一合同，要求至少一个方案。</li>
+<li>文件必须标明 <code>format: &quot;sayall-transfer&quot;</code>、<code>schemaVersion: &quot;0.2-draft&quot;</code>、包 ID、内容版本、最低客户端版本和导出用途。</li>
+<li>嵌入组合动作使用 <code>schemaVersion: &quot;0.3-draft&quot;</code> 的步骤合同：支持既有顺序白名单动作及嵌套引用。包版本、动作版本和宿主本机存储版本互相独立。</li>
+<li>未公开的旧交换 Draft 不要求兼容；未知版本必须拒绝。已发布客户端的本机配置和个人配置 v1 不属于该豁免，升级必须保留其读取及行为。</li>
+<li>单对象、批量对象和个人备份均使用这一容器，不能为每个入口另造私有文件格式。</li>
+<li><code>packageID</code> / <code>version</code> 供目录和摘要绑定；本地导入不得由作者、包 ID 或来源字符串自动授予“官方”身份或执行许可。</li>
+</ul>
+<h2>内容结构</h2>
+<table><thead><tr><th>字段</th><th>含义</th></tr></thead><tbody>
+<tr><td><code>roots</code></td><td>用户明确选择的根对象：<code>macro</code>、<code>application</code>、<code>buttonProfile</code>、<code>hostSettings</code></td></tr>
+<tr><td><code>macros</code></td><td>实际动作版本、名称、说明、作用域、完整步骤、超时和嵌套引用</td></tr>
+<tr><td><code>shortcuts</code></td><td>实际 macOS <code>keyCode</code>、修饰键、显示名称与标签；不依赖原机快捷键库</td></tr>
+<tr><td><code>focusTargets</code></td><td>App 标识、配置名称；个人备份可选携带输入框定位指纹</td></tr>
+<tr><td><code>applications</code></td><td>App 标识、显示名称、聚焦策略及快捷键/输入框引用；无安装路径</td></tr>
+<tr><td><code>buttonProfiles</code></td><td>型号、名称、使用方式、App 自动关联、完整按键与按法</td></tr>
+<tr><td><code>hostSettings</code></td><td>个人备份中的明确设置分组：通用、音量增益、语音键及普通按键映射</td></tr>
+</tbody></table>
+<p>示例：<a href="../examples/transfers/combination-and-app.draft.json"><code>组合动作和 App 配置</code></a>、<a href="../examples/profiles/codex-basic.draft.json"><code>包含动作依赖的键位方案</code></a>。示例仅含合成/公开数据。</p>
+<p>所有对象 ID 只在本包对应类别内生效，不能当作接收方本机身份。导出不得保存原机设备 ID、安装路径、使用历史、成功测试记录或凭据。引用不能按名称猜测连接。</p>
+<h2>组合动作与依赖</h2>
+<ul>
+<li>支持单个、多选及选择全部已保存动作独立导出，无需购买键位方案功能；不将未保存草稿当作已保存版本。</li>
+<li>步骤白名单：<code>openApplication</code>、<code>openURL</code>、<code>waitForApplication</code>、<code>focusLearnedTarget</code>、<code>sendKeyboardShortcut</code>、<code>runShortcut</code>、<code>runMacro</code>、<code>builtInAction</code>。</li>
+<li>默认打包全部内部依赖。嵌套动作按导出快照中的最新已保存版本解析；直接引用的动作按其精确版本收集。共享子动作只保存一次。</li>
+<li>导出期间有关配置发生变化时重新采集或提示重试，不能输出混合版本快照。导出文件冻结当时状态，不改变导入后用户主动编辑的既有规则。</li>
+<li>每个动作最多 20 步，允许已保存的空动作；嵌套最多 8 层，禁止循环、重复步骤 ID 和缺失内部引用。</li>
+<li>普通步骤超时为 100–10,000 毫秒；快捷指令和嵌套动作可达 60,000 毫秒。</li>
+<li>macOS 快捷指令是外部依赖，仅存名称及 Identifier，不复制其内容。接收方未安装相应指令时保留并提示；不能自动改跑同名指令。</li>
+<li>URL 只允许用户明确声明的、不含账号密码的 HTTP(S) 地址，不在解析、预览或保存期间打开。网络特征扫描只能对合法 <code>openURL</code> 参数字段放行，其他字段仍接受敏感内容检查。</li>
+<li>本容器默认不携带遥控器绑定。明确选择绑定时采用普通映射分组和目标型号，不导出原机遥控器身份，接收方主动选择目标设备。</li>
+</ul>
+<h2>App 配置与键位语义</h2>
+<ul>
+<li>App 配置指无线麦保存的打开/聚焦配置，不是第三方 App 自己的账号、文档或偏好设置。</li>
+<li>支持独立、批量或随引用打包。三种聚焦策略：不聚焦、实际快捷键、已学习输入框。</li>
+<li>Bundle ID 是 App 查找依据；通过公开系统 API 重新定位本机安装位置。多个副本由用户选择；未安装时保留为待安装，不按名称打开其他 App。</li>
+<li>同一个 App 可有多个聚焦策略，不能仅按 Bundle ID 或显示名称合并。</li>
+<li>App 自动切换规则与 App 聚焦配置分别处理。导入的自动规则不立即启用；导入不能执行动作或自动打开 App。</li>
+<li>按键目标明确区分指定动作、<code>disabled</code> 和 <code>inherit</code>。缺少绑定表示沿用；不能默认为禁用。</li>
+<li>宿主动作采用 Schema 中逐项允许的稳定动作 ID，快捷键和自定义 App 使用类型化引用；禁止透传任意宿主 payload。</li>
+<li>型号不同不得静默删除绑定，启用前需要兼容目标设备或明确映射。不改变语音键保护和普通按键手势边界。</li>
+</ul>
+<h2>分享与个人备份</h2>
+<p><code>exportPurpose</code> 必须为 <code>share</code> 或 <code>personalBackup</code>。</p>
+<ul>
+<li>分享保留“需要学习输入框”的依赖声明，禁止 <code>focusTargets[].target</code> 和 <code>hostSettings</code>。不能为删除定位特征而删除聚焦步骤或改变聚焦策略。</li>
+<li>个人备份允许用户主动选择包含输入框定位特征。必须说明窗口标题/上下文可能属于个人信息；不备份完整辅助功能树或输入内容。</li>
+<li>导入定位指纹后不得继承成功测试记录，必须重新校验、验证。未学习/未验证时相关动作整体不可执行，不能先执行前半段再发现聚焦依赖缺失。</li>
+<li>个人设置按组选择恢复；只导入 App 配置不能改音频、语言或语音键。音频设备与遥控器在接收机重新选择，不保存 UID/蓝牙地址或自动配对。</li>
+<li>账号会话、会员凭据、Token、权限授权、设备身份、历史统计和执行记录永不导出。</li>
+<li>市场与公开示例只接受分享文件；个人备份只用于用户主动选择的本地文件，不上传社区或作为市场内容。</li>
+</ul>
+<h2>校验、合并与保存</h2>
+<ul>
+<li>JSON 必须通过 Schema 及语义校验。最大文件 4 MiB；最多 200 个根对象，每类对象最多 200 个，单个方案最多 200 个绑定。</li>
+<li>严格拒绝未知字段、空/无效标识、重复 ID、循环、内部悬空引用、超限、无效按键与非有限数值。</li>
+<li>导入先校验整包，再让用户选择根对象，只安装其传递依赖；未选择且不被依赖的对象不安装。</li>
+<li>缺 App、快捷指令或输入框学习信息是待配置状态；文件结构损坏与内部依赖缺失是拒绝条件，两者不能混为“导入成功”。</li>
+<li>默认新增副本或复用完整内容及依赖相同的配置。重复导入应复用，名称相同但内容不同应保留独立副本。</li>
+<li>不覆盖组合动作不可变版本。接收方存在更新版本时，嵌套引用不能意外指向该版本；必要时创建独立动作身份。</li>
+<li>覆盖可修改配置需在本次操作中明确选择，预览全部受影响引用并建立恢复点；不能将导入授权解释为整库替换。</li>
+<li>解析、预览与取消零落盘。最终保存前重新检查冲突；有关存储的并发编辑不能被旧快照覆盖。</li>
+<li>宏、快捷键、输入框、方案和宿主设置整体提交；提交完成前不发布可执行配置。失败恢复、重启恢复和恢复失败阻断必须有明确状态。</li>
+<li>Free 用户可明确选择免费对象及依赖；不能因同包有收费方案就禁止免费对象导入，也不能静默忽略用户选择的收费对象。</li>
+</ul>
+<h2>消费者验证</h2>
+<p>Schema、公开校验器和 Swift 解析器必须对同一组合法/非法样例得出一致结果。合同变化同步内容摘要、Manifest、Catalog、能力声明和测试签名 Fixture，不能将个人备份纳入市场签名发布。</p>
+<p>自动化至少覆盖完整往返、部分选择、嵌套版本、重复导入、内容冲突、缺失/剥离依赖、每个保存边界的失败/重启恢复和 1.9.21 等正式配置。公开宿主无收费 Package 必须仍可构建运行。构建、代理操作和真实设备/第三方 App 验收分别记录，不能相互替代。</p>
+<h3>实际快捷键的左右修饰键</h3>
+<p><code>shortcuts[].deviceModifierFlags</code> 为可选整数，保留 macOS NX 的左/右 Control、Shift、Command、Option 位；允许掩码为 <code>0x207f</code>。对应通用 <code>modifiers</code> 必须同时存在。缺失等同 0，不能借此传递其他事件标记或权限。按键语义由 <code>keyCode</code>、通用修饰键及这些设备位共同决定，显示标签仅作说明。方向键的系统伪 Fn 仍由接收方现有规范化处理。客户端不能在不支持设备位时静默丢弃这些位。</p>
+</main></body></html>
