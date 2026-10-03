@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import Ajv2020 from "ajv/dist/2020.js";
-import { transferIssues, transferCapabilities, publicTransferSensitivePaths } from './transfer-contract.mjs';
+import { transferIssues, transferCapabilities, transferManifestIssues, publicTransferSensitivePaths } from './transfer-contract.mjs';
 
 import {
   canonicalizeJson,
@@ -334,6 +334,10 @@ for (const filePath of manifestFiles) {
         : content.layoutID;
   if (contentID !== manifest.packageID || content.version !== manifest.version) {
     errors.push(`${relativePath(filePath)}: packageID/version 与目标内容不一致`);
+  }
+
+  if (manifest.packageType === 'buttonProfile') {
+    errors.push(...transferManifestIssues(content, manifest).map(issue => `${relativePath(filePath)}: ${issue}`));
   }
 
   const declared = [...manifest.declaredCapabilities].sort();

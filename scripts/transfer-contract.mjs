@@ -1,5 +1,23 @@
 import { forbiddenContractKeyPattern, forbiddenContractValuePattern } from './marketplace-contract.mjs';
 
+export function transferBundleIdentifiers(p) {
+  return [...new Set([
+    ...p.buttonProfiles.flatMap(profile => profile.applicationBundleIdentifiers),
+    ...p.applications.map(app => app.bundleIdentifier),
+    ...p.focusTargets.map(focus => focus.bundleIdentifier),
+    ...p.macros.flatMap(macro => [
+      ...(macro.scope?.bundleIdentifiers ?? []),
+      ...macro.steps.flatMap(step => step.parameters.bundleIdentifier ? [step.parameters.bundleIdentifier] : [])
+    ])
+  ])].sort();
+}
+
+export function transferManifestIssues(p, manifest) {
+  const declared = manifest.compatibility.bundleIdentifiers;
+  return declared !== undefined && JSON.stringify([...declared].sort()) !== JSON.stringify(transferBundleIdentifiers(p))
+    ? ['compatibility.bundleIdentifiers 与包内完整 App 集合不一致'] : [];
+}
+
 /** Semantic constraints supplement JSON Schema. No I/O or action execution. */
 export function transferIssues(p) {
   const errors = [];

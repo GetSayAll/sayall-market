@@ -2,12 +2,29 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import Ajv2020 from 'ajv/dist/2020.js';
-import { transferIssues, transferCapabilities, publicTransferSensitivePaths } from '../scripts/transfer-contract.mjs';
+import { transferIssues, transferCapabilities, transferBundleIdentifiers, transferManifestIssues, publicTransferSensitivePaths } from '../scripts/transfer-contract.mjs';
 
 const schema = JSON.parse(await readFile(new URL('../schemas/transfer-package.schema.json', import.meta.url)));
 const validate = new Ajv2020({ allErrors: true, strict: true }).compile(schema);
 const fixture = JSON.parse(await readFile(new URL('../examples/transfers/combination-and-app.draft.json', import.meta.url)));
 const valid = p => validate(p) && transferIssues(p).length === 0;
+
+test('市场 App 声明包括关联、App 配置、输入框、步骤和作用域；顺序不影响结果', () => {
+  const p = structuredClone(fixture);
+  p.buttonProfiles = [{id:'example.profile',name:'Profile',remoteModel:'xiaomi-remote-2-pro',mode:'manual',applicationBundleIdentifiers:['com.example.rule'],bindings:[]}];
+  p.macros[0].scope = {kind:'application',bundleIdentifiers:['com.example.scope']};
+  p.focusTargets = [{id:'example.focus',displayName:'Input',bundleIdentifier:'com.example.focus'}];
+  const apps = transferBundleIdentifiers(p);
+  assert.ok(apps.includes('com.example.rule') && apps.includes('com.example.scope') && apps.includes('com.example.focus'));
+  assert.ok(apps.includes(p.applications[0].bundleIdentifier));
+  const declaration = values => ({compatibility:{bundleIdentifiers:values}});
+  assert.deepEqual(transferManifestIssues(p,declaration([...apps].reverse())),[]);
+  assert.equal(transferManifestIssues(p,declaration(apps.slice(1))).length,1);
+  assert.equal(transferManifestIssues(p,declaration([...apps,'com.example.extra'])).length,1);
+  assert.deepEqual(transferManifestIssues(p,{compatibility:{}}),[]);
+  p.buttonProfiles = []; p.applications = []; p.focusTargets = []; p.macros = [];
+  assert.deepEqual(transferManifestIssues(p,declaration([])),[]);
+});
 
 test('组合动作与 App 包内部引用完整，能力按真实步骤计算', () => {
   assert.equal(valid(fixture), true);
