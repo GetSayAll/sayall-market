@@ -48,6 +48,21 @@ test('组合动作与 App 包内部引用完整，能力按真实步骤计算', 
   assert.deepEqual(publicTransferSensitivePaths(fixture), []);
 });
 
+test('内联按键与 Swift 对齐：拒绝控制和格式字符，保留可显示名称及空格', () => {
+  const p = structuredClone(fixture);
+  const parameters = { key: 'Return', modifiers: ['command'] };
+  p.macros[1].steps = [{stepID:'inline',action:'sendKeyboardShortcut',parameters}];
+  for (const key of ['\n', 'Return\n', '\t', '\u0000', '\u007f', '\u0085', '\u200b', '\ufeff']) {
+    parameters.key = key;
+    assert.equal(validate(p), false, JSON.stringify(key));
+    assert.ok(transferIssues(p).length > 0, JSON.stringify(key));
+  }
+  for (const key of ['Return', ' ', '\u2028']) {
+    parameters.key = key;
+    assert.equal(valid(p), true, JSON.stringify(key));
+  }
+});
+
 test('拒绝原机 App 路径、任意 payload、未知格式与缺失内部依赖', () => {
   for (const mutate of [
     p => { p.applications[0].applicationPath = '/Applications/Example.app'; },

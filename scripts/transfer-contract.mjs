@@ -79,6 +79,7 @@ export function transferIssues(p) {
       if (steps.has(step.stepID)) fail(`macro:${m.macroID}:duplicateStep`);
       steps.add(step.stepID);
       const v = step.parameters;
+      if (step.action === 'sendKeyboardShortcut' && v.key !== undefined && /[\p{Cc}\p{Cf}]/u.test(v.key)) fail(`macro:${m.macroID}:key`);
       if (['shortcutIdentifier','shortcutName','nestedMacroName'].some(key => v[key] !== undefined && !text(v[key]))) fail(`macro:${m.macroID}:text`);
       if (v.shortcutProfileKey) reference('shortcut', v.shortcutProfileKey, `macro:${m.macroID}:shortcut`);
       if (v.localProfileKey) {

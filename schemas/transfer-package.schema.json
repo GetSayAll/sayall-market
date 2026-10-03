@@ -791,7 +791,10 @@
                     "key": {
                       "type": "string",
                       "minLength": 1,
-                      "maxLength": 32
+                      "maxLength": 32,
+                      "not": {
+                        "pattern": "[\\p{Cc}\\p{Cf}]"
+                      }
                     },
                     "modifiers": {
                       "$ref": "#/$defs/modifiers"

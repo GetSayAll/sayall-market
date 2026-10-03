@@ -79,6 +79,7 @@
 </ul>
 <h2>消费者验证</h2>
 <p>Schema、公开校验器和 Swift 解析器必须对同一组合法/非法样例得出一致结果。合同变化同步内容摘要、Manifest、Catalog、能力声明和测试签名 Fixture，不能将个人备份纳入市场签名发布。</p>
+<p>内联快捷键的 <code>parameters.key</code> 不允许 Unicode 控制字符（Cc）和格式字符（Cf），包括换行、制表符和零宽格式字符；特殊键使用可显示名称，例如 <code>Return</code> 和 <code>Tab</code>。此约束对齐第一版 Swift 读取器，格式仍为 1.0。</p>
 <p>自动化至少覆盖完整往返、部分选择、嵌套版本、重复导入、内容冲突、缺失/剥离依赖、每个保存边界的失败/重启恢复和 1.9.21 等正式配置。公开宿主无收费 Package 必须仍可构建运行。构建、代理操作和真实设备/第三方 App 验收分别记录，不能相互替代。</p>
 <h3>实际快捷键的左右修饰键</h3>
 <p><code>shortcuts[].deviceModifierFlags</code> 为可选整数，保留 macOS NX 的左/右 Control、Shift、Command、Option 位；允许掩码为 <code>0x207f</code>。对应通用 <code>modifiers</code> 必须同时存在。缺失等同 0，不能借此传递其他事件标记或权限。按键语义由 <code>keyCode</code>、通用修饰键及这些设备位共同决定，显示标签仅作说明。方向键的系统伪 Fn 仍由接收方现有规范化处理。客户端不能在不支持设备位时静默丢弃这些位。</p>
