@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "status": "candidate",
+  "catalogVersion": 1,
+  "generatedAt": "2026-09-02T00:00:00Z",
+  "manifests": [
+    {
+      "manifestPath": "examples/manifests/codex-basic-profile.example.json",
+      "manifestDigest": "sha256:8b28b2764930de25775c37678e25e2590572296e6d0781d8b689e4e09714d9fd"
+    },
+    {
+      "manifestPath": "examples/manifests/netease-music-media-controls.candidate.json",
+      "manifestDigest": "sha256:3b95c8ff66e825fc8111f738566e66de59eff152d4dcbf835e1483a29bfc73d6"
+    },
+    {
+      "manifestPath": "examples/manifests/open-codex-and-focus.example.json",
+      "manifestDigest": "sha256:4f878f9c939326a92f4e5fae7145657ea80ebc5c704088e9a26937c4da6a7829"
+    }
+  ],
+  "revocations": {
+    "revision": 0,
+    "entries": []
+  },
+  "signature": {
+    "algorithm": "ed25519",
+    "keyID": "portable-transfer-v1-fixture-01",
+    "value": "jGm2NivlZ/Dkt+H37tzDqRSjVFCgkHfbNU+vivBJiV/nOf42JpXTaDBTHw1nO30+geCEURNAXbRsGc9dZbQFAQ=="
+  }
+}

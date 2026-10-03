@@ -18,7 +18,7 @@ LocalInstalledLayout（某台 Mac / 某只遥控器的本地实例）
 
 宏有稳定 `macroID`、不可变发布版本、名称、说明和有序白名单步骤。多个物理按键和布局可以引用同一个宏。
 
-Draft 白名单动作：
+第一版白名单动作：
 
 - `openApplication`：只接受目标 App 的 bundle identifier；
 - `waitForApplication`：只接受 bundle identifier 和有限状态；
@@ -34,7 +34,7 @@ Draft 白名单动作：
 
 App 键位方案使用稳定 `profileID`，绑定一个目标 App 的 bundle identifier 和一个标准遥控器型号。方案只声明按键、手势及其宏或内建动作引用，不携带 App 安装路径、窗口内容、用户快捷键库或设备身份。
 
-同一键位方案中的 `controlID + gesture` 必须唯一。Draft 示例放在 `examples/profiles/`；正式系统、官方和社区内容未来分别进入 `profiles/system/`、`profiles/official/` 与 `profiles/community/`。
+同一键位方案中的 `controlID + gesture` 必须唯一。第一版合成与候选示例放在 `examples/profiles/`；正式系统、官方和社区内容未来分别进入 `profiles/system/`、`profiles/official/` 与 `profiles/community/`。
 
 ## 布局
 

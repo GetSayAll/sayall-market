@@ -1,0 +1,63 @@
+{
+  "format": "sayall-transfer",
+  "schemaVersion": "1.0",
+  "packageID": "com.getsayall.candidate.netease-music-media-controls",
+  "version": "0.1.0",
+  "minimumRemoteMicVersion": "1.9.18",
+  "exportPurpose": "share",
+  "roots": [
+    {
+      "kind": "buttonProfile",
+      "id": "com.getsayall.candidate.netease-music-media-controls"
+    }
+  ],
+  "macros": [],
+  "shortcuts": [],
+  "focusTargets": [],
+  "applications": [],
+  "buttonProfiles": [
+    {
+      "id": "com.getsayall.candidate.netease-music-media-controls",
+      "name": "网易云音乐 Media",
+      "remoteModel": "xiaomi-remote-2-pro",
+      "mode": "automatic",
+      "applicationBundleIdentifiers": [
+        "com.netease.163music"
+      ],
+      "bindings": [
+        {
+          "controlID": "ok",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "host",
+            "actionID": "playPause"
+          }
+        },
+        {
+          "controlID": "volume-up",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "host",
+            "actionID": "volumeUp"
+          }
+        },
+        {
+          "controlID": "volume-down",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "host",
+            "actionID": "volumeDown"
+          }
+        },
+        {
+          "controlID": "menu",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "host",
+            "actionID": "volumeMute"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://getsayall.com/schemas/draft/marketplace-manifest.schema.json",
-  "title": "DRAFT SayAll Marketplace Manifest",
-  "description": "DRAFT — Not an implementation contract.",
+  "$id": "https://getsayall.com/schemas/v1/marketplace-manifest.schema.json",
+  "title": "SayAll Marketplace Manifest 1.0",
+  "description": "Stable first version; future readers must preserve compatibility.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -22,7 +22,7 @@
     "signature"
   ],
   "properties": {
-    "schemaVersion": { "const": "0.1-draft" },
+    "schemaVersion": { "enum": ["1.0", "0.2-draft"] },
     "packageID": { "$ref": "#/$defs/contentIdentifier" },
     "packageType": { "enum": ["macro", "buttonProfile", "layout"] },
     "version": { "$ref": "#/$defs/semanticVersion" },
@@ -92,7 +92,10 @@
           "focusLearnedTarget",
           "sendKeyboardShortcut",
           "builtInAction",
-          "invokeMacro"
+          "invokeMacro",
+          "openURL",
+          "runShortcut",
+          "runMacro"
         ]
       }
     },

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0",
+  "packageID": "com.getsayall.example.codex-basic-profile",
+  "packageType": "buttonProfile",
+  "version": "0.1.0",
+  "status": "draft",
+  "source": "community",
+  "author": {
+    "authorID": "getsayall-example",
+    "displayName": "GetSayAll Examples"
+  },
+  "compatibility": {
+    "minimumRemoteMicVersion": "1.9.18",
+    "remoteModels": [
+      "xiaomi-remote-2-pro"
+    ],
+    "bundleIdentifiers": [
+      "com.openai.codex"
+    ]
+  },
+  "contentPath": "examples/profiles/codex-basic.example.json",
+  "contentDigest": "sha256:d1faf093f12d846ec0b9cf2634fd03cdeb930d6609801605ccba37805af7f61b",
+  "license": "CC-BY-NC-4.0",
+  "releaseNotes": "仅用于演示第一版 App 键位方案格式，不代表已验证兼容性。",
+  "declaredCapabilities": [
+    "builtInAction",
+    "invokeMacro",
+    "openApplication",
+    "waitForApplication",
+    "focusLearnedTarget"
+  ],
+  "verification": {
+    "status": "notVerified"
+  },
+  "signature": {
+    "algorithm": "ed25519",
+    "keyID": "portable-transfer-v1-fixture-01",
+    "value": "8Kot/AFHQTPlnp8pIEfwvQQ5CNdlX3woQbzI/S7em7bpihnOC76DaCn9Wujo9nnGJ3pucsTgd2szWdudyk9NCQ=="
+  }
+}

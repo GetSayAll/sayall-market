@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import Ajv2020 from "ajv/dist/2020.js";
+import { transferIssues, transferCapabilities, transferManifestIssues, publicTransferSensitivePaths } from './transfer-contract.mjs';
 
 import {
   canonicalizeJson,
@@ -17,6 +18,7 @@ const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url))
 const errors = [];
 
 const schemaFiles = {
+  transfer: "schemas/transfer-package.schema.json",
   macro: "schemas/macro-package.schema.json",
   buttonProfile: "schemas/button-profile.schema.json",
   layout: "schemas/layout-template.schema.json",
@@ -131,6 +133,7 @@ function actualCapabilities(packageType, content) {
   if (packageType === "macro") {
     return [...new Set(content.steps.map((step) => step.action))].sort();
   }
+  if (packageType === 'buttonProfile') return transferCapabilities(content);
 
   const capabilities = new Set();
   for (const binding of content.bindings) {
@@ -146,6 +149,7 @@ function arraysEqual(left, right) {
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 ajv.addFormat("date-time", { type: "string", validate: isIso8601UtcDateTime });
 const validators = {};
+const loadedSchemas = {};
 
 for (const [schemaType, schemaFile] of Object.entries(schemaFiles)) {
   const schemaPath = path.join(repositoryRoot, schemaFile);
@@ -158,10 +162,15 @@ for (const [schemaType, schemaFile] of Object.entries(schemaFiles)) {
     continue;
   }
   try {
-    validators[schemaType] = ajv.compile(schema);
+    ajv.addSchema(schema);
+    loadedSchemas[schemaType] = schema;
   } catch (error) {
     errors.push(`${schemaFile}: Schema 编译失败：${error.message}`);
   }
+}
+for (const [type, schema] of Object.entries(loadedSchemas)) {
+  try { validators[type] = ajv.getSchema(schema.$id); }
+  catch (error) { errors.push(`${type}: Schema 编译失败：${error.message}`); }
 }
 
 const macroFiles = [
@@ -183,8 +192,9 @@ const manifestFiles = [
 const catalogFiles = (await listFiles("examples/catalog")).filter(
   (filePath) => path.extname(filePath) === ".json"
 );
+const transferFiles = (await listFiles("examples/transfers")).filter(file => path.extname(file) === '.json');
 const classifiedJsonFiles = new Set(
-  [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles, ...catalogFiles].map((filePath) =>
+  [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles, ...catalogFiles, ...transferFiles].map((filePath) =>
     path.resolve(filePath)
   )
 );
@@ -203,7 +213,7 @@ for (const [schemaType, files, destination] of [
     if (!content) {
       continue;
     }
-    scanSensitiveValues(content, filePath);
+    if (schemaType !== 'buttonProfile') scanSensitiveValues(content, filePath);
 
     const validate = validators[schemaType];
     if (!validate || !validate(content)) {
@@ -215,7 +225,7 @@ for (const [schemaType, files, destination] of [
       schemaType === "macro"
         ? content.macroID
         : schemaType === "buttonProfile"
-          ? content.profileID
+          ? content.packageID
           : content.layoutID;
     const key = `${identifier}@${content.version}`;
     if (destination.has(key)) {
@@ -226,6 +236,10 @@ for (const [schemaType, files, destination] of [
 
     if (schemaType === "macro") {
       assertUnique(content.steps.map((step) => step.stepID), filePath, "stepID");
+    } else if (schemaType === 'buttonProfile') {
+      errors.push(...publicTransferSensitivePaths(content).map(p => `${relativePath(filePath)}: 敏感内容 ${p}`));
+      if (content.exportPurpose !== 'share') errors.push(`${relativePath(filePath)}: 市场不接受个人备份`);
+      errors.push(...transferIssues(content).map(e => `${relativePath(filePath)}: ${e}`));
     } else {
       assertUnique(
         content.bindings.map((binding) => `${binding.controlID}:${binding.gesture}`),
@@ -236,7 +250,7 @@ for (const [schemaType, files, destination] of [
   }
 }
 
-for (const { content: bindingCollection, filePath } of [...buttonProfiles.values(), ...layouts.values()]) {
+for (const { content: bindingCollection, filePath } of layouts.values()) {
   for (const binding of bindingCollection.bindings) {
     if (binding.target.kind !== "macro") {
       continue;
@@ -254,6 +268,15 @@ for (const { content: bindingCollection, filePath } of [...buttonProfiles.values
       );
     }
   }
+}
+
+for (const filePath of transferFiles) {
+  const p = await loadJson(filePath);
+  if (!p) continue;
+  if (!validators.transfer(p)) { errors.push(`${relativePath(filePath)}: ${formatAjvErrors(validators.transfer.errors)}`); continue; }
+  if (p.exportPurpose !== 'share') errors.push(`${relativePath(filePath)}: 公开示例不允许个人备份`);
+  errors.push(...publicTransferSensitivePaths(p).map(e => `${relativePath(filePath)}: 敏感内容 ${e}`));
+  errors.push(...transferIssues(p).map(e => `${relativePath(filePath)}: ${e}`));
 }
 
 for (const filePath of manifestFiles) {
@@ -307,10 +330,14 @@ for (const filePath of manifestFiles) {
     manifest.packageType === "macro"
       ? content.macroID
       : manifest.packageType === "buttonProfile"
-        ? content.profileID
+        ? content.packageID
         : content.layoutID;
   if (contentID !== manifest.packageID || content.version !== manifest.version) {
     errors.push(`${relativePath(filePath)}: packageID/version 与目标内容不一致`);
+  }
+
+  if (manifest.packageType === 'buttonProfile') {
+    errors.push(...transferManifestIssues(content, manifest).map(issue => `${relativePath(filePath)}: ${issue}`));
   }
 
   const declared = [...manifest.declaredCapabilities].sort();
