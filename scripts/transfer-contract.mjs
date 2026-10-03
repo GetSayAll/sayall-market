@@ -22,6 +22,8 @@ export function transferManifestIssues(p, manifest) {
 export function transferIssues(p) {
   const errors = [];
   const fail = (path) => errors.push(path);
+  const macroVersion = p.schemaVersion === '0.2-draft' ? '0.3-draft' : '1.0';
+  for (const macro of p.macros) if (macro.schemaVersion !== macroVersion) fail(`macro:${macro.macroID}:schemaVersion`);
   const maps = {};
   const text = (value) => typeof value === 'string' && value.trim().length > 0 && !/[\u0000-\u001f\u007f-\u009f]/u.test(value);
   for (const values of [p.shortcuts, p.focusTargets, p.applications])

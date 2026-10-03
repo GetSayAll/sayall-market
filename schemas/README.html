@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第一版数据合同</title><style>body{max-width:960px;margin:32px auto;padding:0 24px;font:16px/1.7 system-ui}code{overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bcc8d4;padding:9px;text-align:left}</style></head><body><main>
+<h1>第一版数据合同</h1>
+<p>2026-10-03。导入导出、组合动作、Manifest 和 Catalog 为正式稳定格式 1.0。后续版本必须保留第一版读取器与行为。市场是否上线、内容是否发布和是否真机验证分别记录。</p>
+<table><thead><tr><th>Schema</th><th>状态</th></tr></thead><tbody>
+<tr><td><a href="transfer-package.schema.json">transfer-package.schema.json</a></td><td>1.0，统一文件容器</td></tr>
+<tr><td><a href="macro-package.schema.json">macro-package.schema.json</a></td><td>1.0，引用统一步骤合同</td></tr>
+<tr><td><a href="button-profile.schema.json">button-profile.schema.json</a></td><td>1.0，至少一个键位方案</td></tr>
+<tr><td><a href="marketplace-manifest.schema.json">marketplace-manifest.schema.json</a></td><td>1.0，发布元数据</td></tr>
+<tr><td><a href="marketplace-catalog.schema.json">marketplace-catalog.schema.json</a></td><td>1.0，目录、摘要、签名和撤销</td></tr>
+<tr><td><a href="layout-template.schema.json">layout-template.schema.json</a></td><td>尚未实现的布局模板草案</td></tr>
+</tbody></table>
+<p>详细字段与后续兼容门禁见 <a href="../docs/portable-transfer-standard.html">导入导出标准</a>。Schema 的 v1 URI 为稳定标识；新版本单独增加 Schema，不覆盖第一版。此前 0.2-draft 容器及 0.3-draft 步骤仅作为已生成文件的读取兼容项；新导出统一使用 1.0。</p>
+<p>Manifest 的 draft、Catalog 的 candidate 和 notVerified 是内容状态。JSON Schema 的 draft/2020-12 是规范名称。它们都不改变第一版格式的稳定状态。</p>
+<p>动作和参数采用逐字段白名单。Manifest 声明内容路径、原始文件 SHA-256、许可、能力、验证状态和 Ed25519 签名。official 内容仍须具备真实硬件验证记录。</p>
+<p>签名输入为移除顶层 signature 后的 canonical JSON：对象键递归按 UTF-16 码元排序，数组保序，无空白，编码为 UTF-8。Catalog 的 manifestDigest 是包含 Manifest signature 的 canonical JSON SHA-256。</p>
+<p>第一版 Manifest 与 Catalog 示例使用 <a href="../tests/fixtures/signing-public-keys.json">固定公开测试公钥</a>复验。对应私钥仅在生成进程内存在，没有写入仓库或文件系统。测试公钥、示例地址和签名均不是生产信任根或客户端接入凭据。</p>
+<p>运行 npm run validate 检查 Schema、示例、引用、原始内容摘要、签名、撤销和内容边界。<a href="../tests/fixtures/transfer-v1.json">第一版冻结样例</a>覆盖四类根对象和完整内部依赖；其 canonical JSON 摘要固定在测试中。自动化通过不能替代真实设备验收。</p>
+</main></body></html>

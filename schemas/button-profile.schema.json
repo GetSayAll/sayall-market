@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://getsayall.com/schemas/draft/button-profile.schema.json",
-  "title": "SayAll button profile transfer package 0.2-draft",
-  "$ref": "https://getsayall.com/schemas/draft/transfer-package.schema.json",
+  "$id": "https://getsayall.com/schemas/v1/button-profile.schema.json",
+  "title": "SayAll button profile transfer package 1.0",
+  "$ref": "https://getsayall.com/schemas/v1/transfer-package.schema.json",
   "properties": {
     "buttonProfiles": {
       "type": "array",

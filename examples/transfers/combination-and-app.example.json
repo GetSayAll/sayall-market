@@ -1,6 +1,6 @@
 {
   "format": "sayall-transfer",
-  "schemaVersion": "0.2-draft",
+  "schemaVersion": "1.0",
   "packageID": "com.getsayall.example.combination-and-app",
   "version": "1.0.0",
   "minimumRemoteMicVersion": "1.9.21",
@@ -17,7 +17,7 @@
   ],
   "macros": [
     {
-      "schemaVersion": "0.3-draft",
+      "schemaVersion": "1.0",
       "macroID": "example.root",
       "version": "1.0.0",
       "name": "打开编辑器并执行子动作",
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "schemaVersion": "0.3-draft",
+      "schemaVersion": "1.0",
       "macroID": "example.child",
       "version": "2.0.0",
       "name": "发送快捷键",

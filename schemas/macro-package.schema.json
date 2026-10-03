@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://getsayall.com/schemas/draft/macro-package.schema.json",
-  "title": "SayAll macro definition 0.3-draft",
-  "$ref": "https://getsayall.com/schemas/draft/transfer-package.schema.json#/$defs/macro"
+  "$id": "https://getsayall.com/schemas/v1/macro-package.schema.json",
+  "title": "SayAll macro definition 1.0",
+  "$ref": "https://getsayall.com/schemas/v1/transfer-package.schema.json#/$defs/macro"
 }

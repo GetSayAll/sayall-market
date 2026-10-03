@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.2-draft",
+  "schemaVersion": "1.0",
   "packageID": "com.getsayall.example.open-codex-and-focus",
   "packageType": "macro",
   "version": "0.1.0",
@@ -15,10 +15,10 @@
       "com.openai.codex"
     ]
   },
-  "contentPath": "examples/macros/open-codex-and-focus.draft.json",
-  "contentDigest": "sha256:c1a88abb378aa43d22c74ce3a5f11243135f2fedc0af415ac60568a9d3e6948c",
+  "contentPath": "examples/macros/open-codex-and-focus.example.json",
+  "contentDigest": "sha256:03893b144a7cdfd745952add157ab832556bc548824f77f65e264d532e17b727",
   "license": "CC-BY-NC-4.0",
-  "releaseNotes": "仅用于讨论 Draft 格式，不代表已验证兼容性。",
+  "releaseNotes": "仅用于演示第一版格式，不代表已验证兼容性。",
   "declaredCapabilities": [
     "openApplication",
     "waitForApplication",
@@ -29,7 +29,7 @@
   },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "draft-portable-transfer-fixture-01",
-    "value": "1FBZOjuXLmye2m5IAJYRoinWWUhX8bqerENf2KJ5GmnyIjMHsBxDcKslikQa/yPf6GGlhJafZSeC7moZZpXTBA=="
+    "keyID": "portable-transfer-v1-fixture-01",
+    "value": "PfvhwRXlutX2VRZJXiS/m1PMz1PLeLADfvY6PpaO9bddHVqil7+/on2p6cnErcqdW1Awz7jkqzpn5b5HCx+aCw=="
   }
 }

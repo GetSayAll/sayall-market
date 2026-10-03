@@ -2,12 +2,28 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import Ajv2020 from 'ajv/dist/2020.js';
+import { sha256CanonicalJson } from '../scripts/marketplace-contract.mjs';
 import { transferIssues, transferCapabilities, transferBundleIdentifiers, transferManifestIssues, publicTransferSensitivePaths } from '../scripts/transfer-contract.mjs';
 
 const schema = JSON.parse(await readFile(new URL('../schemas/transfer-package.schema.json', import.meta.url)));
 const validate = new Ajv2020({ allErrors: true, strict: true }).compile(schema);
-const fixture = JSON.parse(await readFile(new URL('../examples/transfers/combination-and-app.draft.json', import.meta.url)));
+const fixture = JSON.parse(await readFile(new URL('../examples/transfers/combination-and-app.example.json', import.meta.url)));
 const valid = p => validate(p) && transferIssues(p).length === 0;
+
+test('冻结第一版样例可读；兼容此前导出，拒绝未知版本和混合步骤版本', async () => {
+  const frozen = JSON.parse(await readFile(new URL('./fixtures/transfer-v1.json', import.meta.url)));
+  assert.equal(sha256CanonicalJson(frozen), 'sha256:58261cfff9baf8f7cdb0fe5f6ee026f7cb931f0c86cc826aa4966aad51d707e5');
+  assert.equal(frozen.schemaVersion, '1.0');
+  assert.equal(valid(frozen), true);
+  const previous = structuredClone(frozen);
+  previous.schemaVersion = '0.2-draft';
+  previous.macros.forEach(macro => { macro.schemaVersion = '0.3-draft'; });
+  assert.equal(valid(previous), true);
+  previous.macros[0].schemaVersion = '1.0';
+  assert.equal(valid(previous), false);
+  frozen.schemaVersion = '1.1';
+  assert.equal(valid(frozen), false);
+});
 
 test('市场 App 声明包括关联、App 配置、输入框、步骤和作用域；顺序不影响结果', () => {
   const p = structuredClone(fixture);
@@ -61,7 +77,7 @@ test('循环、重复 ID、超过 8 层拒绝，共享 DAG 不重复遍历', () 
   assert.equal(valid(p), false);
   p = structuredClone(fixture); p.macros.push(p.macros[0]); assert.equal(valid(p), false);
   p = structuredClone(fixture);
-  p.macros = Array.from({length: 8}, (_, i) => ({schemaVersion: '0.3-draft', macroID: `example.node${i}`, version:'1.0.0', name:'Node', steps: i === 7 ? [] : [{stepID:'child', action:'runMacro', parameters:{nestedMacroID:`example.node${i + 1}`,nestedMacroName:'Node'}}]}));
+  p.macros = Array.from({length: 8}, (_, i) => ({schemaVersion: '1.0', macroID: `example.node${i}`, version:'1.0.0', name:'Node', steps: i === 7 ? [] : [{stepID:'child', action:'runMacro', parameters:{nestedMacroID:`example.node${i + 1}`,nestedMacroName:'Node'}}]}));
   p.roots[0].id = 'example.node0'; assert.equal(valid(p), true);
   p.macros[7].steps = [{stepID:'child',action:'runMacro',parameters:{nestedMacroID:'example.node8',nestedMacroName:'Node'}}];
   p.macros.push({...p.macros[7],macroID:'example.node8',steps:[]}); assert.equal(valid(p), false);

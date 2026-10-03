@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://getsayall.com/schemas/draft/marketplace-catalog.schema.json",
-  "title": "DRAFT SayAll Marketplace Catalog",
-  "description": "DRAFT — Not an implementation contract or production trust root.",
+  "$id": "https://getsayall.com/schemas/v1/marketplace-catalog.schema.json",
+  "title": "SayAll Marketplace Catalog 1.0",
+  "description": "Stable first version; format stability does not define a production trust root.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -16,7 +16,7 @@
   ],
   "properties": {
     "schemaVersion": {
-      "const": "0.2-draft"
+      "enum": ["1.0", "0.2-draft"]
     },
     "status": {
       "const": "candidate"

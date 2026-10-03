@@ -1,6 +1,6 @@
 {
   "format": "sayall-transfer",
-  "schemaVersion": "0.2-draft",
+  "schemaVersion": "1.0",
   "packageID": "com.getsayall.candidate.netease-music-media-controls",
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.18",

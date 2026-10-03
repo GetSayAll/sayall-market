@@ -1,14 +1,22 @@
 <!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>无线麦SayAll.app 导入导出标准</title><style>body{max-width:960px;margin:40px auto;padding:0 24px;font:16px/1.7 system-ui;color:#17202a;background:#fff}h1,h2,h3{line-height:1.35}h2{margin-top:36px}code{background:#f0f3f6;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}th,td{border:1px solid #d5dde5;padding:9px;text-align:left;vertical-align:top}a{color:#075eb7}li{margin:8px 0}@media(prefers-color-scheme:dark){body{background:#161b22;color:#e4eaf0}code{background:#29313d}th,td{border-color:#444f5d}a{color:#79b8ff}}</style></head><body><main>
 <h1>无线麦SayAll.app 导入导出标准</h1>
-<p>版本：<code>sayall-transfer / 0.2-draft</code>。本标准定义本地文件交换合同；不代表市场已上线、正式版本已支持或已通过真实设备验收。</p>
+<p>正式第一版：<code>sayall-transfer / 1.0</code>。2026-10-03 根据用户批准冻结当前实现。此格式是稳定的文件交换合同；市场上线、客户端发布和真实设备验收分别记录。</p>
 <h2>合同与版本</h2>
 <ul>
 <li>唯一 Schema：<a href="../schemas/transfer-package.schema.json"><code>transfer-package.schema.json</code></a>。键位方案包通过 <a href="../schemas/button-profile.schema.json"><code>button-profile.schema.json</code></a> 引用同一合同，要求至少一个方案。</li>
-<li>文件必须标明 <code>format: &quot;sayall-transfer&quot;</code>、<code>schemaVersion: &quot;0.2-draft&quot;</code>、包 ID、内容版本、最低客户端版本和导出用途。</li>
-<li>嵌入组合动作使用 <code>schemaVersion: &quot;0.3-draft&quot;</code> 的步骤合同：支持既有顺序白名单动作及嵌套引用。包版本、动作版本和宿主本机存储版本互相独立。</li>
-<li>未公开的旧交换 Draft 不要求兼容；未知版本必须拒绝。已发布客户端的本机配置和个人配置 v1 不属于该豁免，升级必须保留其读取及行为。</li>
+<li>文件必须标明 <code>format: &quot;sayall-transfer&quot;</code>、<code>schemaVersion: &quot;1.0&quot;</code>、包 ID、内容版本、最低客户端版本和导出用途。</li>
+<li>嵌入组合动作、Manifest 和 Catalog 的格式版本均为 <code>1.0</code>。组合动作支持既有顺序白名单动作及嵌套引用。包内容版本、动作内容版本和宿主本机存储版本互相独立。</li>
+<li>保留此前已生成的 <code>0.2-draft</code> 容器与 <code>0.3-draft</code> 步骤的读取；重新导出统一写为 <code>1.0</code>。未知格式版本拒绝。已发布客户端的本机配置和个人配置 v1 继续保留读取及行为。</li>
 <li>单对象、批量对象和个人备份均使用这一容器，不能为每个入口另造私有文件格式。</li>
 <li><code>packageID</code> / <code>version</code> 供目录和摘要绑定；本地导入不得由作者、包 ID 或来源字符串自动授予“官方”身份或执行许可。</li>
+</ul>
+<h2>后续版本兼容规则</h2>
+<ul>
+<li>所有后续客户端必须继续读取第一版文件，并保持方案、组合动作、快捷键、App、输入框依赖、个人设置和引用的原有语义。不得以“格式曾带 Draft”为由删除第一版读取器。</li>
+<li>第一版字段、默认值、动作白名单和限制冻结。新增字段或动作使用新的 Schema 版本；不能把新必需字段写进第一版。第一版读取器仍严格拒绝未知字段和动作。</li>
+<li>新格式允许旧客户端拒绝。向旧客户端导出时，只能在数据完整可表达且行为不变时选择第一版；不能静默丢弃步骤、快捷键或依赖。</li>
+<li>第一版 Schema 及 <a href="../tests/fixtures/transfer-v1.json">冻结兼容样例</a>必须保留。新版本单独增加 Schema 和读取分支，并通过旧样例的解析、往返、引用重连及 1.9.21 个人配置回归后才能交付。样例的 canonical JSON SHA-256 已固定在自动化测试中。</li>
+<li>格式版本与内容审核分开。Manifest 的 <code>draft</code>、Catalog 的 <code>candidate</code> 和 <code>notVerified</code> 表示内容状态，不能据此把格式标回草案。JSON Schema 的 <code>draft/2020-12</code> 是其规范名称，与本产品格式状态无关。</li>
 </ul>
 <h2>内容结构</h2>
 <table><thead><tr><th>字段</th><th>含义</th></tr></thead><tbody>
@@ -20,7 +28,7 @@
 <tr><td><code>buttonProfiles</code></td><td>型号、名称、使用方式、App 自动关联、完整按键与按法</td></tr>
 <tr><td><code>hostSettings</code></td><td>个人备份中的明确设置分组：通用、音量增益、语音键及普通按键映射</td></tr>
 </tbody></table>
-<p>示例：<a href="../examples/transfers/combination-and-app.draft.json"><code>组合动作和 App 配置</code></a>、<a href="../examples/profiles/codex-basic.draft.json"><code>包含动作依赖的键位方案</code></a>。示例仅含合成/公开数据。</p>
+<p>示例：<a href="../examples/transfers/combination-and-app.example.json"><code>组合动作和 App 配置</code></a>、<a href="../examples/profiles/codex-basic.example.json"><code>包含动作依赖的键位方案</code></a>。示例仅含合成/公开数据。</p>
 <p>所有对象 ID 只在本包对应类别内生效，不能当作接收方本机身份。导出不得保存原机设备 ID、安装路径、使用历史、成功测试记录或凭据。引用不能按名称猜测连接。</p>
 <h2>组合动作与依赖</h2>
 <ul>

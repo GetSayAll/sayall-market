@@ -27,9 +27,9 @@ async function loadValidator(schemaFile) {
   return ajv.compile(schema);
 }
 
-async function draftFixturePublicKey(keyID) {
+async function fixturePublicKey(keyID) {
   const fixture = JSON.parse(
-    await readFile(path.join(repositoryRoot, "tests/fixtures/draft-signing-public-keys.json"), "utf8")
+    await readFile(path.join(repositoryRoot, "tests/fixtures/signing-public-keys.json"), "utf8")
   );
   const key = fixture.keys.find((candidate) => candidate.keyID === keyID);
   if (!key || key.algorithm !== "ed25519" || key.format !== "spki-der-base64") {
@@ -42,8 +42,8 @@ async function draftFixturePublicKey(keyID) {
   });
 }
 
-async function verifyWithDraftFixture(document) {
-  const publicKey = await draftFixturePublicKey(document?.signature?.keyID);
+async function verifyWithFixture(document) {
+  const publicKey = await fixturePublicKey(document?.signature?.keyID);
   return publicKey ? verifySignedDocument(document, publicKey) : false;
 }
 
@@ -54,7 +54,7 @@ function signed(document, keyID, privateKey) {
 
 function baseManifest() {
   return {
-    schemaVersion: "0.2-draft",
+    schemaVersion: "1.0",
     packageID: "com.getsayall.example.fixture",
     packageType: "macro",
     version: "0.1.0",
@@ -62,7 +62,7 @@ function baseManifest() {
     source: "community",
     author: { authorID: "fixture-author", displayName: "Fixture Author" },
     compatibility: { minimumRemoteMicVersion: "1.9.18" },
-    contentPath: "examples/macros/open-codex-and-focus.draft.json",
+    contentPath: "examples/macros/open-codex-and-focus.example.json",
     contentDigest: `sha256:${"1".repeat(64)}`,
     license: "CC-BY-NC-4.0",
     declaredCapabilities: ["openApplication"],
@@ -90,7 +90,7 @@ test("Manifest 与 Catalog Ed25519 签名可验证且拒绝篡改", () => {
 
   const catalog = signed(
     {
-      schemaVersion: "0.2-draft",
+      schemaVersion: "1.0",
       status: "candidate",
       catalogVersion: 1,
       generatedAt: "2026-09-02T00:00:00Z",
@@ -110,13 +110,13 @@ test("Manifest 与 Catalog Ed25519 签名可验证且拒绝篡改", () => {
   assert.equal(unsignedDocument(catalog).signature, undefined);
 });
 
-test("网易云候选使用固定 Draft 公钥复验并拒绝内容、Manifest、签名和未知 key 篡改", async () => {
-  const manifestPath = "examples/manifests/netease-music-media-controls.candidate.draft.json";
-  const contentPath = "examples/profiles/netease-music-media-controls.candidate.draft.json";
+test("网易云候选使用固定测试公钥复验并拒绝内容、Manifest、签名和未知 key 篡改", async () => {
+  const manifestPath = "examples/manifests/netease-music-media-controls.candidate.json";
+  const contentPath = "examples/profiles/netease-music-media-controls.candidate.json";
   const [manifestBytes, contentBytes, catalogBytes] = await Promise.all([
     readFile(path.join(repositoryRoot, manifestPath)),
     readFile(path.join(repositoryRoot, contentPath)),
-    readFile(path.join(repositoryRoot, "examples/catalog/catalog.draft.json"))
+    readFile(path.join(repositoryRoot, "examples/catalog/catalog.example.json"))
   ]);
   const manifest = JSON.parse(manifestBytes);
   const catalog = JSON.parse(catalogBytes);
@@ -125,7 +125,7 @@ test("网易云候选使用固定 Draft 公钥复验并拒绝内容、Manifest�
   const actualContentDigest = `sha256:${createHash("sha256").update(contentBytes).digest("hex")}`;
   assert.equal(actualContentDigest, manifest.contentDigest);
   assert.equal(catalogEntry?.manifestDigest, sha256CanonicalJson(manifest));
-  assert.equal(await verifyWithDraftFixture(manifest), true);
+  assert.equal(await verifyWithFixture(manifest), true);
 
   const tamperedContent = Buffer.from(contentBytes.toString("utf8").replace("playPause", "volumeUp"));
   assert.notEqual(
@@ -134,7 +134,7 @@ test("网易云候选使用固定 Draft 公钥复验并拒绝内容、Manifest�
   );
 
   const tamperedManifest = { ...manifest, version: "0.1.1" };
-  assert.equal(await verifyWithDraftFixture(tamperedManifest), false);
+  assert.equal(await verifyWithFixture(tamperedManifest), false);
   assert.notEqual(sha256CanonicalJson(tamperedManifest), catalogEntry?.manifestDigest);
 
   const firstSignatureCharacter = manifest.signature.value[0] === "A" ? "B" : "A";
@@ -145,13 +145,13 @@ test("网易云候选使用固定 Draft 公钥复验并拒绝内容、Manifest�
       value: `${firstSignatureCharacter}${manifest.signature.value.slice(1)}`
     }
   };
-  assert.equal(await verifyWithDraftFixture(tamperedSignature), false);
+  assert.equal(await verifyWithFixture(tamperedSignature), false);
 
   const unknownKey = {
     ...manifest,
     signature: { ...manifest.signature, keyID: "draft-unknown-fixture-key-01" }
   };
-  assert.equal(await verifyWithDraftFixture(unknownKey), false);
+  assert.equal(await verifyWithFixture(unknownKey), false);
 });
 
 test("撤销选择器采用 AND 语义并支持 package、key 与 digest", () => {
@@ -200,7 +200,7 @@ test("Schema 严格拒绝未知字段、URL、绝对路径、脚本路径和无�
   const signature = { algorithm: "ed25519", keyID: "fixture-key-01", value: "A".repeat(86) + "==" };
   const manifest = { ...baseManifest(), signature };
   const catalog = {
-    schemaVersion: "0.2-draft",
+    schemaVersion: "1.0",
     status: "candidate",
     catalogVersion: 1,
     generatedAt: "2026-09-02T00:00:00Z",
@@ -251,7 +251,7 @@ test("共享路径 fixture 与 Catalog、Manifest Schema 保持一致", async ()
   for (const fixture of cases) {
     if (fixture.kind === "manifest") {
       const catalog = {
-        schemaVersion: "0.2-draft",
+        schemaVersion: "1.0",
         status: "candidate",
         catalogVersion: 1,
         generatedAt: "2026-09-02T00:00:00Z",

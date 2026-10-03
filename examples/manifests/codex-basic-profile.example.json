@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "0.2-draft",
+  "schemaVersion": "1.0",
   "packageID": "com.getsayall.example.codex-basic-profile",
   "packageType": "buttonProfile",
   "version": "0.1.0",
@@ -18,10 +18,10 @@
       "com.openai.codex"
     ]
   },
-  "contentPath": "examples/profiles/codex-basic.draft.json",
-  "contentDigest": "sha256:dd9183183421e18c86ab914cca4ff6b26e15835d3e765cba31893b7b94137537",
+  "contentPath": "examples/profiles/codex-basic.example.json",
+  "contentDigest": "sha256:d1faf093f12d846ec0b9cf2634fd03cdeb930d6609801605ccba37805af7f61b",
   "license": "CC-BY-NC-4.0",
-  "releaseNotes": "仅用于讨论 App 键位方案 Draft 格式，不代表已验证兼容性。",
+  "releaseNotes": "仅用于演示第一版 App 键位方案格式，不代表已验证兼容性。",
   "declaredCapabilities": [
     "builtInAction",
     "invokeMacro",
@@ -34,7 +34,7 @@
   },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "draft-portable-transfer-fixture-01",
-    "value": "BUy+eX/9MyAn6E6MZBbhHduK41dbQX5JflHWunoekge6ARsKEm0KF57gTPdoDkbQe1s+j5z21O+7MuyEnRyvBg=="
+    "keyID": "portable-transfer-v1-fixture-01",
+    "value": "8Kot/AFHQTPlnp8pIEfwvQQ5CNdlX3woQbzI/S7em7bpihnOC76DaCn9Wujo9nnGJ3pucsTgd2szWdudyk9NCQ=="
   }
 }

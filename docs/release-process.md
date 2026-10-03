@@ -1,11 +1,11 @@
 # 发布流程
 
-当前流程用于公开评审，只有 Schema 和发布门禁获得产品负责人批准后才可发布正式内容。
+格式第一版已冻结；本流程中的 Draft 指内容审核阶段。正式内容仍须通过发布门禁。
 
 ## 1. Draft
 
 - 新格式和未验证内容只放在 `examples/`；
-- `schemaVersion` 使用 `0.1-draft`；
+- 已实现的导入导出、组合动作、Manifest 和 Catalog 使用 `schemaVersion: "1.0"`；尚未实现的布局合同仍为草案；
 - Draft Manifest 的 `status` 为 `draft`、验证状态为 `notVerified`；
 - Draft Catalog 的 `status` 为 `candidate`，只放在 `examples/catalog/`；
 - Draft 不进入 `macros/`、`profiles/`、`layouts/` 或生产 Catalog。
@@ -48,4 +48,4 @@
 
 ## 6. 撤销
 
-发现明确安全风险时可以从后续 Catalog 中下架版本，并通过递增 `revocations.revision` 发布按 package/version、签名 key ID 或内容摘要匹配的撤销项与风险提示，但不得静默替换原文件、远程执行替代宏或修改用户本地配置。Draft Schema 和示例不定义生产信任根、密钥轮换或在线分发地址。
+发现明确安全风险时可以从后续 Catalog 中下架版本，并通过递增 `revocations.revision` 发布按 package/version、签名 key ID 或内容摘要匹配的撤销项与风险提示，但不得静默替换原文件、远程执行替代宏或修改用户本地配置。格式第一版和示例不定义生产信任根、密钥轮换或在线分发地址。
