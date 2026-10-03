@@ -151,9 +151,7 @@
           "$ref": "#/$defs/id"
         },
         "displayName": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
+          "$ref": "#/$defs/displayName"
         },
         "keyCode": {
           "type": "integer",
@@ -166,19 +164,7 @@
           "maxLength": 32
         },
         "modifiers": {
-          "type": "array",
-          "maxItems": 5,
-          "minItems": 0,
-          "items": {
-            "enum": [
-              "command",
-              "control",
-              "option",
-              "shift",
-              "function"
-            ]
-          },
-          "uniqueItems": true
+          "$ref": "#/$defs/modifiers"
         },
         "deviceModifierFlags": {
           "type": "integer",
@@ -210,46 +196,25 @@
           ]
         },
         "identifier": {
-          "type": "string",
-          "minLength": 0,
-          "maxLength": 2000,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+          "$ref": "#/$defs/focusText"
         },
         "title": {
-          "type": "string",
-          "minLength": 0,
-          "maxLength": 2000,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+          "$ref": "#/$defs/focusText"
         },
         "elementDescription": {
-          "type": "string",
-          "minLength": 0,
-          "maxLength": 2000,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+          "$ref": "#/$defs/focusText"
         },
         "help": {
-          "type": "string",
-          "minLength": 0,
-          "maxLength": 2000,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+          "$ref": "#/$defs/focusText"
         },
         "placeholder": {
-          "type": "string",
-          "minLength": 0,
-          "maxLength": 2000,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+          "$ref": "#/$defs/focusText"
         },
         "context": {
-          "type": "string",
-          "minLength": 0,
-          "maxLength": 2000,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+          "$ref": "#/$defs/focusText"
         },
         "windowTitle": {
-          "type": "string",
-          "minLength": 0,
-          "maxLength": 2000,
-          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+          "$ref": "#/$defs/focusText"
         },
         "normalizedFrame": {
           "type": "object",
@@ -298,9 +263,7 @@
           "$ref": "#/$defs/id"
         },
         "displayName": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
+          "$ref": "#/$defs/displayName"
         },
         "bundleIdentifier": {
           "$ref": "#/$defs/bundleIdentifier"
@@ -326,9 +289,7 @@
               "$ref": "#/$defs/id"
             },
             "displayName": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 100
+              "$ref": "#/$defs/displayName"
             },
             "bundleIdentifier": {
               "$ref": "#/$defs/bundleIdentifier"
@@ -353,9 +314,7 @@
               "$ref": "#/$defs/id"
             },
             "displayName": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 100
+              "$ref": "#/$defs/displayName"
             },
             "bundleIdentifier": {
               "$ref": "#/$defs/bundleIdentifier"
@@ -383,9 +342,7 @@
               "$ref": "#/$defs/id"
             },
             "displayName": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 100
+              "$ref": "#/$defs/displayName"
             },
             "bundleIdentifier": {
               "$ref": "#/$defs/bundleIdentifier"
@@ -411,39 +368,11 @@
           ],
           "properties": {
             "kind": {
-              "const": "macro"
-            },
-            "referenceID": {
-              "$ref": "#/$defs/id"
-            }
-          }
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "kind",
-            "referenceID"
-          ],
-          "properties": {
-            "kind": {
-              "const": "shortcut"
-            },
-            "referenceID": {
-              "$ref": "#/$defs/id"
-            }
-          }
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "kind",
-            "referenceID"
-          ],
-          "properties": {
-            "kind": {
-              "const": "application"
+              "enum": [
+                "macro",
+                "shortcut",
+                "application"
+              ]
             },
             "referenceID": {
               "$ref": "#/$defs/id"
@@ -522,19 +451,10 @@
           ],
           "properties": {
             "kind": {
-              "const": "disabled"
-            }
-          }
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "kind"
-          ],
-          "properties": {
-            "kind": {
-              "const": "inherit"
+              "enum": [
+                "disabled",
+                "inherit"
+              ]
             }
           }
         }
@@ -550,25 +470,7 @@
       ],
       "properties": {
         "controlID": {
-          "enum": [
-            "power",
-            "up",
-            "left",
-            "ok",
-            "right",
-            "down",
-            "back",
-            "volume-up",
-            "home",
-            "volume-down",
-            "menu",
-            "tv",
-            "play-pause",
-            "mute",
-            "youtube",
-            "netflix",
-            "input"
-          ]
+          "$ref": "#/$defs/controlID"
         },
         "gesture": {
           "enum": [
@@ -598,9 +500,7 @@
           "$ref": "#/$defs/id"
         },
         "name": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
+          "$ref": "#/$defs/displayName"
         },
         "remoteModel": {
           "$ref": "#/$defs/id"
@@ -740,25 +640,7 @@
               "maxItems": 32,
               "minItems": 0,
               "items": {
-                "enum": [
-                  "power",
-                  "up",
-                  "left",
-                  "ok",
-                  "right",
-                  "down",
-                  "back",
-                  "volume-up",
-                  "home",
-                  "volume-down",
-                  "menu",
-                  "tv",
-                  "play-pause",
-                  "mute",
-                  "youtube",
-                  "netflix",
-                  "input"
-                ]
+                "$ref": "#/$defs/controlID"
               },
               "uniqueItems": true
             }
@@ -767,29 +649,32 @@
       }
     },
     "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepID",
+        "action",
+        "parameters"
+      ],
+      "properties": {
+        "stepID": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "action": {},
+        "timeoutMilliseconds": {},
+        "parameters": {}
+      },
       "oneOf": [
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "openApplication"
             },
             "timeoutMilliseconds": {
-              "type": "integer",
-              "minimum": 100,
-              "maximum": 10000
+              "$ref": "#/$defs/stepTimeout"
             },
             "parameters": {
               "type": "object",
@@ -806,27 +691,12 @@
           }
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "openURL"
             },
             "timeoutMilliseconds": {
-              "type": "integer",
-              "minimum": 100,
-              "maximum": 10000
+              "$ref": "#/$defs/stepTimeout"
             },
             "parameters": {
               "type": "object",
@@ -846,27 +716,12 @@
           }
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "waitForApplication"
             },
             "timeoutMilliseconds": {
-              "type": "integer",
-              "minimum": 100,
-              "maximum": 10000
+              "$ref": "#/$defs/stepTimeout"
             },
             "parameters": {
               "type": "object",
@@ -891,27 +746,12 @@
           }
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "focusLearnedTarget"
             },
             "timeoutMilliseconds": {
-              "type": "integer",
-              "minimum": 100,
-              "maximum": 10000
+              "$ref": "#/$defs/stepTimeout"
             },
             "parameters": {
               "type": "object",
@@ -932,27 +772,12 @@
           }
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "sendKeyboardShortcut"
             },
             "timeoutMilliseconds": {
-              "type": "integer",
-              "minimum": 100,
-              "maximum": 10000
+              "$ref": "#/$defs/stepTimeout"
             },
             "parameters": {
               "oneOf": [
@@ -969,19 +794,7 @@
                       "maxLength": 32
                     },
                     "modifiers": {
-                      "type": "array",
-                      "maxItems": 5,
-                      "minItems": 0,
-                      "items": {
-                        "enum": [
-                          "command",
-                          "control",
-                          "option",
-                          "shift",
-                          "function"
-                        ]
-                      },
-                      "uniqueItems": true
+                      "$ref": "#/$defs/modifiers"
                     }
                   }
                 },
@@ -1002,20 +815,7 @@
           }
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "runShortcut"
             },
@@ -1047,20 +847,7 @@
           }
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "runMacro"
             },
@@ -1093,27 +880,12 @@
           }
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "stepID",
-            "action",
-            "parameters"
-          ],
           "properties": {
-            "stepID": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 80,
-              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
-            },
             "action": {
               "const": "builtInAction"
             },
             "timeoutMilliseconds": {
-              "type": "integer",
-              "minimum": 100,
-              "maximum": 10000
+              "$ref": "#/$defs/stepTimeout"
             },
             "parameters": {
               "type": "object",
@@ -1224,6 +996,58 @@
           }
         }
       }
+    },
+    "focusText": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 2000,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "modifiers": {
+      "type": "array",
+      "maxItems": 5,
+      "minItems": 0,
+      "items": {
+        "enum": [
+          "command",
+          "control",
+          "option",
+          "shift",
+          "function"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "stepTimeout": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 10000
+    },
+    "controlID": {
+      "enum": [
+        "power",
+        "up",
+        "left",
+        "ok",
+        "right",
+        "down",
+        "back",
+        "volume-up",
+        "home",
+        "volume-down",
+        "menu",
+        "tv",
+        "play-pause",
+        "mute",
+        "youtube",
+        "netflix",
+        "input"
+      ]
     }
   },
   "allOf": [
