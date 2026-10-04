@@ -10,6 +10,28 @@ const validate = new Ajv2020({ allErrors: true, strict: true }).compile(schema);
 const fixture = JSON.parse(await readFile(new URL('../examples/transfers/combination-and-app.example.json', import.meta.url)));
 const valid = p => validate(p) && transferIssues(p).length === 0;
 
+test('方案来源链接可选且仅用 HTTPS；不放行其他字段或嵌套链接', () => {
+  const p = structuredClone(fixture);
+  p.website = 'https://sayall.app/market/';
+  p.github = 'https://github.com/GetSayAll/sayall-market';
+  assert.equal(valid(p), true);
+  assert.deepEqual(publicTransferSensitivePaths(p), []);
+  for (const key of ['website', 'github']) {
+    const changed = structuredClone(p);
+    changed[key] = 'https://user:password@example.com/other';
+    assert.equal(valid(changed), false);
+    assert.ok(publicTransferSensitivePaths(changed).includes(`$.${key}`));
+    changed[key] = null;
+    assert.equal(valid(changed), false);
+  }
+  const nested = structuredClone(p);
+  nested.applications[0].website = p.website;
+  assert.equal(valid(nested), false);
+  assert.ok(publicTransferSensitivePaths(nested).includes('$.applications[0].website'));
+  p.script = 'extra';
+  assert.equal(valid(p), false);
+});
+
 test('冻结第一版样例可读；兼容此前导出，拒绝未知版本和混合步骤版本', async () => {
   const frozen = JSON.parse(await readFile(new URL('./fixtures/transfer-v1.json', import.meta.url)));
   assert.equal(sha256CanonicalJson(frozen), 'sha256:58261cfff9baf8f7cdb0fe5f6ee026f7cb931f0c86cc826aa4966aad51d707e5');

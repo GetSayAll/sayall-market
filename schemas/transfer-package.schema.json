@@ -43,6 +43,12 @@
         "personalBackup"
       ]
     },
+    "website": {
+      "$ref": "#/$defs/sourceLink"
+    },
+    "github": {
+      "$ref": "#/$defs/sourceLink"
+    },
     "roots": {
       "type": "array",
       "maxItems": 200,
@@ -97,6 +103,11 @@
     }
   },
   "$defs": {
+    "sourceLink": {
+      "type": "string",
+      "maxLength": 2048,
+      "pattern": "^https://[^\\s\\u0000-\\u001f\\u007f-\\u009f]+$"
+    },
     "id": {
       "type": "string",
       "minLength": 1,

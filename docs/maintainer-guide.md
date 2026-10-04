@@ -21,7 +21,7 @@ README 面向普通用户，提供已有候选方案和配件入口。
 
 Full Keyboard Access 方案目前位于独立试用分支。
 Full Keyboard Access 文件来源固定到提交 `4be8928eca066bcbb876bc15ffeffc02155d7109`。
-README 通过试用版下载附件提供同一文件。
+下载附件以该文件为基础，新增下述两个来源字段。
 该链接对应现有试用文件，不改动其验收状态。
 相关工作见 [PR #5](https://github.com/GetSayAll/sayall-market/pull/5)。
 该 PR 保持试用状态，等待真机测试。
@@ -145,10 +145,18 @@ Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
 附件响应应带 `Content-Disposition: attachment`。
 这样浏览器会下载文件，不直接展示 JSON。
 
-集合版本为 `key-profiles-v0.1.0-preview.1`，保持 Pre-release。
+集合版本为 `key-profiles-v0.1.0-preview.2`，保持 Pre-release。
 ZIP 包含 8 个 App 分享包、全键盘试用包、说明、许可和摘要。
-它不是客户端安装包，不修改方案内容，也不加入生产 Catalog。
-ZIP 中的 JSON 与各来源文件逐字节一致。
+它不是客户端安装包，也不加入生产 Catalog。
+8 套 App 使用本仓库方案文件。
+全键盘试用方案在固定来源文件上新增两个来源字段。
+所有按键和动作保持不变。
+
+`website` 和 `github` 是可选的顶层 HTTPS URL。
+Mac 读取并保存字段，在键位方案首页和详情页显示链接。
+分享导出时保留共同来源，来源不同的多方案包省略对应字段。
+字段不包含 Markdown，也不触发自动网络请求。
+旧方案缺少字段时仍可导入，新文件需支持字段的客户端。
 发布后更新附件需使用新的集合版本，不覆盖旧附件。
 
 操作步骤见 [下载说明](download-bundle.html)。

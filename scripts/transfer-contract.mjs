@@ -22,6 +22,12 @@ export function transferManifestIssues(p, manifest) {
 export function transferIssues(p) {
   const errors = [];
   const fail = (path) => errors.push(path);
+  for (const key of ['website', 'github']) if (p[key] !== undefined) {
+    try {
+      const url = new URL(p[key]);
+      if (url.protocol !== 'https:' || !url.hostname || url.username || url.password) fail(key);
+    } catch { fail(key); }
+  }
   const macroVersion = p.schemaVersion === '0.2-draft' ? '0.3-draft' : '1.0';
   for (const macro of p.macros) if (macro.schemaVersion !== macroVersion) fail(`macro:${macro.macroID}:schemaVersion`);
   const maps = {};
@@ -134,18 +140,19 @@ export function transferCapabilities(p) {
   return [...result].sort();
 }
 
-/** Only an explicitly validated openURL step permits a declared http(s) URL. */
+/** Source links and explicitly validated openURL steps permit declared URLs. */
 export function publicTransferSensitivePaths(value, path = '$', allowURL = false) {
   if (Array.isArray(value)) return value.flatMap((v, i) => publicTransferSensitivePaths(v, `${path}[${i}]`));
   if (value && typeof value === 'object') return Object.entries(value).flatMap(([key, child]) => [
     ...(forbiddenContractKeyPattern.test(key) || key === 'target' && value.bundleIdentifier && value.id ? [`${path}.${key}`] : []),
-    ...publicTransferSensitivePaths(child, `${path}.${key}`, key === 'urlString' && path.endsWith('.parameters'))
+    ...publicTransferSensitivePaths(child, `${path}.${key}`, key === 'urlString' && path.endsWith('.parameters') || path === '$' && ['website', 'github'].includes(key))
   ]);
   if (typeof value !== 'string') return [];
   if (allowURL) {
     try {
       const url = new URL(value);
-      if (['https:', 'http:'].includes(url.protocol) && url.hostname && !url.username && !url.password) return [];
+      const protocols = ['$.website', '$.github'].includes(path) ? ['https:'] : ['https:', 'http:'];
+      if (protocols.includes(url.protocol) && url.hostname && !url.username && !url.password) return [];
     } catch { /* Invalid URLs are rejected, not globally exempted. */ }
   }
   return forbiddenContractValuePattern.test(value) ? [path] : [];

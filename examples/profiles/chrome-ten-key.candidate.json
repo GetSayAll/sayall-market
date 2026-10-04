@@ -1,5 +1,7 @@
 {
   "format": "sayall-transfer",
+  "website": "https://sayall.app/market/",
+  "github": "https://github.com/GetSayAll/sayall-market",
   "schemaVersion": "1.0",
   "packageID": "com.getsayall.candidate.chrome-ten-key",
   "version": "0.1.0",
