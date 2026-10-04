@@ -61,7 +61,7 @@
   "buttonProfiles": [
     {
       "id": "full-keyboard-access-rc003",
-      "name": "Full Keyboard Access 快速验证",
+      "name": "全键盘控制",
       "remoteModel": "xiaomi-remote-2-pro",
       "mode": "manual",
       "applicationBundleIdentifiers": [],
