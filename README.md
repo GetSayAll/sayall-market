@@ -1,99 +1,111 @@
-# SayAll Market
+# SayAll Market · 遥控器方案与配件
 
-SayAll / 无线麦的公开宏、不同 App 键位方案与遥控器布局市场。
+为无线麦SayAll.app 选择遥控器键位方案，用按键操作常用 App。
+这里也收录全键盘控制方案，以及外壳、底座等配件入口。
 
-> Status: **Public Design Preview / Contributions Paused**
-> 导入导出、组合动作、Manifest 和 Catalog 格式已冻结为正式第一版 `1.0`；后续版本必须兼容第一版。市场尚未上线，正式投稿和生产接入仍暂停。内容是否发布、是否经过真机验证，与格式是否稳定分开记录。
+当前内容供试用。在线市场尚未上线，社区投稿暂未开放。
 
-> 仓库名称：**`GetSayAll/sayall-market`**。本仓库于 2026-09-01 从 `GetSayAll/sayall-macro-market` 改名；旧 GitHub 地址仅作为平台重定向兼容，不再写入新文档或客户端配置。
+## 7 个 App 的 10 键方案
 
-## 这里存放什么
+选择常用 App，下载对应方案。每个文件包含一套完整方案。
+以下方案适用于小米遥控器 2 Pro（RC003），全部使用单击。
 
-- `schemas/`：公开、版本化的数据合同；
-- `macros/`：系统、官方和社区共享的宏按键；
-- `profiles/`：按目标 App 和遥控器型号组织的键位方案；
-- `layouts/`：按遥控器型号和使用场景组织的完整布局；
-- `catalog/`：供 App 和网站消费的公开目录索引；
-- `examples/`：第一版格式的合成示例、待验证候选，以及已明确标注为非安装内容的外部扩展介绍；
-- `docs/`：内容模型、安全边界、验证状态和仓库关系；
-- `scripts/`：公开内容的本地自动校验工具；
-- `CONTRIBUTING.md`：未来社区投稿流程。
+| App | 常用操作 | 下载 |
+|---|---|---|
+| Codex | 会话切换、提交、删除、翻页、停止 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/codex-ten-key.candidate.json) |
+| Claude Code desktop | Code 页会话切换、提交、删除、翻页、停止 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/claude-code-desktop-ten-key.candidate.json) |
+| WorkBuddy | 任务切换、发送、删除、翻页、停止 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/workbuddy-ten-key.candidate.json) |
+| 微信 | 光标移动、发送、删除、翻页、隐藏窗口 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/wechat-ten-key.candidate.json) |
+| 剪映桌面版 | 逐帧移动、播放暂停、删除片段、撤销 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/jianying-ten-key.candidate.json) |
+| 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/douyin-ten-key.candidate.json) |
+| Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/chrome-ten-key.candidate.json) |
 
-## 不允许存放什么
+10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
+没有合适动作的位置设为“不设置”。
+这些方案使用已有快捷键，无需在目标 App 添加快捷键。
 
-- 未经批准的 Shell、AppleScript/JXA、JavaScript、插件、二进制或下载后执行内容；
-- API Key、Token、密码、证书和其他凭据；
-- 用户输入、剪贴板、文件、环境变量或窗口私密内容；
-- 设备 ID、蓝牙地址、HID 指纹；
-- 用户本机学习到的辅助功能树、输入框路径和窗口特征；
-- 未经审查的可执行链接或隐式网络请求。
+查看 [完整按键和导入说明](docs/seven-app-10-key-presets.html)（[在线文字版](docs/seven-app-10-key-presets.md)）。
+剪映的音量+暂不设置，待确认放大时间线的默认按键。
 
-经过批准的 Shell、AppleScript/JXA 或 JavaScript 可以作为显式高风险内容进入未来版本，但必须声明能力范围、固定内容摘要、审核记录和可撤销状态；不能借助公开 Market 绕过客户端授权或远程执行任意步骤。
+## Full Keyboard Access · 全键盘控制
 
-## 发布与审核
+用遥控器选择屏幕上的按钮、输入框和其他可操作项目。
+此方案适用于小米遥控器 2 Pro（RC003），供手动选择使用。
 
-本仓库未来是公开共享内容的数据来源，但当前尚未上线，没有生产目录或正式客户端依赖。正式内容通过 Pull Request、自动检查和维护者审核进入；脚本类内容还必须经过人工批准、签名发布和可撤销登记。已发布版本保留公开历史，不允许绕过公开提交记录替换配置。
+[下载全键盘控制试用方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/4be8928eca066bcbb876bc15ffeffc02155d7109/examples/transfers/full-keyboard-access.json)
 
-## 内容来源
+使用前，打开 Mac 的「系统设置 → 辅助功能 → 键盘」。
+开启「全键盘控制」，再导入并选择此方案。
+方案不会自动开启系统设置。
 
-- `system`：随客户端提供的基础预设；
-- `official`：由 GetSayAll 维护和真实环境验证的官方内容；
-- `community`：社区作者投稿且通过审核的内容。
+方案配置以下 6 个单击按键：
 
-来源必须明确展示。社区内容通过审核不等于获得官方背书。
+| 遥控器按键 | 操作 |
+|---|---|
+| 上 | 选择上一个可操作项目 |
+| 下 | 选择下一个可操作项目 |
+| 左 | 向左移动 |
+| 右 | 向右移动 |
+| OK | 执行当前选中的项目 |
+| 返回 | 返回或取消 |
 
-## 本地优先
+上下键按界面的选择顺序移动，不一定对应屏幕上的上下方向。
+左右键的效果取决于当前选中的控件。
+此方案仍待实体遥控器和目标 App 验收。
 
-无线麦客户端未来下载固定、不可变的内容版本，校验后安装到本机。已安装内容离线执行；市场和移动端只能请求执行本机已安装、已批准的 `contentID`，不能携带临时步骤或脚本远程执行。
+## 如何导入方案
 
-## 当前批准门禁
+1. 点击下载链接，保存方案文件。
+2. 打开无线麦SayAll.app 的「键位方案」。
+3. 选择「导入」，再选择下载的文件。
+4. 检查方案名称、遥控器型号和全部按键。
+5. 保存后，按需要选择或启用方案。
 
-格式第一版已获产品负责人批准。市场发布门禁仍保持：
+若浏览器显示文件内容，请另存为 `.json` 文件。
+不要保存成网页或 `.txt` 文件。
 
-- 导入导出 `1.0` 是稳定实现合同；尚未实现的布局模板仍为草案；
-- 示例不代表已验证兼容性；
-- 不接受生产宏、App 键位方案和布局投稿；
-- 不接受未经人工批准的脚本内容；
-- 不声明任何无线麦版本已经支持本仓库；
+需要使用已提供键位方案导入功能的客户端。
+若没有导入入口，请检查客户端版本及功能权限。
+导入后，请检查预览中的提示，再启用所需方案。
 
-## 后续归属
+## 更多方案与配件
 
-- 本仓库继续保持公开、独立，不迁入 `sayall-private-platform`。
-- 内容范围为宏、App 键位方案、遥控器布局，以及未来经过批准的脚本内容。
-- 私有执行实现、会员/收费授权、审核后台、签名密钥和撤销控制不放在本仓库；这些能力按需进入私有大仓库。
+| 内容 | 用途 | 入口 |
+|---|---|---|
+| 网易云音乐方案 | 播放暂停、调节音量和静音 | [下载试用方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/netease-music-media-controls.candidate.json) |
+| Codex 基础示例 | 打开 Codex、定位输入框和取消操作 | [下载示例](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/codex-basic.example.json) |
+| 3D 打印外壳与底座 | 查看外部作者提供的配件项目 | [查看配件入口](examples/extensions/makerworld-accessories.draft.md) |
 
-## 7 个 App 的 10 键候选方案
+网易云音乐方案适用于小米遥控器 2 Pro（RC003）。
+静音操作使用菜单键，请先核对自己的遥控器按键。
 
-已保存 Codex、Claude Code desktop、WorkBuddy、微信、剪映桌面版、抖音 Mac 客户端和 Chrome 的独立 JSON。下载入口、10 键映射及 Mac App 导入步骤见 [方案说明](docs/seven-app-10-key-presets.html)（[内容稿](docs/seven-app-10-key-presets.md)）。
+Codex 基础示例需要先在本机配置目标输入框。
+仅下载方案不能自动获得该输入框的位置。
 
-文件采用第一版分享格式，放在 `examples/profiles/`，供手动导入。仅完成数据和客户端导入检查，尚未完成全部 App 与实体遥控器验收。剪映音量+暂不设置，待确认默认放大键值。此内容不代表市场上线或正式兼容声明。
+配件链接指向外部作者的页面。
+请在原始页面核对适配型号、制作说明及作者许可。
 
-## 本地校验
+## 使用提示
 
-需要 Node.js 20 或更新版本：
+这些方案尚未完成全部 App 与实体遥控器验收。
+先检查每个按键的实际效果，再用于日常操作。
 
-```bash
-npm ci
-npm run validate
-```
+翻页、删除和方向移动会受到当前选中位置的影响。
+Codex 的上键是否立即补充运行中指令，取决于现有发送行为。
+微信和抖音的关机键用于隐藏窗口，App 会继续运行。
+抖音方案面向 Mac 客户端，请勿用于浏览器中的抖音网页。
 
-校验会覆盖 Schema、本地引用、版本、内容摘要、能力声明、重复绑定、敏感字段，以及脚本、下载地址和其他禁止内容。Pull Request 和 `main` 分支推送会运行同一套 GitHub Actions 检查。
+需要帮助或反馈使用问题，可在 [Issues](https://github.com/GetSayAll/sayall-market/issues) 中说明。
+请写明 App、遥控器型号、按键和实际结果。
 
-发布阶段和真实硬件验证要求见 `docs/release-process.md` 与 `docs/verification-record-template.md`。
+## 技术与维护文档
 
-## License
+开发和维护人员请查看 [技术与维护说明](docs/maintainer-guide.html)（[在线文字版](docs/maintainer-guide.md)）。
 
-除文件中另有说明的第三方材料外，本仓库内容采用 [Creative Commons Attribution-NonCommercial 4.0 International](LICENSE)（CC BY-NC 4.0）许可。
+## 使用许可
 
-- 可以在署名并标明修改的前提下复制、分享和改编；
-- 只允许非商业用途；
-- 商业授权需要另行取得 GetSayAll 的书面许可；
-- 商标、专利、隐私权以及第三方材料不因本许可自动授权。
-
-CC BY-NC 4.0 含“非商业”限制，因此不是 OSI 认可的开源软件许可证。
+本站整理的内容采用 [CC BY-NC 4.0](LICENSE) 许可。
+分享或改编时，请署名并标明修改。商业使用需另行取得书面许可。
+外部配件、图片和模型按原作者及平台规则使用。
 
 Copyright © 2026 GetSayAll.
-
-## 导入导出合同
-
-单个/批量键位方案、组合动作、App 配置与本地个人备份遵循 [导入导出标准](docs/portable-transfer-standard.html)。共享包版本为 `1.0`；后续读取器必须保持第一版兼容。公开市场只接受分享用途，个人备份不得提交。格式冻结不构成生产接入或真实设备兼容声明。
