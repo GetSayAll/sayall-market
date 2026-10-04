@@ -62,6 +62,12 @@ SayAll / 无线麦的公开宏、不同 App 键位方案与遥控器布局市场
 - 内容范围为宏、App 键位方案、遥控器布局，以及未来经过批准的脚本内容。
 - 私有执行实现、会员/收费授权、审核后台、签名密钥和撤销控制不放在本仓库；这些能力按需进入私有大仓库。
 
+## 7 个 App 的 10 键候选方案
+
+已保存 Codex、Claude Code desktop、WorkBuddy、微信、剪映桌面版、抖音 Mac 客户端和 Chrome 的独立 JSON。下载入口、10 键映射及 Mac App 导入步骤见 [方案说明](docs/seven-app-10-key-presets.html)（[内容稿](docs/seven-app-10-key-presets.md)）。
+
+文件采用第一版分享格式，放在 `examples/profiles/`，供手动导入。仅完成数据和客户端导入检查，尚未完成全部 App 与实体遥控器验收。剪映音量+暂不设置，待确认默认放大键值。此内容不代表市场上线或正式兼容声明。
+
 ## 本地校验
 
 需要 Node.js 20 或更新版本：
