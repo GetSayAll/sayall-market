@@ -5,7 +5,7 @@
 
 当前内容供试用。在线市场尚未上线，社区投稿暂未开放。
 
-## 7 个 App 的 10 键方案
+## 8 个 App 的 10 键方案
 
 选择常用 App，下载对应方案。每个文件包含一套完整方案。
 以下方案适用于小米遥控器 2 Pro（RC003），全部使用单击。
@@ -19,6 +19,7 @@
 | 剪映桌面版 | 逐帧移动、播放暂停、删除片段、撤销 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/jianying-ten-key.candidate.json) |
 | 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/douyin-ten-key.candidate.json) |
 | Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/chrome-ten-key.candidate.json) |
+| 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [下载方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/netease-music-ten-key.candidate.json) |
 
 10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
 没有合适动作的位置设为“不设置”。
@@ -68,15 +69,11 @@
 若没有导入入口，请检查客户端版本及功能权限。
 导入后，请检查预览中的提示，再启用所需方案。
 
-## 更多方案与配件
+## 配件
 
 | 内容 | 用途 | 入口 |
 |---|---|---|
-| 网易云音乐方案 | 播放暂停、调节音量和静音 | [下载试用方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/netease-music-media-controls.candidate.json) |
 | 3D 打印外壳与底座 | 查看相关配件和制作项目 | [查看官网市场](https://sayall.app/market/) |
-
-网易云音乐方案适用于小米遥控器 2 Pro（RC003）。
-静音操作使用菜单键，请先核对自己的遥控器按键。
 
 配件入口指向无线麦SayAll.app 官网市场。
 请在具体项目页面核对适配型号、制作说明及作者许可。
@@ -90,6 +87,10 @@
 Codex 的上键是否立即补充运行中指令，取决于现有发送行为。
 微信和抖音的关机键用于隐藏窗口，App 会继续运行。
 抖音方案面向 Mac 客户端，请勿用于浏览器中的抖音网页。
+网易云的上键和主页键均设为喜欢歌曲。
+
+网易云的播放与切歌使用系统当前媒体会话。
+这些按键可能作用于其他播放器，音量键调整系统音量。
 
 需要帮助或反馈使用问题，可在 [Issues](https://github.com/GetSayAll/sayall-market/issues) 中说明。
 请写明 App、遥控器型号、按键和实际结果。
