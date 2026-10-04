@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="shadcn" data-mode="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Answer me with HTML 0.4.4">
+<title>7 个 App · 遥控器 10 键方案</title>
+<style>
+html[data-theme="blueprint"], html[data-theme="blueprint"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 0px;
+  --shadow: none;
+  --bw: 1.5px;
+  --head-font: var(--font-sans);
+  --bg: #f6f6f3;
+  --paper: #ffffff;
+  --ink: #16181d;
+  --ink-2: #4b5260;
+  --ink-3: #8b929e;
+  --line: #1d2026;
+  --line-2: #d6dae1;
+  --fill: #f3f5f8;
+  --accent: #1d5fbf;
+  --accent-bg: #e4ecf8;
+  --ok: #1d5fbf;
+  --ok-bg: #e4ecf8;
+  --err: #c62828;
+  --err-bg: #fbeaea;
+  --warn: #a8620a;
+  --warn-bg: #fdf3e2;
+  --head-bg: #16181d;
+  --head-fg: #ffffff;
+}
+html[data-theme="blueprint"][data-mode="dark"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="blueprint"][data-mode="auto"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+}
+
+html[data-theme="shadcn"], html[data-theme="shadcn"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 8px;
+  --shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --bw: 1px;
+  --head-font: var(--font-sans);
+  --bg: #fafafa;
+  --paper: #ffffff;
+  --ink: #09090b;
+  --ink-2: #71717a;
+  --ink-3: #a1a1aa;
+  --line: #e4e4e7;
+  --line-2: #f0f0f2;
+  --fill: #f4f4f5;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --ok: #16a34a;
+  --ok-bg: #f0fdf4;
+  --err: #dc2626;
+  --err-bg: #fef2f2;
+  --warn: #d97706;
+  --warn-bg: #fffbeb;
+  --head-bg: #18181b;
+  --head-fg: #fafafa;
+}
+html[data-theme="shadcn"][data-mode="dark"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="shadcn"][data-mode="auto"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+}
+
+/* Answer me with HTML base — 只引用主题变量，禁止写死颜色（主题 token 见 themes/index.js） */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-sans); font-size: 14px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+code, pre, kbd { font-family: var(--font-mono); }
+
+/* ── 工具栏 ─────────────────────────────── */
+.am-toolbar {
+  position: fixed; top: 12px; right: 12px; z-index: 10; display: flex; gap: 6px;
+}
+.am-btn {
+  font: 12px/1 var(--font-sans); color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); padding: 7px 10px; cursor: pointer;
+}
+.am-btn:hover { border-color: var(--ink-3); }
+.am-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ── 页头 ───────────────────────────────── */
+.am-head { margin: 0 0 20px; padding-right: 260px; }
+.am-head h1 { margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; }
+.am-sub { margin: 4px 0 0; color: var(--ink-2); }
+.am-head-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 12px; color: var(--ink-2); }
+.am-head-meta b { font-family: var(--font-mono); font-weight: 400; color: var(--ink-3); margin-right: 6px; }
+.am-intro { margin-top: 12px; max-width: 80ch; }
+
+/* ── sheet 图纸板 ────────────────────────── */
+.am-sheet { max-width: 1680px; margin: 0 auto; padding: 32px 28px 40px; }
+.am-frame { position: relative; }
+.am-grid {
+  display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: 20px; align-items: start;
+}
+.am-ruler { display: none; }
+html[data-theme="blueprint"] .am-frame { border: 1px solid var(--line); padding: 30px; }
+html[data-theme="blueprint"] .am-frame::before {
+  content: ""; position: absolute; inset: 18px; border: 1px solid var(--line); pointer-events: none;
+}
+html[data-theme="blueprint"] .am-ruler {
+  display: flex; position: absolute; font: 10px/1 var(--font-mono); color: var(--ink-3);
+}
+.am-ruler span { flex: 1; display: flex; align-items: center; justify-content: center; }
+.am-ruler--top, .am-ruler--bottom { left: 18px; right: 18px; height: 18px; }
+.am-ruler--top { top: 0; }
+.am-ruler--bottom { bottom: 0; }
+.am-ruler--left, .am-ruler--right { top: 18px; bottom: 18px; width: 18px; flex-direction: column; }
+.am-ruler--left { left: 0; }
+.am-ruler--right { right: 0; }
+.am-ruler--top span + span, .am-ruler--bottom span + span { border-left: 1px solid var(--line); }
+.am-ruler--left span + span, .am-ruler--right span + span { border-top: 1px solid var(--line); }
+
+/* ── 面板 ───────────────────────────────── */
+.am-panel {
+  background: var(--paper); border: var(--bw) solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); min-width: 0; overflow: hidden;
+}
+.am-panel-head {
+  display: flex; align-items: stretch; gap: 0; border-bottom: var(--bw) solid var(--line); min-height: 34px;
+}
+.am-panel-id {
+  display: flex; align-items: center; justify-content: center; min-width: 34px; padding: 0 8px;
+  background: var(--head-bg); color: var(--head-fg); font-weight: 600; font-size: 14px;
+}
+html[data-theme="shadcn"] .am-panel-id { border-radius: 6px; min-width: 24px; height: 24px; margin: 9px 0 9px 14px; font-size: 12px; }
+html[data-theme="shadcn"] .am-panel-head { border-bottom-width: 1px; }
+.am-panel-head h2 { margin: 0; padding: 7px 12px; font-size: 15px; font-weight: 600; flex: 1; display: flex; align-items: center; }
+.am-panel-meta { align-self: center; padding: 0 12px; font: 11px/1.3 var(--font-mono); color: var(--ink-2); text-align: right; }
+.am-panel-body { padding: 14px 16px 16px; }
+.am-panel-body > * + * { margin-top: 12px; }
+
+/* ── Markdown 正文 ───────────────────────── */
+.am-md > :first-child { margin-top: 0; }
+.am-md > :last-child { margin-bottom: 0; }
+.am-md p { margin: 0 0 8px; }
+.am-md ul, .am-md ol { margin: 0 0 8px; padding-left: 20px; }
+.am-md li + li { margin-top: 3px; }
+.am-md h3, .am-md h4 { margin: 14px 0 6px; font-size: 13px; }
+.am-md a { color: var(--accent); }
+.am-md blockquote { margin: 0 0 8px; padding: 2px 12px; border-left: 3px solid var(--line-2); color: var(--ink-2); }
+.am-md :not(pre) > code { font-size: 0.9em; background: var(--fill); padding: 1px 5px; border-radius: 4px; }
+.am-md hr { border: 0; border-top: 1px solid var(--line-2); margin: 12px 0; }
+.am-md table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.am-md th {
+  text-align: left; font: 11px/1.3 var(--font-mono); color: var(--ink-2); font-weight: 400;
+  padding: 6px 10px; border-bottom: 1px solid var(--line-2);
+}
+.am-md td { padding: 7px 10px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+.am-md tbody tr:nth-child(even) td { background: var(--fill); }
+.am-table-wrap { overflow-x: auto; }
+.am-code {
+  margin: 0; padding: 12px 14px; background: var(--fill); border: 1px solid var(--line-2);
+  border-radius: var(--radius); overflow-x: auto; font-size: 12.5px; line-height: 1.5;
+}
+
+/* ── 状态徽章 ok / no / warn ──────────────── */
+.am-status { white-space: nowrap; font-weight: 500; }
+.am-status--ok { color: var(--ok); }
+.am-status--no { color: var(--err); }
+.am-status--warn { color: var(--warn); }
+.am-status-icon { display: inline-block; width: 1.1em; font-weight: 700; }
+
+/* ── callout ─────────────────────────────── */
+.am-callout {
+  border: 1px solid var(--line-2); border-left: 3px solid var(--accent); background: var(--accent-bg);
+  padding: 10px 14px; border-radius: var(--radius);
+}
+.am-callout--ok { border-left-color: var(--ok); background: var(--ok-bg); }
+.am-callout--warn { border-left-color: var(--warn); background: var(--warn-bg); }
+.am-callout--err { border-left-color: var(--err); background: var(--err-bg); }
+.am-callout-title { font-weight: 600; margin-bottom: 4px; }
+
+/* ── kv 标题栏格 ─────────────────────────── */
+.am-kv {
+  display: grid; grid-template-columns: repeat(var(--kv-cols, 2), minmax(0, 1fr)); margin: 0;
+  border-top: var(--bw) solid var(--line); border-left: var(--bw) solid var(--line);
+}
+.am-kv-cell { border-right: var(--bw) solid var(--line); border-bottom: var(--bw) solid var(--line); padding: 6px 10px 8px; min-width: 0; }
+.am-kv-cell--wide { grid-column: 1 / -1; }
+.am-kv dt { font: 11px/1.4 var(--font-mono); color: var(--ink-2); }
+.am-kv dd { margin: 2px 0 0; font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.am-kv-cell--wide dd { font-size: 17px; font-weight: 600; }
+html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var(--radius); overflow: hidden; }
+
+/* ── timeline ────────────────────────────── */
+.am-timeline { list-style: none; margin: 0; padding: 0; }
+.am-timeline--h { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); padding-top: 4px; }
+.am-timeline--h li { position: relative; text-align: center; padding: 0 6px; }
+.am-timeline--h li::before {
+  content: ""; position: absolute; top: 31px; left: 0; right: 0; border-top: var(--bw) solid var(--line);
+}
+.am-timeline--h li:first-child::before { left: 50%; }
+.am-timeline--h li:last-child::before { right: 50%; }
+.am-tl-when { display: block; font-size: 15px; font-weight: 500; height: 24px; }
+.am-tl-dot {
+  position: relative; display: block; width: 11px; height: 11px; margin: 2px auto 8px;
+  border: var(--bw) solid var(--line); border-radius: 50%; background: var(--paper);
+}
+.am-tl-item--hi .am-tl-dot { background: var(--accent); border-color: var(--accent); }
+.am-tl-title { display: block; font-size: 12.5px; font-weight: 500; }
+.am-tl-text { display: block; font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+.am-timeline--v li { position: relative; padding: 0 0 14px 22px; }
+.am-timeline--v li::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: -6px; border-left: var(--bw) solid var(--line-2); }
+.am-timeline--v li:last-child::before { display: none; }
+.am-timeline--v .am-tl-dot { position: absolute; left: 0; top: 4px; margin: 0; }
+.am-timeline--v .am-tl-when { display: inline; height: auto; font: 12px var(--font-mono); color: var(--ink-2); margin-right: 8px; }
+.am-timeline--v .am-tl-title { display: inline; font-size: 14px; }
+.am-timeline--v .am-tl-text { margin-top: 2px; }
+
+/* ── annot 句子标注 ──────────────────────── */
+.am-annot + .am-annot { border-top: 1px solid var(--line-2); padding-top: 12px; }
+.am-annot-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.am-annot-meta { font: 11px var(--font-mono); font-weight: 400; color: var(--ink-2); }
+.am-annot-scroll { overflow-x: auto; }
+.am-annot-line {
+  position: relative; display: inline-block; white-space: pre; font: 14px/1.6 var(--font-mono);
+  padding-bottom: calc(var(--rows, 0) * 17px + 14px);
+}
+.am-annot-line--wrap { display: block; white-space: normal; padding-bottom: 10px; }
+.am-annot-line--wrap .am-seg { white-space: nowrap; }
+.am-seg { position: relative; }
+.am-seg::after {
+  content: ""; position: absolute; left: 1px; right: 1px; top: calc(100% + 1px); height: 5px;
+  border: 1px solid var(--accent); border-top: 0;
+}
+.am-seg-n {
+  position: absolute; left: 0; top: calc(100% + 8px + var(--row, 0) * 17px);
+  font: 11px/16px var(--font-sans); color: var(--accent); white-space: nowrap;
+}
+.am-seg--err { color: var(--err); }
+.am-seg--err::after { border-color: var(--err); }
+.am-seg--err .am-seg-n { color: var(--err); }
+.am-annot-caption { font-size: 12px; color: var(--ink-2); }
+
+/* ── limits 限值条 ───────────────────────── */
+.am-lim + .am-lim { margin-top: 14px; }
+.am-lim-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; margin-bottom: 4px; }
+.am-lim-val { font: 12px var(--font-mono); color: var(--accent); white-space: nowrap; }
+.am-lim-track { position: relative; height: 12px; border: 1px solid var(--line-2); background: var(--fill); border-radius: calc(var(--radius) / 2); }
+.am-lim-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-bg); border-right: 1px solid var(--accent); }
+.am-lim-mark { position: absolute; top: -4px; bottom: -4px; border-left: 2px solid var(--accent); }
+.am-lim.is-over .am-lim-fill { background: var(--err-bg); border-right-color: var(--err); }
+.am-lim.is-over .am-lim-val { color: var(--err); }
+.am-lim-ticks { position: relative; height: 16px; font: 10px/16px var(--font-mono); color: var(--ink-3); }
+.am-lim-ticks span { position: absolute; transform: translateX(-50%); }
+.am-lim-ticks span:first-child { transform: none; }
+.am-lim-note { font-size: 11px; color: var(--ink-2); margin-left: 6px; }
+
+/* ── tree 结构树 ─────────────────────────── */
+.am-tree { font-size: 13px; }
+.am-tree-root { display: flex; justify-content: center; position: relative; padding-bottom: 18px; }
+.am-tree-root::after { content: ""; position: absolute; bottom: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-root--solo { padding-bottom: 12px; }
+.am-tree-root--solo::after { display: none; }
+.am-tree-box {
+  border: var(--bw) solid var(--line); background: var(--paper); padding: 6px 14px; text-align: center;
+  border-radius: var(--radius); font-weight: 600;
+}
+.am-tree-box small { display: block; font-weight: 400; color: var(--ink-2); font-size: 12px; }
+.am-tree-box--root { background: var(--accent-bg); font-size: 15px; padding: 8px 28px; }
+.am-tree-cols { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); }
+.am-tree-col { position: relative; padding: 18px 8px 0; min-width: 0; }
+.am-tree-col::before { content: ""; position: absolute; top: 0; left: 0; right: 0; border-top: var(--bw) solid var(--line); }
+.am-tree-col:first-child::before { left: 50%; }
+.am-tree-col:last-child::before { right: 50%; }
+.am-tree-col::after { content: ""; position: absolute; top: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-list, .am-tree-list ul { list-style: none; margin: 0; padding: 0; }
+.am-tree-col > .am-tree-list { margin: 8px 0 0 14px; }
+.am-tree-list ul { margin-left: 16px; }
+.am-tree-list li { position: relative; padding: 3px 0 3px 18px; }
+.am-tree-list li::before { content: ""; position: absolute; left: 0; top: 0.95em; width: 12px; border-top: 1px solid var(--ink-3); }
+.am-tree-list li::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1px solid var(--ink-3); }
+.am-tree-list li:last-child::after { bottom: auto; height: 0.95em; }
+.am-tree-tag { font: 11px var(--font-mono); color: var(--ink-3); margin-right: 4px; }
+.am-tree code { font: 12px var(--font-mono); }
+.am-tree-sub { display: block; font-size: 11.5px; color: var(--ink-2); }
+.am-tree-hi > .am-tree-label { color: var(--accent); font-weight: 600; }
+
+/* ── 图（flow / sequence）───────────────── */
+.am-diagram { margin: 0; overflow-x: auto; text-align: center; }
+.am-diagram svg { max-width: 100%; height: auto; font-family: var(--font-sans); }
+.am-diagram text { fill: var(--ink); font-size: 13px; }
+.am-node-shape { fill: var(--paper); stroke: var(--line); stroke-width: var(--bw); }
+.am-node--hi .am-node-shape { fill: var(--accent-bg); stroke: var(--accent); }
+.am-node--hi text { fill: var(--accent); font-weight: 600; }
+.am-edge { fill: none; stroke: var(--ink-2); stroke-width: 1.3; }
+.am-edge--dashed { stroke-dasharray: 5 4; }
+.am-arrow { fill: var(--ink-2); }
+.am-edge-label rect { fill: var(--paper); }
+.am-diagram .am-edge-label text { fill: var(--accent); font-size: 11.5px; }
+.am-cluster { fill: var(--fill); stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 4 3; }
+.am-diagram .am-cluster-label { fill: var(--ink-2); font: 11px var(--font-mono); }
+.am-lifeline { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 4 4; }
+.am-actor { fill: var(--paper); stroke: var(--line); stroke-width: var(--bw); }
+.am-note { fill: var(--warn-bg); stroke: var(--warn); stroke-width: 1; }
+.am-diagram .am-step { fill: var(--ink-3); font: 10px var(--font-mono); }
+
+/* ── doc 线性讲解 ────────────────────────── */
+.am-doc { max-width: 1120px; margin: 0 auto; padding: 40px 28px 64px; }
+.am-doc-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; align-items: start; }
+.am-doc-layout--notoc { grid-template-columns: minmax(0, 1fr); max-width: 860px; }
+.am-toc { position: sticky; top: 24px; font-size: 13px; }
+.am-toc a { display: block; color: var(--ink-2); text-decoration: none; padding: 4px 0 4px 10px; border-left: 2px solid var(--line-2); }
+.am-toc a:hover { color: var(--ink); border-left-color: var(--accent); }
+.am-doc-body > .am-panel + .am-panel { margin-top: 20px; }
+
+/* ── 响应式与打印 ─────────────────────────── */
+@media (max-width: 1100px) {
+  .am-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .am-grid > .am-panel { grid-column: auto !important; }
+  .am-grid > .am-panel.am-span-wide { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 760px) {
+  .am-sheet, .am-doc { padding: 56px 12px 24px; }
+  .am-head { padding-right: 0; }
+  .am-grid { grid-template-columns: minmax(0, 1fr); }
+  .am-grid > .am-panel.am-span-wide { grid-column: auto !important; }
+  html[data-theme="blueprint"] .am-frame { padding: 0; border: 0; }
+  html[data-theme="blueprint"] .am-frame::before, html[data-theme="blueprint"] .am-ruler { display: none; }
+  .am-doc-layout { grid-template-columns: minmax(0, 1fr); }
+  .am-toc { position: static; }
+  .am-timeline--h { grid-template-columns: minmax(0, 1fr); }
+  .am-tree-cols { grid-template-columns: minmax(0, 1fr); }
+}
+.am-colophon { text-align: center; padding: 0 0 28px; font: 11px var(--font-mono); color: var(--ink-3); }
+
+@media print {
+  .am-toolbar { display: none; }
+  body { background: var(--paper); }
+  .am-panel { break-inside: avoid; box-shadow: none; }
+}
+.am-panel--bare { border: 0; background: transparent; box-shadow: none; }
+.am-panel--bare > .am-panel-body { padding: 0; }
+.am-panel--bare .am-kv { background: var(--paper); }
+
+</style>
+</head>
+<body>
+<div class="am-toolbar">
+<button class="am-btn" type="button" data-am="theme" data-labels="{&quot;blueprint&quot;:&quot;主题：图纸&quot;,&quot;shadcn&quot;:&quot;主题：卡片&quot;}">主题：卡片</button>
+<button class="am-btn" type="button" data-am="mode" data-labels="{&quot;auto&quot;:&quot;明暗：跟随系统&quot;,&quot;light&quot;:&quot;明暗：亮&quot;,&quot;dark&quot;:&quot;明暗：暗&quot;}">明暗：跟随系统</button>
+<button class="am-btn" type="button" data-am="copy" data-done="已复制 ✓">复制源稿</button>
+</div>
+<main class="am-doc">
+<header class="am-head"><h1>7 个 App · 遥控器 10 键方案</h1><p class="am-sub">无线麦SayAll.app · 下载 JSON 后在 Mac App 导入</p><div class="am-head-meta"><span><b>status</b>候选方案，待真机验收</span></div></header>
+<div class="am-doc-layout">
+<nav class="am-toc" aria-label="目录"><a href="#panel-A">A · 下载方案</a><a href="#panel-B">B · 在 Mac App 导入</a><a href="#panel-C">C · AI App 的按键</a><a href="#panel-D">D · 微信、剪映、抖音和 Chrome 的按键</a><a href="#panel-E">E · 验证状态和 App 识别</a></nav><div class="am-doc-body">
+<section class="am-panel" id="panel-A">
+<header class="am-panel-head"><span class="am-panel-id">A</span><h2>下载方案</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>每个 JSON 文件包含一套方案及其快捷键。
+适用遥控器：小米遥控器 2 Pro（RC003）。
+全部使用单击，不设置双击或长按。
+这些文件供手动导入，市场尚未上线。</p>
+<div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>App</th>
+<th>下载文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Codex</td>
+<td><a href="https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/codex-ten-key.candidate.json">下载 JSON</a></td>
+</tr>
+<tr>
+<td>Claude Code desktop</td>
+<td><a href="https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/claude-code-desktop-ten-key.candidate.json">下载 JSON</a></td>
+</tr>
+<tr>
+<td>WorkBuddy</td>
+<td><a href="https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/workbuddy-ten-key.candidate.json">下载 JSON</a></td>
+</tr>
+<tr>
+<td>微信</td>
+<td><a href="https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/wechat-ten-key.candidate.json">下载 JSON</a></td>
+</tr>
+<tr>
+<td>剪映桌面版</td>
+<td><a href="https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/jianying-ten-key.candidate.json">下载 JSON</a></td>
+</tr>
+<tr>
+<td>抖音 Mac 客户端</td>
+<td><a href="https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/douyin-ten-key.candidate.json">下载 JSON</a></td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td><a href="https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/chrome-ten-key.candidate.json">下载 JSON</a></td>
+</tr>
+</tbody></table></div>
+<p>若浏览器显示 JSON 内容，请将文件另存为 <code>.json</code>。
+不要保存为网页或 <code>.txt</code> 文件。
+格式为 <code>sayall-transfer 1.0</code>，方案版本为 <code>0.1.0</code>。
+文件的最低客户端版本字段为 <code>1.9.21</code>。
+需使用已包含第一版导入功能的客户端。
+格式验证不代表已安装客户端的界面验收。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-B">
+<header class="am-panel-head"><span class="am-panel-id">B</span><h2>在 Mac App 导入</h2></header>
+<div class="am-panel-body"><div class="am-md"><ol>
+<li>下载需要的 JSON 文件。</li>
+<li>打开无线麦SayAll.app 的「键位方案」。</li>
+<li>选择导入，再选择 JSON 文件。</li>
+<li>检查方案名称、遥控器型号和全部按键。</li>
+<li>确认后保存，再按需要选择或启用方案。</li>
+</ol>
+<p>导入需要客户端提供键位方案功能及相应访问权限。
+导入器会检查最低版本和遥控器型号。
+缺少目标 App 时，导入预览会显示提示。
+导入后，App 自动切换规则默认停用。
+保存不会立即替换当前正在使用的方案。
+启用前，请检查目标 App 和按键效果。</p>
+<p>“不设置”表示该键不发送动作。
+空键不会沿用该位置的普通映射。
+这些方案只调用已有快捷键和系统音量功能。
+无需在目标 App 添加快捷键。
+不包含复制、粘贴、换行或多步清空操作。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-C">
+<header class="am-panel-head"><span class="am-panel-id">C</span><h2>AI App 的按键</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>符号：⌘ = Command，⌃ = Control，⌥ = Option，⇧ = Shift。
+⌫ = Backspace，删除光标前的字符。</p>
+<div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>遥控器按键</th>
+<th>Codex</th>
+<th>Claude Code desktop</th>
+<th>WorkBuddy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>上</td>
+<td>⌘ Return：Steer 候选</td>
+<td>不设置</td>
+<td>不设置</td>
+</tr>
+<tr>
+<td>下</td>
+<td>不设置</td>
+<td>不设置</td>
+<td>不设置</td>
+</tr>
+<tr>
+<td>左</td>
+<td>⌃ ⇧ Tab：上一个会话</td>
+<td>⌃ ⇧ Tab：上一个会话</td>
+<td>⌘ [：上一个任务，方向待验</td>
+</tr>
+<tr>
+<td>右</td>
+<td>⌃ Tab：下一个会话</td>
+<td>⌃ Tab：下一个会话</td>
+<td>⌘ ]：下一个任务，方向待验</td>
+</tr>
+<tr>
+<td>OK</td>
+<td>Return：提交 / 确认</td>
+<td>Return：提交 / 确认</td>
+<td>Return：发送 / 确认</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>⌫：删除字符</td>
+<td>⌫：删除字符</td>
+<td>⌫：删除字符</td>
+</tr>
+<tr>
+<td>主页</td>
+<td>不设置</td>
+<td>不设置</td>
+<td>不设置</td>
+</tr>
+<tr>
+<td>音量+</td>
+<td>Page Up：向上翻一屏</td>
+<td>Page Up：向上翻一屏</td>
+<td>Page Up：向上翻一屏</td>
+</tr>
+<tr>
+<td>音量-</td>
+<td>Page Down：向下翻一屏</td>
+<td>Page Down：向下翻一屏</td>
+<td>Page Down：向下翻一屏</td>
+</tr>
+<tr>
+<td>关机</td>
+<td>Esc：停止 / 取消</td>
+<td>Esc：停止回复</td>
+<td>Esc：停止生成</td>
+</tr>
+</tbody></table></div>
+<p>Claude 方案面向 Claude Desktop 的 Code 页。
+Codex 上键发送 ⌘ Return。
+是否立即 Steer 取决于现有后续消息行为。
+如果当前行为是排队，该键不能保证立即 Steer。
+WorkBuddy 的任务切换方向仍需实际验收。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-D">
+<header class="am-panel-head"><span class="am-panel-id">D</span><h2>微信、剪映、抖音和 Chrome 的按键</h2></header>
+<div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>遥控器按键</th>
+<th>微信</th>
+<th>剪映桌面版</th>
+<th>抖音 Mac 客户端</th>
+<th>Chrome</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>上</td>
+<td>↑：光标 / 列表上移</td>
+<td>不设置</td>
+<td>↑：上一条视频</td>
+<td>Page Up</td>
+</tr>
+<tr>
+<td>下</td>
+<td>↓：光标 / 列表下移</td>
+<td>不设置</td>
+<td>↓：下一条视频</td>
+<td>Page Down</td>
+</tr>
+<tr>
+<td>左</td>
+<td>←：光标左移</td>
+<td>←：上一帧</td>
+<td>←：视频后退</td>
+<td>⌘ ⌥ ←：上一个标签页</td>
+</tr>
+<tr>
+<td>右</td>
+<td>→：光标右移</td>
+<td>→：下一帧</td>
+<td>→：视频快进</td>
+<td>⌘ ⌥ →：下一个标签页</td>
+</tr>
+<tr>
+<td>OK</td>
+<td>Return：发送 / 确认</td>
+<td>Space：播放 / 暂停</td>
+<td>Space：播放 / 暂停</td>
+<td>⌘ R：刷新当前标签页</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>⌫：删除字符</td>
+<td>⌫：删除选中片段，待验</td>
+<td>Esc：退出全屏，候选</td>
+<td>⌘ ←：返回上一页</td>
+</tr>
+<tr>
+<td>主页</td>
+<td>不设置</td>
+<td>不设置</td>
+<td>不设置</td>
+<td>⌘ ⇧ H：打开现有主页</td>
+</tr>
+<tr>
+<td>音量+</td>
+<td>Page Up</td>
+<td>不设置：放大键值待确认</td>
+<td>增大系统音量</td>
+<td>Page Up</td>
+</tr>
+<tr>
+<td>音量-</td>
+<td>Page Down</td>
+<td>Page Down</td>
+<td>减小系统音量</td>
+<td>Page Down</td>
+</tr>
+<tr>
+<td>关机</td>
+<td>⌘ H：隐藏窗口</td>
+<td>⌘ Z：撤销</td>
+<td>⌘ H：隐藏窗口</td>
+<td>⌘ W：关闭当前标签页</td>
+</tr>
+</tbody></table></div>
+<p>微信方向键用于光标或列表导航，不保证切换聊天。
+微信 Return 遵循现有发送模式。
+剪映放大时间线的默认键值未确认，音量+暂不发送动作。
+剪映音量-保留 Page Down，不将它解释为缩小时间线。</p>
+<p>抖音 Esc 的资料来自网页版，Mac 客户端效果待验。
+抖音音量键改变系统音量，不改变播放器音量滑块。
+⌘ H 隐藏目标 App 的全部窗口，App 继续运行。
+抖音方案不能用于网页标签，否则会隐藏浏览器。</p>
+<p>Chrome 主页键使用现有主页地址。
+关闭最后一个标签页时，Chrome 可能关闭窗口。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-E">
+<header class="am-panel-head"><span class="am-panel-id">E</span><h2>验证状态和 App 识别</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>这些文件是候选数据，不是官方兼容承诺。
+市场合同检查和 16 项合同测试已通过。
+Mac 端已有的 6 项导入测试已通过。
+7 个文件均通过客户端解析、预览和安装准备。
+已核对全部 70 个按键位置。
+重复导入、缺失 App 提示及规则停用检查已通过。</p>
+<p>安装准备检查使用模拟宿主动作序列化。
+该检查不执行按键，也不证明目标 App 已响应。
+尚未完成实体遥控器与全部目标 App 的功能验收。
+翻页、删除、发送和方向键均受当前焦点影响。
+文件不包含自动定位输入框或自动切换焦点的步骤。</p>
+<div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>App</th>
+<th>用于识别的 App 标识</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Codex</td>
+<td><code>com.openai.codex</code></td>
+</tr>
+<tr>
+<td>Claude Desktop</td>
+<td><code>com.anthropic.claudefordesktop</code></td>
+</tr>
+<tr>
+<td>WorkBuddy</td>
+<td><code>com.tencent.workbuddy.mac</code>；旧版 <code>com.workbuddy.workbuddy</code></td>
+</tr>
+<tr>
+<td>微信</td>
+<td><code>com.tencent.xinWeChat</code></td>
+</tr>
+<tr>
+<td>剪映专业版</td>
+<td><code>com.lemon.lvpro</code></td>
+</tr>
+<tr>
+<td>抖音 Mac 客户端</td>
+<td><code>com.bytedance.douyin.desktop</code></td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td><code>com.google.Chrome</code></td>
+</tr>
+</tbody></table></div>
+<p>WorkBuddy 保留当前和已知旧版标识。
+只安装其中一个版本时，另一标识可能产生缺失提示。
+请在导入预览中核对自己安装的版本。</p>
+<p>公开依据：<a href="https://developers.openai.com/codex/reference/commands">Codex 命令表</a>、<a href="https://code.claude.com/docs/en/desktop#keyboard-shortcuts">Claude 快捷键</a>、<a href="https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&amp;hl=en">Chrome 快捷键</a>、<a href="https://support.apple.com/en-us/102650">Apple 通用快捷键</a>。
+App 标识补充依据：<a href="https://formulae.brew.sh/cask/claude">Claude Cask</a>、<a href="https://formulae.brew.sh/cask/douyin">抖音 Cask</a>、<a href="https://apps.apple.com/cn/app/id1529999940">剪映 App Store</a>。
+WorkBuddy 键值参考本机已有快捷键设置。
+部分映射来自用户选定操作，实际效果仍需验收。</p>
+<p>本页的 Markdown 是内容稿，HTML 是生成的阅读页面。
+只导入下载表中的 JSON，不导入文档。</p>
+</div></div>
+</section>
+</div>
+</div>
+</main>
+<footer class="am-colophon">Generated by Answer me with HTML 0.4.4 · 2026-10-04 23:13</footer>
+<textarea id="am-source" hidden readonly aria-hidden="true">---
+title: 7 个 App · 遥控器 10 键方案
+subtitle: 无线麦SayAll.app · 下载 JSON 后在 Mac App 导入
+lang: zh
+template: doc
+theme: shadcn
+status: 候选方案，待真机验收
+---
+
+## A 下载方案
+
+每个 JSON 文件包含一套方案及其快捷键。
+适用遥控器：小米遥控器 2 Pro（RC003）。
+全部使用单击，不设置双击或长按。
+这些文件供手动导入，市场尚未上线。
+
+| App | 下载文件 |
+|---|---|
+| Codex | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/codex-ten-key.candidate.json) |
+| Claude Code desktop | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/claude-code-desktop-ten-key.candidate.json) |
+| WorkBuddy | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/workbuddy-ten-key.candidate.json) |
+| 微信 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/wechat-ten-key.candidate.json) |
+| 剪映桌面版 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/jianying-ten-key.candidate.json) |
+| 抖音 Mac 客户端 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/douyin-ten-key.candidate.json) |
+| Chrome | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/chrome-ten-key.candidate.json) |
+
+若浏览器显示 JSON 内容，请将文件另存为 `.json`。
+不要保存为网页或 `.txt` 文件。
+格式为 `sayall-transfer 1.0`，方案版本为 `0.1.0`。
+文件的最低客户端版本字段为 `1.9.21`。
+需使用已包含第一版导入功能的客户端。
+格式验证不代表已安装客户端的界面验收。
+
+## B 在 Mac App 导入
+
+1. 下载需要的 JSON 文件。
+2. 打开无线麦SayAll.app 的「键位方案」。
+3. 选择导入，再选择 JSON 文件。
+4. 检查方案名称、遥控器型号和全部按键。
+5. 确认后保存，再按需要选择或启用方案。
+
+导入需要客户端提供键位方案功能及相应访问权限。
+导入器会检查最低版本和遥控器型号。
+缺少目标 App 时，导入预览会显示提示。
+导入后，App 自动切换规则默认停用。
+保存不会立即替换当前正在使用的方案。
+启用前，请检查目标 App 和按键效果。
+
+“不设置”表示该键不发送动作。
+空键不会沿用该位置的普通映射。
+这些方案只调用已有快捷键和系统音量功能。
+无需在目标 App 添加快捷键。
+不包含复制、粘贴、换行或多步清空操作。
+
+## C AI App 的按键
+
+符号：⌘ = Command，⌃ = Control，⌥ = Option，⇧ = Shift。
+⌫ = Backspace，删除光标前的字符。
+
+| 遥控器按键 | Codex | Claude Code desktop | WorkBuddy |
+|---|---|---|---|
+| 上 | ⌘ Return：Steer 候选 | 不设置 | 不设置 |
+| 下 | 不设置 | 不设置 | 不设置 |
+| 左 | ⌃ ⇧ Tab：上一个会话 | ⌃ ⇧ Tab：上一个会话 | ⌘ [：上一个任务，方向待验 |
+| 右 | ⌃ Tab：下一个会话 | ⌃ Tab：下一个会话 | ⌘ ]：下一个任务，方向待验 |
+| OK | Return：提交 / 确认 | Return：提交 / 确认 | Return：发送 / 确认 |
+| 返回 | ⌫：删除字符 | ⌫：删除字符 | ⌫：删除字符 |
+| 主页 | 不设置 | 不设置 | 不设置 |
+| 音量+ | Page Up：向上翻一屏 | Page Up：向上翻一屏 | Page Up：向上翻一屏 |
+| 音量- | Page Down：向下翻一屏 | Page Down：向下翻一屏 | Page Down：向下翻一屏 |
+| 关机 | Esc：停止 / 取消 | Esc：停止回复 | Esc：停止生成 |
+
+Claude 方案面向 Claude Desktop 的 Code 页。
+Codex 上键发送 ⌘ Return。
+是否立即 Steer 取决于现有后续消息行为。
+如果当前行为是排队，该键不能保证立即 Steer。
+WorkBuddy 的任务切换方向仍需实际验收。
+
+## D 微信、剪映、抖音和 Chrome 的按键
+
+| 遥控器按键 | 微信 | 剪映桌面版 | 抖音 Mac 客户端 | Chrome |
+|---|---|---|---|---|
+| 上 | ↑：光标 / 列表上移 | 不设置 | ↑：上一条视频 | Page Up |
+| 下 | ↓：光标 / 列表下移 | 不设置 | ↓：下一条视频 | Page Down |
+| 左 | ←：光标左移 | ←：上一帧 | ←：视频后退 | ⌘ ⌥ ←：上一个标签页 |
+| 右 | →：光标右移 | →：下一帧 | →：视频快进 | ⌘ ⌥ →：下一个标签页 |
+| OK | Return：发送 / 确认 | Space：播放 / 暂停 | Space：播放 / 暂停 | ⌘ R：刷新当前标签页 |
+| 返回 | ⌫：删除字符 | ⌫：删除选中片段，待验 | Esc：退出全屏，候选 | ⌘ ←：返回上一页 |
+| 主页 | 不设置 | 不设置 | 不设置 | ⌘ ⇧ H：打开现有主页 |
+| 音量+ | Page Up | 不设置：放大键值待确认 | 增大系统音量 | Page Up |
+| 音量- | Page Down | Page Down | 减小系统音量 | Page Down |
+| 关机 | ⌘ H：隐藏窗口 | ⌘ Z：撤销 | ⌘ H：隐藏窗口 | ⌘ W：关闭当前标签页 |
+
+微信方向键用于光标或列表导航，不保证切换聊天。
+微信 Return 遵循现有发送模式。
+剪映放大时间线的默认键值未确认，音量+暂不发送动作。
+剪映音量-保留 Page Down，不将它解释为缩小时间线。
+
+抖音 Esc 的资料来自网页版，Mac 客户端效果待验。
+抖音音量键改变系统音量，不改变播放器音量滑块。
+⌘ H 隐藏目标 App 的全部窗口，App 继续运行。
+抖音方案不能用于网页标签，否则会隐藏浏览器。
+
+Chrome 主页键使用现有主页地址。
+关闭最后一个标签页时，Chrome 可能关闭窗口。
+
+## E 验证状态和 App 识别
+
+这些文件是候选数据，不是官方兼容承诺。
+市场合同检查和 16 项合同测试已通过。
+Mac 端已有的 6 项导入测试已通过。
+7 个文件均通过客户端解析、预览和安装准备。
+已核对全部 70 个按键位置。
+重复导入、缺失 App 提示及规则停用检查已通过。
+
+安装准备检查使用模拟宿主动作序列化。
+该检查不执行按键，也不证明目标 App 已响应。
+尚未完成实体遥控器与全部目标 App 的功能验收。
+翻页、删除、发送和方向键均受当前焦点影响。
+文件不包含自动定位输入框或自动切换焦点的步骤。
+
+| App | 用于识别的 App 标识 |
+|---|---|
+| Codex | `com.openai.codex` |
+| Claude Desktop | `com.anthropic.claudefordesktop` |
+| WorkBuddy | `com.tencent.workbuddy.mac`；旧版 `com.workbuddy.workbuddy` |
+| 微信 | `com.tencent.xinWeChat` |
+| 剪映专业版 | `com.lemon.lvpro` |
+| 抖音 Mac 客户端 | `com.bytedance.douyin.desktop` |
+| Chrome | `com.google.Chrome` |
+
+WorkBuddy 保留当前和已知旧版标识。
+只安装其中一个版本时，另一标识可能产生缺失提示。
+请在导入预览中核对自己安装的版本。
+
+公开依据：[Codex 命令表](https://developers.openai.com/codex/reference/commands)、[Claude 快捷键](https://code.claude.com/docs/en/desktop#keyboard-shortcuts)、[Chrome 快捷键](https://support.google.com/chrome/answer/157179?co=GENIE.Platform%3DDesktop&amp;hl=en)、[Apple 通用快捷键](https://support.apple.com/en-us/102650)。
+App 标识补充依据：[Claude Cask](https://formulae.brew.sh/cask/claude)、[抖音 Cask](https://formulae.brew.sh/cask/douyin)、[剪映 App Store](https://apps.apple.com/cn/app/id1529999940)。
+WorkBuddy 键值参考本机已有快捷键设置。
+部分映射来自用户选定操作，实际效果仍需验收。
+
+本页的 Markdown 是内容稿，HTML 是生成的阅读页面。
+只导入下载表中的 JSON，不导入文档。
+</textarea>
+<script>
+(() => {
+  const root = document.documentElement;
+  const cycle = (list, cur) => list[(list.indexOf(cur) + 1) % list.length];
+  const label = (btn, value) => {
+    const map = JSON.parse(btn.dataset.labels || '{}');
+    btn.textContent = map[value] || value;
+  };
+  const bind = (name, attr, values) => {
+    const btn = document.querySelector(`[data-am="${name}"]`);
+    if (!btn) return;
+    label(btn, root.getAttribute(attr));
+    btn.addEventListener('click', () => {
+      const next = cycle(values, root.getAttribute(attr));
+      root.setAttribute(attr, next);
+      label(btn, next);
+    });
+  };
+  bind('theme', 'data-theme', ['blueprint', 'shadcn']);
+  bind('mode', 'data-mode', ['auto', 'light', 'dark']);
+
+  const copyBtn = document.querySelector('[data-am="copy"]');
+  copyBtn?.addEventListener('click', async () => {
+    const nodes = document.querySelectorAll('#am-source');
+    const text = nodes[nodes.length - 1]?.value ?? '';
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = Object.assign(document.createElement('textarea'), { value: text });
+      document.body.append(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+    }
+    const original = copyBtn.textContent;
+    copyBtn.textContent = copyBtn.dataset.done;
+    setTimeout(() => { copyBtn.textContent = original; }, 1400);
+  });
+})();
+</script>
+</body>
+</html>
