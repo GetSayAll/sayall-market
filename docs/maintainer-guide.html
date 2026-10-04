@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="shadcn" data-mode="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Answer me with HTML 0.4.4">
+<title>SayAll Market · 技术与维护说明</title>
+<style>
+html[data-theme="blueprint"], html[data-theme="blueprint"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 0px;
+  --shadow: none;
+  --bw: 1.5px;
+  --head-font: var(--font-sans);
+  --bg: #f6f6f3;
+  --paper: #ffffff;
+  --ink: #16181d;
+  --ink-2: #4b5260;
+  --ink-3: #8b929e;
+  --line: #1d2026;
+  --line-2: #d6dae1;
+  --fill: #f3f5f8;
+  --accent: #1d5fbf;
+  --accent-bg: #e4ecf8;
+  --ok: #1d5fbf;
+  --ok-bg: #e4ecf8;
+  --err: #c62828;
+  --err-bg: #fbeaea;
+  --warn: #a8620a;
+  --warn-bg: #fdf3e2;
+  --head-bg: #16181d;
+  --head-fg: #ffffff;
+}
+html[data-theme="blueprint"][data-mode="dark"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="blueprint"][data-mode="auto"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+}
+
+html[data-theme="shadcn"], html[data-theme="shadcn"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 8px;
+  --shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --bw: 1px;
+  --head-font: var(--font-sans);
+  --bg: #fafafa;
+  --paper: #ffffff;
+  --ink: #09090b;
+  --ink-2: #71717a;
+  --ink-3: #a1a1aa;
+  --line: #e4e4e7;
+  --line-2: #f0f0f2;
+  --fill: #f4f4f5;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --ok: #16a34a;
+  --ok-bg: #f0fdf4;
+  --err: #dc2626;
+  --err-bg: #fef2f2;
+  --warn: #d97706;
+  --warn-bg: #fffbeb;
+  --head-bg: #18181b;
+  --head-fg: #fafafa;
+}
+html[data-theme="shadcn"][data-mode="dark"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="shadcn"][data-mode="auto"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+}
+
+/* Answer me with HTML base — 只引用主题变量，禁止写死颜色（主题 token 见 themes/index.js） */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-sans); font-size: 14px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+code, pre, kbd { font-family: var(--font-mono); }
+
+/* ── 工具栏 ─────────────────────────────── */
+.am-toolbar {
+  position: fixed; top: 12px; right: 12px; z-index: 10; display: flex; gap: 6px;
+}
+.am-btn {
+  font: 12px/1 var(--font-sans); color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); padding: 7px 10px; cursor: pointer;
+}
+.am-btn:hover { border-color: var(--ink-3); }
+.am-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ── 页头 ───────────────────────────────── */
+.am-head { margin: 0 0 20px; padding-right: 260px; }
+.am-head h1 { margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; }
+.am-sub { margin: 4px 0 0; color: var(--ink-2); }
+.am-head-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 12px; color: var(--ink-2); }
+.am-head-meta b { font-family: var(--font-mono); font-weight: 400; color: var(--ink-3); margin-right: 6px; }
+.am-intro { margin-top: 12px; max-width: 80ch; }
+
+/* ── sheet 图纸板 ────────────────────────── */
+.am-sheet { max-width: 1680px; margin: 0 auto; padding: 32px 28px 40px; }
+.am-frame { position: relative; }
+.am-grid {
+  display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: 20px; align-items: start;
+}
+.am-ruler { display: none; }
+html[data-theme="blueprint"] .am-frame { border: 1px solid var(--line); padding: 30px; }
+html[data-theme="blueprint"] .am-frame::before {
+  content: ""; position: absolute; inset: 18px; border: 1px solid var(--line); pointer-events: none;
+}
+html[data-theme="blueprint"] .am-ruler {
+  display: flex; position: absolute; font: 10px/1 var(--font-mono); color: var(--ink-3);
+}
+.am-ruler span { flex: 1; display: flex; align-items: center; justify-content: center; }
+.am-ruler--top, .am-ruler--bottom { left: 18px; right: 18px; height: 18px; }
+.am-ruler--top { top: 0; }
+.am-ruler--bottom { bottom: 0; }
+.am-ruler--left, .am-ruler--right { top: 18px; bottom: 18px; width: 18px; flex-direction: column; }
+.am-ruler--left { left: 0; }
+.am-ruler--right { right: 0; }
+.am-ruler--top span + span, .am-ruler--bottom span + span { border-left: 1px solid var(--line); }
+.am-ruler--left span + span, .am-ruler--right span + span { border-top: 1px solid var(--line); }
+
+/* ── 面板 ───────────────────────────────── */
+.am-panel {
+  background: var(--paper); border: var(--bw) solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); min-width: 0; overflow: hidden;
+}
+.am-panel-head {
+  display: flex; align-items: stretch; gap: 0; border-bottom: var(--bw) solid var(--line); min-height: 34px;
+}
+.am-panel-id {
+  display: flex; align-items: center; justify-content: center; min-width: 34px; padding: 0 8px;
+  background: var(--head-bg); color: var(--head-fg); font-weight: 600; font-size: 14px;
+}
+html[data-theme="shadcn"] .am-panel-id { border-radius: 6px; min-width: 24px; height: 24px; margin: 9px 0 9px 14px; font-size: 12px; }
+html[data-theme="shadcn"] .am-panel-head { border-bottom-width: 1px; }
+.am-panel-head h2 { margin: 0; padding: 7px 12px; font-size: 15px; font-weight: 600; flex: 1; display: flex; align-items: center; }
+.am-panel-meta { align-self: center; padding: 0 12px; font: 11px/1.3 var(--font-mono); color: var(--ink-2); text-align: right; }
+.am-panel-body { padding: 14px 16px 16px; }
+.am-panel-body > * + * { margin-top: 12px; }
+
+/* ── Markdown 正文 ───────────────────────── */
+.am-md > :first-child { margin-top: 0; }
+.am-md > :last-child { margin-bottom: 0; }
+.am-md p { margin: 0 0 8px; }
+.am-md ul, .am-md ol { margin: 0 0 8px; padding-left: 20px; }
+.am-md li + li { margin-top: 3px; }
+.am-md h3, .am-md h4 { margin: 14px 0 6px; font-size: 13px; }
+.am-md a { color: var(--accent); }
+.am-md blockquote { margin: 0 0 8px; padding: 2px 12px; border-left: 3px solid var(--line-2); color: var(--ink-2); }
+.am-md :not(pre) > code { font-size: 0.9em; background: var(--fill); padding: 1px 5px; border-radius: 4px; }
+.am-md hr { border: 0; border-top: 1px solid var(--line-2); margin: 12px 0; }
+.am-md table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.am-md th {
+  text-align: left; font: 11px/1.3 var(--font-mono); color: var(--ink-2); font-weight: 400;
+  padding: 6px 10px; border-bottom: 1px solid var(--line-2);
+}
+.am-md td { padding: 7px 10px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+.am-md tbody tr:nth-child(even) td { background: var(--fill); }
+.am-table-wrap { overflow-x: auto; }
+.am-code {
+  margin: 0; padding: 12px 14px; background: var(--fill); border: 1px solid var(--line-2);
+  border-radius: var(--radius); overflow-x: auto; font-size: 12.5px; line-height: 1.5;
+}
+
+/* ── 状态徽章 ok / no / warn ──────────────── */
+.am-status { white-space: nowrap; font-weight: 500; }
+.am-status--ok { color: var(--ok); }
+.am-status--no { color: var(--err); }
+.am-status--warn { color: var(--warn); }
+.am-status-icon { display: inline-block; width: 1.1em; font-weight: 700; }
+
+/* ── callout ─────────────────────────────── */
+.am-callout {
+  border: 1px solid var(--line-2); border-left: 3px solid var(--accent); background: var(--accent-bg);
+  padding: 10px 14px; border-radius: var(--radius);
+}
+.am-callout--ok { border-left-color: var(--ok); background: var(--ok-bg); }
+.am-callout--warn { border-left-color: var(--warn); background: var(--warn-bg); }
+.am-callout--err { border-left-color: var(--err); background: var(--err-bg); }
+.am-callout-title { font-weight: 600; margin-bottom: 4px; }
+
+/* ── kv 标题栏格 ─────────────────────────── */
+.am-kv {
+  display: grid; grid-template-columns: repeat(var(--kv-cols, 2), minmax(0, 1fr)); margin: 0;
+  border-top: var(--bw) solid var(--line); border-left: var(--bw) solid var(--line);
+}
+.am-kv-cell { border-right: var(--bw) solid var(--line); border-bottom: var(--bw) solid var(--line); padding: 6px 10px 8px; min-width: 0; }
+.am-kv-cell--wide { grid-column: 1 / -1; }
+.am-kv dt { font: 11px/1.4 var(--font-mono); color: var(--ink-2); }
+.am-kv dd { margin: 2px 0 0; font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.am-kv-cell--wide dd { font-size: 17px; font-weight: 600; }
+html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var(--radius); overflow: hidden; }
+
+/* ── timeline ────────────────────────────── */
+.am-timeline { list-style: none; margin: 0; padding: 0; }
+.am-timeline--h { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); padding-top: 4px; }
+.am-timeline--h li { position: relative; text-align: center; padding: 0 6px; }
+.am-timeline--h li::before {
+  content: ""; position: absolute; top: 31px; left: 0; right: 0; border-top: var(--bw) solid var(--line);
+}
+.am-timeline--h li:first-child::before { left: 50%; }
+.am-timeline--h li:last-child::before { right: 50%; }
+.am-tl-when { display: block; font-size: 15px; font-weight: 500; height: 24px; }
+.am-tl-dot {
+  position: relative; display: block; width: 11px; height: 11px; margin: 2px auto 8px;
+  border: var(--bw) solid var(--line); border-radius: 50%; background: var(--paper);
+}
+.am-tl-item--hi .am-tl-dot { background: var(--accent); border-color: var(--accent); }
+.am-tl-title { display: block; font-size: 12.5px; font-weight: 500; }
+.am-tl-text { display: block; font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+.am-timeline--v li { position: relative; padding: 0 0 14px 22px; }
+.am-timeline--v li::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: -6px; border-left: var(--bw) solid var(--line-2); }
+.am-timeline--v li:last-child::before { display: none; }
+.am-timeline--v .am-tl-dot { position: absolute; left: 0; top: 4px; margin: 0; }
+.am-timeline--v .am-tl-when { display: inline; height: auto; font: 12px var(--font-mono); color: var(--ink-2); margin-right: 8px; }
+.am-timeline--v .am-tl-title { display: inline; font-size: 14px; }
+.am-timeline--v .am-tl-text { margin-top: 2px; }
+
+/* ── annot 句子标注 ──────────────────────── */
+.am-annot + .am-annot { border-top: 1px solid var(--line-2); padding-top: 12px; }
+.am-annot-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.am-annot-meta { font: 11px var(--font-mono); font-weight: 400; color: var(--ink-2); }
+.am-annot-scroll { overflow-x: auto; }
+.am-annot-line {
+  position: relative; display: inline-block; white-space: pre; font: 14px/1.6 var(--font-mono);
+  padding-bottom: calc(var(--rows, 0) * 17px + 14px);
+}
+.am-annot-line--wrap { display: block; white-space: normal; padding-bottom: 10px; }
+.am-annot-line--wrap .am-seg { white-space: nowrap; }
+.am-seg { position: relative; }
+.am-seg::after {
+  content: ""; position: absolute; left: 1px; right: 1px; top: calc(100% + 1px); height: 5px;
+  border: 1px solid var(--accent); border-top: 0;
+}
+.am-seg-n {
+  position: absolute; left: 0; top: calc(100% + 8px + var(--row, 0) * 17px);
+  font: 11px/16px var(--font-sans); color: var(--accent); white-space: nowrap;
+}
+.am-seg--err { color: var(--err); }
+.am-seg--err::after { border-color: var(--err); }
+.am-seg--err .am-seg-n { color: var(--err); }
+.am-annot-caption { font-size: 12px; color: var(--ink-2); }
+
+/* ── limits 限值条 ───────────────────────── */
+.am-lim + .am-lim { margin-top: 14px; }
+.am-lim-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; margin-bottom: 4px; }
+.am-lim-val { font: 12px var(--font-mono); color: var(--accent); white-space: nowrap; }
+.am-lim-track { position: relative; height: 12px; border: 1px solid var(--line-2); background: var(--fill); border-radius: calc(var(--radius) / 2); }
+.am-lim-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-bg); border-right: 1px solid var(--accent); }
+.am-lim-mark { position: absolute; top: -4px; bottom: -4px; border-left: 2px solid var(--accent); }
+.am-lim.is-over .am-lim-fill { background: var(--err-bg); border-right-color: var(--err); }
+.am-lim.is-over .am-lim-val { color: var(--err); }
+.am-lim-ticks { position: relative; height: 16px; font: 10px/16px var(--font-mono); color: var(--ink-3); }
+.am-lim-ticks span { position: absolute; transform: translateX(-50%); }
+.am-lim-ticks span:first-child { transform: none; }
+.am-lim-note { font-size: 11px; color: var(--ink-2); margin-left: 6px; }
+
+/* ── tree 结构树 ─────────────────────────── */
+.am-tree { font-size: 13px; }
+.am-tree-root { display: flex; justify-content: center; position: relative; padding-bottom: 18px; }
+.am-tree-root::after { content: ""; position: absolute; bottom: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-root--solo { padding-bottom: 12px; }
+.am-tree-root--solo::after { display: none; }
+.am-tree-box {
+  border: var(--bw) solid var(--line); background: var(--paper); padding: 6px 14px; text-align: center;
+  border-radius: var(--radius); font-weight: 600;
+}
+.am-tree-box small { display: block; font-weight: 400; color: var(--ink-2); font-size: 12px; }
+.am-tree-box--root { background: var(--accent-bg); font-size: 15px; padding: 8px 28px; }
+.am-tree-cols { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); }
+.am-tree-col { position: relative; padding: 18px 8px 0; min-width: 0; }
+.am-tree-col::before { content: ""; position: absolute; top: 0; left: 0; right: 0; border-top: var(--bw) solid var(--line); }
+.am-tree-col:first-child::before { left: 50%; }
+.am-tree-col:last-child::before { right: 50%; }
+.am-tree-col::after { content: ""; position: absolute; top: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-list, .am-tree-list ul { list-style: none; margin: 0; padding: 0; }
+.am-tree-col > .am-tree-list { margin: 8px 0 0 14px; }
+.am-tree-list ul { margin-left: 16px; }
+.am-tree-list li { position: relative; padding: 3px 0 3px 18px; }
+.am-tree-list li::before { content: ""; position: absolute; left: 0; top: 0.95em; width: 12px; border-top: 1px solid var(--ink-3); }
+.am-tree-list li::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1px solid var(--ink-3); }
+.am-tree-list li:last-child::after { bottom: auto; height: 0.95em; }
+.am-tree-tag { font: 11px var(--font-mono); color: var(--ink-3); margin-right: 4px; }
+.am-tree code { font: 12px var(--font-mono); }
+.am-tree-sub { display: block; font-size: 11.5px; color: var(--ink-2); }
+.am-tree-hi > .am-tree-label { color: var(--accent); font-weight: 600; }
+
+/* ── 图（flow / sequence）───────────────── */
+.am-diagram { margin: 0; overflow-x: auto; text-align: center; }
+.am-diagram svg { max-width: 100%; height: auto; font-family: var(--font-sans); }
+.am-diagram text { fill: var(--ink); font-size: 13px; }
+.am-node-shape { fill: var(--paper); stroke: var(--line); stroke-width: var(--bw); }
+.am-node--hi .am-node-shape { fill: var(--accent-bg); stroke: var(--accent); }
+.am-node--hi text { fill: var(--accent); font-weight: 600; }
+.am-edge { fill: none; stroke: var(--ink-2); stroke-width: 1.3; }
+.am-edge--dashed { stroke-dasharray: 5 4; }
+.am-arrow { fill: var(--ink-2); }
+.am-edge-label rect { fill: var(--paper); }
+.am-diagram .am-edge-label text { fill: var(--accent); font-size: 11.5px; }
+.am-cluster { fill: var(--fill); stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 4 3; }
+.am-diagram .am-cluster-label { fill: var(--ink-2); font: 11px var(--font-mono); }
+.am-lifeline { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 4 4; }
+.am-actor { fill: var(--paper); stroke: var(--line); stroke-width: var(--bw); }
+.am-note { fill: var(--warn-bg); stroke: var(--warn); stroke-width: 1; }
+.am-diagram .am-step { fill: var(--ink-3); font: 10px var(--font-mono); }
+
+/* ── doc 线性讲解 ────────────────────────── */
+.am-doc { max-width: 1120px; margin: 0 auto; padding: 40px 28px 64px; }
+.am-doc-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; align-items: start; }
+.am-doc-layout--notoc { grid-template-columns: minmax(0, 1fr); max-width: 860px; }
+.am-toc { position: sticky; top: 24px; font-size: 13px; }
+.am-toc a { display: block; color: var(--ink-2); text-decoration: none; padding: 4px 0 4px 10px; border-left: 2px solid var(--line-2); }
+.am-toc a:hover { color: var(--ink); border-left-color: var(--accent); }
+.am-doc-body > .am-panel + .am-panel { margin-top: 20px; }
+
+/* ── 响应式与打印 ─────────────────────────── */
+@media (max-width: 1100px) {
+  .am-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .am-grid > .am-panel { grid-column: auto !important; }
+  .am-grid > .am-panel.am-span-wide { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 760px) {
+  .am-sheet, .am-doc { padding: 56px 12px 24px; }
+  .am-head { padding-right: 0; }
+  .am-grid { grid-template-columns: minmax(0, 1fr); }
+  .am-grid > .am-panel.am-span-wide { grid-column: auto !important; }
+  html[data-theme="blueprint"] .am-frame { padding: 0; border: 0; }
+  html[data-theme="blueprint"] .am-frame::before, html[data-theme="blueprint"] .am-ruler { display: none; }
+  .am-doc-layout { grid-template-columns: minmax(0, 1fr); }
+  .am-toc { position: static; }
+  .am-timeline--h { grid-template-columns: minmax(0, 1fr); }
+  .am-tree-cols { grid-template-columns: minmax(0, 1fr); }
+}
+.am-colophon { text-align: center; padding: 0 0 28px; font: 11px var(--font-mono); color: var(--ink-3); }
+
+@media print {
+  .am-toolbar { display: none; }
+  body { background: var(--paper); }
+  .am-panel { break-inside: avoid; box-shadow: none; }
+}
+.am-panel--bare { border: 0; background: transparent; box-shadow: none; }
+.am-panel--bare > .am-panel-body { padding: 0; }
+.am-panel--bare .am-kv { background: var(--paper); }
+
+</style>
+</head>
+<body>
+<div class="am-toolbar">
+<button class="am-btn" type="button" data-am="theme" data-labels="{&quot;blueprint&quot;:&quot;主题：图纸&quot;,&quot;shadcn&quot;:&quot;主题：卡片&quot;}">主题：卡片</button>
+<button class="am-btn" type="button" data-am="mode" data-labels="{&quot;auto&quot;:&quot;明暗：跟随系统&quot;,&quot;light&quot;:&quot;明暗：亮&quot;,&quot;dark&quot;:&quot;明暗：暗&quot;}">明暗：跟随系统</button>
+<button class="am-btn" type="button" data-am="copy" data-done="已复制 ✓">复制源稿</button>
+</div>
+<main class="am-doc">
+<header class="am-head"><h1>SayAll Market · 技术与维护说明</h1><p class="am-sub">数据格式、仓库范围、校验和发布边界</p></header>
+<div class="am-doc-layout">
+<nav class="am-toc" aria-label="目录"><a href="#panel-A">A · 当前状态与仓库历史</a><a href="#panel-B">B · 仓库内容与归属</a><a href="#panel-C">C · 第一版导入导出合同</a><a href="#panel-D">D · 内容与数据边界</a><a href="#panel-E">E · 发布、来源和本地执行</a><a href="#panel-F">F · 本地校验与维护入口</a><a href="#panel-G">G · 许可</a></nav><div class="am-doc-body">
+<section class="am-panel" id="panel-A">
+<header class="am-panel-head"><span class="am-panel-id">A</span><h2>当前状态与仓库历史</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>当前状态为 <code>Public Design Preview / Contributions Paused</code>。
+市场尚未上线，正式投稿和生产接入仍暂停。
+README 面向普通用户，提供已有候选方案和配件入口。
+试用文件可供手动导入，不代表生产目录已经开放。
+内容发布、真实硬件验证和格式稳定是三个独立状态。</p>
+<p>仓库名称为 <code>GetSayAll/sayall-market</code>。
+仓库于 2026-09-01 从 <code>GetSayAll/sayall-macro-market</code> 改名。
+旧 GitHub 地址仅保留平台重定向兼容。
+新文档和客户端配置统一使用当前名称。</p>
+<p>Full Keyboard Access 方案目前位于独立试用分支。
+README 下载链接固定到提交 <code>4be8928eca066bcbb876bc15ffeffc02155d7109</code>。
+该链接对应现有试用文件，不改动其验收状态。
+相关工作见 <a href="https://github.com/GetSayAll/sayall-market/pull/5">PR #5</a>。
+该 PR 保持试用状态，等待真机测试。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-B">
+<header class="am-panel-head"><span class="am-panel-id">B</span><h2>仓库内容与归属</h2></header>
+<div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>目录或文件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>schemas/</code></td>
+<td>公开、版本化的数据合同</td>
+</tr>
+<tr>
+<td><code>macros/</code></td>
+<td>系统、官方和社区共享的宏按键</td>
+</tr>
+<tr>
+<td><code>profiles/</code></td>
+<td>按目标 App 和遥控器型号组织的键位方案</td>
+</tr>
+<tr>
+<td><code>layouts/</code></td>
+<td>按遥控器型号和场景组织的完整布局</td>
+</tr>
+<tr>
+<td><code>catalog/</code></td>
+<td>供 App 和网站消费的公开目录索引</td>
+</tr>
+<tr>
+<td><code>examples/</code></td>
+<td>合成示例、待验证候选和非安装内容的外部扩展介绍</td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td>使用说明、数据模型、验证状态和仓库关系</td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td>公开内容的本地自动校验工具</td>
+</tr>
+<tr>
+<td><code>CONTRIBUTING.md</code></td>
+<td>未来社区投稿流程</td>
+</tr>
+</tbody></table></div>
+<p>本仓库保持公开、独立，不迁入私有仓库。
+私有执行实现、会员授权、审核后台和签名密钥不放在这里。
+撤销控制的私有实现也不放在这里。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-C">
+<header class="am-panel-head"><span class="am-panel-id">C</span><h2>第一版导入导出合同</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>导入导出、组合动作、Manifest 和 Catalog 已冻结为第一版 <code>1.0</code>。
+后续读取器必须兼容第一版。
+尚未实现的布局模板仍为草案。</p>
+<p>单个或批量方案、组合动作、App 配置和个人备份使用统一合同。
+合同详见 <a href="portable-transfer-standard.html">导入导出标准</a>。
+分享包使用 <code>format: sayall-transfer</code> 和 <code>schemaVersion: 1.0</code>。
+公开市场只接受分享用途，不提交个人备份。</p>
+<p>7 套 App 候选方案位于 <code>examples/profiles/</code>。
+它们是自包含分享包，每个文件包含一套方案及其快捷键。
+每套仅使用指定的 10 个位置，手势为单击。
+禁用位置明确使用 <code>disabled</code>，避免继承普通映射。
+方案版本为 <code>0.1.0</code>，最低客户端版本字段为 <code>1.9.21</code>。
+格式检查不构成已发布客户端的界面兼容声明。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-D">
+<header class="am-panel-head"><span class="am-panel-id">D</span><h2>内容与数据边界</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>禁止提交以下内容：</p>
+<ul>
+<li>未经批准的 Shell、AppleScript/JXA 或 JavaScript。</li>
+<li>未经批准的插件、二进制或下载后执行内容。</li>
+<li>API Key、Token、密码、证书及其他凭据。</li>
+<li>用户输入、剪贴板、文件、环境变量或窗口私密内容。</li>
+<li>设备 ID、蓝牙地址及 HID 指纹。</li>
+<li>本机学习到的辅助功能树、输入框路径和窗口特征。</li>
+<li>未经审查的可执行链接或隐式网络请求。</li>
+</ul>
+<p>经过批准的脚本可以作为未来版本的显式高风险内容。
+这类内容必须声明能力范围，并固定内容摘要。
+还必须有审核记录和可撤销状态。
+不能借助公开市场绕过客户端授权或远程执行任意步骤。
+该预期流程不表示当前已接受脚本投稿。</p>
+<p>外部扩展介绍只记录公开来源和链接。
+这些条目不是客户端安装包，也不构成官方适配或售后承诺。
+模型、图片和页面内容仍受原作者及平台规则约束。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-E">
+<header class="am-panel-head"><span class="am-panel-id">E</span><h2>发布、来源和本地执行</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>正式内容通过 Pull Request、自动检查和维护者审核进入。
+脚本内容还需人工批准、签名发布和可撤销登记。
+已发布版本保留公开历史。
+同一版本不得绕过公开记录静默替换。</p>
+<div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>来源</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>system</code></td>
+<td>随客户端提供的基础预设</td>
+</tr>
+<tr>
+<td><code>official</code></td>
+<td>GetSayAll 维护并在真实环境验证的官方内容</td>
+</tr>
+<tr>
+<td><code>community</code></td>
+<td>社区作者投稿并通过审核的内容</td>
+</tr>
+</tbody></table></div>
+<p>来源必须明确展示。
+社区内容通过审核不等于官方背书。
+候选示例不代表已经完成兼容性验证。
+官方兼容声明必须附真实遥控器和目标 App 的验证记录。
+自动化与模拟检查不得写成真实硬件验收。</p>
+<p>未来客户端下载固定、不可变的内容版本。
+客户端校验后将内容安装到本机，再离线执行。
+市场和移动端只能请求执行已安装、已批准的 <code>contentID</code>。
+请求不得携带临时步骤或脚本。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-F">
+<header class="am-panel-head"><span class="am-panel-id">F</span><h2>本地校验与维护入口</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>使用 Node.js 20 或更新版本。</p>
+</div>
+<pre class="am-code"><code data-lang="bash">npm ci
+npm run validate</code></pre>
+<div class="am-md"><p>校验覆盖 Schema、引用、版本、摘要、能力声明和重复绑定。
+校验还检查敏感字段、脚本、下载地址及禁止内容。
+Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
+格式通过不代表动作已在目标 App 生效。</p>
+<div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>文档</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="portable-transfer-standard.html">导入导出标准</a></td>
+<td>第一版分享、批量传输与个人备份合同</td>
+</tr>
+<tr>
+<td><a href="content-model.md">内容模型</a></td>
+<td>内容类型和引用关系</td>
+</tr>
+<tr>
+<td><a href="repository-scope.md">仓库范围</a></td>
+<td>公开与私有内容边界</td>
+</tr>
+<tr>
+<td><a href="release-process.md">发布流程</a></td>
+<td>内容发布阶段和审核条件</td>
+</tr>
+<tr>
+<td><a href="verification-record-template.md">验证记录模板</a></td>
+<td>真实硬件与目标 App 验收记录</td>
+</tr>
+<tr>
+<td><a href="../CONTRIBUTING.md">投稿说明</a></td>
+<td>投稿恢复后的预期流程</td>
+</tr>
+<tr>
+<td><a href="../SECURITY.md">安全说明</a></td>
+<td>安全问题报告入口</td>
+</tr>
+<tr>
+<td><a href="../schemas/README.html">Schema 说明</a></td>
+<td>数据合同入口</td>
+</tr>
+</tbody></table></div>
+</div></div>
+</section>
+<section class="am-panel" id="panel-G">
+<header class="am-panel-head"><span class="am-panel-id">G</span><h2>许可</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>除另有说明的第三方材料外，仓库内容采用 CC BY-NC 4.0。
+完整条款见 <a href="../LICENSE">LICENSE</a>。
+复制、分享和改编须署名，并标明修改。
+商业授权需另行取得 GetSayAll 的书面许可。
+商标、专利、隐私权及第三方材料不因该许可自动授权。</p>
+<p>CC BY-NC 4.0 含非商业限制。
+它不是 OSI 认可的开源软件许可证。</p>
+<p>Copyright © 2026 GetSayAll.</p>
+</div></div>
+</section>
+</div>
+</div>
+</main>
+<footer class="am-colophon">Generated by Answer me with HTML 0.4.4 · 2026-10-04 23:45</footer>
+<textarea id="am-source" hidden readonly aria-hidden="true">---
+title: SayAll Market · 技术与维护说明
+subtitle: 数据格式、仓库范围、校验和发布边界
+lang: zh
+template: doc
+theme: shadcn
+---
+
+## A 当前状态与仓库历史
+
+当前状态为 `Public Design Preview / Contributions Paused`。
+市场尚未上线，正式投稿和生产接入仍暂停。
+README 面向普通用户，提供已有候选方案和配件入口。
+试用文件可供手动导入，不代表生产目录已经开放。
+内容发布、真实硬件验证和格式稳定是三个独立状态。
+
+仓库名称为 `GetSayAll/sayall-market`。
+仓库于 2026-09-01 从 `GetSayAll/sayall-macro-market` 改名。
+旧 GitHub 地址仅保留平台重定向兼容。
+新文档和客户端配置统一使用当前名称。
+
+Full Keyboard Access 方案目前位于独立试用分支。
+README 下载链接固定到提交 `4be8928eca066bcbb876bc15ffeffc02155d7109`。
+该链接对应现有试用文件，不改动其验收状态。
+相关工作见 [PR #5](https://github.com/GetSayAll/sayall-market/pull/5)。
+该 PR 保持试用状态，等待真机测试。
+
+## B 仓库内容与归属
+
+| 目录或文件 | 用途 |
+|---|---|
+| `schemas/` | 公开、版本化的数据合同 |
+| `macros/` | 系统、官方和社区共享的宏按键 |
+| `profiles/` | 按目标 App 和遥控器型号组织的键位方案 |
+| `layouts/` | 按遥控器型号和场景组织的完整布局 |
+| `catalog/` | 供 App 和网站消费的公开目录索引 |
+| `examples/` | 合成示例、待验证候选和非安装内容的外部扩展介绍 |
+| `docs/` | 使用说明、数据模型、验证状态和仓库关系 |
+| `scripts/` | 公开内容的本地自动校验工具 |
+| `CONTRIBUTING.md` | 未来社区投稿流程 |
+
+本仓库保持公开、独立，不迁入私有仓库。
+私有执行实现、会员授权、审核后台和签名密钥不放在这里。
+撤销控制的私有实现也不放在这里。
+
+## C 第一版导入导出合同
+
+导入导出、组合动作、Manifest 和 Catalog 已冻结为第一版 `1.0`。
+后续读取器必须兼容第一版。
+尚未实现的布局模板仍为草案。
+
+单个或批量方案、组合动作、App 配置和个人备份使用统一合同。
+合同详见 [导入导出标准](portable-transfer-standard.html)。
+分享包使用 `format: sayall-transfer` 和 `schemaVersion: 1.0`。
+公开市场只接受分享用途，不提交个人备份。
+
+7 套 App 候选方案位于 `examples/profiles/`。
+它们是自包含分享包，每个文件包含一套方案及其快捷键。
+每套仅使用指定的 10 个位置，手势为单击。
+禁用位置明确使用 `disabled`，避免继承普通映射。
+方案版本为 `0.1.0`，最低客户端版本字段为 `1.9.21`。
+格式检查不构成已发布客户端的界面兼容声明。
+
+## D 内容与数据边界
+
+禁止提交以下内容：
+
+- 未经批准的 Shell、AppleScript/JXA 或 JavaScript。
+- 未经批准的插件、二进制或下载后执行内容。
+- API Key、Token、密码、证书及其他凭据。
+- 用户输入、剪贴板、文件、环境变量或窗口私密内容。
+- 设备 ID、蓝牙地址及 HID 指纹。
+- 本机学习到的辅助功能树、输入框路径和窗口特征。
+- 未经审查的可执行链接或隐式网络请求。
+
+经过批准的脚本可以作为未来版本的显式高风险内容。
+这类内容必须声明能力范围，并固定内容摘要。
+还必须有审核记录和可撤销状态。
+不能借助公开市场绕过客户端授权或远程执行任意步骤。
+该预期流程不表示当前已接受脚本投稿。
+
+外部扩展介绍只记录公开来源和链接。
+这些条目不是客户端安装包，也不构成官方适配或售后承诺。
+模型、图片和页面内容仍受原作者及平台规则约束。
+
+## E 发布、来源和本地执行
+
+正式内容通过 Pull Request、自动检查和维护者审核进入。
+脚本内容还需人工批准、签名发布和可撤销登记。
+已发布版本保留公开历史。
+同一版本不得绕过公开记录静默替换。
+
+| 来源 | 含义 |
+|---|---|
+| `system` | 随客户端提供的基础预设 |
+| `official` | GetSayAll 维护并在真实环境验证的官方内容 |
+| `community` | 社区作者投稿并通过审核的内容 |
+
+来源必须明确展示。
+社区内容通过审核不等于官方背书。
+候选示例不代表已经完成兼容性验证。
+官方兼容声明必须附真实遥控器和目标 App 的验证记录。
+自动化与模拟检查不得写成真实硬件验收。
+
+未来客户端下载固定、不可变的内容版本。
+客户端校验后将内容安装到本机，再离线执行。
+市场和移动端只能请求执行已安装、已批准的 `contentID`。
+请求不得携带临时步骤或脚本。
+
+## F 本地校验与维护入口
+
+使用 Node.js 20 或更新版本。
+
+```bash
+npm ci
+npm run validate
+```
+
+校验覆盖 Schema、引用、版本、摘要、能力声明和重复绑定。
+校验还检查敏感字段、脚本、下载地址及禁止内容。
+Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
+格式通过不代表动作已在目标 App 生效。
+
+| 文档 | 内容 |
+|---|---|
+| [导入导出标准](portable-transfer-standard.html) | 第一版分享、批量传输与个人备份合同 |
+| [内容模型](content-model.md) | 内容类型和引用关系 |
+| [仓库范围](repository-scope.md) | 公开与私有内容边界 |
+| [发布流程](release-process.md) | 内容发布阶段和审核条件 |
+| [验证记录模板](verification-record-template.md) | 真实硬件与目标 App 验收记录 |
+| [投稿说明](../CONTRIBUTING.md) | 投稿恢复后的预期流程 |
+| [安全说明](../SECURITY.md) | 安全问题报告入口 |
+| [Schema 说明](../schemas/README.html) | 数据合同入口 |
+
+## G 许可
+
+除另有说明的第三方材料外，仓库内容采用 CC BY-NC 4.0。
+完整条款见 [LICENSE](../LICENSE)。
+复制、分享和改编须署名，并标明修改。
+商业授权需另行取得 GetSayAll 的书面许可。
+商标、专利、隐私权及第三方材料不因该许可自动授权。
+
+CC BY-NC 4.0 含非商业限制。
+它不是 OSI 认可的开源软件许可证。
+
+Copyright © 2026 GetSayAll.
+</textarea>
+<script>
+(() => {
+  const root = document.documentElement;
+  const cycle = (list, cur) => list[(list.indexOf(cur) + 1) % list.length];
+  const label = (btn, value) => {
+    const map = JSON.parse(btn.dataset.labels || '{}');
+    btn.textContent = map[value] || value;
+  };
+  const bind = (name, attr, values) => {
+    const btn = document.querySelector(`[data-am="${name}"]`);
+    if (!btn) return;
+    label(btn, root.getAttribute(attr));
+    btn.addEventListener('click', () => {
+      const next = cycle(values, root.getAttribute(attr));
+      root.setAttribute(attr, next);
+      label(btn, next);
+    });
+  };
+  bind('theme', 'data-theme', ['blueprint', 'shadcn']);
+  bind('mode', 'data-mode', ['auto', 'light', 'dark']);
+
+  const copyBtn = document.querySelector('[data-am="copy"]');
+  copyBtn?.addEventListener('click', async () => {
+    const nodes = document.querySelectorAll('#am-source');
+    const text = nodes[nodes.length - 1]?.value ?? '';
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = Object.assign(document.createElement('textarea'), { value: text });
+      document.body.append(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+    }
+    const original = copyBtn.textContent;
+    copyBtn.textContent = copyBtn.dataset.done;
+    setTimeout(() => { copyBtn.textContent = original; }, 1400);
+  });
+})();
+</script>
+</body>
+</html>
