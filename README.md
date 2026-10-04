@@ -73,17 +73,13 @@
 | 内容 | 用途 | 入口 |
 |---|---|---|
 | 网易云音乐方案 | 播放暂停、调节音量和静音 | [下载试用方案](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/netease-music-media-controls.candidate.json) |
-| Codex 基础示例 | 打开 Codex、定位输入框和取消操作 | [下载示例](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/codex-basic.example.json) |
-| 3D 打印外壳与底座 | 查看外部作者提供的配件项目 | [查看配件入口](examples/extensions/makerworld-accessories.draft.md) |
+| 3D 打印外壳与底座 | 查看相关配件和制作项目 | [查看官网市场](https://sayall.app/market/) |
 
 网易云音乐方案适用于小米遥控器 2 Pro（RC003）。
 静音操作使用菜单键，请先核对自己的遥控器按键。
 
-Codex 基础示例需要先在本机配置目标输入框。
-仅下载方案不能自动获得该输入框的位置。
-
-配件链接指向外部作者的页面。
-请在原始页面核对适配型号、制作说明及作者许可。
+配件入口指向无线麦SayAll.app 官网市场。
+请在具体项目页面核对适配型号、制作说明及作者许可。
 
 ## 使用提示
 
