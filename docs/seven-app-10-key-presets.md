@@ -1,5 +1,5 @@
 ---
-title: 7 个 App · 遥控器 10 键方案
+title: 8 个 App · 遥控器 10 键方案
 subtitle: 无线麦SayAll.app · 下载 JSON 后在 Mac App 导入
 lang: zh
 template: doc
@@ -9,7 +9,7 @@ status: 候选方案，待真机验收
 
 ## A 下载方案
 
-每个 JSON 文件包含一套方案及其快捷键。
+每个 JSON 文件包含一套方案及其所需动作。
 适用遥控器：小米遥控器 2 Pro（RC003）。
 全部使用单击，不设置双击或长按。
 这些文件供手动导入，市场尚未上线。
@@ -23,6 +23,7 @@ status: 候选方案，待真机验收
 | 剪映桌面版 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/jianying-ten-key.candidate.json) |
 | 抖音 Mac 客户端 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/douyin-ten-key.candidate.json) |
 | Chrome | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/chrome-ten-key.candidate.json) |
+| 网易云音乐 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/netease-music-ten-key.candidate.json) |
 
 若浏览器显示 JSON 内容，请将文件另存为 `.json`。
 不要保存为网页或 `.txt` 文件。
@@ -48,7 +49,7 @@ status: 候选方案，待真机验收
 
 “不设置”表示该键不发送动作。
 空键不会沿用该位置的普通映射。
-这些方案只调用已有快捷键和系统音量功能。
+这些方案只调用已有快捷键和系统媒体控制功能。
 无需在目标 App 添加快捷键。
 不包含复制、粘贴、换行或多步清空操作。
 
@@ -104,14 +105,50 @@ WorkBuddy 的任务切换方向仍需实际验收。
 Chrome 主页键使用现有主页地址。
 关闭最后一个标签页时，Chrome 可能关闭窗口。
 
-## E 验证状态和 App 识别
+## E 网易云音乐 · 第 8 套方案
+
+适用 macOS 网易云音乐。
+上键和主页键均用于喜欢歌曲。
+喜欢歌曲使用用户提供的快捷键页中的全局键值。
+
+| 遥控器按键 | 操作 | 发出的键值 |
+|---|---|---|
+| 上 | 喜欢歌曲 | ⌥ ⌘ L |
+| 下 | 不设置 | — |
+| 左 | 上一曲 | 系统 Previous Track 媒体键 |
+| 右 | 下一曲 | 系统 Next Track 媒体键 |
+| OK | 播放 / 暂停 | 系统 Play / Pause 媒体键 |
+| 返回 | 返回 / 取消 | Esc |
+| 主页 | 喜欢歌曲 | ⌥ ⌘ L |
+| 音量+ | 增大系统音量 | 系统 Volume Up 媒体键 |
+| 音量- | 减小系统音量 | 系统 Volume Down 媒体键 |
+| 关机 | 隐藏网易云音乐窗口 | ⌘ H |
+
+上键和主页键引用同一个快捷键。
+无需修改网易云音乐的快捷键设置。
+使用现有全局快捷键时，需网易云音乐接受该键。
+再次按喜欢歌曲键的效果取决于目标 App 的现有行为。
+
+播放和切歌作用于系统当前媒体会话。
+它们可能控制其他播放器，不能保证总是控制网易云音乐。
+音量键改变系统输出音量，不改变网易云音乐的音量滑块。
+Esc 的效果取决于当前界面或弹层。
+⌘ H 隐藏 App 窗口，App 继续运行。
+
+来源：用户提供的网易云音乐 Mac 快捷键页。
+尚未完成实体遥控器和目标 App 的可见响应验收。
+
+## F 验证状态和 App 识别
 
 这些文件是候选数据，不是官方兼容承诺。
 市场合同检查和 16 项合同测试已通过。
-Mac 端已有的 6 项导入测试已通过。
-7 个文件均通过客户端解析、预览和安装准备。
-已核对全部 70 个按键位置。
+Mac 端已有的 8 项导入导出测试已通过。
+8 个文件均通过 Debug 和 Release 库的解析、预览和安装准备。
+已核对全部 80 个按键位置。
 重复导入、缺失 App 提示及规则停用检查已通过。
+
+本轮未完成已安装 App 的生产页面验收。
+读取 Mac 客户端界面的工具请求超时。
 
 安装准备检查使用模拟宿主动作序列化。
 该检查不执行按键，也不证明目标 App 已响应。
@@ -128,6 +165,7 @@ Mac 端已有的 6 项导入测试已通过。
 | 剪映专业版 | `com.lemon.lvpro` |
 | 抖音 Mac 客户端 | `com.bytedance.douyin.desktop` |
 | Chrome | `com.google.Chrome` |
+| 网易云音乐 | `com.netease.163music` |
 
 WorkBuddy 保留当前和已知旧版标识。
 只安装其中一个版本时，另一标识可能产生缺失提示。
