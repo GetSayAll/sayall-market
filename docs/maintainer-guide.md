@@ -20,7 +20,8 @@ README 面向普通用户，提供已有候选方案和配件入口。
 新文档和客户端配置统一使用当前名称。
 
 Full Keyboard Access 方案目前位于独立试用分支。
-README 下载链接固定到提交 `4be8928eca066bcbb876bc15ffeffc02155d7109`。
+Full Keyboard Access 文件来源固定到提交 `4be8928eca066bcbb876bc15ffeffc02155d7109`。
+README 通过试用版下载附件提供同一文件。
 该链接对应现有试用文件，不改动其验收状态。
 相关工作见 [PR #5](https://github.com/GetSayAll/sayall-market/pull/5)。
 该 PR 保持试用状态，等待真机测试。
@@ -138,7 +139,22 @@ Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
 | [安全说明](../SECURITY.md) | 安全问题报告入口 |
 | [Schema 说明](../schemas/README.html) | 数据合同入口 |
 
-## G 许可
+## G 下载附件
+
+单套 JSON 和 ZIP 使用 GitHub Release 附件下载入口。
+附件响应应带 `Content-Disposition: attachment`。
+这样浏览器会下载文件，不直接展示 JSON。
+
+集合版本为 `key-profiles-v0.1.0-preview.1`，保持 Pre-release。
+ZIP 包含 8 个 App 分享包、全键盘试用包、说明、许可和摘要。
+它不是客户端安装包，不修改方案内容，也不加入生产 Catalog。
+ZIP 中的 JSON 与各来源文件逐字节一致。
+发布后更新附件需使用新的集合版本，不覆盖旧附件。
+
+操作步骤见 [下载说明](download-bundle.html)。
+数据使用边界与真实硬件验收状态保持不变。
+
+## H 许可
 
 除另有说明的第三方材料外，仓库内容采用 CC BY-NC 4.0。
 完整条款见 [LICENSE](../LICENSE)。

@@ -9,6 +9,12 @@ status: 候选方案，待真机验收
 
 ## A 下载方案
 
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/sayall-key-profiles-v0.1.0-preview.1.zip)**
+
+ZIP 包含本页 8 套 App 方案和 Full Keyboard Access 试用方案。
+先解压 ZIP，再按需导入其中的 `.json` 文件。
+完整步骤见 [打包下载与导入说明](download-bundle.html)。
+
 每个 JSON 文件包含一套方案及其所需动作。
 适用遥控器：小米遥控器 2 Pro（RC003）。
 全部使用单击，不设置双击或长按。
@@ -16,17 +22,17 @@ status: 候选方案，待真机验收
 
 | App | 下载文件 |
 |---|---|
-| Codex | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/codex-ten-key.candidate.json) |
-| Claude Code desktop | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/claude-code-desktop-ten-key.candidate.json) |
-| WorkBuddy | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/workbuddy-ten-key.candidate.json) |
-| 微信 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/wechat-ten-key.candidate.json) |
-| 剪映桌面版 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/jianying-ten-key.candidate.json) |
-| 抖音 Mac 客户端 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/douyin-ten-key.candidate.json) |
-| Chrome | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/chrome-ten-key.candidate.json) |
-| 网易云音乐 | [下载 JSON](https://raw.githubusercontent.com/GetSayAll/sayall-market/main/examples/profiles/netease-music-ten-key.candidate.json) |
+| Codex | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/codex-ten-key.candidate.json) |
+| Claude Code desktop | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/claude-code-desktop-ten-key.candidate.json) |
+| WorkBuddy | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/workbuddy-ten-key.candidate.json) |
+| 微信 | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/wechat-ten-key.candidate.json) |
+| 剪映桌面版 | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/jianying-ten-key.candidate.json) |
+| 抖音 Mac 客户端 | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/douyin-ten-key.candidate.json) |
+| Chrome | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/chrome-ten-key.candidate.json) |
+| 网易云音乐 | [下载 JSON](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/netease-music-ten-key.candidate.json) |
 
-若浏览器显示 JSON 内容，请将文件另存为 `.json`。
-不要保存为网页或 `.txt` 文件。
+单套入口下载独立 JSON 附件。
+ZIP 不直接导入 Mac App。
 格式为 `sayall-transfer 1.0`，方案版本为 `0.1.0`。
 文件的最低客户端版本字段为 `1.9.21`。
 需使用已包含第一版导入功能的客户端。
