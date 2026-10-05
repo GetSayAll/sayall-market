@@ -19,12 +19,9 @@ README 面向普通用户，提供已有候选方案和配件入口。
 旧 GitHub 地址仅保留平台重定向兼容。
 新文档和客户端配置统一使用当前名称。
 
-Full Keyboard Access 方案目前位于独立试用分支。
-Full Keyboard Access 文件来源固定到提交 `4be8928eca066bcbb876bc15ffeffc02155d7109`。
-下载附件以该文件为基础，新增下述两个来源字段。
-该链接对应现有试用文件，不改动其验收状态。
-相关工作见 [PR #5](https://github.com/GetSayAll/sayall-market/pull/5)。
-该 PR 保持试用状态，等待真机测试。
+Full Keyboard Access 方案保存在 `examples/profiles/`。
+本次下载包与 App 方案使用同一文件合同。
+该方案仍待实体遥控器验收。
 
 ## B 仓库内容与归属
 
@@ -50,9 +47,13 @@ Full Keyboard Access 文件来源固定到提交 `4be8928eca066bcbb876bc15ffeffc
 后续读取器必须兼容第一版。
 尚未实现的布局模板仍为草案。
 
-单个或批量方案、组合动作、App 配置和个人备份使用统一合同。
+每个 `.sayall` 分享文件保存一个主对象及其依赖。
+个人备份也使用该合同，但不得进入市场。
 合同详见 [导入导出标准](portable-transfer-standard.html)。
+
 分享包使用 `format: sayall-transfer` 和 `schemaVersion: 1.0`。
+`requirements` 声明最低读取版本、最低 App 版本和必需能力。
+后续兼容小版本可由首版读取器读取。破坏性更新使用新主版本。
 公开市场只接受分享用途，不提交个人备份。
 
 8 套 App 候选方案位于 `examples/profiles/`。
@@ -62,7 +63,7 @@ Full Keyboard Access 文件来源固定到提交 `4be8928eca066bcbb876bc15ffeffc
 方案版本为 `0.1.0`，最低客户端版本字段为 `1.9.21`。
 格式检查不构成已发布客户端的界面兼容声明。
 
-网易云 10 键文件为 `netease-music-ten-key.candidate.json`。
+网易云 10 键文件为 `netease-music-ten-key.candidate.sayall`。
 喜欢歌曲快捷键由上键和主页键共同引用。
 上一曲与下一曲各用一个内置媒体动作步骤表示。
 共享包内嵌所需动作，导入无需另行下载依赖。
@@ -145,7 +146,7 @@ Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
 附件响应应带 `Content-Disposition: attachment`。
 这样浏览器会下载文件，不直接展示 JSON。
 
-集合版本为 `key-profiles-v0.1.0-preview.2`，保持 Pre-release。
+集合版本为 `key-profiles-v0.1.0-preview.3`，保持 Pre-release。
 ZIP 包含 8 个 App 分享包、全键盘试用包、说明、许可和摘要。
 它不是客户端安装包，也不加入生产 Catalog。
 8 套 App 使用本仓库方案文件。

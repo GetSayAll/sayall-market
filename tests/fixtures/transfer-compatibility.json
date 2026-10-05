@@ -1,0 +1,174 @@
+[
+  {
+    "name": "首版",
+    "schemaVersion": "1.0",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": true
+  },
+  {
+    "name": "兼容的小版本",
+    "schemaVersion": "1.1",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": true
+  },
+  {
+    "name": "两位数小版本",
+    "schemaVersion": "1.10",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": true
+  },
+  {
+    "name": "需要新读取器",
+    "schemaVersion": "1.1",
+    "requirements": {
+      "minimumReaderVersion": "1.1",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  },
+  {
+    "name": "大版本",
+    "schemaVersion": "2.0",
+    "requirements": {
+      "minimumReaderVersion": "2.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  },
+  {
+    "name": "伪造跨主版本读取要求",
+    "schemaVersion": "2.0",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  },
+  {
+    "name": "最低版本大于文件版本",
+    "schemaVersion": "1.0",
+    "requirements": {
+      "minimumReaderVersion": "1.1",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  },
+  {
+    "name": "旧开发版本",
+    "schemaVersion": "0.2-draft",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  },
+  {
+    "name": "非法版本",
+    "schemaVersion": "1.01",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  },
+  {
+    "name": "无要求的能力",
+    "schemaVersion": "1.0",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": [
+        "sendKeyboardShortcut"
+      ]
+    },
+    "appVersion": "2.0.0",
+    "compatible": true
+  },
+  {
+    "name": "未知必需能力",
+    "schemaVersion": "1.1",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": [
+        "futureAction"
+      ]
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  },
+  {
+    "name": "App 过旧",
+    "schemaVersion": "1.0",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "1.9.20",
+    "compatible": false
+  },
+  {
+    "name": "App 数字比较",
+    "schemaVersion": "1.0",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "1.10.0",
+    "compatible": true
+  },
+  {
+    "name": "非法 App 版本",
+    "schemaVersion": "1.0",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": []
+    },
+    "appVersion": "unknown",
+    "compatible": false
+  },
+  {
+    "name": "重复能力",
+    "schemaVersion": "1.0",
+    "requirements": {
+      "minimumReaderVersion": "1.0",
+      "minimumRemoteMicVersion": "1.9.21",
+      "capabilities": [
+        "runMacro",
+        "runMacro"
+      ]
+    },
+    "appVersion": "2.0.0",
+    "compatible": false
+  }
+]

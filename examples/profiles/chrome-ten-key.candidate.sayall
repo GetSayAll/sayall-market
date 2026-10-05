@@ -4,7 +4,6 @@
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.chrome-ten-key",
   "version": "0.1.0",
-  "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -176,5 +175,10 @@
     ],
     "focusTargets": [],
     "applications": []
+  },
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.21",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
   }
 }

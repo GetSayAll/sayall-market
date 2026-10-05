@@ -1,43 +1,186 @@
 ---
-title: SayAll 1.0 导入导出格式
-subtitle: 一个文件只声明一个主对象
+title: SayAll 首版文件格式与兼容规则
+subtitle: .sayall · JSON 编码 · 首个正式合同 1.0
+template: doc
+theme: shadcn
+lang: zh
 ---
 
-## 结论
+## A 结论和范围
 
-SayAll 方案文件使用 `format: sayall-transfer` 和 `schemaVersion: "1.0"`。客户端只读取当前单主对象格式。旧版 Market 文件不再读取。
+用户下载、导入和导出 `.sayall` 文件。文件内容是 UTF-8 JSON。
+一个分享文件只有一个主对象。键位方案可以携带组合动作依赖。
 
-## 主对象
+首个正式合同是 `1.0`。开发期文件不属于兼容承诺。
 
-| type | 主对象 | 依赖 |
+文件不使用压缩容器。当前数据无需附带图片或二进制资源。
+ZIP 只用于批量下载。用户先解压，再导入其中的 `.sayall` 文件。
+
+扩展名用于选文件。内部标识和完整校验决定文件是否可读。
+改扩展名不能绕过校验。`.sayall` 也不表示文件可信。
+
+
+## B 版本和要求
+
+| 字段 | 职责 | 首版例子 |
 |---|---|---|
-| `buttonProfile` | `profile` | `dependencies.macros`、快捷键、输入框和 App |
-| `macro` | `macro` | `dependencies.macros`、快捷键、输入框和 App |
-| `application` | `application` | 其他应用依赖 |
-| `personalBackup` | `backup` | 本机备份内容 |
+| `format` | 文件格式标识 | `sayall-transfer` |
+| `schemaVersion` | 文件写入合同版本 | `1.0` |
+| `requirements.minimumReaderVersion` | 最低读取合同版本 | `1.0` |
+| `requirements.minimumRemoteMicVersion` | 最低 Mac App 版本 | `1.9.21` |
+| `requirements.capabilities` | 额外必需能力；不支持则拒绝 | `[]` |
+| `packageID` | 方案身份 | `com.example.profile` |
+| `version` | 方案内容版本 | `1.0.0` |
+| `type` | 主对象类型 | `buttonProfile` |
+| `website`、`github` | 可选 HTTPS 来源链接 | 官网、源码仓库 |
+| `extensions` | 可忽略的命名空间说明信息 | `org.example:notes` |
 
-一个文件只能有一个主对象。键位方案可以引用组合动作。组合动作依赖不会改变文件的 `type`。
+格式版本使用两段非负整数。内容和 App 版本使用三段非负整数。
+每段最多六位。除零外，不允许前导零。版本按数字比较。
 
-## 导入
+方案内容更新不要求格式升级。修改快捷键时，只更新方案内容版本。
 
-客户端读取 `type`，自动判断文件用途。用户不需要选择用途。
+`requirements` 的三个字段必须存在。空能力数组表示没有额外能力要求。
+动作仍须通过白名单校验。空数组不会放行未知动作。
 
-导入前检查主对象、依赖 ID、遥控器型号和来源链接。来源链接只允许 HTTPS。
+遥控器型号保存在方案中。不要把同一限制复制到多个执行入口。
 
-## 示例
+## C 升级判定
 
-```json
-{
-  "format": "sayall-transfer",
-  "schemaVersion": "1.0",
-  "type": "buttonProfile",
-  "profile": {},
-  "dependencies": {
-    "macros": []
-  }
-}
-```
+以下“旧读取器”指本次首版实现，不含之前的开发包。
 
-## 兼容边界
+| 文件 | 最低读取版本 | 首版读取器 |
+|---|---|---|
+| `1.0` | `1.0` | 接受，继续检查内容 |
+| `1.1` 或 `1.10` | `1.0` | 接受，继续检查内容 |
+| `1.1` | `1.1` | 拒绝，提示更新 |
+| `2.0` | `2.0` | 拒绝，提示更新 |
+| `2.0` | `1.0` | 拒绝，跨主版本声明无效 |
+| 任意版本 | 未知必需能力 | 拒绝，提示更新 |
+| 任意版本 | App 版本不足 | 拒绝，提示更新 |
 
-不要在一个文件中同时放置 `profile` 和 `macro`。不要使用旧版顶层 `roots`、`buttonProfiles` 或 `macros`。
+同一主版本承诺保留已有字段的类型、含义和默认行为。
+兼容新增说明信息放入 `extensions`。不能改变动作执行结果。
+
+新必需字段或动作须提高最低读取版本，并声明必需能力。
+更改已有字段含义、结构或默认行为时，使用新主版本。
+
+新 Mac 可以保留旧主版本解析器。不能只扩大版本白名单。
+
+新 Mac 默认导出能完整表达内容的最低合同版本。
+当前导出器生成 `1.0`。禁止通过删除未知动作实现降级。
+
+如果未来 `2.0` 内容可完整表达为 `1.0`，另生成 `1.0` 文件。
+必须验证两个变体的行为等价。不能只改版本号。
+
+
+## D 主对象、依赖和扩展
+
+| type | 主对象字段 | 用途 |
+|---|---|---|
+| `buttonProfile` | `profile` | 一套键位方案 |
+| `macro` | `macro` | 一个组合动作 |
+| `application` | `application` | 一个 App 配置 |
+| `personalBackup` | `backup` | 显式个人备份 |
+
+前三种类型使用 `exportPurpose: share`。
+个人备份使用 `exportPurpose: personalBackup`，市场禁止分发个人备份。
+
+多个主对象字段同时出现时，拒绝整个文件。
+依赖只能放入 `dependencies`。个人备份的依赖在 `backup` 内。
+
+内嵌组合动作当前固定为合同 `1.0`。本机存储版本独立管理。
+
+未知核心字段、动作和枚举值一律拒绝。不能静默跳过动作。
+不在分享合同中支持 Shell 或 AppleScript。
+
+依赖 ID 只在文件内有效。导入时生成或复用本机 ID。
+缺失依赖、重复 ID、循环和超过八层的组合动作均拒绝。
+
+校验和预览不执行动作。保存使用现有事务保护。
+
+`extensions` 使用 `org.example:notes` 这样的命名空间。
+每个命名空间保存字符串键值表。最多 32 个命名空间。
+
+每张表最多 32 项。键最多 100 字，值最多 2048 字。
+扩展字段只保存说明，不保存脚本、依赖或执行参数。
+
+编解码保留这些说明。导入为本机对象后，重新导出创建新包。
+新包不承诺保留未知说明。执行语义不能依赖说明信息。
+
+
+整个文件最多 4 MiB。既有对象数量与文本限制继续生效。
+
+## E 市场清单与未来变体
+
+Catalog、Manifest 和方案文件各有自己的合同版本。
+Catalog 和 Manifest 首版均为 `1.0`，不跟随方案合同升级。
+
+首版清单可描述未来文件版本，App 无需先读取未来文件正文。
+
+每个 Catalog 条目包含路径、摘要、方案 ID、内容版本、文件版本和读取要求。
+同一方案可以有多个内容版本，也可以有多个格式变体。
+
+App 先按读取版本、App 版本和必需能力筛选。
+随后选择最高内容版本。同版优先选择较新的兼容文件版本。
+
+无兼容变体时提示更新，不下载后猜测格式。
+
+Catalog 条目、Manifest 和文件正文的声明必须一致。
+下载后继续校验摘要、签名、撤销状态、内容和实际动作能力。
+
+来源网址不等于签名，也不能作为可信来源证明。
+测试签名公钥只用于候选样例，不是生产信任根。
+
+
+文件和 Manifest 使用不可变发布路径。清单更新递增 `catalogVersion`。
+未来若清单自身有破坏性变化，保留原清单入口。
+
+新客户端可以使用新的清单入口。旧入口继续提供旧客户端可读内容。
+在线市场尚未上线。本次实现合同、筛选方法和候选样例。
+
+
+## F 自审发现与修复
+
+| 问题 | 修复 |
+|---|---|
+| 普通 JSON 容易被混选 | 用户文件统一使用 `.sayall` |
+| 版本精确匹配阻断兼容小版本 | 独立声明最低读取版本 |
+| 不支持的功能没有前置判定 | 在正文解码前检查必需能力 |
+| 未知字段全部拒绝，缺少扩展位置 | 为说明信息预留命名空间 |
+| 主对象混用可能被忽略 | 严格检查唯一主对象和用途 |
+| 个人备份嵌套字段未完整检查 | 共用完整依赖和设置校验 |
+| Market 宏示例缺少统一外层 | 使用相同的主对象与依赖合同 |
+| 清单与内容版本耦合 | 独立清单版本和变体描述 |
+| 文件改名会破坏摘要与签名 | 更新候选摘要及测试签名 |
+
+## G 验证和发布规则
+
+Market 和 Swift 共同读取兼容性测试矩阵。
+覆盖 `1.0`、兼容 `1.1`、新读取要求、`2.0`、非法版本和未知能力。
+
+跨仓测试读取全部下载方案、宏示例和含依赖示例。
+测试还覆盖编解码、重复导入、混合主对象和未知备份字段。
+
+
+发布前运行 `npm run validate` 和相关 Swift 测试。
+本地 SwiftPM 命令加 `--disable-keychain`。
+
+通过 PR 合入后，从明确的 `origin/main` 提交重新打包。
+下载资产生成后检查 ZIP 条目、摘要和公开下载结果。
+
+自动化通过不代表实体遥控器或第三方 App 已完成验收。
+
+## H 调研依据与取舍
+
+- [glTF 规范](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)：区分写入版本与最低读取版本。SayAll 采用该原则，并前置检查必需能力。
+- [OCI Image Index](https://github.com/opencontainers/image-spec/blob/v1.1.1/image-index.md)：索引描述多个变体。SayAll 在稳定清单中列出文件版本和读取要求。
+- [Apple UTI](https://developer.apple.com/documentation/uniformtypeidentifiers)：系统按文件类型组织选择。SayAll 使用 `.sayall` 类型筛选，同时校验内部内容。
+- [JSON Schema 对象规则](https://json-schema.org/understanding-json-schema/reference/object)：封闭对象会拒绝新增字段。SayAll 保留严格核心，并提供明确扩展位置。
+- [ProtoJSON 演进规则](https://protobuf.dev/programming-guides/json/)：字段和枚举变化可能造成解析失败。SayAll 不静默跳过未知执行内容。
+- [Kubernetes API 概述](https://kubernetes.io/docs/reference/using-api/)：合同版本与软件版本分开管理。SayAll 分离内容、合同和 App 版本。
+
+当前不引入 ZIP 容器、二进制编码、动态插件或运行时下载 Schema。
+这些机制不能自动解决兼容性，还会增加解包和执行边界。
+
+将来需要附带资源时，先设计新主版本，再提供显式转换。

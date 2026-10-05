@@ -19,8 +19,8 @@
       "com.netease.163music"
     ]
   },
-  "contentPath": "examples/profiles/netease-music-media-controls.candidate.json",
-  "contentDigest": "sha256:522bb2992f08b11c05b895f06fc55e1efb45f0211bdef0bc2d187345b3675807",
+  "contentPath": "examples/profiles/netease-music-media-controls.candidate.sayall",
+  "contentDigest": "sha256:6719d5414d20fb294df11e682a501d14ca0a08b72096f8f51bf12fedec35fd16",
   "license": "CC-BY-NC-4.0",
   "releaseNotes": "无线麦SayAll.app 的首套官方 App 键位预设候选，仅完成公开合同与客户端 API 验证；尚未通过网易云音乐和实体遥控器验收，不是官方精选或正式发布内容。 First official App profile candidate for 无线麦SayAll.app; contract and client API validation only, with real App and hardware verification still required.",
   "declaredCapabilities": [
@@ -29,9 +29,15 @@
   "verification": {
     "status": "notVerified"
   },
+  "contentSchemaVersion": "1.0",
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.18",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
+  },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "portable-transfer-v1-fixture-01",
-    "value": "TidOJ+geaNerepIH3OwwV0zdOGhzf7YfmvQJS/4XHZ1+iFYpy8WhAgLRmdtwKHjCZA483sGR+6mEI9SNC4XqCQ=="
+    "keyID": "portable-transfer-v1-fixture-02",
+    "value": "E3zdCpO8RcTwcfsZ/10Fhz/WMkpxl/taIJrDRfuHE/0WJi6CTOoB6utGBGr5x6uN2kjlIBJA2vYe+YHbk3ALDw=="
   }
 }

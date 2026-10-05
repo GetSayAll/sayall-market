@@ -2,7 +2,6 @@
   "format": "sayall-transfer",
   "packageID": "com.getsayall.example.codex-basic-profile",
   "version": "0.1.0",
-  "minimumRemoteMicVersion": "1.9.18",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -83,5 +82,10 @@
       }
     ],
     "applications": []
+  },
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.18",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
   }
 }

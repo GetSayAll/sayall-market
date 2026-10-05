@@ -18,8 +18,8 @@
       "com.openai.codex"
     ]
   },
-  "contentPath": "examples/profiles/codex-basic.example.json",
-  "contentDigest": "sha256:c412f881302496680bb073c1ebb061dde1c2e3193326c2284a47864442dc5e83",
+  "contentPath": "examples/profiles/codex-basic.example.sayall",
+  "contentDigest": "sha256:1382040b376cd48d69b4308afd8c285bfe6b1b3abbdf25e0b20f819787b316ef",
   "license": "CC-BY-NC-4.0",
   "releaseNotes": "仅用于演示第一版 App 键位方案格式，不代表已验证兼容性。",
   "declaredCapabilities": [
@@ -32,9 +32,15 @@
   "verification": {
     "status": "notVerified"
   },
+  "contentSchemaVersion": "1.0",
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.18",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
+  },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "portable-transfer-v1-fixture-01",
-    "value": "0PKRFD78CkRSPh6L7Lu2GbuIzsqNkrfsrPwpwL64xgIkmq8uDray7OR0qgERUNe//ciZUnDFo4cp1ksb58LJAA=="
+    "keyID": "portable-transfer-v1-fixture-02",
+    "value": "DaR9ul96FMAgqity6c/cRvfA0wfw+qUweR03i956iLfLu2MBR/wcXU9JtxZvVfUHhz+2BsfpfarfZScyxy3oDg=="
   }
 }

@@ -1,10 +1,10 @@
 {
   "keys": [
     {
-      "keyID": "portable-transfer-v1-fixture-01",
+      "keyID": "portable-transfer-v1-fixture-02",
       "algorithm": "ed25519",
       "format": "spki-der-base64",
-      "publicKey": "MCowBQYDK2VwAyEAtQ3ByJMimxk9qA/cRljal/0WFcQtdBNcj80qBvdS9Z0="
+      "publicKey": "MCowBQYDK2VwAyEAAGd/GVMejo1y84gmvuYgFh1Cwz0SOtHg/3XXkA9zBS0="
     }
   ]
 }

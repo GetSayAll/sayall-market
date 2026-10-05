@@ -49,3 +49,9 @@
 ## 6. 撤销
 
 发现明确安全风险时可以从后续 Catalog 中下架版本，并通过递增 `revocations.revision` 发布按 package/version、签名 key ID 或内容摘要匹配的撤销项与风险提示，但不得静默替换原文件、远程执行替代宏或修改用户本地配置。格式第一版和示例不定义生产信任根、密钥轮换或在线分发地址。
+
+## 文件版本升级
+
+按 [首版文件格式与兼容规则](portable-transfer-standard.html) 执行。兼容小版本必须声明最低读取版本。新主版本保留旧格式变体。不得改写已发布资产或只改版本号降级。
+
+运行 `python3 scripts/build-downloads.py /absolute/output/directory` 生成单文件下载和 ZIP。输出目录必须不存在。发布附件后，逐项检查公开下载和摘要。

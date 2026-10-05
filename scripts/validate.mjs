@@ -39,7 +39,7 @@ const forbiddenContentExtensions = new Set([
   ".so",
   ".ts"
 ]);
-const allowedContentExtensions = new Set([".json", ".md"]);
+const allowedContentExtensions = new Set([".json", ".sayall", ".md"]);
 
 function relativePath(filePath) {
   return path.relative(repositoryRoot, filePath).split(path.sep).join("/");
@@ -79,7 +79,9 @@ async function listFiles(relativeDirectory) {
 
 async function loadJson(filePath) {
   try {
-    return JSON.parse(await readFile(filePath, "utf8"));
+    const bytes = await readFile(filePath);
+    if (path.extname(filePath) === ".sayall" && bytes.length > 4 * 1024 * 1024) throw new Error("文件超过 4 MiB");
+    return JSON.parse(new TextDecoder("utf-8", {fatal:true}).decode(bytes));
   } catch (error) {
     errors.push(`${relativePath(filePath)}: JSON 解析失败：${error.message}`);
     return null;
@@ -130,10 +132,7 @@ function versionMatches(version, requirement) {
 }
 
 function actualCapabilities(packageType, content) {
-  if (packageType === "macro") {
-    return [...new Set(content.steps.map((step) => step.action))].sort();
-  }
-  if (packageType === 'buttonProfile') return transferCapabilities(content);
+  if (['macro', 'buttonProfile'].includes(packageType)) return transferCapabilities(content);
 
   const capabilities = new Set();
   for (const binding of content.bindings) {
@@ -173,26 +172,12 @@ for (const [type, schema] of Object.entries(loadedSchemas)) {
   catch (error) { errors.push(`${type}: Schema 编译失败：${error.message}`); }
 }
 
-const macroFiles = [
-  ...(await listFiles("macros")),
-  ...(await listFiles("examples/macros"))
-].filter((filePath) => path.extname(filePath) === ".json");
-const layoutFiles = [
-  ...(await listFiles("layouts")),
-  ...(await listFiles("examples/layouts"))
-].filter((filePath) => path.extname(filePath) === ".json");
-const buttonProfileFiles = [
-  ...(await listFiles("profiles")),
-  ...(await listFiles("examples/profiles"))
-].filter((filePath) => path.extname(filePath) === ".json");
-const manifestFiles = [
-  ...(await listFiles("catalog/manifests")),
-  ...(await listFiles("examples/manifests"))
-].filter((filePath) => path.extname(filePath) === ".json");
-const catalogFiles = (await listFiles("examples/catalog")).filter(
-  (filePath) => path.extname(filePath) === ".json"
-);
-const transferFiles = (await listFiles("examples/transfers")).filter(file => path.extname(file) === '.json');
+const macroFiles = [...(await listFiles("macros")), ...(await listFiles("examples/macros"))].filter(file => path.extname(file) === '.sayall');
+const layoutFiles = [...(await listFiles("layouts")), ...(await listFiles("examples/layouts"))].filter(file => path.extname(file) === '.json');
+const buttonProfileFiles = [...(await listFiles("profiles")), ...(await listFiles("examples/profiles"))].filter(file => path.extname(file) === '.sayall');
+const manifestFiles = [...(await listFiles("catalog/manifests")), ...(await listFiles("examples/manifests"))].filter(file => path.extname(file) === '.json');
+const catalogFiles = (await listFiles("examples/catalog")).filter(file => path.extname(file) === '.json');
+const transferFiles = (await listFiles("examples/transfers")).filter(file => path.extname(file) === '.sayall');
 const classifiedJsonFiles = new Set(
   [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles, ...catalogFiles, ...transferFiles].map((filePath) =>
     path.resolve(filePath)
@@ -213,7 +198,7 @@ for (const [schemaType, files, destination] of [
     if (!content) {
       continue;
     }
-    if (schemaType !== 'buttonProfile') scanSensitiveValues(content, filePath);
+    if (schemaType === 'layout') scanSensitiveValues(content, filePath);
 
     const validate = validators[schemaType];
     if (!validate || !validate(content)) {
@@ -223,20 +208,18 @@ for (const [schemaType, files, destination] of [
 
     const identifier =
       schemaType === "macro"
-        ? content.macroID
+        ? content.packageID
         : schemaType === "buttonProfile"
           ? content.packageID
           : content.layoutID;
-    const key = `${identifier}@${content.version}`;
+    const key = `${identifier}@${content.version}@${content.schemaVersion}`;
     if (destination.has(key)) {
       errors.push(`${relativePath(filePath)}: 内容身份与版本重复：${key}`);
     } else {
       destination.set(key, { content, filePath });
     }
 
-    if (schemaType === "macro") {
-      assertUnique(content.steps.map((step) => step.stepID), filePath, "stepID");
-    } else if (schemaType === 'buttonProfile') {
+    if (['macro', 'buttonProfile'].includes(schemaType)) {
       errors.push(...publicTransferSensitivePaths(content).map(p => `${relativePath(filePath)}: 敏感内容 ${p}`));
       if (content.exportPurpose !== 'share') errors.push(`${relativePath(filePath)}: 市场不接受个人备份`);
       errors.push(...transferIssues(content).map(e => `${relativePath(filePath)}: ${e}`));
@@ -258,7 +241,7 @@ for (const { content: bindingCollection, filePath } of layouts.values()) {
     const contentIsDraftExample = relativePath(filePath).startsWith("examples/");
     const candidates = [...macros.values()].filter(
       ({ content: macro, filePath: macroPath }) =>
-        macro.macroID === binding.target.macroID &&
+        macro.packageID === binding.target.macroID &&
         versionMatches(macro.version, binding.target.versionRequirement) &&
         (contentIsDraftExample || !relativePath(macroPath).startsWith("examples/"))
     );
@@ -328,7 +311,7 @@ for (const filePath of manifestFiles) {
 
   const contentID =
     manifest.packageType === "macro"
-      ? content.macroID
+      ? content.packageID
       : manifest.packageType === "buttonProfile"
         ? content.packageID
         : content.layoutID;
@@ -336,7 +319,8 @@ for (const filePath of manifestFiles) {
     errors.push(`${relativePath(filePath)}: packageID/version 与目标内容不一致`);
   }
 
-  if (manifest.packageType === 'buttonProfile') {
+  if (['macro', 'buttonProfile'].includes(manifest.packageType)) {
+    if (manifest.contentSchemaVersion !== content.schemaVersion || canonicalizeJson(manifest.requirements) !== canonicalizeJson(content.requirements) || manifest.compatibility.minimumRemoteMicVersion !== content.requirements.minimumRemoteMicVersion) errors.push(`${relativePath(filePath)}: 读取要求与内容不一致`);
     errors.push(...transferManifestIssues(content, manifest).map(issue => `${relativePath(filePath)}: ${issue}`));
   }
 
@@ -398,6 +382,8 @@ for (const filePath of catalogFiles) {
     if (!manifest) {
       continue;
     }
+    for (const key of ['packageID', 'version', 'contentSchemaVersion']) if (entry[key] !== manifest[key]) errors.push(`${relativePath(filePath)}: 清单 ${key} 与 Manifest 不一致`);
+    if (canonicalizeJson(entry.requirements) !== canonicalizeJson(manifest.requirements)) errors.push(`${relativePath(filePath)}: 清单读取要求与 Manifest 不一致`);
     if (entry.manifestDigest !== sha256CanonicalJson(manifest)) {
       errors.push(`${relativePath(filePath)}: manifestDigest 与 ${entry.manifestPath} 的 canonical JSON 不一致`);
     }
@@ -416,7 +402,7 @@ for (const directory of contentDirectories) {
       errors.push(`${relativePath(filePath)}: 内容目录包含禁止的可执行或脚本文件`);
     } else if (!allowedContentExtensions.has(extension)) {
       errors.push(`${relativePath(filePath)}: 内容目录包含未允许的文件类型`);
-    } else if (extension === ".json" && !classifiedJsonFiles.has(path.resolve(filePath))) {
+    } else if ([".json", ".sayall"].includes(extension) && !classifiedJsonFiles.has(path.resolve(filePath))) {
       errors.push(`${relativePath(filePath)}: JSON 文件不在已定义的内容或 Manifest 目录中`);
     }
   }
