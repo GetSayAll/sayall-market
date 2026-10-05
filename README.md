@@ -3,11 +3,11 @@
 为无线麦SayAll.app 选择遥控器键位方案，用按键操作常用 App。
 这里也收录全键盘控制方案，以及外壳、底座等配件入口。
 
-当前内容供试用。在线市场尚未上线，社区投稿暂未开放。
+当前提供 1.0 键位方案。在线市场尚未上线，社区投稿暂未开放。
 
-**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/sayall-key-profiles-v0.1.0-preview.3.zip)**
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
-包含下方 8 套 App 方案和 Full Keyboard Access 试用方案。
+包含下方 8 套 App 方案和 Full Keyboard Access 方案。
 下载后先解压，再按需导入其中的方案文件。
 方案文件以 `.sayall` 结尾。请使用本次提供的新版客户端。
 [查看打包下载与导入说明](docs/download-bundle.html)（[在线文字版](docs/download-bundle.md)）。
@@ -19,14 +19,14 @@
 
 | App | 常用操作 | 下载 |
 |---|---|---|
-| Codex | 会话切换、提交、删除、翻页、停止 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/codex-ten-key.candidate.sayall) |
-| Claude Code desktop | Code 页会话切换、提交、删除、翻页、停止 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/claude-code-desktop-ten-key.candidate.sayall) |
-| WorkBuddy | 任务切换、发送、删除、翻页、停止 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/workbuddy-ten-key.candidate.sayall) |
-| 微信 | 光标移动、发送、删除、翻页、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/wechat-ten-key.candidate.sayall) |
-| 剪映桌面版 | 逐帧移动、播放暂停、删除片段、撤销 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/jianying-ten-key.candidate.sayall) |
-| 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/douyin-ten-key.candidate.sayall) |
-| Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/chrome-ten-key.candidate.sayall) |
-| 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/netease-music-ten-key.candidate.sayall) |
+| Codex | 会话切换、提交、删除、翻页、停止 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/codex-ten-key.sayall) |
+| Claude Code desktop | Code 页会话切换、提交、删除、翻页、停止 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/claude-code-desktop-ten-key.sayall) |
+| WorkBuddy | 任务切换、发送、删除、翻页、停止 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/workbuddy-ten-key.sayall) |
+| 微信 | 光标移动、发送、删除、翻页、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/wechat-ten-key.sayall) |
+| 剪映桌面版 | 逐帧移动、播放暂停、删除片段、撤销 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/jianying-ten-key.sayall) |
+| 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/douyin-ten-key.sayall) |
+| Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/chrome-ten-key.sayall) |
+| 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall) |
 
 10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
 没有合适动作的位置设为“不设置”。
@@ -40,7 +40,7 @@
 用遥控器选择屏幕上的按钮、输入框和其他可操作项目。
 此方案适用于小米遥控器 2 Pro（RC003），供手动选择使用。
 
-[下载全键盘控制试用方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/full-keyboard-access.sayall)
+[下载全键盘控制方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/full-keyboard-access.sayall)
 
 使用前，打开 Mac 的「系统设置 → 辅助功能 → 键盘」。
 开启「全键盘控制」，再导入并选择此方案。
@@ -87,7 +87,7 @@
 
 ## 使用提示
 
-这些方案仍在候选阶段。请先检查每个按键的实际效果，再用于日常操作。
+这些方案属于 1.0 内容。请先检查每个按键的实际效果，再用于日常操作。
 
 翻页、删除和方向移动会受到当前选中位置的影响。
 Codex 的上键是否立即补充运行中指令，取决于现有发送行为。

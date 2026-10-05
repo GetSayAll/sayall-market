@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the nine public trial profiles and a reproducible download ZIP."""
+"""Build the nine public 1.0 profiles and a reproducible download ZIP."""
 import hashlib
 import json
 from pathlib import Path
@@ -7,15 +7,15 @@ import sys
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 
 ROOT = Path(__file__).resolve().parent.parent
-RELEASE = "v0.1.0-preview.3"
 NAMES = ["codex", "claude-code-desktop", "workbuddy", "wechat", "jianying", "douyin", "chrome", "netease-music"]
 
 
 def build(output):
     files = {}
     for name in NAMES:
-        filename = f"{name}-ten-key.candidate.sayall"
-        files[filename] = (ROOT / "examples/profiles" / filename).read_bytes()
+        source_name = f"{name}-ten-key.candidate.sayall"
+        filename = f"{name}-ten-key.sayall"
+        files[filename] = (ROOT / "examples/profiles" / source_name).read_bytes()
     files["full-keyboard-access.sayall"] = (ROOT / "examples/profiles/full-keyboard-access.candidate.sayall").read_bytes()
     for name, data in files.items():
         document = json.loads(data)
@@ -27,7 +27,7 @@ def build(output):
     output.mkdir(parents=True, exist_ok=False)
     for name, data in files.items():
         (output / name).write_bytes(data)
-    archive = output / f"sayall-key-profiles-{RELEASE}.zip"
+    archive = output / "sayall-key-profiles.zip"
     with ZipFile(archive, "x") as bundle:
         for name, data in sorted(files.items()):
             info = ZipInfo(name, (2026, 1, 1, 0, 0, 0))

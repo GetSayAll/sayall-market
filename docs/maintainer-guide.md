@@ -10,8 +10,8 @@ theme: shadcn
 
 当前状态为 `Public Design Preview / Contributions Paused`。
 市场尚未上线，正式投稿和生产接入仍暂停。
-README 面向普通用户，提供已有候选方案和配件入口。
-试用文件可供手动导入，不代表生产目录已经开放。
+README 面向普通用户，提供 1.0 方案和配件入口。
+下载文件可供手动导入。生产目录仍未开放。
 内容发布、真实硬件验证和格式稳定是三个独立状态。
 
 仓库名称为 `GetSayAll/sayall-market`。
@@ -60,7 +60,7 @@ Full Keyboard Access 方案保存在 `examples/profiles/`。
 它们是自包含分享包，每个文件包含一套方案及其所需动作。
 每套仅使用指定的 10 个位置，手势为单击。
 禁用位置明确使用 `disabled`，避免继承普通映射。
-方案版本为 `0.1.0`，最低客户端版本字段为 `1.9.21`。
+集合版本为 `1.0.0`，最低客户端版本字段为 `1.9.21`。
 格式检查不构成已发布客户端的界面兼容声明。
 
 网易云 10 键文件为 `netease-music-ten-key.candidate.sayall`。
@@ -146,11 +146,11 @@ Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
 附件响应应带 `Content-Disposition: attachment`。
 这样浏览器会下载文件，不直接展示 JSON。
 
-集合版本为 `key-profiles-v0.1.0-preview.3`，保持 Pre-release。
-ZIP 包含 8 个 App 分享包、全键盘试用包、说明、许可和摘要。
+集合版本为 `key-profiles-v1.0.0`，作为正式版本发布。
+ZIP 包含 8 个 App 分享包、全键盘控制包、说明、许可和摘要。
 它不是客户端安装包，也不加入生产 Catalog。
 8 套 App 使用本仓库方案文件。
-全键盘试用方案在固定来源文件上新增两个来源字段。
+全键盘控制方案在固定来源文件上新增两个来源字段。
 所有按键和动作保持不变。
 
 `website` 和 `github` 是可选的顶层 HTTPS URL。
