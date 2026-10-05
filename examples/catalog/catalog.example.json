@@ -6,11 +6,11 @@
   "manifests": [
     {
       "manifestPath": "examples/manifests/codex-basic-profile.example.json",
-      "manifestDigest": "sha256:8824c75b147aed88df10400639347c0f34f55983d4eb258c734c0ae80a9531bb"
+      "manifestDigest": "sha256:1c41885f3ca8054f3bcf47e8a4cee9670ae8330cdbde51d38b1c13695f69fc36"
     },
     {
       "manifestPath": "examples/manifests/netease-music-media-controls.candidate.json",
-      "manifestDigest": "sha256:8b59ce526cae65d65d8b777c72889be26d84f3e82e4d75720d9c91c2ed56db25"
+      "manifestDigest": "sha256:1a7521a73b9f6d03727c42870fbbd95aec904ab4955e89980bed54a4db7090a3"
     },
     {
       "manifestPath": "examples/manifests/open-codex-and-focus.example.json",

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://getsayall.com/schemas/v2/transfer-package.schema.json",
-  "title": "SayAll portable transfer package 2.0",
+  "$id": "https://getsayall.com/schemas/v1/transfer-package.schema.json",
+  "title": "SayAll portable transfer package 1.0",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -18,7 +18,7 @@
       "const": "sayall-transfer"
     },
     "schemaVersion": {
-      "const": "2.0"
+      "const": "1.0"
     },
     "packageID": {
       "$ref": "#/$defs/id"
@@ -898,10 +898,7 @@
       ],
       "properties": {
         "schemaVersion": {
-          "enum": [
-            "1.0",
-            "2.0"
-          ]
+          "const": "1.0"
         },
         "macroID": {
           "type": "string",

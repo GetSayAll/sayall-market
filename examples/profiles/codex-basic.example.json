@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.18",
   "exportPurpose": "share",
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
     "id": "com.getsayall.example.codex-basic-profile",
@@ -36,7 +36,7 @@
   "dependencies": {
     "macros": [
       {
-        "schemaVersion": "2.0",
+        "schemaVersion": "1.0",
         "macroID": "com.getsayall.example.open-codex-and-focus",
         "version": "0.1.0",
         "name": "打开 Codex 并聚焦输入框",
