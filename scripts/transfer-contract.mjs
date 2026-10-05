@@ -1,6 +1,15 @@
 import { forbiddenContractKeyPattern, forbiddenContractValuePattern } from './marketplace-contract.mjs';
 
-export function transferBundleIdentifiers(p) {
+export function normalizeTransfer(p) {
+  if (p?.type === 'buttonProfile') return { ...p, roots: [{ kind: 'buttonProfile', id: p.profile.id }], macros: p.dependencies?.macros ?? [], shortcuts: p.dependencies?.shortcuts ?? [], focusTargets: p.dependencies?.focusTargets ?? [], applications: p.dependencies?.applications ?? [], buttonProfiles: [p.profile] };
+  if (p?.type === 'macro') return { ...p, roots: [{ kind: 'macro', id: p.macro.macroID }], macros: [p.macro, ...(p.dependencies?.macros ?? [])], shortcuts: p.dependencies?.shortcuts ?? [], focusTargets: p.dependencies?.focusTargets ?? [], applications: p.dependencies?.applications ?? [], buttonProfiles: [] };
+  if (p?.type === 'application') return { ...p, roots: [{ kind: 'application', id: p.application.id }], macros: p.dependencies?.macros ?? [], shortcuts: p.dependencies?.shortcuts ?? [], focusTargets: p.dependencies?.focusTargets ?? [], applications: [p.application, ...(p.dependencies?.applications ?? [])], buttonProfiles: [] };
+  if (p?.type === 'personalBackup') return { ...p, ...(p.backup ?? {}) };
+  return p;
+}
+
+export function transferBundleIdentifiers(input) {
+  const p = normalizeTransfer(input);
   return [...new Set([
     ...p.buttonProfiles.flatMap(profile => profile.applicationBundleIdentifiers),
     ...p.applications.map(app => app.bundleIdentifier),
@@ -12,18 +21,40 @@ export function transferBundleIdentifiers(p) {
   ])].sort();
 }
 
-export function transferManifestIssues(p, manifest) {
+export function transferManifestIssues(input, manifest) {
+  const p = normalizeTransfer(input);
   const declared = manifest.compatibility.bundleIdentifiers;
   return declared !== undefined && JSON.stringify([...declared].sort()) !== JSON.stringify(transferBundleIdentifiers(p))
     ? ['compatibility.bundleIdentifiers 与包内完整 App 集合不一致'] : [];
 }
 
 /** Semantic constraints supplement JSON Schema. No I/O or action execution. */
-export function transferIssues(p) {
+export function transferIssues(input) {
+  const p = normalizeTransfer(input);
   const errors = [];
   const fail = (path) => errors.push(path);
-  const macroVersion = p.schemaVersion === '0.2-draft' ? '0.3-draft' : '1.0';
-  for (const macro of p.macros) if (macro.schemaVersion !== macroVersion) fail(`macro:${macro.macroID}:schemaVersion`);
+  for (const key of ['website', 'github']) if (Object.prototype.hasOwnProperty.call(p, key)) {
+    if (typeof p[key] !== 'string') { fail(key); continue; }
+    try {
+      const url = new URL(p[key]);
+      if (url.protocol !== 'https:' || !url.hostname || url.username || url.password) fail(key);
+    } catch { fail(key); }
+  }
+  if (input.type !== undefined) {
+    if (p.schemaVersion !== '2.0') fail('schemaVersion');
+    if (!['buttonProfile', 'macro', 'application', 'personalBackup'].includes(input.type)) fail('type');
+    if (input.type === 'buttonProfile' && (!input.profile || input.macro || input.application || input.backup)) fail('主对象只能是键位方案');
+    if (input.type === 'macro' && (!input.macro || input.profile || input.application || input.backup)) fail('主对象只能是组合动作');
+    if (input.type === 'application' && (!input.application || input.profile || input.macro || input.backup)) fail('主对象只能是 App');
+    if (input.type === 'personalBackup' && (!input.backup || input.profile || input.macro || input.application)) fail('主对象只能是个人备份');
+  } else {
+    if (!['1.0', '0.2-draft'].includes(p.schemaVersion)) fail('schemaVersion');
+    const macroVersion = p.schemaVersion === '0.2-draft' ? '0.3-draft' : '1.0';
+    for (const macro of p.macros ?? []) if (macro.schemaVersion !== macroVersion) fail(`macro:${macro.macroID}:schemaVersion`);
+    if (p.exportPurpose === 'share' && p.hostSettings) fail('分享不允许个人设置');
+    if (p.hostSettings?.audio && (!Number.isFinite(p.hostSettings.audio.gainDB) || p.hostSettings.audio.gainDB < 0 || p.hostSettings.audio.gainDB > 24)) fail('hostSettings.audio');
+  }
+  if (input.type !== undefined) for (const macro of p.macros) if (!['1.0', '2.0'].includes(macro.schemaVersion)) fail(`macro:${macro.macroID}:schemaVersion`);
   const maps = {};
   const text = (value) => typeof value === 'string' && value.trim().length > 0 && !/[\u0000-\u001f\u007f-\u009f]/u.test(value);
   for (const values of [p.shortcuts, p.focusTargets, p.applications])
@@ -47,6 +78,7 @@ export function transferIssues(p) {
       maps[kind].set(value[key], value);
     }
   }
+  if (p.applications.some(a => Object.prototype.hasOwnProperty.call(a, 'website') || Object.prototype.hasOwnProperty.call(a, 'payload')) || Object.prototype.hasOwnProperty.call(input, 'script')) fail('未知字段');
   if (p.hostSettings) maps.hostSettings = new Map([[p.hostSettings.id, p.hostSettings]]);
   for (const root of p.roots) if (!maps[root.kind]?.has(root.id)) fail(`roots:${root.kind}:${root.id}`);
   const reference = (kind, id, path) => {
@@ -119,7 +151,8 @@ export function transferIssues(p) {
   return errors;
 }
 
-export function transferCapabilities(p) {
+export function transferCapabilities(input) {
+  const p = normalizeTransfer(input);
   const result = new Set();
   for (const m of p.macros) for (const s of m.steps) result.add(s.action);
   for (const profile of p.buttonProfiles) for (const b of profile.bindings) {
@@ -134,18 +167,19 @@ export function transferCapabilities(p) {
   return [...result].sort();
 }
 
-/** Only an explicitly validated openURL step permits a declared http(s) URL. */
+/** Source links and explicitly validated openURL steps permit declared URLs. */
 export function publicTransferSensitivePaths(value, path = '$', allowURL = false) {
   if (Array.isArray(value)) return value.flatMap((v, i) => publicTransferSensitivePaths(v, `${path}[${i}]`));
   if (value && typeof value === 'object') return Object.entries(value).flatMap(([key, child]) => [
     ...(forbiddenContractKeyPattern.test(key) || key === 'target' && value.bundleIdentifier && value.id ? [`${path}.${key}`] : []),
-    ...publicTransferSensitivePaths(child, `${path}.${key}`, key === 'urlString' && path.endsWith('.parameters'))
+    ...publicTransferSensitivePaths(child, `${path}.${key}`, key === 'urlString' && path.endsWith('.parameters') || path === '$' && ['website', 'github'].includes(key))
   ]);
   if (typeof value !== 'string') return [];
   if (allowURL) {
     try {
       const url = new URL(value);
-      if (['https:', 'http:'].includes(url.protocol) && url.hostname && !url.username && !url.password) return [];
+      const protocols = ['$.website', '$.github'].includes(path) ? ['https:'] : ['https:', 'http:'];
+      if (protocols.includes(url.protocol) && url.hostname && !url.username && !url.password) return [];
     } catch { /* Invalid URLs are rejected, not globally exempted. */ }
   }
   return forbiddenContractValuePattern.test(value) ? [path] : [];

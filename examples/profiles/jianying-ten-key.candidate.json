@@ -1,152 +1,149 @@
 {
   "format": "sayall-transfer",
-  "schemaVersion": "1.0",
+  "website": "https://sayall.app/market/",
+  "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.jianying-ten-key",
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "roots": [
-    {
-      "kind": "buttonProfile",
-      "id": "com.getsayall.candidate.jianying-ten-key"
-    }
-  ],
-  "macros": [],
-  "shortcuts": [
-    {
-      "id": "com.getsayall.candidate.jianying-ten-key.left",
-      "displayName": "上一帧",
-      "keyCode": 123,
-      "keyLabel": "←",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.jianying-ten-key.right",
-      "displayName": "下一帧",
-      "keyCode": 124,
-      "keyLabel": "→",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.jianying-ten-key.ok",
-      "displayName": "播放 / 暂停",
-      "keyCode": 49,
-      "keyLabel": "Space",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.jianying-ten-key.back",
-      "displayName": "删除选中片段（待验）",
-      "keyCode": 51,
-      "keyLabel": "Backspace",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.jianying-ten-key.volume-down",
-      "displayName": "向下翻一屏",
-      "keyCode": 121,
-      "keyLabel": "Page Down",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.jianying-ten-key.power",
-      "displayName": "撤销上一步操作",
-      "keyCode": 6,
-      "keyLabel": "Z",
-      "modifiers": [
-        "command"
-      ]
-    }
-  ],
-  "focusTargets": [],
-  "applications": [],
-  "buttonProfiles": [
-    {
-      "id": "com.getsayall.candidate.jianying-ten-key",
-      "name": "剪映桌面版 10键",
-      "remoteModel": "xiaomi-remote-2-pro",
-      "mode": "automatic",
-      "applicationBundleIdentifiers": [
-        "com.lemon.lvpro"
-      ],
-      "bindings": [
-        {
-          "controlID": "up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "disabled"
-          }
-        },
-        {
-          "controlID": "down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "disabled"
-          }
-        },
-        {
-          "controlID": "left",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.jianying-ten-key.left"
-          }
-        },
-        {
-          "controlID": "right",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.jianying-ten-key.right"
-          }
-        },
-        {
-          "controlID": "ok",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.jianying-ten-key.ok"
-          }
-        },
-        {
-          "controlID": "back",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.jianying-ten-key.back"
-          }
-        },
-        {
-          "controlID": "home",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "disabled"
-          }
-        },
-        {
-          "controlID": "volume-up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "disabled"
-          }
-        },
-        {
-          "controlID": "volume-down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.jianying-ten-key.volume-down"
-          }
-        },
-        {
-          "controlID": "power",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.jianying-ten-key.power"
-          }
+  "schemaVersion": "2.0",
+  "type": "buttonProfile",
+  "profile": {
+    "id": "com.getsayall.candidate.jianying-ten-key",
+    "name": "剪映桌面版 10键",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "automatic",
+    "applicationBundleIdentifiers": [
+      "com.lemon.lvpro"
+    ],
+    "bindings": [
+      {
+        "controlID": "up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "controlID": "down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "left",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.left"
+        }
+      },
+      {
+        "controlID": "right",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.right"
+        }
+      },
+      {
+        "controlID": "ok",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.ok"
+        }
+      },
+      {
+        "controlID": "back",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.back"
+        }
+      },
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "volume-up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "volume-down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.volume-down"
+        }
+      },
+      {
+        "controlID": "power",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.power"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [],
+    "shortcuts": [
+      {
+        "id": "com.getsayall.candidate.jianying-ten-key.left",
+        "displayName": "上一帧",
+        "keyCode": 123,
+        "keyLabel": "←",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.jianying-ten-key.right",
+        "displayName": "下一帧",
+        "keyCode": 124,
+        "keyLabel": "→",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.jianying-ten-key.ok",
+        "displayName": "播放 / 暂停",
+        "keyCode": 49,
+        "keyLabel": "Space",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.jianying-ten-key.back",
+        "displayName": "删除选中片段（待验）",
+        "keyCode": 51,
+        "keyLabel": "Backspace",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.jianying-ten-key.volume-down",
+        "displayName": "向下翻一屏",
+        "keyCode": 121,
+        "keyLabel": "Page Down",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.jianying-ten-key.power",
+        "displayName": "撤销上一步操作",
+        "keyCode": 6,
+        "keyLabel": "Z",
+        "modifiers": [
+          "command"
+        ]
+      }
+    ],
+    "focusTargets": [],
+    "applications": []
+  }
 }

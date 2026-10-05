@@ -1,11 +1,11 @@
 # 发布流程
 
-格式第一版已冻结；本流程中的 Draft 指内容审核阶段。正式内容仍须通过发布门禁。
+格式 v2 已冻结；本流程中的 Draft 指内容审核阶段。正式内容仍须通过发布门禁。
 
 ## 1. Draft
 
 - 新格式和未验证内容只放在 `examples/`；
-- 已实现的导入导出、组合动作、Manifest 和 Catalog 使用 `schemaVersion: "1.0"`；尚未实现的布局合同仍为草案；
+- 已实现的导入导出、组合动作、Manifest 和 Catalog 使用 `schemaVersion: "2.0"`；尚未实现的布局合同仍为草案；
 - Draft Manifest 的 `status` 为 `draft`、验证状态为 `notVerified`；
 - Draft Catalog 的 `status` 为 `candidate`，只放在 `examples/catalog/`；
 - Draft 不进入 `macros/`、`profiles/`、`layouts/` 或生产 Catalog。

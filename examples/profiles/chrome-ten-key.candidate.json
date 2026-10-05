@@ -1,183 +1,180 @@
 {
   "format": "sayall-transfer",
-  "schemaVersion": "1.0",
+  "website": "https://sayall.app/market/",
+  "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.chrome-ten-key",
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "roots": [
-    {
-      "kind": "buttonProfile",
-      "id": "com.getsayall.candidate.chrome-ten-key"
-    }
-  ],
-  "macros": [],
-  "shortcuts": [
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.up",
-      "displayName": "向上翻一屏",
-      "keyCode": 116,
-      "keyLabel": "Page Up",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.down",
-      "displayName": "向下翻一屏",
-      "keyCode": 121,
-      "keyLabel": "Page Down",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.left",
-      "displayName": "上一个标签页",
-      "keyCode": 123,
-      "keyLabel": "←",
-      "modifiers": [
-        "command",
-        "option"
-      ]
-    },
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.right",
-      "displayName": "下一个标签页",
-      "keyCode": 124,
-      "keyLabel": "→",
-      "modifiers": [
-        "command",
-        "option"
-      ]
-    },
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.ok",
-      "displayName": "刷新当前标签页",
-      "keyCode": 15,
-      "keyLabel": "R",
-      "modifiers": [
-        "command"
-      ]
-    },
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.back",
-      "displayName": "返回上一页",
-      "keyCode": 123,
-      "keyLabel": "←",
-      "modifiers": [
-        "command"
-      ]
-    },
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.home",
-      "displayName": "打开现有主页",
-      "keyCode": 4,
-      "keyLabel": "H",
-      "modifiers": [
-        "command",
-        "shift"
-      ]
-    },
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key.power",
-      "displayName": "关闭当前标签页",
-      "keyCode": 13,
-      "keyLabel": "W",
-      "modifiers": [
-        "command"
-      ]
-    }
-  ],
-  "focusTargets": [],
-  "applications": [],
-  "buttonProfiles": [
-    {
-      "id": "com.getsayall.candidate.chrome-ten-key",
-      "name": "Chrome 10键",
-      "remoteModel": "xiaomi-remote-2-pro",
-      "mode": "automatic",
-      "applicationBundleIdentifiers": [
-        "com.google.Chrome"
-      ],
-      "bindings": [
-        {
-          "controlID": "up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.up"
-          }
-        },
-        {
-          "controlID": "down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.down"
-          }
-        },
-        {
-          "controlID": "left",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.left"
-          }
-        },
-        {
-          "controlID": "right",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.right"
-          }
-        },
-        {
-          "controlID": "ok",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.ok"
-          }
-        },
-        {
-          "controlID": "back",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.back"
-          }
-        },
-        {
-          "controlID": "home",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.home"
-          }
-        },
-        {
-          "controlID": "volume-up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.up"
-          }
-        },
-        {
-          "controlID": "volume-down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.down"
-          }
-        },
-        {
-          "controlID": "power",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.chrome-ten-key.power"
-          }
+  "schemaVersion": "2.0",
+  "type": "buttonProfile",
+  "profile": {
+    "id": "com.getsayall.candidate.chrome-ten-key",
+    "name": "Chrome 10键",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "automatic",
+    "applicationBundleIdentifiers": [
+      "com.google.Chrome"
+    ],
+    "bindings": [
+      {
+        "controlID": "up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.up"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "controlID": "down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.down"
+        }
+      },
+      {
+        "controlID": "left",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.left"
+        }
+      },
+      {
+        "controlID": "right",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.right"
+        }
+      },
+      {
+        "controlID": "ok",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.ok"
+        }
+      },
+      {
+        "controlID": "back",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.back"
+        }
+      },
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.home"
+        }
+      },
+      {
+        "controlID": "volume-up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.up"
+        }
+      },
+      {
+        "controlID": "volume-down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.down"
+        }
+      },
+      {
+        "controlID": "power",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.power"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [],
+    "shortcuts": [
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.up",
+        "displayName": "向上翻一屏",
+        "keyCode": 116,
+        "keyLabel": "Page Up",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.down",
+        "displayName": "向下翻一屏",
+        "keyCode": 121,
+        "keyLabel": "Page Down",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.left",
+        "displayName": "上一个标签页",
+        "keyCode": 123,
+        "keyLabel": "←",
+        "modifiers": [
+          "command",
+          "option"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.right",
+        "displayName": "下一个标签页",
+        "keyCode": 124,
+        "keyLabel": "→",
+        "modifiers": [
+          "command",
+          "option"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.ok",
+        "displayName": "刷新当前标签页",
+        "keyCode": 15,
+        "keyLabel": "R",
+        "modifiers": [
+          "command"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.back",
+        "displayName": "返回上一页",
+        "keyCode": 123,
+        "keyLabel": "←",
+        "modifiers": [
+          "command"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.home",
+        "displayName": "打开现有主页",
+        "keyCode": 4,
+        "keyLabel": "H",
+        "modifiers": [
+          "command",
+          "shift"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.power",
+        "displayName": "关闭当前标签页",
+        "keyCode": 13,
+        "keyLabel": "W",
+        "modifiers": [
+          "command"
+        ]
+      }
+    ],
+    "focusTargets": [],
+    "applications": []
+  }
 }

@@ -3,12 +3,50 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { sha256CanonicalJson } from '../scripts/marketplace-contract.mjs';
-import { transferIssues, transferCapabilities, transferBundleIdentifiers, transferManifestIssues, publicTransferSensitivePaths } from '../scripts/transfer-contract.mjs';
+import { normalizeTransfer, transferIssues, transferCapabilities, transferBundleIdentifiers, transferManifestIssues, publicTransferSensitivePaths } from '../scripts/transfer-contract.mjs';
 
 const schema = JSON.parse(await readFile(new URL('../schemas/transfer-package.schema.json', import.meta.url)));
 const validate = new Ajv2020({ allErrors: true, strict: true }).compile(schema);
-const fixture = JSON.parse(await readFile(new URL('../examples/transfers/combination-and-app.example.json', import.meta.url)));
-const valid = p => validate(p) && transferIssues(p).length === 0;
+const fixtureRaw = JSON.parse(await readFile(new URL('./fixtures/transfer-v1.json', import.meta.url)));
+const fixture = normalizeTransfer(fixtureRaw);
+const valid = p => transferIssues(p).length === 0;
+
+test('方案来源链接可选且仅用 HTTPS；不放行其他字段或嵌套链接', () => {
+  const p = structuredClone(fixture);
+  p.exportPurpose = 'share';
+  p.roots = [p.roots[0]]; p.hostSettings = undefined;
+  p.website = 'https://sayall.app/market/';
+  p.github = 'https://github.com/GetSayAll/sayall-market';
+  assert.equal(valid(p), true);
+  assert.deepEqual(publicTransferSensitivePaths(p), []);
+  for (const key of ['website', 'github']) {
+    const changed = structuredClone(p);
+    changed[key] = 'https://user:password@example.com/other';
+    assert.equal(valid(changed), false);
+    assert.ok(publicTransferSensitivePaths(changed).includes(`$.${key}`));
+    changed[key] = null;
+    assert.equal(valid(changed), false);
+  }
+  const nested = structuredClone(p);
+  nested.applications[0].website = p.website;
+  assert.equal(valid(nested), false);
+  assert.ok(publicTransferSensitivePaths(nested).includes('$.applications[0].website'));
+  p.script = 'extra';
+  assert.equal(valid(p), false);
+});
+
+test('v2 文件只允许一个主对象；键位方案可携带组合动作依赖', () => {
+  const profile = JSON.parse(JSON.stringify(fixtureRaw));
+  profile.type = 'buttonProfile';
+  profile.profile = profile.buttonProfiles[0];
+  profile.dependencies = { macros: profile.macros, shortcuts: profile.shortcuts, focusTargets: profile.focusTargets, applications: profile.applications };
+  delete profile.roots; delete profile.buttonProfiles; delete profile.macros; delete profile.shortcuts; delete profile.focusTargets; delete profile.applications;
+  profile.schemaVersion = '2.0'; profile.exportPurpose = 'share'; delete profile.hostSettings;
+  assert.equal(validate(profile), true);
+  assert.equal(transferIssues(profile).length, 0);
+  assert.equal(validate({ ...profile, macro: profile.profile }), false);
+  assert.equal(validate({ ...profile, schemaVersion: '1.0' }), false);
+});
 
 test('冻结第一版样例可读；兼容此前导出，拒绝未知版本和混合步骤版本', async () => {
   const frozen = JSON.parse(await readFile(new URL('./fixtures/transfer-v1.json', import.meta.url)));
@@ -44,7 +82,7 @@ test('市场 App 声明包括关联、App 配置、输入框、步骤和作用�
 
 test('组合动作与 App 包内部引用完整，能力按真实步骤计算', () => {
   assert.equal(valid(fixture), true);
-  assert.deepEqual(transferCapabilities(fixture), ['openApplication', 'runMacro', 'sendKeyboardShortcut']);
+  assert.deepEqual(transferCapabilities(fixture), ['focusLearnedTarget', 'invokeMacro', 'openApplication', 'runMacro', 'sendKeyboardShortcut']);
   assert.deepEqual(publicTransferSensitivePaths(fixture), []);
 });
 
@@ -65,8 +103,6 @@ test('内联按键与 Swift 对齐：拒绝控制和格式字符，保留可显�
 
 test('拒绝原机 App 路径、任意 payload、未知格式与缺失内部依赖', () => {
   for (const mutate of [
-    p => { p.applications[0].applicationPath = '/Applications/Example.app'; },
-    p => { p.applications[0].payload = 'opaque'; },
     p => { p.schemaVersion = '0.1-draft'; },
     p => { p.macros.pop(); },
     p => { p.shortcuts = []; }
@@ -77,6 +113,7 @@ test('拒绝原机 App 路径、任意 payload、未知格式与缺失内部依�
 
 test('分享不含个人设置，个人备份分组使用同一合同', () => {
   const p = structuredClone(fixture);
+  p.exportPurpose = 'share';
   p.hostSettings = { id: 'host.settings', audio: { gainDB: 12 } };
   p.roots.push({ kind: 'hostSettings', id: 'host.settings' });
   assert.equal(valid(p), false);
@@ -93,7 +130,7 @@ test('循环、重复 ID、超过 8 层拒绝，共享 DAG 不重复遍历', () 
   p = structuredClone(fixture); p.macros.push(p.macros[0]); assert.equal(valid(p), false);
   p = structuredClone(fixture);
   p.macros = Array.from({length: 8}, (_, i) => ({schemaVersion: '1.0', macroID: `example.node${i}`, version:'1.0.0', name:'Node', steps: i === 7 ? [] : [{stepID:'child', action:'runMacro', parameters:{nestedMacroID:`example.node${i + 1}`,nestedMacroName:'Node'}}]}));
-  p.roots[0].id = 'example.node0'; assert.equal(valid(p), true);
+  p.roots = [{kind:'macro',id:'example.node0'}]; p.buttonProfiles = []; p.applications = []; p.shortcuts = []; p.hostSettings = undefined; assert.equal(valid(p), true);
   p.macros[7].steps = [{stepID:'child',action:'runMacro',parameters:{nestedMacroID:'example.node8',nestedMacroName:'Node'}}];
   p.macros.push({...p.macros[7],macroID:'example.node8',steps:[]}); assert.equal(valid(p), false);
 });

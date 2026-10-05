@@ -9,7 +9,7 @@ status: 候选方案，待真实验收
 
 ## A 下载与内容
 
-[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/sayall-key-profiles-v0.1.0-preview.1.zip)
+[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/sayall-key-profiles-v0.1.0-preview.2.zip)
 
 ZIP 包含下表 9 个独立方案文件。
 每个文件都包含该方案所需的动作。
@@ -18,15 +18,20 @@ ZIP 包含下表 9 个独立方案文件。
 
 | 方案 | ZIP 中的文件 | 单套下载 |
 |---|---|---|
-| Codex | `codex-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/codex-ten-key.candidate.json) |
-| Claude Code desktop | `claude-code-desktop-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/claude-code-desktop-ten-key.candidate.json) |
-| WorkBuddy | `workbuddy-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/workbuddy-ten-key.candidate.json) |
-| 微信 | `wechat-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/wechat-ten-key.candidate.json) |
-| 剪映桌面版 | `jianying-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/jianying-ten-key.candidate.json) |
-| 抖音 Mac 客户端 | `douyin-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/douyin-ten-key.candidate.json) |
-| Chrome | `chrome-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/chrome-ten-key.candidate.json) |
-| 网易云音乐 | `netease-music-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/netease-music-ten-key.candidate.json) |
-| Full Keyboard Access · 全键盘控制 | `full-keyboard-access.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/full-keyboard-access.json) |
+| Codex | `codex-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/codex-ten-key.candidate.json) |
+| Claude Code desktop | `claude-code-desktop-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/claude-code-desktop-ten-key.candidate.json) |
+| WorkBuddy | `workbuddy-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/workbuddy-ten-key.candidate.json) |
+| 微信 | `wechat-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/wechat-ten-key.candidate.json) |
+| 剪映桌面版 | `jianying-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/jianying-ten-key.candidate.json) |
+| 抖音 Mac 客户端 | `douyin-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/douyin-ten-key.candidate.json) |
+| Chrome | `chrome-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/chrome-ten-key.candidate.json) |
+| 网易云音乐 | `netease-music-ten-key.candidate.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/netease-music-ten-key.candidate.json) |
+| Full Keyboard Access · 全键盘控制 | `full-keyboard-access.json` | [下载](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.2/full-keyboard-access.json) |
+
+方案文件带有官网和 GitHub 链接。
+Mac 的键位方案首页和详情页显示这些链接。
+需要支持来源链接的客户端。
+旧版 v1 文件不再读取。请重新下载 v2 方案。
 
 ## B 解压与导入
 

@@ -1,168 +1,165 @@
 {
   "format": "sayall-transfer",
-  "schemaVersion": "1.0",
+  "website": "https://sayall.app/market/",
+  "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.netease-music-ten-key",
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "roots": [
-    {
-      "kind": "buttonProfile",
-      "id": "com.getsayall.candidate.netease-music-ten-key"
-    }
-  ],
-  "macros": [
-    {
-      "schemaVersion": "1.0",
-      "macroID": "com.getsayall.candidate.netease-music-ten-key.previousTrack",
-      "version": "0.1.0",
-      "name": "上一曲（系统媒体键）",
-      "steps": [
-        {
-          "stepID": "media-key",
-          "action": "builtInAction",
-          "parameters": {
-            "builtInAction": "previousTrack"
-          }
+  "schemaVersion": "2.0",
+  "type": "buttonProfile",
+  "profile": {
+    "id": "com.getsayall.candidate.netease-music-ten-key",
+    "name": "网易云音乐 10键",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "automatic",
+    "applicationBundleIdentifiers": [
+      "com.netease.163music"
+    ],
+    "bindings": [
+      {
+        "controlID": "up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.netease-music-ten-key.like"
         }
-      ]
-    },
-    {
-      "schemaVersion": "1.0",
-      "macroID": "com.getsayall.candidate.netease-music-ten-key.nextTrack",
-      "version": "0.1.0",
-      "name": "下一曲（系统媒体键）",
-      "steps": [
-        {
-          "stepID": "media-key",
-          "action": "builtInAction",
-          "parameters": {
-            "builtInAction": "nextTrack"
-          }
+      },
+      {
+        "controlID": "down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
         }
-      ]
-    }
-  ],
-  "shortcuts": [
-    {
-      "id": "com.getsayall.candidate.netease-music-ten-key.like",
-      "displayName": "喜欢歌曲",
-      "keyCode": 37,
-      "keyLabel": "L",
-      "modifiers": [
-        "command",
-        "option"
-      ]
-    },
-    {
-      "id": "com.getsayall.candidate.netease-music-ten-key.cancel",
-      "displayName": "返回 / 取消",
-      "keyCode": 53,
-      "keyLabel": "Esc",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.netease-music-ten-key.hide",
-      "displayName": "隐藏网易云音乐窗口",
-      "keyCode": 4,
-      "keyLabel": "H",
-      "modifiers": [
-        "command"
-      ]
-    }
-  ],
-  "focusTargets": [],
-  "applications": [],
-  "buttonProfiles": [
-    {
-      "id": "com.getsayall.candidate.netease-music-ten-key",
-      "name": "网易云音乐 10键",
-      "remoteModel": "xiaomi-remote-2-pro",
-      "mode": "automatic",
-      "applicationBundleIdentifiers": [
-        "com.netease.163music"
-      ],
-      "bindings": [
-        {
-          "controlID": "up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.netease-music-ten-key.like"
-          }
-        },
-        {
-          "controlID": "down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "disabled"
-          }
-        },
-        {
-          "controlID": "left",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "macro",
-            "referenceID": "com.getsayall.candidate.netease-music-ten-key.previousTrack"
-          }
-        },
-        {
-          "controlID": "right",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "macro",
-            "referenceID": "com.getsayall.candidate.netease-music-ten-key.nextTrack"
-          }
-        },
-        {
-          "controlID": "ok",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "host",
-            "actionID": "playPause"
-          }
-        },
-        {
-          "controlID": "back",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.netease-music-ten-key.cancel"
-          }
-        },
-        {
-          "controlID": "home",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.netease-music-ten-key.like"
-          }
-        },
-        {
-          "controlID": "volume-up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "host",
-            "actionID": "volumeUp"
-          }
-        },
-        {
-          "controlID": "volume-down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "host",
-            "actionID": "volumeDown"
-          }
-        },
-        {
-          "controlID": "power",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.netease-music-ten-key.hide"
-          }
+      },
+      {
+        "controlID": "left",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "macro",
+          "referenceID": "com.getsayall.candidate.netease-music-ten-key.previousTrack"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "controlID": "right",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "macro",
+          "referenceID": "com.getsayall.candidate.netease-music-ten-key.nextTrack"
+        }
+      },
+      {
+        "controlID": "ok",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "playPause"
+        }
+      },
+      {
+        "controlID": "back",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.netease-music-ten-key.cancel"
+        }
+      },
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.netease-music-ten-key.like"
+        }
+      },
+      {
+        "controlID": "volume-up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "volumeUp"
+        }
+      },
+      {
+        "controlID": "volume-down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "volumeDown"
+        }
+      },
+      {
+        "controlID": "power",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.netease-music-ten-key.hide"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [
+      {
+        "schemaVersion": "2.0",
+        "macroID": "com.getsayall.candidate.netease-music-ten-key.previousTrack",
+        "version": "0.1.0",
+        "name": "上一曲（系统媒体键）",
+        "steps": [
+          {
+            "stepID": "media-key",
+            "action": "builtInAction",
+            "parameters": {
+              "builtInAction": "previousTrack"
+            }
+          }
+        ]
+      },
+      {
+        "schemaVersion": "2.0",
+        "macroID": "com.getsayall.candidate.netease-music-ten-key.nextTrack",
+        "version": "0.1.0",
+        "name": "下一曲（系统媒体键）",
+        "steps": [
+          {
+            "stepID": "media-key",
+            "action": "builtInAction",
+            "parameters": {
+              "builtInAction": "nextTrack"
+            }
+          }
+        ]
+      }
+    ],
+    "shortcuts": [
+      {
+        "id": "com.getsayall.candidate.netease-music-ten-key.like",
+        "displayName": "喜欢歌曲",
+        "keyCode": 37,
+        "keyLabel": "L",
+        "modifiers": [
+          "command",
+          "option"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.netease-music-ten-key.cancel",
+        "displayName": "返回 / 取消",
+        "keyCode": 53,
+        "keyLabel": "Esc",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.netease-music-ten-key.hide",
+        "displayName": "隐藏网易云音乐窗口",
+        "keyCode": 4,
+        "keyLabel": "H",
+        "modifiers": [
+          "command"
+        ]
+      }
+    ],
+    "focusTargets": [],
+    "applications": []
+  }
 }
