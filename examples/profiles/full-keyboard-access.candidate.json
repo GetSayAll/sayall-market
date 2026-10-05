@@ -1,0 +1,124 @@
+{
+  "format": "sayall-transfer",
+  "website": "https://sayall.app/market/",
+  "github": "https://github.com/GetSayAll/sayall-market",
+  "schemaVersion": "1.0",
+  "packageID": "com.getsayall.example.full-keyboard-access-rc003",
+  "version": "1.0.0",
+  "minimumRemoteMicVersion": "1.9.21",
+  "exportPurpose": "share",
+  "roots": [
+    {
+      "kind": "buttonProfile",
+      "id": "full-keyboard-access-rc003"
+    }
+  ],
+  "macros": [],
+  "shortcuts": [
+    {
+      "id": "full-keyboard-access.tab-previous",
+      "displayName": "上一个可聚焦项目",
+      "keyCode": 48,
+      "keyLabel": "⇧Tab",
+      "modifiers": [
+        "shift"
+      ]
+    },
+    {
+      "id": "full-keyboard-access.tab-next",
+      "displayName": "下一个可聚焦项目",
+      "keyCode": 48,
+      "keyLabel": "Tab",
+      "modifiers": []
+    },
+    {
+      "id": "full-keyboard-access.arrow-left",
+      "displayName": "向左移动",
+      "keyCode": 123,
+      "keyLabel": "←",
+      "modifiers": []
+    },
+    {
+      "id": "full-keyboard-access.arrow-right",
+      "displayName": "向右移动",
+      "keyCode": 124,
+      "keyLabel": "→",
+      "modifiers": []
+    },
+    {
+      "id": "full-keyboard-access.space",
+      "displayName": "执行当前项目",
+      "keyCode": 49,
+      "keyLabel": "Space",
+      "modifiers": []
+    },
+    {
+      "id": "full-keyboard-access.escape",
+      "displayName": "返回或取消",
+      "keyCode": 53,
+      "keyLabel": "Esc",
+      "modifiers": []
+    }
+  ],
+  "focusTargets": [],
+  "applications": [],
+  "buttonProfiles": [
+    {
+      "id": "full-keyboard-access-rc003",
+      "name": "全键盘控制",
+      "remoteModel": "xiaomi-remote-2-pro",
+      "mode": "manual",
+      "applicationBundleIdentifiers": [],
+      "bindings": [
+        {
+          "controlID": "up",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "shortcut",
+            "referenceID": "full-keyboard-access.tab-previous"
+          }
+        },
+        {
+          "controlID": "down",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "shortcut",
+            "referenceID": "full-keyboard-access.tab-next"
+          }
+        },
+        {
+          "controlID": "left",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "shortcut",
+            "referenceID": "full-keyboard-access.arrow-left"
+          }
+        },
+        {
+          "controlID": "right",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "shortcut",
+            "referenceID": "full-keyboard-access.arrow-right"
+          }
+        },
+        {
+          "controlID": "ok",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "shortcut",
+            "referenceID": "full-keyboard-access.space"
+          }
+        },
+        {
+          "controlID": "back",
+          "gesture": "singlePress",
+          "target": {
+            "kind": "shortcut",
+            "referenceID": "full-keyboard-access.escape"
+          }
+        }
+      ]
+    }
+  ]
+}
