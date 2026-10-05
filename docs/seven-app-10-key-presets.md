@@ -4,14 +4,14 @@ subtitle: 无线麦SayAll.app · 下载 JSON 后在 Mac App 导入
 lang: zh
 template: doc
 theme: shadcn
-status: 候选方案，待真机验收
+status: 1.0 方案，部分真机验收待完成
 ---
 
 ## A 下载方案
 
-**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/sayall-key-profiles-v0.1.0-preview.3.zip)**
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
-ZIP 包含本页 8 套 App 方案和 Full Keyboard Access 试用方案。
+ZIP 包含本页 8 套 App 方案和 Full Keyboard Access 方案。
 先解压 ZIP，再按需导入其中的 `.sayall` 文件。
 完整步骤见 [打包下载与导入说明](download-bundle.html)。
 
@@ -22,16 +22,16 @@ ZIP 包含本页 8 套 App 方案和 Full Keyboard Access 试用方案。
 
 | App | 下载文件 |
 |---|---|
-| Codex | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/codex-ten-key.candidate.sayall) |
-| Claude Code desktop | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/claude-code-desktop-ten-key.candidate.sayall) |
-| WorkBuddy | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/workbuddy-ten-key.candidate.sayall) |
-| 微信 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/wechat-ten-key.candidate.sayall) |
-| 剪映桌面版 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/jianying-ten-key.candidate.sayall) |
-| 抖音 Mac 客户端 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/douyin-ten-key.candidate.sayall) |
-| Chrome | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/chrome-ten-key.candidate.sayall) |
-| 网易云音乐 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.3/netease-music-ten-key.candidate.sayall) |
+| Codex | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/codex-ten-key.sayall) |
+| Claude Code desktop | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/claude-code-desktop-ten-key.sayall) |
+| WorkBuddy | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/workbuddy-ten-key.sayall) |
+| 微信 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/wechat-ten-key.sayall) |
+| 剪映桌面版 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/jianying-ten-key.sayall) |
+| 抖音 Mac 客户端 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/douyin-ten-key.sayall) |
+| Chrome | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/chrome-ten-key.sayall) |
+| 网易云音乐 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall) |
 
-单套入口下载独立 JSON 附件。
+单套入口下载独立 `.sayall` 附件。
 ZIP 不直接导入 Mac App。
 格式为 `sayall-transfer 1.0`，方案版本为 `0.1.0`。
 文件的最低客户端版本字段为 `1.9.21`。
@@ -146,7 +146,9 @@ Esc 的效果取决于当前界面或弹层。
 
 ## F 验证状态和 App 识别
 
-这些文件是候选数据，不是官方兼容承诺。
+这些文件是 1.0 数据。
+
+部分实体遥控器和目标 App 仍需验收。
 市场合同检查和 16 项合同测试已通过。
 Mac 端已有的 8 项导入导出测试已通过。
 8 个文件均通过 Debug 和 Release 库的解析、预览和安装准备。
