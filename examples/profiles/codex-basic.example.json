@@ -1,92 +1,87 @@
 {
   "format": "sayall-transfer",
-  "schemaVersion": "1.0",
   "packageID": "com.getsayall.example.codex-basic-profile",
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.18",
   "exportPurpose": "share",
-  "roots": [
-    {
-      "kind": "buttonProfile",
-      "id": "com.getsayall.example.codex-basic-profile"
-    }
-  ],
-  "macros": [
-    {
-      "schemaVersion": "1.0",
-      "macroID": "com.getsayall.example.open-codex-and-focus",
-      "version": "0.1.0",
-      "name": "打开 Codex 并聚焦输入框",
-      "summary": "激活 Codex，等待窗口就绪，再使用本机学习配置聚焦输入区域。",
-      "scope": {
-        "kind": "global"
+  "schemaVersion": "2.0",
+  "type": "buttonProfile",
+  "profile": {
+    "id": "com.getsayall.example.codex-basic-profile",
+    "name": "Codex 基础键位方案",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "automatic",
+    "applicationBundleIdentifiers": [
+      "com.openai.codex"
+    ],
+    "bindings": [
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "macro",
+          "referenceID": "com.getsayall.example.open-codex-and-focus"
+        }
       },
-      "steps": [
-        {
-          "stepID": "open-codex",
-          "action": "openApplication",
-          "timeoutMilliseconds": 5000,
-          "parameters": {
-            "bundleIdentifier": "com.openai.codex"
-          }
-        },
-        {
-          "stepID": "wait-codex",
-          "action": "waitForApplication",
-          "timeoutMilliseconds": 5000,
-          "parameters": {
-            "bundleIdentifier": "com.openai.codex",
-            "state": "frontmostWindow"
-          }
-        },
-        {
-          "stepID": "focus-local-target",
-          "action": "focusLearnedTarget",
-          "timeoutMilliseconds": 2000,
-          "parameters": {
-            "bundleIdentifier": "com.openai.codex",
-            "localProfileKey": "codex.default-input"
-          }
+      {
+        "controlID": "back",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "escape"
         }
-      ]
-    }
-  ],
-  "shortcuts": [],
-  "focusTargets": [
-    {
-      "id": "codex.default-input",
-      "displayName": "Codex 输入框",
-      "bundleIdentifier": "com.openai.codex"
-    }
-  ],
-  "applications": [],
-  "buttonProfiles": [
-    {
-      "id": "com.getsayall.example.codex-basic-profile",
-      "name": "Codex 基础键位方案",
-      "remoteModel": "xiaomi-remote-2-pro",
-      "mode": "automatic",
-      "applicationBundleIdentifiers": [
-        "com.openai.codex"
-      ],
-      "bindings": [
-        {
-          "controlID": "home",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "macro",
-            "referenceID": "com.getsayall.example.open-codex-and-focus"
-          }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [
+      {
+        "schemaVersion": "2.0",
+        "macroID": "com.getsayall.example.open-codex-and-focus",
+        "version": "0.1.0",
+        "name": "打开 Codex 并聚焦输入框",
+        "summary": "激活 Codex，等待窗口就绪，再使用本机学习配置聚焦输入区域。",
+        "scope": {
+          "kind": "global"
         },
-        {
-          "controlID": "back",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "host",
-            "actionID": "escape"
+        "steps": [
+          {
+            "stepID": "open-codex",
+            "action": "openApplication",
+            "timeoutMilliseconds": 5000,
+            "parameters": {
+              "bundleIdentifier": "com.openai.codex"
+            }
+          },
+          {
+            "stepID": "wait-codex",
+            "action": "waitForApplication",
+            "timeoutMilliseconds": 5000,
+            "parameters": {
+              "bundleIdentifier": "com.openai.codex",
+              "state": "frontmostWindow"
+            }
+          },
+          {
+            "stepID": "focus-local-target",
+            "action": "focusLearnedTarget",
+            "timeoutMilliseconds": 2000,
+            "parameters": {
+              "bundleIdentifier": "com.openai.codex",
+              "localProfileKey": "codex.default-input"
+            }
           }
-        }
-      ]
-    }
-  ]
+        ]
+      }
+    ],
+    "shortcuts": [],
+    "focusTargets": [
+      {
+        "id": "codex.default-input",
+        "displayName": "Codex 输入框",
+        "bundleIdentifier": "com.openai.codex"
+      }
+    ],
+    "applications": []
+  }
 }

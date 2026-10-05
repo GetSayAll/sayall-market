@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://getsayall.com/schemas/v1/transfer-package.schema.json",
-  "title": "SayAll portable transfer package 1.0",
+  "$id": "https://getsayall.com/schemas/v2/transfer-package.schema.json",
+  "title": "SayAll portable transfer package 2.0",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -11,25 +11,17 @@
     "version",
     "minimumRemoteMicVersion",
     "exportPurpose",
-    "roots",
-    "macros",
-    "shortcuts",
-    "focusTargets",
-    "applications",
-    "buttonProfiles"
+    "type"
   ],
   "properties": {
     "format": {
       "const": "sayall-transfer"
     },
     "schemaVersion": {
-      "enum": ["1.0", "0.2-draft"]
+      "const": "2.0"
     },
     "packageID": {
-      "type": "string",
-      "minLength": 8,
-      "maxLength": 128,
-      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+      "$ref": "#/$defs/id"
     },
     "version": {
       "$ref": "#/$defs/version"
@@ -38,10 +30,7 @@
       "$ref": "#/$defs/version"
     },
     "exportPurpose": {
-      "enum": [
-        "share",
-        "personalBackup"
-      ]
+      "const": "share"
     },
     "website": {
       "$ref": "#/$defs/sourceLink"
@@ -49,57 +38,28 @@
     "github": {
       "$ref": "#/$defs/sourceLink"
     },
-    "roots": {
-      "type": "array",
-      "maxItems": 200,
-      "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/root"
-      },
-      "uniqueItems": true
+    "type": {
+      "enum": [
+        "buttonProfile",
+        "macro",
+        "application",
+        "personalBackup"
+      ]
     },
-    "macros": {
-      "type": "array",
-      "maxItems": 200,
-      "minItems": 0,
-      "items": {
-        "$ref": "#/$defs/macro"
-      }
+    "profile": {
+      "$ref": "#/$defs/buttonProfile"
     },
-    "shortcuts": {
-      "type": "array",
-      "maxItems": 200,
-      "minItems": 0,
-      "items": {
-        "$ref": "#/$defs/shortcut"
-      }
+    "macro": {
+      "$ref": "#/$defs/macro"
     },
-    "focusTargets": {
-      "type": "array",
-      "maxItems": 200,
-      "minItems": 0,
-      "items": {
-        "$ref": "#/$defs/focusTarget"
-      }
+    "application": {
+      "$ref": "#/$defs/application"
     },
-    "applications": {
-      "type": "array",
-      "maxItems": 200,
-      "minItems": 0,
-      "items": {
-        "$ref": "#/$defs/application"
-      }
+    "dependencies": {
+      "$ref": "#/$defs/dependencies"
     },
-    "buttonProfiles": {
-      "type": "array",
-      "maxItems": 200,
-      "minItems": 0,
-      "items": {
-        "$ref": "#/$defs/buttonProfile"
-      }
-    },
-    "hostSettings": {
-      "$ref": "#/$defs/hostSettings"
+    "backup": {
+      "$ref": "#/$defs/backup"
     }
   },
   "$defs": {
@@ -938,7 +898,10 @@
       ],
       "properties": {
         "schemaVersion": {
-          "enum": ["1.0", "0.3-draft"]
+          "enum": [
+            "1.0",
+            "2.0"
+          ]
         },
         "macroID": {
           "type": "string",
@@ -1062,32 +1025,299 @@
         "netflix",
         "input"
       ]
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "macros",
+        "shortcuts",
+        "focusTargets",
+        "applications"
+      ],
+      "properties": {
+        "macros": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/macro"
+          }
+        },
+        "shortcuts": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/shortcut"
+          }
+        },
+        "focusTargets": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/focusTarget"
+          }
+        },
+        "applications": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/application"
+          }
+        }
+      }
+    },
+    "backup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "roots",
+        "macros",
+        "shortcuts",
+        "focusTargets",
+        "applications",
+        "buttonProfiles"
+      ],
+      "properties": {
+        "roots": {
+          "type": "array",
+          "maxItems": 200,
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/root"
+          },
+          "uniqueItems": true
+        },
+        "macros": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/macro"
+          }
+        },
+        "shortcuts": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/shortcut"
+          }
+        },
+        "focusTargets": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/focusTarget"
+          }
+        },
+        "applications": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/application"
+          }
+        },
+        "buttonProfiles": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/buttonProfile"
+          }
+        },
+        "hostSettings": {
+          "$ref": "#/$defs/hostSettings"
+        }
+      }
     }
   },
   "allOf": [
     {
       "if": {
         "properties": {
-          "exportPurpose": {
-            "const": "share"
+          "type": {
+            "const": "buttonProfile"
           }
-        },
-        "required": [
-          "exportPurpose"
-        ]
+        }
       },
       "then": {
+        "required": [
+          "profile"
+        ],
         "properties": {
-          "hostSettings": false,
-          "focusTargets": {
-            "type": "array",
-            "items": {
-              "type": "object",
+          "profile": {},
+          "macro": {},
+          "application": {},
+          "backup": {}
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "macro"
+              ],
               "properties": {
-                "target": false
+                "macro": {}
+              }
+            },
+            {
+              "required": [
+                "application"
+              ],
+              "properties": {
+                "application": {}
+              }
+            },
+            {
+              "required": [
+                "backup"
+              ],
+              "properties": {
+                "backup": {}
               }
             }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "macro"
           }
+        }
+      },
+      "then": {
+        "required": [
+          "macro"
+        ],
+        "properties": {
+          "profile": {},
+          "macro": {},
+          "application": {},
+          "backup": {}
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "profile"
+              ],
+              "properties": {
+                "profile": {}
+              }
+            },
+            {
+              "required": [
+                "application"
+              ],
+              "properties": {
+                "application": {}
+              }
+            },
+            {
+              "required": [
+                "backup"
+              ],
+              "properties": {
+                "backup": {}
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "application"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "application"
+        ],
+        "properties": {
+          "profile": {},
+          "macro": {},
+          "application": {},
+          "backup": {}
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "profile"
+              ],
+              "properties": {
+                "profile": {}
+              }
+            },
+            {
+              "required": [
+                "macro"
+              ],
+              "properties": {
+                "macro": {}
+              }
+            },
+            {
+              "required": [
+                "backup"
+              ],
+              "properties": {
+                "backup": {}
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "personalBackup"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "backup"
+        ],
+        "properties": {
+          "profile": {},
+          "macro": {},
+          "application": {},
+          "backup": {}
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "profile"
+              ],
+              "properties": {
+                "profile": {}
+              }
+            },
+            {
+              "required": [
+                "macro"
+              ],
+              "properties": {
+                "macro": {}
+              }
+            },
+            {
+              "required": [
+                "application"
+              ],
+              "properties": {
+                "application": {}
+              }
+            }
+          ]
         }
       }
     }

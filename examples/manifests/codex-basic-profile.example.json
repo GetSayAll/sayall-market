@@ -19,7 +19,7 @@
     ]
   },
   "contentPath": "examples/profiles/codex-basic.example.json",
-  "contentDigest": "sha256:d1faf093f12d846ec0b9cf2634fd03cdeb930d6609801605ccba37805af7f61b",
+  "contentDigest": "sha256:5b3ba30f4af622d82baa6b9528b30e60c75c33b051830e82b4d9d7fb99259656",
   "license": "CC-BY-NC-4.0",
   "releaseNotes": "仅用于演示第一版 App 键位方案格式，不代表已验证兼容性。",
   "declaredCapabilities": [
@@ -35,6 +35,6 @@
   "signature": {
     "algorithm": "ed25519",
     "keyID": "portable-transfer-v1-fixture-01",
-    "value": "8Kot/AFHQTPlnp8pIEfwvQQ5CNdlX3woQbzI/S7em7bpihnOC76DaCn9Wujo9nnGJ3pucsTgd2szWdudyk9NCQ=="
+    "value": "0PKRFD78CkRSPh6L7Lu2GbuIzsqNkrfsrPwpwL64xgIkmq8uDray7OR0qgERUNe//ciZUnDFo4cp1ksb58LJAA=="
   }
 }

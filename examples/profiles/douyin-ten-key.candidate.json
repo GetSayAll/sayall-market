@@ -2,163 +2,158 @@
   "format": "sayall-transfer",
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
-  "schemaVersion": "1.0",
   "packageID": "com.getsayall.candidate.douyin-ten-key",
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "roots": [
-    {
-      "kind": "buttonProfile",
-      "id": "com.getsayall.candidate.douyin-ten-key"
-    }
-  ],
-  "macros": [],
-  "shortcuts": [
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key.up",
-      "displayName": "上一条视频",
-      "keyCode": 126,
-      "keyLabel": "↑",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key.down",
-      "displayName": "下一条视频",
-      "keyCode": 125,
-      "keyLabel": "↓",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key.left",
-      "displayName": "视频后退",
-      "keyCode": 123,
-      "keyLabel": "←",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key.right",
-      "displayName": "视频快进",
-      "keyCode": 124,
-      "keyLabel": "→",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key.ok",
-      "displayName": "播放 / 暂停",
-      "keyCode": 49,
-      "keyLabel": "Space",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key.back",
-      "displayName": "退出全屏（候选）",
-      "keyCode": 53,
-      "keyLabel": "Esc",
-      "modifiers": []
-    },
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key.power",
-      "displayName": "隐藏 App 全部窗口",
-      "keyCode": 4,
-      "keyLabel": "H",
-      "modifiers": [
-        "command"
-      ]
-    }
-  ],
-  "focusTargets": [],
-  "applications": [],
-  "buttonProfiles": [
-    {
-      "id": "com.getsayall.candidate.douyin-ten-key",
-      "name": "抖音 10键",
-      "remoteModel": "xiaomi-remote-2-pro",
-      "mode": "automatic",
-      "applicationBundleIdentifiers": [
-        "com.bytedance.douyin.desktop"
-      ],
-      "bindings": [
-        {
-          "controlID": "up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.douyin-ten-key.up"
-          }
-        },
-        {
-          "controlID": "down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.douyin-ten-key.down"
-          }
-        },
-        {
-          "controlID": "left",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.douyin-ten-key.left"
-          }
-        },
-        {
-          "controlID": "right",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.douyin-ten-key.right"
-          }
-        },
-        {
-          "controlID": "ok",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.douyin-ten-key.ok"
-          }
-        },
-        {
-          "controlID": "back",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.douyin-ten-key.back"
-          }
-        },
-        {
-          "controlID": "home",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "disabled"
-          }
-        },
-        {
-          "controlID": "volume-up",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "host",
-            "actionID": "volumeUp"
-          }
-        },
-        {
-          "controlID": "volume-down",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "host",
-            "actionID": "volumeDown"
-          }
-        },
-        {
-          "controlID": "power",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "shortcut",
-            "referenceID": "com.getsayall.candidate.douyin-ten-key.power"
-          }
+  "schemaVersion": "2.0",
+  "type": "buttonProfile",
+  "profile": {
+    "id": "com.getsayall.candidate.douyin-ten-key",
+    "name": "抖音 10键",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "automatic",
+    "applicationBundleIdentifiers": [
+      "com.bytedance.douyin.desktop"
+    ],
+    "bindings": [
+      {
+        "controlID": "up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.douyin-ten-key.up"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "controlID": "down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.douyin-ten-key.down"
+        }
+      },
+      {
+        "controlID": "left",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.douyin-ten-key.left"
+        }
+      },
+      {
+        "controlID": "right",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.douyin-ten-key.right"
+        }
+      },
+      {
+        "controlID": "ok",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.douyin-ten-key.ok"
+        }
+      },
+      {
+        "controlID": "back",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.douyin-ten-key.back"
+        }
+      },
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "volume-up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "volumeUp"
+        }
+      },
+      {
+        "controlID": "volume-down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "volumeDown"
+        }
+      },
+      {
+        "controlID": "power",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.douyin-ten-key.power"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [],
+    "shortcuts": [
+      {
+        "id": "com.getsayall.candidate.douyin-ten-key.up",
+        "displayName": "上一条视频",
+        "keyCode": 126,
+        "keyLabel": "↑",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.douyin-ten-key.down",
+        "displayName": "下一条视频",
+        "keyCode": 125,
+        "keyLabel": "↓",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.douyin-ten-key.left",
+        "displayName": "视频后退",
+        "keyCode": 123,
+        "keyLabel": "←",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.douyin-ten-key.right",
+        "displayName": "视频快进",
+        "keyCode": 124,
+        "keyLabel": "→",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.douyin-ten-key.ok",
+        "displayName": "播放 / 暂停",
+        "keyCode": 49,
+        "keyLabel": "Space",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.douyin-ten-key.back",
+        "displayName": "退出全屏（候选）",
+        "keyCode": 53,
+        "keyLabel": "Esc",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.douyin-ten-key.power",
+        "displayName": "隐藏 App 全部窗口",
+        "keyCode": 4,
+        "keyLabel": "H",
+        "modifiers": [
+          "command"
+        ]
+      }
+    ],
+    "focusTargets": [],
+    "applications": []
+  }
 }

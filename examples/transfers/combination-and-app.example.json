@@ -1,83 +1,75 @@
 {
   "format": "sayall-transfer",
-  "schemaVersion": "1.0",
   "packageID": "com.getsayall.example.combination-and-app",
   "version": "1.0.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "roots": [
-    {
-      "kind": "macro",
-      "id": "example.root"
+  "schemaVersion": "2.0",
+  "type": "macro",
+  "macro": {
+    "schemaVersion": "2.0",
+    "macroID": "example.root",
+    "version": "1.0.0",
+    "name": "打开编辑器并执行子动作",
+    "scope": {
+      "kind": "global"
     },
-    {
-      "kind": "application",
-      "id": "example.editor"
-    }
-  ],
-  "macros": [
-    {
-      "schemaVersion": "1.0",
-      "macroID": "example.root",
-      "version": "1.0.0",
-      "name": "打开编辑器并执行子动作",
-      "scope": {
-        "kind": "global"
+    "steps": [
+      {
+        "stepID": "open",
+        "action": "openApplication",
+        "parameters": {
+          "bundleIdentifier": "com.example.editor"
+        }
       },
-      "steps": [
-        {
-          "stepID": "open",
-          "action": "openApplication",
-          "parameters": {
-            "bundleIdentifier": "com.example.editor"
-          }
-        },
-        {
-          "stepID": "child",
-          "action": "runMacro",
-          "parameters": {
-            "nestedMacroID": "example.child",
-            "nestedMacroName": "发送快捷键"
-          }
+      {
+        "stepID": "child",
+        "action": "runMacro",
+        "parameters": {
+          "nestedMacroID": "example.child",
+          "nestedMacroName": "发送快捷键"
         }
-      ]
-    },
-    {
-      "schemaVersion": "1.0",
-      "macroID": "example.child",
-      "version": "2.0.0",
-      "name": "发送快捷键",
-      "steps": [
-        {
-          "stepID": "send",
-          "action": "sendKeyboardShortcut",
-          "parameters": {
-            "shortcutProfileKey": "example.shortcut"
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [
+      {
+        "schemaVersion": "2.0",
+        "macroID": "example.child",
+        "version": "2.0.0",
+        "name": "发送快捷键",
+        "steps": [
+          {
+            "stepID": "send",
+            "action": "sendKeyboardShortcut",
+            "parameters": {
+              "shortcutProfileKey": "example.shortcut"
+            }
           }
-        }
-      ]
-    }
-  ],
-  "shortcuts": [
-    {
-      "id": "example.shortcut",
-      "displayName": "聚焦输入框",
-      "keyCode": 37,
-      "keyLabel": "L",
-      "modifiers": [
-        "command"
-      ]
-    }
-  ],
-  "focusTargets": [],
-  "applications": [
-    {
-      "id": "example.editor",
-      "displayName": "示例编辑器",
-      "bundleIdentifier": "com.example.editor",
-      "focusStrategy": "keyboardShortcut",
-      "shortcutID": "example.shortcut"
-    }
-  ],
-  "buttonProfiles": []
+        ]
+      }
+    ],
+    "shortcuts": [
+      {
+        "id": "example.shortcut",
+        "displayName": "聚焦输入框",
+        "keyCode": 37,
+        "keyLabel": "L",
+        "modifiers": [
+          "command"
+        ]
+      }
+    ],
+    "focusTargets": [],
+    "applications": [
+      {
+        "id": "example.editor",
+        "displayName": "示例编辑器",
+        "bundleIdentifier": "com.example.editor",
+        "focusStrategy": "keyboardShortcut",
+        "shortcutID": "example.shortcut"
+      }
+    ]
+  }
 }

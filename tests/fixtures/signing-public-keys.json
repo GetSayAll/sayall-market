@@ -4,7 +4,7 @@
       "keyID": "portable-transfer-v1-fixture-01",
       "algorithm": "ed25519",
       "format": "spki-der-base64",
-      "publicKey": "MCowBQYDK2VwAyEAOTAxHK9ISfQCZjSgKscnRLvPT/RpJhPWFTMgjttwkFM="
+      "publicKey": "MCowBQYDK2VwAyEAs1q4wFGI6O1TYOqLVRfFlHdS707x8JF51xq7aT7w12I="
     }
   ]
 }

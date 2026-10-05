@@ -1,86 +1,588 @@
-<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>无线麦SayAll.app 导入导出标准</title><style>body{max-width:960px;margin:40px auto;padding:0 24px;font:16px/1.7 system-ui;color:#17202a;background:#fff}h1,h2,h3{line-height:1.35}h2{margin-top:36px}code{background:#f0f3f6;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}th,td{border:1px solid #d5dde5;padding:9px;text-align:left;vertical-align:top}a{color:#075eb7}li{margin:8px 0}@media(prefers-color-scheme:dark){body{background:#161b22;color:#e4eaf0}code{background:#29313d}th,td{border-color:#444f5d}a{color:#79b8ff}}</style></head><body><main>
-<h1>无线麦SayAll.app 导入导出标准</h1>
-<p>正式第一版：<code>sayall-transfer / 1.0</code>。2026-10-03 根据用户批准冻结当前实现。此格式是稳定的文件交换合同；市场上线、客户端发布和真实设备验收分别记录。</p>
-<h2>合同与版本</h2>
-<ul>
-<li>唯一 Schema：<a href="../schemas/transfer-package.schema.json"><code>transfer-package.schema.json</code></a>。键位方案包通过 <a href="../schemas/button-profile.schema.json"><code>button-profile.schema.json</code></a> 引用同一合同，要求至少一个方案。</li>
-<li>文件必须标明 <code>format: &quot;sayall-transfer&quot;</code>、<code>schemaVersion: &quot;1.0&quot;</code>、包 ID、内容版本、最低客户端版本和导出用途。</li>
-<li>嵌入组合动作、Manifest 和 Catalog 的格式版本均为 <code>1.0</code>。组合动作支持既有顺序白名单动作及嵌套引用。包内容版本、动作内容版本和宿主本机存储版本互相独立。</li>
-<li>保留此前已生成的 <code>0.2-draft</code> 容器与 <code>0.3-draft</code> 步骤的读取；重新导出统一写为 <code>1.0</code>。未知格式版本拒绝。已发布客户端的本机配置和个人配置 v1 继续保留读取及行为。</li>
-<li>单对象、批量对象和个人备份均使用这一容器，不能为每个入口另造私有文件格式。</li>
-<li><code>packageID</code> / <code>version</code> 供目录和摘要绑定；本地导入不得由作者、包 ID 或来源字符串自动授予“官方”身份或执行许可。</li>
-</ul>
-<h2>后续版本兼容规则</h2>
-<ul>
-<li>所有后续客户端必须继续读取第一版文件，并保持方案、组合动作、快捷键、App、输入框依赖、个人设置和引用的原有语义。不得以“格式曾带 Draft”为由删除第一版读取器。</li>
-<li>第一版字段、默认值、动作白名单和限制冻结。新增字段或动作使用新的 Schema 版本；不能把新必需字段写进第一版。第一版读取器仍严格拒绝未知字段和动作。</li>
-<li>新格式允许旧客户端拒绝。向旧客户端导出时，只能在数据完整可表达且行为不变时选择第一版；不能静默丢弃步骤、快捷键或依赖。</li>
-<li>第一版 Schema 及 <a href="../tests/fixtures/transfer-v1.json">冻结兼容样例</a>必须保留。新版本单独增加 Schema 和读取分支，并通过旧样例的解析、往返、引用重连及 1.9.21 个人配置回归后才能交付。样例的 canonical JSON SHA-256 已固定在自动化测试中。</li>
-<li>格式版本与内容审核分开。Manifest 的 <code>draft</code>、Catalog 的 <code>candidate</code> 和 <code>notVerified</code> 表示内容状态，不能据此把格式标回草案。JSON Schema 的 <code>draft/2020-12</code> 是其规范名称，与本产品格式状态无关。</li>
-</ul>
-<h2>内容结构</h2>
-<table><thead><tr><th>字段</th><th>含义</th></tr></thead><tbody>
-<tr><td><code>roots</code></td><td>用户明确选择的根对象：<code>macro</code>、<code>application</code>、<code>buttonProfile</code>、<code>hostSettings</code></td></tr>
-<tr><td><code>macros</code></td><td>实际动作版本、名称、说明、作用域、完整步骤、超时和嵌套引用</td></tr>
-<tr><td><code>shortcuts</code></td><td>实际 macOS <code>keyCode</code>、修饰键、显示名称与标签；不依赖原机快捷键库</td></tr>
-<tr><td><code>focusTargets</code></td><td>App 标识、配置名称；个人备份可选携带输入框定位指纹</td></tr>
-<tr><td><code>applications</code></td><td>App 标识、显示名称、聚焦策略及快捷键/输入框引用；无安装路径</td></tr>
-<tr><td><code>buttonProfiles</code></td><td>型号、名称、使用方式、App 自动关联、完整按键与按法</td></tr>
-<tr><td><code>hostSettings</code></td><td>个人备份中的明确设置分组：通用、音量增益、语音键及普通按键映射</td></tr>
-</tbody></table>
-<p>示例：<a href="../examples/transfers/combination-and-app.example.json"><code>组合动作和 App 配置</code></a>、<a href="../examples/profiles/codex-basic.example.json"><code>包含动作依赖的键位方案</code></a>。示例仅含合成/公开数据。</p>
-<p>所有对象 ID 只在本包对应类别内生效，不能当作接收方本机身份。导出不得保存原机设备 ID、安装路径、使用历史、成功测试记录或凭据。引用不能按名称猜测连接。</p>
-<h2>组合动作与依赖</h2>
-<ul>
-<li>支持单个、多选及选择全部已保存动作独立导出，无需购买键位方案功能；不将未保存草稿当作已保存版本。</li>
-<li>步骤白名单：<code>openApplication</code>、<code>openURL</code>、<code>waitForApplication</code>、<code>focusLearnedTarget</code>、<code>sendKeyboardShortcut</code>、<code>runShortcut</code>、<code>runMacro</code>、<code>builtInAction</code>。</li>
-<li>默认打包全部内部依赖。嵌套动作按导出快照中的最新已保存版本解析；直接引用的动作按其精确版本收集。共享子动作只保存一次。</li>
-<li>导出期间有关配置发生变化时重新采集或提示重试，不能输出混合版本快照。导出文件冻结当时状态，不改变导入后用户主动编辑的既有规则。</li>
-<li>每个动作最多 20 步，允许已保存的空动作；嵌套最多 8 层，禁止循环、重复步骤 ID 和缺失内部引用。</li>
-<li>普通步骤超时为 100–10,000 毫秒；快捷指令和嵌套动作可达 60,000 毫秒。</li>
-<li>macOS 快捷指令是外部依赖，仅存名称及 Identifier，不复制其内容。接收方未安装相应指令时保留并提示；不能自动改跑同名指令。</li>
-<li>URL 只允许用户明确声明的、不含账号密码的 HTTP(S) 地址，不在解析、预览或保存期间打开。网络特征扫描只能对合法 <code>openURL</code> 参数字段放行，其他字段仍接受敏感内容检查。</li>
-<li>本容器默认不携带遥控器绑定。明确选择绑定时采用普通映射分组和目标型号，不导出原机遥控器身份，接收方主动选择目标设备。</li>
-</ul>
-<h2>App 配置与键位语义</h2>
-<p>市场键位方案 Manifest 的 <code>compatibility.bundleIdentifiers</code> 若存在，必须等于包内实际使用或限制的完整 Bundle ID 集合：方案自动关联、App 配置、输入框、组合动作步骤及作用域。按集合比较，顺序无关；不能只检查第一个 App。字段缺省时从包内推导展示和待安装提示，不减少外部依赖门禁。空关联方案仍可通过动作依赖声明目标 App；空集合允许明确声明空数组。此规则不改变本机配置格式。</p>
-<ul>
-<li>App 配置指无线麦保存的打开/聚焦配置，不是第三方 App 自己的账号、文档或偏好设置。</li>
-<li>支持独立、批量或随引用打包。三种聚焦策略：不聚焦、实际快捷键、已学习输入框。</li>
-<li>Bundle ID 是 App 查找依据；通过公开系统 API 重新定位本机安装位置。多个副本由用户选择；未安装时保留为待安装，不按名称打开其他 App。</li>
-<li>同一个 App 可有多个聚焦策略，不能仅按 Bundle ID 或显示名称合并。</li>
-<li>App 自动切换规则与 App 聚焦配置分别处理。导入的自动规则不立即启用；导入不能执行动作或自动打开 App。</li>
-<li>按键目标明确区分指定动作、<code>disabled</code> 和 <code>inherit</code>。缺少绑定表示沿用；不能默认为禁用。</li>
-<li>宿主动作采用 Schema 中逐项允许的稳定动作 ID，快捷键和自定义 App 使用类型化引用；禁止透传任意宿主 payload。</li>
-<li>型号不同不得静默删除绑定，启用前需要兼容目标设备或明确映射。不改变语音键保护和普通按键手势边界。</li>
-</ul>
-<h2>分享与个人备份</h2>
-<p><code>exportPurpose</code> 必须为 <code>share</code> 或 <code>personalBackup</code>。</p>
-<ul>
-<li>分享保留“需要学习输入框”的依赖声明，禁止 <code>focusTargets[].target</code> 和 <code>hostSettings</code>。不能为删除定位特征而删除聚焦步骤或改变聚焦策略。</li>
-<li>个人备份允许用户主动选择包含输入框定位特征。必须说明窗口标题/上下文可能属于个人信息；不备份完整辅助功能树或输入内容。</li>
-<li>导入定位指纹后不得继承成功测试记录，必须重新校验、验证。未学习/未验证时相关动作整体不可执行，不能先执行前半段再发现聚焦依赖缺失。</li>
-<li>个人设置按组选择恢复；只导入 App 配置不能改音频、语言或语音键。音频设备与遥控器在接收机重新选择，不保存 UID/蓝牙地址或自动配对。</li>
-<li>账号会话、会员凭据、Token、权限授权、设备身份、历史统计和执行记录永不导出。</li>
-<li>市场与公开示例只接受分享文件；个人备份只用于用户主动选择的本地文件，不上传社区或作为市场内容。</li>
-</ul>
-<h2>校验、合并与保存</h2>
-<ul>
-<li>JSON 必须通过 Schema 及语义校验。最大文件 4 MiB；最多 200 个根对象，每类对象最多 200 个，单个方案最多 200 个绑定。</li>
-<li>严格拒绝未知字段、空/无效标识、重复 ID、循环、内部悬空引用、超限、无效按键与非有限数值。</li>
-<li>导入先校验整包，再让用户选择根对象，只安装其传递依赖；未选择且不被依赖的对象不安装。</li>
-<li>缺 App、快捷指令或输入框学习信息是待配置状态；文件结构损坏与内部依赖缺失是拒绝条件，两者不能混为“导入成功”。</li>
-<li>默认新增副本或复用完整内容及依赖相同的配置。重复导入应复用，名称相同但内容不同应保留独立副本。</li>
-<li>不覆盖组合动作不可变版本。接收方存在更新版本时，嵌套引用不能意外指向该版本；必要时创建独立动作身份。</li>
-<li>覆盖可修改配置需在本次操作中明确选择，预览全部受影响引用并建立恢复点；不能将导入授权解释为整库替换。</li>
-<li>解析、预览与取消零落盘。最终保存前重新检查冲突；有关存储的并发编辑不能被旧快照覆盖。</li>
-<li>宏、快捷键、输入框、方案和宿主设置整体提交；提交完成前不发布可执行配置。失败恢复、重启恢复和恢复失败阻断必须有明确状态。</li>
-<li>Free 用户可明确选择免费对象及依赖；不能因同包有收费方案就禁止免费对象导入，也不能静默忽略用户选择的收费对象。</li>
-</ul>
-<h2>消费者验证</h2>
-<p>Schema、公开校验器和 Swift 解析器必须对同一组合法/非法样例得出一致结果。合同变化同步内容摘要、Manifest、Catalog、能力声明和测试签名 Fixture，不能将个人备份纳入市场签名发布。</p>
-<p>内联快捷键的 <code>parameters.key</code> 不允许 Unicode 控制字符（Cc）和格式字符（Cf），包括换行、制表符和零宽格式字符；特殊键使用可显示名称，例如 <code>Return</code> 和 <code>Tab</code>。此约束对齐第一版 Swift 读取器，格式仍为 1.0。</p>
-<p>自动化至少覆盖完整往返、部分选择、嵌套版本、重复导入、内容冲突、缺失/剥离依赖、每个保存边界的失败/重启恢复和 1.9.21 等正式配置。公开宿主无收费 Package 必须仍可构建运行。构建、代理操作和真实设备/第三方 App 验收分别记录，不能相互替代。</p>
-<h3>实际快捷键的左右修饰键</h3>
-<p><code>shortcuts[].deviceModifierFlags</code> 为可选整数，保留 macOS NX 的左/右 Control、Shift、Command、Option 位；允许掩码为 <code>0x207f</code>。对应通用 <code>modifiers</code> 必须同时存在。缺失等同 0，不能借此传递其他事件标记或权限。按键语义由 <code>keyCode</code>、通用修饰键及这些设备位共同决定，显示标签仅作说明。方向键的系统伪 Fn 仍由接收方现有规范化处理。客户端不能在不支持设备位时静默丢弃这些位。</p>
-</main></body></html>
+<!doctype html>
+<html lang="zh-CN" data-theme="blueprint" data-mode="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Answer me with HTML 0.4.4">
+<title>SayAll v2 导入导出格式</title>
+<style>
+html[data-theme="blueprint"], html[data-theme="blueprint"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 0px;
+  --shadow: none;
+  --bw: 1.5px;
+  --head-font: var(--font-sans);
+  --bg: #f6f6f3;
+  --paper: #ffffff;
+  --ink: #16181d;
+  --ink-2: #4b5260;
+  --ink-3: #8b929e;
+  --line: #1d2026;
+  --line-2: #d6dae1;
+  --fill: #f3f5f8;
+  --accent: #1d5fbf;
+  --accent-bg: #e4ecf8;
+  --ok: #1d5fbf;
+  --ok-bg: #e4ecf8;
+  --err: #c62828;
+  --err-bg: #fbeaea;
+  --warn: #a8620a;
+  --warn-bg: #fdf3e2;
+  --head-bg: #16181d;
+  --head-fg: #ffffff;
+}
+html[data-theme="blueprint"][data-mode="dark"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="blueprint"][data-mode="auto"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+}
+
+html[data-theme="shadcn"], html[data-theme="shadcn"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 8px;
+  --shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --bw: 1px;
+  --head-font: var(--font-sans);
+  --bg: #fafafa;
+  --paper: #ffffff;
+  --ink: #09090b;
+  --ink-2: #71717a;
+  --ink-3: #a1a1aa;
+  --line: #e4e4e7;
+  --line-2: #f0f0f2;
+  --fill: #f4f4f5;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --ok: #16a34a;
+  --ok-bg: #f0fdf4;
+  --err: #dc2626;
+  --err-bg: #fef2f2;
+  --warn: #d97706;
+  --warn-bg: #fffbeb;
+  --head-bg: #18181b;
+  --head-fg: #fafafa;
+}
+html[data-theme="shadcn"][data-mode="dark"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="shadcn"][data-mode="auto"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+}
+
+/* Answer me with HTML base — 只引用主题变量，禁止写死颜色（主题 token 见 themes/index.js） */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-sans); font-size: 14px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+code, pre, kbd { font-family: var(--font-mono); }
+
+/* ── 工具栏 ─────────────────────────────── */
+.am-toolbar {
+  position: fixed; top: 12px; right: 12px; z-index: 10; display: flex; gap: 6px;
+}
+.am-btn {
+  font: 12px/1 var(--font-sans); color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); padding: 7px 10px; cursor: pointer;
+}
+.am-btn:hover { border-color: var(--ink-3); }
+.am-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ── 页头 ───────────────────────────────── */
+.am-head { margin: 0 0 20px; padding-right: 260px; }
+.am-head h1 { margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; }
+.am-sub { margin: 4px 0 0; color: var(--ink-2); }
+.am-head-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 12px; color: var(--ink-2); }
+.am-head-meta b { font-family: var(--font-mono); font-weight: 400; color: var(--ink-3); margin-right: 6px; }
+.am-intro { margin-top: 12px; max-width: 80ch; }
+
+/* ── sheet 图纸板 ────────────────────────── */
+.am-sheet { max-width: 1680px; margin: 0 auto; padding: 32px 28px 40px; }
+.am-frame { position: relative; }
+.am-grid {
+  display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: 20px; align-items: start;
+}
+.am-ruler { display: none; }
+html[data-theme="blueprint"] .am-frame { border: 1px solid var(--line); padding: 30px; }
+html[data-theme="blueprint"] .am-frame::before {
+  content: ""; position: absolute; inset: 18px; border: 1px solid var(--line); pointer-events: none;
+}
+html[data-theme="blueprint"] .am-ruler {
+  display: flex; position: absolute; font: 10px/1 var(--font-mono); color: var(--ink-3);
+}
+.am-ruler span { flex: 1; display: flex; align-items: center; justify-content: center; }
+.am-ruler--top, .am-ruler--bottom { left: 18px; right: 18px; height: 18px; }
+.am-ruler--top { top: 0; }
+.am-ruler--bottom { bottom: 0; }
+.am-ruler--left, .am-ruler--right { top: 18px; bottom: 18px; width: 18px; flex-direction: column; }
+.am-ruler--left { left: 0; }
+.am-ruler--right { right: 0; }
+.am-ruler--top span + span, .am-ruler--bottom span + span { border-left: 1px solid var(--line); }
+.am-ruler--left span + span, .am-ruler--right span + span { border-top: 1px solid var(--line); }
+
+/* ── 面板 ───────────────────────────────── */
+.am-panel {
+  background: var(--paper); border: var(--bw) solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); min-width: 0; overflow: hidden;
+}
+.am-panel-head {
+  display: flex; align-items: stretch; gap: 0; border-bottom: var(--bw) solid var(--line); min-height: 34px;
+}
+.am-panel-id {
+  display: flex; align-items: center; justify-content: center; min-width: 34px; padding: 0 8px;
+  background: var(--head-bg); color: var(--head-fg); font-weight: 600; font-size: 14px;
+}
+html[data-theme="shadcn"] .am-panel-id { border-radius: 6px; min-width: 24px; height: 24px; margin: 9px 0 9px 14px; font-size: 12px; }
+html[data-theme="shadcn"] .am-panel-head { border-bottom-width: 1px; }
+.am-panel-head h2 { margin: 0; padding: 7px 12px; font-size: 15px; font-weight: 600; flex: 1; display: flex; align-items: center; }
+.am-panel-meta { align-self: center; padding: 0 12px; font: 11px/1.3 var(--font-mono); color: var(--ink-2); text-align: right; }
+.am-panel-body { padding: 14px 16px 16px; }
+.am-panel-body > * + * { margin-top: 12px; }
+
+/* ── Markdown 正文 ───────────────────────── */
+.am-md > :first-child { margin-top: 0; }
+.am-md > :last-child { margin-bottom: 0; }
+.am-md p { margin: 0 0 8px; }
+.am-md ul, .am-md ol { margin: 0 0 8px; padding-left: 20px; }
+.am-md li + li { margin-top: 3px; }
+.am-md h3, .am-md h4 { margin: 14px 0 6px; font-size: 13px; }
+.am-md a { color: var(--accent); }
+.am-md blockquote { margin: 0 0 8px; padding: 2px 12px; border-left: 3px solid var(--line-2); color: var(--ink-2); }
+.am-md :not(pre) > code { font-size: 0.9em; background: var(--fill); padding: 1px 5px; border-radius: 4px; }
+.am-md hr { border: 0; border-top: 1px solid var(--line-2); margin: 12px 0; }
+.am-md table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.am-md th {
+  text-align: left; font: 11px/1.3 var(--font-mono); color: var(--ink-2); font-weight: 400;
+  padding: 6px 10px; border-bottom: 1px solid var(--line-2);
+}
+.am-md td { padding: 7px 10px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+.am-md tbody tr:nth-child(even) td { background: var(--fill); }
+.am-table-wrap { overflow-x: auto; }
+.am-code {
+  margin: 0; padding: 12px 14px; background: var(--fill); border: 1px solid var(--line-2);
+  border-radius: var(--radius); overflow-x: auto; font-size: 12.5px; line-height: 1.5;
+}
+
+/* ── 状态徽章 ok / no / warn ──────────────── */
+.am-status { white-space: nowrap; font-weight: 500; }
+.am-status--ok { color: var(--ok); }
+.am-status--no { color: var(--err); }
+.am-status--warn { color: var(--warn); }
+.am-status-icon { display: inline-block; width: 1.1em; font-weight: 700; }
+
+/* ── callout ─────────────────────────────── */
+.am-callout {
+  border: 1px solid var(--line-2); border-left: 3px solid var(--accent); background: var(--accent-bg);
+  padding: 10px 14px; border-radius: var(--radius);
+}
+.am-callout--ok { border-left-color: var(--ok); background: var(--ok-bg); }
+.am-callout--warn { border-left-color: var(--warn); background: var(--warn-bg); }
+.am-callout--err { border-left-color: var(--err); background: var(--err-bg); }
+.am-callout-title { font-weight: 600; margin-bottom: 4px; }
+
+/* ── kv 标题栏格 ─────────────────────────── */
+.am-kv {
+  display: grid; grid-template-columns: repeat(var(--kv-cols, 2), minmax(0, 1fr)); margin: 0;
+  border-top: var(--bw) solid var(--line); border-left: var(--bw) solid var(--line);
+}
+.am-kv-cell { border-right: var(--bw) solid var(--line); border-bottom: var(--bw) solid var(--line); padding: 6px 10px 8px; min-width: 0; }
+.am-kv-cell--wide { grid-column: 1 / -1; }
+.am-kv dt { font: 11px/1.4 var(--font-mono); color: var(--ink-2); }
+.am-kv dd { margin: 2px 0 0; font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.am-kv-cell--wide dd { font-size: 17px; font-weight: 600; }
+html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var(--radius); overflow: hidden; }
+
+/* ── timeline ────────────────────────────── */
+.am-timeline { list-style: none; margin: 0; padding: 0; }
+.am-timeline--h { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); padding-top: 4px; }
+.am-timeline--h li { position: relative; text-align: center; padding: 0 6px; }
+.am-timeline--h li::before {
+  content: ""; position: absolute; top: 31px; left: 0; right: 0; border-top: var(--bw) solid var(--line);
+}
+.am-timeline--h li:first-child::before { left: 50%; }
+.am-timeline--h li:last-child::before { right: 50%; }
+.am-tl-when { display: block; font-size: 15px; font-weight: 500; height: 24px; }
+.am-tl-dot {
+  position: relative; display: block; width: 11px; height: 11px; margin: 2px auto 8px;
+  border: var(--bw) solid var(--line); border-radius: 50%; background: var(--paper);
+}
+.am-tl-item--hi .am-tl-dot { background: var(--accent); border-color: var(--accent); }
+.am-tl-title { display: block; font-size: 12.5px; font-weight: 500; }
+.am-tl-text { display: block; font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+.am-timeline--v li { position: relative; padding: 0 0 14px 22px; }
+.am-timeline--v li::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: -6px; border-left: var(--bw) solid var(--line-2); }
+.am-timeline--v li:last-child::before { display: none; }
+.am-timeline--v .am-tl-dot { position: absolute; left: 0; top: 4px; margin: 0; }
+.am-timeline--v .am-tl-when { display: inline; height: auto; font: 12px var(--font-mono); color: var(--ink-2); margin-right: 8px; }
+.am-timeline--v .am-tl-title { display: inline; font-size: 14px; }
+.am-timeline--v .am-tl-text { margin-top: 2px; }
+
+/* ── annot 句子标注 ──────────────────────── */
+.am-annot + .am-annot { border-top: 1px solid var(--line-2); padding-top: 12px; }
+.am-annot-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.am-annot-meta { font: 11px var(--font-mono); font-weight: 400; color: var(--ink-2); }
+.am-annot-scroll { overflow-x: auto; }
+.am-annot-line {
+  position: relative; display: inline-block; white-space: pre; font: 14px/1.6 var(--font-mono);
+  padding-bottom: calc(var(--rows, 0) * 17px + 14px);
+}
+.am-annot-line--wrap { display: block; white-space: normal; padding-bottom: 10px; }
+.am-annot-line--wrap .am-seg { white-space: nowrap; }
+.am-seg { position: relative; }
+.am-seg::after {
+  content: ""; position: absolute; left: 1px; right: 1px; top: calc(100% + 1px); height: 5px;
+  border: 1px solid var(--accent); border-top: 0;
+}
+.am-seg-n {
+  position: absolute; left: 0; top: calc(100% + 8px + var(--row, 0) * 17px);
+  font: 11px/16px var(--font-sans); color: var(--accent); white-space: nowrap;
+}
+.am-seg--err { color: var(--err); }
+.am-seg--err::after { border-color: var(--err); }
+.am-seg--err .am-seg-n { color: var(--err); }
+.am-annot-caption { font-size: 12px; color: var(--ink-2); }
+
+/* ── limits 限值条 ───────────────────────── */
+.am-lim + .am-lim { margin-top: 14px; }
+.am-lim-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; margin-bottom: 4px; }
+.am-lim-val { font: 12px var(--font-mono); color: var(--accent); white-space: nowrap; }
+.am-lim-track { position: relative; height: 12px; border: 1px solid var(--line-2); background: var(--fill); border-radius: calc(var(--radius) / 2); }
+.am-lim-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-bg); border-right: 1px solid var(--accent); }
+.am-lim-mark { position: absolute; top: -4px; bottom: -4px; border-left: 2px solid var(--accent); }
+.am-lim.is-over .am-lim-fill { background: var(--err-bg); border-right-color: var(--err); }
+.am-lim.is-over .am-lim-val { color: var(--err); }
+.am-lim-ticks { position: relative; height: 16px; font: 10px/16px var(--font-mono); color: var(--ink-3); }
+.am-lim-ticks span { position: absolute; transform: translateX(-50%); }
+.am-lim-ticks span:first-child { transform: none; }
+.am-lim-note { font-size: 11px; color: var(--ink-2); margin-left: 6px; }
+
+/* ── tree 结构树 ─────────────────────────── */
+.am-tree { font-size: 13px; }
+.am-tree-root { display: flex; justify-content: center; position: relative; padding-bottom: 18px; }
+.am-tree-root::after { content: ""; position: absolute; bottom: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-root--solo { padding-bottom: 12px; }
+.am-tree-root--solo::after { display: none; }
+.am-tree-box {
+  border: var(--bw) solid var(--line); background: var(--paper); padding: 6px 14px; text-align: center;
+  border-radius: var(--radius); font-weight: 600;
+}
+.am-tree-box small { display: block; font-weight: 400; color: var(--ink-2); font-size: 12px; }
+.am-tree-box--root { background: var(--accent-bg); font-size: 15px; padding: 8px 28px; }
+.am-tree-cols { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); }
+.am-tree-col { position: relative; padding: 18px 8px 0; min-width: 0; }
+.am-tree-col::before { content: ""; position: absolute; top: 0; left: 0; right: 0; border-top: var(--bw) solid var(--line); }
+.am-tree-col:first-child::before { left: 50%; }
+.am-tree-col:last-child::before { right: 50%; }
+.am-tree-col::after { content: ""; position: absolute; top: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-list, .am-tree-list ul { list-style: none; margin: 0; padding: 0; }
+.am-tree-col > .am-tree-list { margin: 8px 0 0 14px; }
+.am-tree-list ul { margin-left: 16px; }
+.am-tree-list li { position: relative; padding: 3px 0 3px 18px; }
+.am-tree-list li::before { content: ""; position: absolute; left: 0; top: 0.95em; width: 12px; border-top: 1px solid var(--ink-3); }
+.am-tree-list li::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1px solid var(--ink-3); }
+.am-tree-list li:last-child::after { bottom: auto; height: 0.95em; }
+.am-tree-tag { font: 11px var(--font-mono); color: var(--ink-3); margin-right: 4px; }
+.am-tree code { font: 12px var(--font-mono); }
+.am-tree-sub { display: block; font-size: 11.5px; color: var(--ink-2); }
+.am-tree-hi > .am-tree-label { color: var(--accent); font-weight: 600; }
+
+/* ── 图（flow / sequence）───────────────── */
+.am-diagram { margin: 0; overflow-x: auto; text-align: center; }
+.am-diagram svg { max-width: 100%; height: auto; font-family: var(--font-sans); }
+.am-diagram text { fill: var(--ink); font-size: 13px; }
+.am-node-shape { fill: var(--paper); stroke: var(--line); stroke-width: var(--bw); }
+.am-node--hi .am-node-shape { fill: var(--accent-bg); stroke: var(--accent); }
+.am-node--hi text { fill: var(--accent); font-weight: 600; }
+.am-edge { fill: none; stroke: var(--ink-2); stroke-width: 1.3; }
+.am-edge--dashed { stroke-dasharray: 5 4; }
+.am-arrow { fill: var(--ink-2); }
+.am-edge-label rect { fill: var(--paper); }
+.am-diagram .am-edge-label text { fill: var(--accent); font-size: 11.5px; }
+.am-cluster { fill: var(--fill); stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 4 3; }
+.am-diagram .am-cluster-label { fill: var(--ink-2); font: 11px var(--font-mono); }
+.am-lifeline { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 4 4; }
+.am-actor { fill: var(--paper); stroke: var(--line); stroke-width: var(--bw); }
+.am-note { fill: var(--warn-bg); stroke: var(--warn); stroke-width: 1; }
+.am-diagram .am-step { fill: var(--ink-3); font: 10px var(--font-mono); }
+
+/* ── doc 线性讲解 ────────────────────────── */
+.am-doc { max-width: 1120px; margin: 0 auto; padding: 40px 28px 64px; }
+.am-doc-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; align-items: start; }
+.am-doc-layout--notoc { grid-template-columns: minmax(0, 1fr); max-width: 860px; }
+.am-toc { position: sticky; top: 24px; font-size: 13px; }
+.am-toc a { display: block; color: var(--ink-2); text-decoration: none; padding: 4px 0 4px 10px; border-left: 2px solid var(--line-2); }
+.am-toc a:hover { color: var(--ink); border-left-color: var(--accent); }
+.am-doc-body > .am-panel + .am-panel { margin-top: 20px; }
+
+/* ── 响应式与打印 ─────────────────────────── */
+@media (max-width: 1100px) {
+  .am-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .am-grid > .am-panel { grid-column: auto !important; }
+  .am-grid > .am-panel.am-span-wide { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 760px) {
+  .am-sheet, .am-doc { padding: 56px 12px 24px; }
+  .am-head { padding-right: 0; }
+  .am-grid { grid-template-columns: minmax(0, 1fr); }
+  .am-grid > .am-panel.am-span-wide { grid-column: auto !important; }
+  html[data-theme="blueprint"] .am-frame { padding: 0; border: 0; }
+  html[data-theme="blueprint"] .am-frame::before, html[data-theme="blueprint"] .am-ruler { display: none; }
+  .am-doc-layout { grid-template-columns: minmax(0, 1fr); }
+  .am-toc { position: static; }
+  .am-timeline--h { grid-template-columns: minmax(0, 1fr); }
+  .am-tree-cols { grid-template-columns: minmax(0, 1fr); }
+}
+.am-colophon { text-align: center; padding: 0 0 28px; font: 11px var(--font-mono); color: var(--ink-3); }
+
+@media print {
+  .am-toolbar { display: none; }
+  body { background: var(--paper); }
+  .am-panel { break-inside: avoid; box-shadow: none; }
+}
+.am-panel--bare { border: 0; background: transparent; box-shadow: none; }
+.am-panel--bare > .am-panel-body { padding: 0; }
+.am-panel--bare .am-kv { background: var(--paper); }
+
+</style>
+</head>
+<body>
+<div class="am-toolbar">
+<button class="am-btn" type="button" data-am="theme" data-labels="{&quot;blueprint&quot;:&quot;主题：图纸&quot;,&quot;shadcn&quot;:&quot;主题：卡片&quot;}">主题：图纸</button>
+<button class="am-btn" type="button" data-am="mode" data-labels="{&quot;auto&quot;:&quot;明暗：跟随系统&quot;,&quot;light&quot;:&quot;明暗：亮&quot;,&quot;dark&quot;:&quot;明暗：暗&quot;}">明暗：跟随系统</button>
+<button class="am-btn" type="button" data-am="copy" data-done="已复制 ✓">复制源稿</button>
+</div>
+<main class="am-sheet">
+<header class="am-head"><h1>SayAll v2 导入导出格式</h1><p class="am-sub">一个文件只声明一个主对象</p></header>
+<div class="am-frame">
+<div class="am-ruler am-ruler--top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div class="am-ruler am-ruler--bottom" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div class="am-ruler am-ruler--left" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div><div class="am-ruler am-ruler--right" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+<div class="am-grid" style="--cols: 3">
+<section class="am-panel" id="panel-A">
+<header class="am-panel-head"><span class="am-panel-id">A</span><h2>结论</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>SayAll 方案文件使用 <code>format: sayall-transfer</code> 和 <code>schemaVersion: &quot;2.0&quot;</code>。客户端只读取 v2。旧 v1 文件不再读取。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-B">
+<header class="am-panel-head"><span class="am-panel-id">B</span><h2>主对象</h2></header>
+<div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>type</th>
+<th>主对象</th>
+<th>依赖</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>buttonProfile</code></td>
+<td><code>profile</code></td>
+<td><code>dependencies.macros</code>、快捷键、输入框和 App</td>
+</tr>
+<tr>
+<td><code>macro</code></td>
+<td><code>macro</code></td>
+<td><code>dependencies.macros</code>、快捷键、输入框和 App</td>
+</tr>
+<tr>
+<td><code>application</code></td>
+<td><code>application</code></td>
+<td>其他应用依赖</td>
+</tr>
+<tr>
+<td><code>personalBackup</code></td>
+<td><code>backup</code></td>
+<td>本机备份内容</td>
+</tr>
+</tbody></table></div>
+<p>一个文件只能有一个主对象。键位方案可以引用组合动作。组合动作依赖不会改变文件的 <code>type</code>。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-C">
+<header class="am-panel-head"><span class="am-panel-id">C</span><h2>导入</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>客户端读取 <code>type</code>，自动判断文件用途。用户不需要选择用途。</p>
+<p>导入前检查主对象、依赖 ID、遥控器型号和来源链接。来源链接只允许 HTTPS。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-D">
+<header class="am-panel-head"><span class="am-panel-id">D</span><h2>示例</h2></header>
+<div class="am-panel-body"><pre class="am-code"><code data-lang="json">{
+  &quot;format&quot;: &quot;sayall-transfer&quot;,
+  &quot;schemaVersion&quot;: &quot;2.0&quot;,
+  &quot;type&quot;: &quot;buttonProfile&quot;,
+  &quot;profile&quot;: {},
+  &quot;dependencies&quot;: {
+    &quot;macros&quot;: []
+  }
+}</code></pre></div>
+</section>
+<section class="am-panel am-span-wide" id="panel-E" style="grid-column: span 2">
+<header class="am-panel-head"><span class="am-panel-id">E</span><h2>兼容边界</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>不要在一个文件中同时放置 <code>profile</code> 和 <code>macro</code>。不要使用旧版顶层 <code>roots</code>、<code>buttonProfiles</code> 或 <code>macros</code>。</p>
+</div></div>
+</section>
+</div>
+</div>
+</main>
+<footer class="am-colophon">Generated by Answer me with HTML 0.4.4 · 2026-10-05 09:00</footer>
+<textarea id="am-source" hidden readonly aria-hidden="true">---
+title: SayAll v2 导入导出格式
+subtitle: 一个文件只声明一个主对象
+---
+
+## 结论
+
+SayAll 方案文件使用 `format: sayall-transfer` 和 `schemaVersion: &quot;2.0&quot;`。客户端只读取 v2。旧 v1 文件不再读取。
+
+## 主对象
+
+| type | 主对象 | 依赖 |
+|---|---|---|
+| `buttonProfile` | `profile` | `dependencies.macros`、快捷键、输入框和 App |
+| `macro` | `macro` | `dependencies.macros`、快捷键、输入框和 App |
+| `application` | `application` | 其他应用依赖 |
+| `personalBackup` | `backup` | 本机备份内容 |
+
+一个文件只能有一个主对象。键位方案可以引用组合动作。组合动作依赖不会改变文件的 `type`。
+
+## 导入
+
+客户端读取 `type`，自动判断文件用途。用户不需要选择用途。
+
+导入前检查主对象、依赖 ID、遥控器型号和来源链接。来源链接只允许 HTTPS。
+
+## 示例
+
+```json
+{
+  &quot;format&quot;: &quot;sayall-transfer&quot;,
+  &quot;schemaVersion&quot;: &quot;2.0&quot;,
+  &quot;type&quot;: &quot;buttonProfile&quot;,
+  &quot;profile&quot;: {},
+  &quot;dependencies&quot;: {
+    &quot;macros&quot;: []
+  }
+}
+```
+
+## 兼容边界
+
+不要在一个文件中同时放置 `profile` 和 `macro`。不要使用旧版顶层 `roots`、`buttonProfiles` 或 `macros`。
+</textarea>
+<script>
+(() => {
+  const root = document.documentElement;
+  const cycle = (list, cur) => list[(list.indexOf(cur) + 1) % list.length];
+  const label = (btn, value) => {
+    const map = JSON.parse(btn.dataset.labels || '{}');
+    btn.textContent = map[value] || value;
+  };
+  const bind = (name, attr, values) => {
+    const btn = document.querySelector(`[data-am="${name}"]`);
+    if (!btn) return;
+    label(btn, root.getAttribute(attr));
+    btn.addEventListener('click', () => {
+      const next = cycle(values, root.getAttribute(attr));
+      root.setAttribute(attr, next);
+      label(btn, next);
+    });
+  };
+  bind('theme', 'data-theme', ['blueprint', 'shadcn']);
+  bind('mode', 'data-mode', ['auto', 'light', 'dark']);
+
+  const copyBtn = document.querySelector('[data-am="copy"]');
+  copyBtn?.addEventListener('click', async () => {
+    const nodes = document.querySelectorAll('#am-source');
+    const text = nodes[nodes.length - 1]?.value ?? '';
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = Object.assign(document.createElement('textarea'), { value: text });
+      document.body.append(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+    }
+    const original = copyBtn.textContent;
+    copyBtn.textContent = copyBtn.dataset.done;
+    setTimeout(() => { copyBtn.textContent = original; }, 1400);
+  });
+})();
+</script>
+</body>
+</html>

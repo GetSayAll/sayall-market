@@ -31,7 +31,7 @@ ZIP 包含下表 9 个独立方案文件。
 方案文件带有官网和 GitHub 链接。
 Mac 的键位方案首页和详情页显示这些链接。
 需要支持来源链接的客户端。
-无法导入时，可使用[此前试用包](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/sayall-key-profiles-v0.1.0-preview.1.zip)。
+旧版 v1 文件不再读取。请重新下载 v2 方案。
 
 ## B 解压与导入
 

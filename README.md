@@ -9,8 +9,7 @@
 
 包含下方 8 套 App 方案和 Full Keyboard Access 试用方案。
 下载后先解压，再按需导入其中的方案文件。
-新版方案需要支持官网和 GitHub 链接的客户端。
-无法导入时，可下载[此前试用包](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v0.1.0-preview.1/sayall-key-profiles-v0.1.0-preview.1.zip)。
+方案文件使用新的单主对象格式。客户端需要支持 `schemaVersion: "2.0"`。
 [查看打包下载与导入说明](docs/download-bundle.html)（[在线文字版](docs/download-bundle.md)）。
 
 ## 8 个 App 的 10 键方案
@@ -88,7 +87,7 @@
 
 ## 使用提示
 
-这些方案尚未完成全部 App 与实体遥控器验收。
+这些方案仍在候选阶段。请先检查每个按键的实际效果。
 先检查每个按键的实际效果，再用于日常操作。
 
 翻页、删除和方向移动会受到当前选中位置的影响。
