@@ -9,7 +9,7 @@
     "schemaVersion",
     "packageID",
     "version",
-    "minimumRemoteMicVersion",
+    "requirements",
     "exportPurpose",
     "type"
   ],
@@ -18,7 +18,8 @@
       "const": "sayall-transfer"
     },
     "schemaVersion": {
-      "const": "1.0"
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]{0,5})$"
     },
     "packageID": {
       "$ref": "#/$defs/id"
@@ -26,11 +27,11 @@
     "version": {
       "$ref": "#/$defs/version"
     },
-    "minimumRemoteMicVersion": {
-      "$ref": "#/$defs/version"
-    },
     "exportPurpose": {
-      "const": "share"
+      "enum": [
+        "share",
+        "personalBackup"
+      ]
     },
     "website": {
       "$ref": "#/$defs/sourceLink"
@@ -60,6 +61,29 @@
     },
     "backup": {
       "$ref": "#/$defs/backup"
+    },
+    "requirements": {
+      "$ref": "#/$defs/requirements"
+    },
+    "extensions": {
+      "type": "object",
+      "maxProperties": 32,
+      "propertyNames": {
+        "maxLength": 100,
+        "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*:[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "maxProperties": 32,
+        "propertyNames": {
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "additionalProperties": {
+          "type": "string",
+          "maxLength": 2048
+        }
+      }
     }
   },
   "$defs": {
@@ -78,7 +102,7 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 100,
-      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+      "pattern": "^(0|[1-9][0-9]{0,5})\\.(0|[1-9][0-9]{0,5})\\.(0|[1-9][0-9]{0,5})$"
     },
     "bundleIdentifier": {
       "type": "string",
@@ -1123,6 +1147,33 @@
           "$ref": "#/$defs/hostSettings"
         }
       }
+    },
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimumReaderVersion",
+        "minimumRemoteMicVersion",
+        "capabilities"
+      ],
+      "properties": {
+        "minimumReaderVersion": {
+          "const": "1.0"
+        },
+        "minimumRemoteMicVersion": {
+          "$ref": "#/$defs/version"
+        },
+        "capabilities": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 80,
+            "pattern": "^[a-z][a-zA-Z0-9.-]*$"
+          }
+        }
+      }
     }
   },
   "allOf": [
@@ -1142,7 +1193,10 @@
           "profile": {},
           "macro": {},
           "application": {},
-          "backup": {}
+          "backup": {},
+          "exportPurpose": {
+            "const": "share"
+          }
         },
         "not": {
           "anyOf": [
@@ -1190,7 +1244,10 @@
           "profile": {},
           "macro": {},
           "application": {},
-          "backup": {}
+          "backup": {},
+          "exportPurpose": {
+            "const": "share"
+          }
         },
         "not": {
           "anyOf": [
@@ -1238,7 +1295,10 @@
           "profile": {},
           "macro": {},
           "application": {},
-          "backup": {}
+          "backup": {},
+          "exportPurpose": {
+            "const": "share"
+          }
         },
         "not": {
           "anyOf": [
@@ -1286,7 +1346,11 @@
           "profile": {},
           "macro": {},
           "application": {},
-          "backup": {}
+          "backup": {},
+          "exportPurpose": {
+            "const": "personalBackup"
+          },
+          "dependencies": {}
         },
         "not": {
           "anyOf": [
@@ -1312,6 +1376,14 @@
               ],
               "properties": {
                 "application": {}
+              }
+            },
+            {
+              "required": [
+                "dependencies"
+              ],
+              "properties": {
+                "dependencies": {}
               }
             }
           ]

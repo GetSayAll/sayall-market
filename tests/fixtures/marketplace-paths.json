@@ -1,16 +1,77 @@
 [
-  { "kind": "manifest", "path": "examples/manifests/profile.draft.json", "valid": true },
-  { "kind": "manifest", "path": "catalog/manifests/nested/profile_1-2.json", "valid": true },
-  { "kind": "manifest", "path": "catalog/manifests/profile..draft.json", "valid": true },
-  { "kind": "manifest", "path": "examples/manifests/profile.md", "valid": false },
-  { "kind": "manifest", "path": "examples/manifests/bad%20name.json", "valid": false },
-  { "kind": "manifest", "path": "examples/manifests/空白.json", "valid": false },
-  { "kind": "manifest", "path": "examples/manifests/nested//profile.json", "valid": false },
-  { "kind": "manifest", "path": "examples/manifests/../profile.json", "valid": false },
-  { "kind": "content", "path": "profiles/profile.json", "valid": true },
-  { "kind": "content", "path": "examples/profiles/nested/profile.draft.json", "valid": true },
-  { "kind": "content", "path": "profiles/profile..draft.json", "valid": true },
-  { "kind": "content", "path": "profiles/profile.md", "valid": false },
-  { "kind": "content", "path": "examples/profiles/profile name.json", "valid": false },
-  { "kind": "content", "path": "/profiles/profile.json", "valid": false }
+  {
+    "kind": "manifest",
+    "path": "examples/manifests/profile.draft.json",
+    "valid": true
+  },
+  {
+    "kind": "manifest",
+    "path": "catalog/manifests/nested/profile_1-2.json",
+    "valid": true
+  },
+  {
+    "kind": "manifest",
+    "path": "catalog/manifests/profile..draft.json",
+    "valid": true
+  },
+  {
+    "kind": "manifest",
+    "path": "examples/manifests/profile.md",
+    "valid": false
+  },
+  {
+    "kind": "manifest",
+    "path": "examples/manifests/bad%20name.json",
+    "valid": false
+  },
+  {
+    "kind": "manifest",
+    "path": "examples/manifests/\u7a7a\u767d.json",
+    "valid": false
+  },
+  {
+    "kind": "manifest",
+    "path": "examples/manifests/nested//profile.json",
+    "valid": false
+  },
+  {
+    "kind": "manifest",
+    "path": "examples/manifests/../profile.json",
+    "valid": false
+  },
+  {
+    "kind": "content",
+    "path": "profiles/profile.sayall",
+    "valid": true
+  },
+  {
+    "kind": "content",
+    "path": "examples/profiles/nested/profile.draft.sayall",
+    "valid": true
+  },
+  {
+    "kind": "content",
+    "path": "profiles/profile..draft.sayall",
+    "valid": true
+  },
+  {
+    "kind": "content",
+    "path": "profiles/profile.md",
+    "valid": false
+  },
+  {
+    "kind": "content",
+    "path": "examples/profiles/profile name.sayall",
+    "valid": false
+  },
+  {
+    "kind": "content",
+    "path": "/profiles/profile.sayall",
+    "valid": false
+  },
+  {
+    "kind": "content",
+    "path": "profiles/profile.json",
+    "valid": false
+  }
 ]

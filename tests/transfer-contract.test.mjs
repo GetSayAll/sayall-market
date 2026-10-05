@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { sha256CanonicalJson } from '../scripts/marketplace-contract.mjs';
-import { normalizeTransfer, transferIssues, transferCapabilities, transferBundleIdentifiers, transferManifestIssues, publicTransferSensitivePaths } from '../scripts/transfer-contract.mjs';
+import { normalizeTransfer, transferIssues, transferCapabilities, transferBundleIdentifiers, transferManifestIssues, publicTransferSensitivePaths, transferCompatibilityIssues, selectCompatibleManifest } from '../scripts/transfer-contract.mjs';
 
 const schema = JSON.parse(await readFile(new URL('../schemas/transfer-package.schema.json', import.meta.url)));
 const validate = new Ajv2020({ allErrors: true, strict: true }).compile(schema);
@@ -45,7 +45,7 @@ test('1.0 文件只允许一个主对象；键位方案可携带组合动作依�
 
 test('当前 1.0 样例可读；拒绝旧版结构和未知版本', async () => {
   const frozen = JSON.parse(await readFile(new URL('./fixtures/transfer-v1.json', import.meta.url)));
-  assert.equal(sha256CanonicalJson(frozen), 'sha256:0823f874c14ec54a53f395f0aef6609142a5ecc17162e895694d72d2119a0223');
+  assert.equal(sha256CanonicalJson(frozen), 'sha256:a9257369a4db26c588ce0fd6ae29e187cd0e569246f711fa8452df2438f74e32');
   assert.equal(frozen.schemaVersion, '1.0');
   assert.equal(valid(frozen), true);
   const previous = structuredClone(frozen);
@@ -56,6 +56,8 @@ test('当前 1.0 样例可读；拒绝旧版结构和未知版本', async () => 
   previous.buttonProfiles = [frozen.profile];
   assert.equal(valid(previous), false);
   frozen.schemaVersion = '1.1';
+  assert.equal(valid(frozen), true);
+  frozen.requirements.minimumReaderVersion = '1.1';
   assert.equal(valid(frozen), false);
 });
 
@@ -166,4 +168,33 @@ test('合同与 Swift 对齐：全局空 App 列表、URL 大小写、左右修�
   p.shortcuts[0].modifiers = ['command']; p.applications[0].displayName = ' '; assert.equal(valid(p), false);
   p.applications[0].displayName = 'App'; p.macros[1].steps[0].parameters.urlString = 'https://example.com/\n';
   assert.equal(valid(p), false);
+});
+
+test('首版读取器兼容矩阵：小版本、最低读取版本、能力和 App 版本分别判断', async () => {
+  const cases = JSON.parse(await readFile(new URL('./fixtures/transfer-compatibility.json', import.meta.url)));
+  for (const c of cases) assert.equal(transferCompatibilityIssues(c.schemaVersion, c.requirements, c.appVersion).length === 0, c.compatible, c.name);
+});
+
+test('未来的可选说明不改变动作；未知动作和混合主对象不能被静默忽略', () => {
+  const p = structuredClone(fixtureRaw);
+  p.schemaVersion = '1.1';
+  p.extensions = {'org.example:notes': {author: '示例作者', description: '新增说明'}};
+  assert.equal(validate(p), true);
+  assert.equal(valid(p), true);
+  const mixed = {...p, macro: p.dependencies.macros[0]};
+  assert.equal(validate(mixed), false);
+  p.dependencies.macros[0].steps[0].action = 'futureAction';
+  assert.equal(validate(p), false);
+  const previous = structuredClone(fixtureRaw);
+  previous.minimumRemoteMicVersion = previous.requirements.minimumRemoteMicVersion;
+  delete previous.requirements;
+  assert.equal(validate(previous), false);
+});
+
+test('稳定目录同时列出 1.x 和 2.x；旧读取器选择最新可用方案', () => {
+  const ref = (v, schema, minimum = '1.0', app = '1.0.0', caps = []) => ({packageID:'example.profile', version:v, contentSchemaVersion:schema, requirements:{minimumReaderVersion:minimum, minimumRemoteMicVersion:app, capabilities:caps}, manifestPath:`examples/manifests/${v}-${schema}.json`});
+  const catalog = {manifests:[ref('3.0.0','2.0','2.0'), ref('2.0.0','1.1'),ref('1.0.0','1.0'),ref('4.0.0','1.2','1.0','9.0.0'),ref('5.0.0','1.2','1.0','1.0.0',['futureAction'])]};
+  assert.equal(selectCompatibleManifest(catalog,'example.profile','2.0.0').version,'2.0.0');
+  assert.equal(selectCompatibleManifest(catalog,'unknown','2.0.0'),null);
+  assert.equal(selectCompatibleManifest({manifests:[catalog.manifests[0]]},'example.profile','2.0.0'),null);
 });

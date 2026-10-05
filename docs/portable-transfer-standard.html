@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="blueprint" data-mode="auto">
+<html lang="zh-CN" data-theme="shadcn" data-mode="auto">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="Answer me with HTML 0.4.4">
-<title>SayAll 1.0 导入导出格式</title>
+<title>SayAll 首版文件格式与兼容规则</title>
 <style>
 html[data-theme="blueprint"], html[data-theme="blueprint"][data-mode="light"] {
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -425,124 +425,488 @@ html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var
 </head>
 <body>
 <div class="am-toolbar">
-<button class="am-btn" type="button" data-am="theme" data-labels="{&quot;blueprint&quot;:&quot;主题：图纸&quot;,&quot;shadcn&quot;:&quot;主题：卡片&quot;}">主题：图纸</button>
+<button class="am-btn" type="button" data-am="theme" data-labels="{&quot;blueprint&quot;:&quot;主题：图纸&quot;,&quot;shadcn&quot;:&quot;主题：卡片&quot;}">主题：卡片</button>
 <button class="am-btn" type="button" data-am="mode" data-labels="{&quot;auto&quot;:&quot;明暗：跟随系统&quot;,&quot;light&quot;:&quot;明暗：亮&quot;,&quot;dark&quot;:&quot;明暗：暗&quot;}">明暗：跟随系统</button>
 <button class="am-btn" type="button" data-am="copy" data-done="已复制 ✓">复制源稿</button>
 </div>
-<main class="am-sheet">
-<header class="am-head"><h1>SayAll 1.0 导入导出格式</h1><p class="am-sub">一个文件只声明一个主对象</p></header>
-<div class="am-frame">
-<div class="am-ruler am-ruler--top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div class="am-ruler am-ruler--bottom" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div class="am-ruler am-ruler--left" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div><div class="am-ruler am-ruler--right" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
-<div class="am-grid" style="--cols: 3">
+<main class="am-doc">
+<header class="am-head"><h1>SayAll 首版文件格式与兼容规则</h1><p class="am-sub">.sayall · JSON 编码 · 首个正式合同 1.0</p></header>
+<div class="am-doc-layout">
+<nav class="am-toc" aria-label="目录"><a href="#panel-A">A · 结论和范围</a><a href="#panel-B">B · 版本和要求</a><a href="#panel-C">C · 升级判定</a><a href="#panel-D">D · 主对象、依赖和扩展</a><a href="#panel-E">E · 市场清单与未来变体</a><a href="#panel-F">F · 自审发现与修复</a><a href="#panel-G">G · 验证和发布规则</a><a href="#panel-H">H · 调研依据与取舍</a></nav><div class="am-doc-body">
 <section class="am-panel" id="panel-A">
-<header class="am-panel-head"><span class="am-panel-id">A</span><h2>结论</h2></header>
-<div class="am-panel-body"><div class="am-md"><p>SayAll 方案文件使用 <code>format: sayall-transfer</code> 和 <code>schemaVersion: &quot;1.0&quot;</code>。客户端只读取当前单主对象格式。旧版 Market 文件不再读取。</p>
+<header class="am-panel-head"><span class="am-panel-id">A</span><h2>结论和范围</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>用户下载、导入和导出 <code>.sayall</code> 文件。文件内容是 UTF-8 JSON。
+一个分享文件只有一个主对象。键位方案可以携带组合动作依赖。</p>
+<p>首个正式合同是 <code>1.0</code>。开发期文件不属于兼容承诺。</p>
+<p>文件不使用压缩容器。当前数据无需附带图片或二进制资源。
+ZIP 只用于批量下载。用户先解压，再导入其中的 <code>.sayall</code> 文件。</p>
+<p>扩展名用于选文件。内部标识和完整校验决定文件是否可读。
+改扩展名不能绕过校验。<code>.sayall</code> 也不表示文件可信。</p>
 </div></div>
 </section>
 <section class="am-panel" id="panel-B">
-<header class="am-panel-head"><span class="am-panel-id">B</span><h2>主对象</h2></header>
+<header class="am-panel-head"><span class="am-panel-id">B</span><h2>版本和要求</h2></header>
+<div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>职责</th>
+<th>首版例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>format</code></td>
+<td>文件格式标识</td>
+<td><code>sayall-transfer</code></td>
+</tr>
+<tr>
+<td><code>schemaVersion</code></td>
+<td>文件写入合同版本</td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>requirements.minimumReaderVersion</code></td>
+<td>最低读取合同版本</td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>requirements.minimumRemoteMicVersion</code></td>
+<td>最低 Mac App 版本</td>
+<td><code>1.9.21</code></td>
+</tr>
+<tr>
+<td><code>requirements.capabilities</code></td>
+<td>额外必需能力；不支持则拒绝</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>packageID</code></td>
+<td>方案身份</td>
+<td><code>com.example.profile</code></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>方案内容版本</td>
+<td><code>1.0.0</code></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>主对象类型</td>
+<td><code>buttonProfile</code></td>
+</tr>
+<tr>
+<td><code>website</code>、<code>github</code></td>
+<td>可选 HTTPS 来源链接</td>
+<td>官网、源码仓库</td>
+</tr>
+<tr>
+<td><code>extensions</code></td>
+<td>可忽略的命名空间说明信息</td>
+<td><code>org.example:notes</code></td>
+</tr>
+</tbody></table></div>
+<p>格式版本使用两段非负整数。内容和 App 版本使用三段非负整数。
+每段最多六位。除零外，不允许前导零。版本按数字比较。</p>
+<p>方案内容更新不要求格式升级。修改快捷键时，只更新方案内容版本。</p>
+<p><code>requirements</code> 的三个字段必须存在。空能力数组表示没有额外能力要求。
+动作仍须通过白名单校验。空数组不会放行未知动作。</p>
+<p>遥控器型号保存在方案中。不要把同一限制复制到多个执行入口。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-C">
+<header class="am-panel-head"><span class="am-panel-id">C</span><h2>升级判定</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>以下“旧读取器”指本次首版实现，不含之前的开发包。</p>
+<div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>最低读取版本</th>
+<th>首版读取器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>1.0</code></td>
+<td><code>1.0</code></td>
+<td>接受，继续检查内容</td>
+</tr>
+<tr>
+<td><code>1.1</code> 或 <code>1.10</code></td>
+<td><code>1.0</code></td>
+<td>接受，继续检查内容</td>
+</tr>
+<tr>
+<td><code>1.1</code></td>
+<td><code>1.1</code></td>
+<td>拒绝，提示更新</td>
+</tr>
+<tr>
+<td><code>2.0</code></td>
+<td><code>2.0</code></td>
+<td>拒绝，提示更新</td>
+</tr>
+<tr>
+<td><code>2.0</code></td>
+<td><code>1.0</code></td>
+<td>拒绝，跨主版本声明无效</td>
+</tr>
+<tr>
+<td>任意版本</td>
+<td>未知必需能力</td>
+<td>拒绝，提示更新</td>
+</tr>
+<tr>
+<td>任意版本</td>
+<td>App 版本不足</td>
+<td>拒绝，提示更新</td>
+</tr>
+</tbody></table></div>
+<p>同一主版本承诺保留已有字段的类型、含义和默认行为。
+兼容新增说明信息放入 <code>extensions</code>。不能改变动作执行结果。</p>
+<p>新必需字段或动作须提高最低读取版本，并声明必需能力。
+更改已有字段含义、结构或默认行为时，使用新主版本。</p>
+<p>新 Mac 可以保留旧主版本解析器。不能只扩大版本白名单。</p>
+<p>新 Mac 默认导出能完整表达内容的最低合同版本。
+当前导出器生成 <code>1.0</code>。禁止通过删除未知动作实现降级。</p>
+<p>如果未来 <code>2.0</code> 内容可完整表达为 <code>1.0</code>，另生成 <code>1.0</code> 文件。
+必须验证两个变体的行为等价。不能只改版本号。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-D">
+<header class="am-panel-head"><span class="am-panel-id">D</span><h2>主对象、依赖和扩展</h2></header>
 <div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
 <thead>
 <tr>
 <th>type</th>
-<th>主对象</th>
-<th>依赖</th>
+<th>主对象字段</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>buttonProfile</code></td>
 <td><code>profile</code></td>
-<td><code>dependencies.macros</code>、快捷键、输入框和 App</td>
+<td>一套键位方案</td>
 </tr>
 <tr>
 <td><code>macro</code></td>
 <td><code>macro</code></td>
-<td><code>dependencies.macros</code>、快捷键、输入框和 App</td>
+<td>一个组合动作</td>
 </tr>
 <tr>
 <td><code>application</code></td>
 <td><code>application</code></td>
-<td>其他应用依赖</td>
+<td>一个 App 配置</td>
 </tr>
 <tr>
 <td><code>personalBackup</code></td>
 <td><code>backup</code></td>
-<td>本机备份内容</td>
+<td>显式个人备份</td>
 </tr>
 </tbody></table></div>
-<p>一个文件只能有一个主对象。键位方案可以引用组合动作。组合动作依赖不会改变文件的 <code>type</code>。</p>
+<p>前三种类型使用 <code>exportPurpose: share</code>。
+个人备份使用 <code>exportPurpose: personalBackup</code>，市场禁止分发个人备份。</p>
+<p>多个主对象字段同时出现时，拒绝整个文件。
+依赖只能放入 <code>dependencies</code>。个人备份的依赖在 <code>backup</code> 内。</p>
+<p>内嵌组合动作当前固定为合同 <code>1.0</code>。本机存储版本独立管理。</p>
+<p>未知核心字段、动作和枚举值一律拒绝。不能静默跳过动作。
+不在分享合同中支持 Shell 或 AppleScript。</p>
+<p>依赖 ID 只在文件内有效。导入时生成或复用本机 ID。
+缺失依赖、重复 ID、循环和超过八层的组合动作均拒绝。</p>
+<p>校验和预览不执行动作。保存使用现有事务保护。</p>
+<p><code>extensions</code> 使用 <code>org.example:notes</code> 这样的命名空间。
+每个命名空间保存字符串键值表。最多 32 个命名空间。</p>
+<p>每张表最多 32 项。键最多 100 字，值最多 2048 字。
+扩展字段只保存说明，不保存脚本、依赖或执行参数。</p>
+<p>编解码保留这些说明。导入为本机对象后，重新导出创建新包。
+新包不承诺保留未知说明。执行语义不能依赖说明信息。</p>
+<p>整个文件最多 4 MiB。既有对象数量与文本限制继续生效。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-C">
-<header class="am-panel-head"><span class="am-panel-id">C</span><h2>导入</h2></header>
-<div class="am-panel-body"><div class="am-md"><p>客户端读取 <code>type</code>，自动判断文件用途。用户不需要选择用途。</p>
-<p>导入前检查主对象、依赖 ID、遥控器型号和来源链接。来源链接只允许 HTTPS。</p>
+<section class="am-panel" id="panel-E">
+<header class="am-panel-head"><span class="am-panel-id">E</span><h2>市场清单与未来变体</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>Catalog、Manifest 和方案文件各有自己的合同版本。
+Catalog 和 Manifest 首版均为 <code>1.0</code>，不跟随方案合同升级。</p>
+<p>首版清单可描述未来文件版本，App 无需先读取未来文件正文。</p>
+<p>每个 Catalog 条目包含路径、摘要、方案 ID、内容版本、文件版本和读取要求。
+同一方案可以有多个内容版本，也可以有多个格式变体。</p>
+<p>App 先按读取版本、App 版本和必需能力筛选。
+随后选择最高内容版本。同版优先选择较新的兼容文件版本。</p>
+<p>无兼容变体时提示更新，不下载后猜测格式。</p>
+<p>Catalog 条目、Manifest 和文件正文的声明必须一致。
+下载后继续校验摘要、签名、撤销状态、内容和实际动作能力。</p>
+<p>来源网址不等于签名，也不能作为可信来源证明。
+测试签名公钥只用于候选样例，不是生产信任根。</p>
+<p>文件和 Manifest 使用不可变发布路径。清单更新递增 <code>catalogVersion</code>。
+未来若清单自身有破坏性变化，保留原清单入口。</p>
+<p>新客户端可以使用新的清单入口。旧入口继续提供旧客户端可读内容。
+在线市场尚未上线。本次实现合同、筛选方法和候选样例。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-D">
-<header class="am-panel-head"><span class="am-panel-id">D</span><h2>示例</h2></header>
-<div class="am-panel-body"><pre class="am-code"><code data-lang="json">{
-  &quot;format&quot;: &quot;sayall-transfer&quot;,
-  &quot;schemaVersion&quot;: &quot;1.0&quot;,
-  &quot;type&quot;: &quot;buttonProfile&quot;,
-  &quot;profile&quot;: {},
-  &quot;dependencies&quot;: {
-    &quot;macros&quot;: []
-  }
-}</code></pre></div>
+<section class="am-panel" id="panel-F">
+<header class="am-panel-head"><span class="am-panel-id">F</span><h2>自审发现与修复</h2></header>
+<div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>修复</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通 JSON 容易被混选</td>
+<td>用户文件统一使用 <code>.sayall</code></td>
+</tr>
+<tr>
+<td>版本精确匹配阻断兼容小版本</td>
+<td>独立声明最低读取版本</td>
+</tr>
+<tr>
+<td>不支持的功能没有前置判定</td>
+<td>在正文解码前检查必需能力</td>
+</tr>
+<tr>
+<td>未知字段全部拒绝，缺少扩展位置</td>
+<td>为说明信息预留命名空间</td>
+</tr>
+<tr>
+<td>主对象混用可能被忽略</td>
+<td>严格检查唯一主对象和用途</td>
+</tr>
+<tr>
+<td>个人备份嵌套字段未完整检查</td>
+<td>共用完整依赖和设置校验</td>
+</tr>
+<tr>
+<td>Market 宏示例缺少统一外层</td>
+<td>使用相同的主对象与依赖合同</td>
+</tr>
+<tr>
+<td>清单与内容版本耦合</td>
+<td>独立清单版本和变体描述</td>
+</tr>
+<tr>
+<td>文件改名会破坏摘要与签名</td>
+<td>更新候选摘要及测试签名</td>
+</tr>
+</tbody></table></div>
+</div></div>
 </section>
-<section class="am-panel am-span-wide" id="panel-E" style="grid-column: span 2">
-<header class="am-panel-head"><span class="am-panel-id">E</span><h2>兼容边界</h2></header>
-<div class="am-panel-body"><div class="am-md"><p>不要在一个文件中同时放置 <code>profile</code> 和 <code>macro</code>。不要使用旧版顶层 <code>roots</code>、<code>buttonProfiles</code> 或 <code>macros</code>。</p>
+<section class="am-panel" id="panel-G">
+<header class="am-panel-head"><span class="am-panel-id">G</span><h2>验证和发布规则</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>Market 和 Swift 共同读取兼容性测试矩阵。
+覆盖 <code>1.0</code>、兼容 <code>1.1</code>、新读取要求、<code>2.0</code>、非法版本和未知能力。</p>
+<p>跨仓测试读取全部下载方案、宏示例和含依赖示例。
+测试还覆盖编解码、重复导入、混合主对象和未知备份字段。</p>
+<p>发布前运行 <code>npm run validate</code> 和相关 Swift 测试。
+本地 SwiftPM 命令加 <code>--disable-keychain</code>。</p>
+<p>通过 PR 合入后，从明确的 <code>origin/main</code> 提交重新打包。
+下载资产生成后检查 ZIP 条目、摘要和公开下载结果。</p>
+<p>自动化通过不代表实体遥控器或第三方 App 已完成验收。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-H">
+<header class="am-panel-head"><span class="am-panel-id">H</span><h2>调研依据与取舍</h2></header>
+<div class="am-panel-body"><div class="am-md"><ul>
+<li><a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html">glTF 规范</a>：区分写入版本与最低读取版本。SayAll 采用该原则，并前置检查必需能力。</li>
+<li><a href="https://github.com/opencontainers/image-spec/blob/v1.1.1/image-index.md">OCI Image Index</a>：索引描述多个变体。SayAll 在稳定清单中列出文件版本和读取要求。</li>
+<li><a href="https://developer.apple.com/documentation/uniformtypeidentifiers">Apple UTI</a>：系统按文件类型组织选择。SayAll 使用 <code>.sayall</code> 类型筛选，同时校验内部内容。</li>
+<li><a href="https://json-schema.org/understanding-json-schema/reference/object">JSON Schema 对象规则</a>：封闭对象会拒绝新增字段。SayAll 保留严格核心，并提供明确扩展位置。</li>
+<li><a href="https://protobuf.dev/programming-guides/json/">ProtoJSON 演进规则</a>：字段和枚举变化可能造成解析失败。SayAll 不静默跳过未知执行内容。</li>
+<li><a href="https://kubernetes.io/docs/reference/using-api/">Kubernetes API 概述</a>：合同版本与软件版本分开管理。SayAll 分离内容、合同和 App 版本。</li>
+</ul>
+<p>当前不引入 ZIP 容器、二进制编码、动态插件或运行时下载 Schema。
+这些机制不能自动解决兼容性，还会增加解包和执行边界。</p>
+<p>将来需要附带资源时，先设计新主版本，再提供显式转换。</p>
 </div></div>
 </section>
 </div>
 </div>
 </main>
-<footer class="am-colophon">Generated by Answer me with HTML 0.4.4 · 2026-10-05 14:22</footer>
+<footer class="am-colophon">Generated by Answer me with HTML 0.4.4 · 2026-10-05 16:53</footer>
 <textarea id="am-source" hidden readonly aria-hidden="true">---
-title: SayAll 1.0 导入导出格式
-subtitle: 一个文件只声明一个主对象
+title: SayAll 首版文件格式与兼容规则
+subtitle: .sayall · JSON 编码 · 首个正式合同 1.0
+template: doc
+theme: shadcn
+lang: zh
 ---
 
-## 结论
+## A 结论和范围
 
-SayAll 方案文件使用 `format: sayall-transfer` 和 `schemaVersion: &quot;1.0&quot;`。客户端只读取当前单主对象格式。旧版 Market 文件不再读取。
+用户下载、导入和导出 `.sayall` 文件。文件内容是 UTF-8 JSON。
+一个分享文件只有一个主对象。键位方案可以携带组合动作依赖。
 
-## 主对象
+首个正式合同是 `1.0`。开发期文件不属于兼容承诺。
 
-| type | 主对象 | 依赖 |
+文件不使用压缩容器。当前数据无需附带图片或二进制资源。
+ZIP 只用于批量下载。用户先解压，再导入其中的 `.sayall` 文件。
+
+扩展名用于选文件。内部标识和完整校验决定文件是否可读。
+改扩展名不能绕过校验。`.sayall` 也不表示文件可信。
+
+
+## B 版本和要求
+
+| 字段 | 职责 | 首版例子 |
 |---|---|---|
-| `buttonProfile` | `profile` | `dependencies.macros`、快捷键、输入框和 App |
-| `macro` | `macro` | `dependencies.macros`、快捷键、输入框和 App |
-| `application` | `application` | 其他应用依赖 |
-| `personalBackup` | `backup` | 本机备份内容 |
+| `format` | 文件格式标识 | `sayall-transfer` |
+| `schemaVersion` | 文件写入合同版本 | `1.0` |
+| `requirements.minimumReaderVersion` | 最低读取合同版本 | `1.0` |
+| `requirements.minimumRemoteMicVersion` | 最低 Mac App 版本 | `1.9.21` |
+| `requirements.capabilities` | 额外必需能力；不支持则拒绝 | `[]` |
+| `packageID` | 方案身份 | `com.example.profile` |
+| `version` | 方案内容版本 | `1.0.0` |
+| `type` | 主对象类型 | `buttonProfile` |
+| `website`、`github` | 可选 HTTPS 来源链接 | 官网、源码仓库 |
+| `extensions` | 可忽略的命名空间说明信息 | `org.example:notes` |
 
-一个文件只能有一个主对象。键位方案可以引用组合动作。组合动作依赖不会改变文件的 `type`。
+格式版本使用两段非负整数。内容和 App 版本使用三段非负整数。
+每段最多六位。除零外，不允许前导零。版本按数字比较。
 
-## 导入
+方案内容更新不要求格式升级。修改快捷键时，只更新方案内容版本。
 
-客户端读取 `type`，自动判断文件用途。用户不需要选择用途。
+`requirements` 的三个字段必须存在。空能力数组表示没有额外能力要求。
+动作仍须通过白名单校验。空数组不会放行未知动作。
 
-导入前检查主对象、依赖 ID、遥控器型号和来源链接。来源链接只允许 HTTPS。
+遥控器型号保存在方案中。不要把同一限制复制到多个执行入口。
 
-## 示例
+## C 升级判定
 
-```json
-{
-  &quot;format&quot;: &quot;sayall-transfer&quot;,
-  &quot;schemaVersion&quot;: &quot;1.0&quot;,
-  &quot;type&quot;: &quot;buttonProfile&quot;,
-  &quot;profile&quot;: {},
-  &quot;dependencies&quot;: {
-    &quot;macros&quot;: []
-  }
-}
-```
+以下“旧读取器”指本次首版实现，不含之前的开发包。
 
-## 兼容边界
+| 文件 | 最低读取版本 | 首版读取器 |
+|---|---|---|
+| `1.0` | `1.0` | 接受，继续检查内容 |
+| `1.1` 或 `1.10` | `1.0` | 接受，继续检查内容 |
+| `1.1` | `1.1` | 拒绝，提示更新 |
+| `2.0` | `2.0` | 拒绝，提示更新 |
+| `2.0` | `1.0` | 拒绝，跨主版本声明无效 |
+| 任意版本 | 未知必需能力 | 拒绝，提示更新 |
+| 任意版本 | App 版本不足 | 拒绝，提示更新 |
 
-不要在一个文件中同时放置 `profile` 和 `macro`。不要使用旧版顶层 `roots`、`buttonProfiles` 或 `macros`。
+同一主版本承诺保留已有字段的类型、含义和默认行为。
+兼容新增说明信息放入 `extensions`。不能改变动作执行结果。
+
+新必需字段或动作须提高最低读取版本，并声明必需能力。
+更改已有字段含义、结构或默认行为时，使用新主版本。
+
+新 Mac 可以保留旧主版本解析器。不能只扩大版本白名单。
+
+新 Mac 默认导出能完整表达内容的最低合同版本。
+当前导出器生成 `1.0`。禁止通过删除未知动作实现降级。
+
+如果未来 `2.0` 内容可完整表达为 `1.0`，另生成 `1.0` 文件。
+必须验证两个变体的行为等价。不能只改版本号。
+
+
+## D 主对象、依赖和扩展
+
+| type | 主对象字段 | 用途 |
+|---|---|---|
+| `buttonProfile` | `profile` | 一套键位方案 |
+| `macro` | `macro` | 一个组合动作 |
+| `application` | `application` | 一个 App 配置 |
+| `personalBackup` | `backup` | 显式个人备份 |
+
+前三种类型使用 `exportPurpose: share`。
+个人备份使用 `exportPurpose: personalBackup`，市场禁止分发个人备份。
+
+多个主对象字段同时出现时，拒绝整个文件。
+依赖只能放入 `dependencies`。个人备份的依赖在 `backup` 内。
+
+内嵌组合动作当前固定为合同 `1.0`。本机存储版本独立管理。
+
+未知核心字段、动作和枚举值一律拒绝。不能静默跳过动作。
+不在分享合同中支持 Shell 或 AppleScript。
+
+依赖 ID 只在文件内有效。导入时生成或复用本机 ID。
+缺失依赖、重复 ID、循环和超过八层的组合动作均拒绝。
+
+校验和预览不执行动作。保存使用现有事务保护。
+
+`extensions` 使用 `org.example:notes` 这样的命名空间。
+每个命名空间保存字符串键值表。最多 32 个命名空间。
+
+每张表最多 32 项。键最多 100 字，值最多 2048 字。
+扩展字段只保存说明，不保存脚本、依赖或执行参数。
+
+编解码保留这些说明。导入为本机对象后，重新导出创建新包。
+新包不承诺保留未知说明。执行语义不能依赖说明信息。
+
+
+整个文件最多 4 MiB。既有对象数量与文本限制继续生效。
+
+## E 市场清单与未来变体
+
+Catalog、Manifest 和方案文件各有自己的合同版本。
+Catalog 和 Manifest 首版均为 `1.0`，不跟随方案合同升级。
+
+首版清单可描述未来文件版本，App 无需先读取未来文件正文。
+
+每个 Catalog 条目包含路径、摘要、方案 ID、内容版本、文件版本和读取要求。
+同一方案可以有多个内容版本，也可以有多个格式变体。
+
+App 先按读取版本、App 版本和必需能力筛选。
+随后选择最高内容版本。同版优先选择较新的兼容文件版本。
+
+无兼容变体时提示更新，不下载后猜测格式。
+
+Catalog 条目、Manifest 和文件正文的声明必须一致。
+下载后继续校验摘要、签名、撤销状态、内容和实际动作能力。
+
+来源网址不等于签名，也不能作为可信来源证明。
+测试签名公钥只用于候选样例，不是生产信任根。
+
+
+文件和 Manifest 使用不可变发布路径。清单更新递增 `catalogVersion`。
+未来若清单自身有破坏性变化，保留原清单入口。
+
+新客户端可以使用新的清单入口。旧入口继续提供旧客户端可读内容。
+在线市场尚未上线。本次实现合同、筛选方法和候选样例。
+
+
+## F 自审发现与修复
+
+| 问题 | 修复 |
+|---|---|
+| 普通 JSON 容易被混选 | 用户文件统一使用 `.sayall` |
+| 版本精确匹配阻断兼容小版本 | 独立声明最低读取版本 |
+| 不支持的功能没有前置判定 | 在正文解码前检查必需能力 |
+| 未知字段全部拒绝，缺少扩展位置 | 为说明信息预留命名空间 |
+| 主对象混用可能被忽略 | 严格检查唯一主对象和用途 |
+| 个人备份嵌套字段未完整检查 | 共用完整依赖和设置校验 |
+| Market 宏示例缺少统一外层 | 使用相同的主对象与依赖合同 |
+| 清单与内容版本耦合 | 独立清单版本和变体描述 |
+| 文件改名会破坏摘要与签名 | 更新候选摘要及测试签名 |
+
+## G 验证和发布规则
+
+Market 和 Swift 共同读取兼容性测试矩阵。
+覆盖 `1.0`、兼容 `1.1`、新读取要求、`2.0`、非法版本和未知能力。
+
+跨仓测试读取全部下载方案、宏示例和含依赖示例。
+测试还覆盖编解码、重复导入、混合主对象和未知备份字段。
+
+
+发布前运行 `npm run validate` 和相关 Swift 测试。
+本地 SwiftPM 命令加 `--disable-keychain`。
+
+通过 PR 合入后，从明确的 `origin/main` 提交重新打包。
+下载资产生成后检查 ZIP 条目、摘要和公开下载结果。
+
+自动化通过不代表实体遥控器或第三方 App 已完成验收。
+
+## H 调研依据与取舍
+
+- [glTF 规范](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)：区分写入版本与最低读取版本。SayAll 采用该原则，并前置检查必需能力。
+- [OCI Image Index](https://github.com/opencontainers/image-spec/blob/v1.1.1/image-index.md)：索引描述多个变体。SayAll 在稳定清单中列出文件版本和读取要求。
+- [Apple UTI](https://developer.apple.com/documentation/uniformtypeidentifiers)：系统按文件类型组织选择。SayAll 使用 `.sayall` 类型筛选，同时校验内部内容。
+- [JSON Schema 对象规则](https://json-schema.org/understanding-json-schema/reference/object)：封闭对象会拒绝新增字段。SayAll 保留严格核心，并提供明确扩展位置。
+- [ProtoJSON 演进规则](https://protobuf.dev/programming-guides/json/)：字段和枚举变化可能造成解析失败。SayAll 不静默跳过未知执行内容。
+- [Kubernetes API 概述](https://kubernetes.io/docs/reference/using-api/)：合同版本与软件版本分开管理。SayAll 分离内容、合同和 App 版本。
+
+当前不引入 ZIP 容器、二进制编码、动态插件或运行时下载 Schema。
+这些机制不能自动解决兼容性，还会增加解包和执行边界。
+
+将来需要附带资源时，先设计新主版本，再提供显式转换。
 </textarea>
 <script>
 (() => {

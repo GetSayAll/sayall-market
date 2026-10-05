@@ -3,7 +3,6 @@
   "schemaVersion": "1.0",
   "packageID": "com.getsayall.compatibility.frozen-v1",
   "version": "1.0.0",
-  "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
   "type": "buttonProfile",
   "profile": {
@@ -104,5 +103,10 @@
         "shortcutID": "example.shortcut"
       }
     ]
+  },
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.21",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
   }
 }

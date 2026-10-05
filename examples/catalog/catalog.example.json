@@ -6,15 +6,39 @@
   "manifests": [
     {
       "manifestPath": "examples/manifests/codex-basic-profile.example.json",
-      "manifestDigest": "sha256:1c41885f3ca8054f3bcf47e8a4cee9670ae8330cdbde51d38b1c13695f69fc36"
+      "manifestDigest": "sha256:91c63f83e0a558061718c64e4ee34c1b53abc192f938708a0e598626c4a5ed6f",
+      "packageID": "com.getsayall.example.codex-basic-profile",
+      "version": "0.1.0",
+      "contentSchemaVersion": "1.0",
+      "requirements": {
+        "minimumRemoteMicVersion": "1.9.18",
+        "minimumReaderVersion": "1.0",
+        "capabilities": []
+      }
     },
     {
       "manifestPath": "examples/manifests/netease-music-media-controls.candidate.json",
-      "manifestDigest": "sha256:1a7521a73b9f6d03727c42870fbbd95aec904ab4955e89980bed54a4db7090a3"
+      "manifestDigest": "sha256:599b37a9194096b073c70ce1e0865983e669a00c4590139e26751c110542e316",
+      "packageID": "com.getsayall.candidate.netease-music-media-controls",
+      "version": "0.1.0",
+      "contentSchemaVersion": "1.0",
+      "requirements": {
+        "minimumRemoteMicVersion": "1.9.18",
+        "minimumReaderVersion": "1.0",
+        "capabilities": []
+      }
     },
     {
       "manifestPath": "examples/manifests/open-codex-and-focus.example.json",
-      "manifestDigest": "sha256:4f878f9c939326a92f4e5fae7145657ea80ebc5c704088e9a26937c4da6a7829"
+      "manifestDigest": "sha256:823beb5e8bd99f1a82dea2cc82818832a5b9d5944bed6aeea0b295c4bc9e2935",
+      "packageID": "com.getsayall.example.open-codex-and-focus",
+      "version": "0.1.0",
+      "contentSchemaVersion": "1.0",
+      "requirements": {
+        "minimumReaderVersion": "1.0",
+        "minimumRemoteMicVersion": "1.9.21",
+        "capabilities": []
+      }
     }
   ],
   "revocations": {
@@ -23,7 +47,7 @@
   },
   "signature": {
     "algorithm": "ed25519",
-    "keyID": "portable-transfer-v1-fixture-01",
-    "value": "jGm2NivlZ/Dkt+H37tzDqRSjVFCgkHfbNU+vivBJiV/nOf42JpXTaDBTHw1nO30+geCEURNAXbRsGc9dZbQFAQ=="
+    "keyID": "portable-transfer-v1-fixture-02",
+    "value": "30AXPKTePfW1bIMnbile47QFSejNO1Avr9nAFRUHKkOVDBXRm4bTfb05ZV23QirSExUcRn9mYKl9M3DnnmrvDg=="
   }
 }

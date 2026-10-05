@@ -62,7 +62,9 @@ function baseManifest() {
     source: "community",
     author: { authorID: "fixture-author", displayName: "Fixture Author" },
     compatibility: { minimumRemoteMicVersion: "1.9.18" },
-    contentPath: "examples/macros/open-codex-and-focus.example.json",
+    contentPath: "examples/macros/open-codex-and-focus.example.sayall",
+    contentSchemaVersion: "1.0",
+    requirements: { minimumReaderVersion: "1.0", minimumRemoteMicVersion: "1.9.18", capabilities: [] },
     contentDigest: `sha256:${"1".repeat(64)}`,
     license: "CC-BY-NC-4.0",
     declaredCapabilities: ["openApplication"],
@@ -97,6 +99,7 @@ test("Manifest 与 Catalog Ed25519 签名可验证且拒绝篡改", () => {
       manifests: [
         {
           manifestPath: "examples/manifests/fixture.draft.json",
+          packageID: "com.getsayall.example.fixture", version: "1.0.0", contentSchemaVersion: "1.0", requirements: baseManifest().requirements,
           manifestDigest: sha256CanonicalJson(manifest)
         }
       ],
@@ -112,7 +115,7 @@ test("Manifest 与 Catalog Ed25519 签名可验证且拒绝篡改", () => {
 
 test("网易云候选使用固定测试公钥复验并拒绝内容、Manifest、签名和未知 key 篡改", async () => {
   const manifestPath = "examples/manifests/netease-music-media-controls.candidate.json";
-  const contentPath = "examples/profiles/netease-music-media-controls.candidate.json";
+  const contentPath = "examples/profiles/netease-music-media-controls.candidate.sayall";
   const [manifestBytes, contentBytes, catalogBytes] = await Promise.all([
     readFile(path.join(repositoryRoot, manifestPath)),
     readFile(path.join(repositoryRoot, contentPath)),
@@ -207,6 +210,7 @@ test("Schema 严格拒绝未知字段、URL、绝对路径、脚本路径和无�
     manifests: [
       {
         manifestPath: "examples/manifests/fixture.draft.json",
+          packageID: "com.getsayall.example.fixture", version: "1.0.0", contentSchemaVersion: "1.0", requirements: baseManifest().requirements,
         manifestDigest: `sha256:${"2".repeat(64)}`
       }
     ],
@@ -258,6 +262,7 @@ test("共享路径 fixture 与 Catalog、Manifest Schema 保持一致", async ()
         manifests: [
           {
             manifestPath: fixture.path,
+            packageID: "com.getsayall.example.fixture", version: "1.0.0", contentSchemaVersion: "1.0", requirements: baseManifest().requirements,
             manifestDigest: `sha256:${"2".repeat(64)}`
           }
         ],

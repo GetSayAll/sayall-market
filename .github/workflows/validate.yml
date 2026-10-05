@@ -27,3 +27,6 @@ jobs:
 
       - name: Validate schemas and public content
         run: npm run validate
+
+      - name: Verify downloadable profile bundle
+        run: python3 scripts/build-downloads.py "$RUNNER_TEMP/sayall-profile-downloads"

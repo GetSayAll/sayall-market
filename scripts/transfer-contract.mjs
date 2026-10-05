@@ -1,5 +1,35 @@
 import { forbiddenContractKeyPattern, forbiddenContractValuePattern } from './marketplace-contract.mjs';
 
+
+export const supportedTransferCapabilities = new Set(['openApplication', 'waitForApplication', 'focusLearnedTarget', 'sendKeyboardShortcut', 'builtInAction', 'invokeMacro', 'openURL', 'runShortcut', 'runMacro']);
+export function versionParts(value, count) {
+  if (typeof value !== 'string') return null;
+  const parts = value.split('.');
+  return parts.length === count && parts.every(p => /^(0|[1-9][0-9]{0,5})$/.test(p)) ? parts.map(Number) : null;
+}
+export function compareVersions(a, b) {
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] - b[i];
+  return 0;
+}
+export function transferCompatibilityIssues(schemaVersion, requirements, appVersion) {
+  const schema = versionParts(schemaVersion, 2);
+  const minimum = versionParts(requirements?.minimumReaderVersion, 2);
+  const appMinimum = versionParts(requirements?.minimumRemoteMicVersion, 3);
+  if (!schema || !minimum || schema[0] !== minimum[0] || compareVersions(schema, minimum) < 0 || !appMinimum || !Array.isArray(requirements.capabilities)) return ['requirements/schemaVersion'];
+  const errors = [];
+  if (schema[0] !== 1 || compareVersions(minimum, [1,0]) > 0) errors.push('unsupportedReader');
+  if (requirements.capabilities.length > 32 || new Set(requirements.capabilities).size !== requirements.capabilities.length || requirements.capabilities.some(c => !supportedTransferCapabilities.has(c))) errors.push('unsupportedCapabilities');
+  if (appVersion !== undefined) {
+    const app = versionParts(appVersion, 3);
+    if (!app || compareVersions(app, appMinimum) < 0) errors.push('minimumRemoteMicVersion');
+  }
+  return errors;
+}
+export function selectCompatibleManifest(catalog, packageID, appVersion) {
+  return catalog.manifests.filter(ref => ref.packageID === packageID && transferCompatibilityIssues(ref.contentSchemaVersion, ref.requirements, appVersion).length === 0)
+    .sort((a,b) => compareVersions(versionParts(b.version,3), versionParts(a.version,3)) || compareVersions(versionParts(b.contentSchemaVersion,2), versionParts(a.contentSchemaVersion,2)) || a.manifestPath.localeCompare(b.manifestPath))[0] ?? null;
+}
+
 export function normalizeTransfer(p) {
   if (p?.type !== undefined && Array.isArray(p.roots) && Array.isArray(p.macros)
       && Array.isArray(p.shortcuts) && Array.isArray(p.focusTargets)
@@ -33,6 +63,9 @@ export function transferManifestIssues(input, manifest) {
 
 /** Semantic constraints supplement JSON Schema. No I/O or action execution. */
 export function transferIssues(input) {
+  if (!input || typeof input !== 'object' || !['buttonProfile','macro','application','personalBackup'].includes(input.type)) return ['type'];
+  const payload = {buttonProfile:'profile',macro:'macro',application:'application',personalBackup:'backup'}[input.type];
+  if (!input[payload] || typeof input[payload] !== 'object') return [payload];
   const p = normalizeTransfer(input);
   const errors = [];
   const fail = (path) => errors.push(path);
@@ -45,7 +78,8 @@ export function transferIssues(input) {
     } catch { fail(key); }
   }
   if (input.type !== undefined) {
-    if (p.schemaVersion !== '1.0') fail('schemaVersion');
+    errors.push(...transferCompatibilityIssues(p.schemaVersion, p.requirements));
+    if (!p.requirements || typeof p.requirements !== 'object' || typeof p.requirements.minimumRemoteMicVersion !== 'string') fail('requirements');
     if (!['buttonProfile', 'macro', 'application', 'personalBackup'].includes(input.type)) fail('type');
     if (input.type === 'buttonProfile' && (!input.profile || input.macro || input.application || input.backup)) fail('主对象只能是键位方案');
     if (input.type === 'macro' && (!input.macro || input.profile || input.application || input.backup)) fail('主对象只能是组合动作');
@@ -54,6 +88,12 @@ export function transferIssues(input) {
     if (input.type !== 'personalBackup' && (p.exportPurpose !== 'share' || p.hostSettings)) fail('公开方案不允许个人备份内容');
   }
   if (input.type !== undefined) for (const macro of p.macros) if (macro.schemaVersion !== '1.0') fail(`macro:${macro.macroID}:schemaVersion`);
+  if (p.extensions !== undefined) {
+    if (!p.extensions || typeof p.extensions !== 'object' || Array.isArray(p.extensions) || Object.keys(p.extensions).length > 32) fail('extensions');
+    else for (const [key, value] of Object.entries(p.extensions)) {
+      if (key.length > 100 || !/^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*:[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$/.test(key) || !value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).length > 32 || Object.entries(value).some(([k,v]) => !k.length || k.length > 100 || typeof v !== 'string' || v.length > 2048)) fail(`extensions:${key}`);
+    }
+  }
   const maps = {};
   const text = (value) => typeof value === 'string' && value.trim().length > 0 && !/[\u0000-\u001f\u007f-\u009f]/u.test(value);
   for (const values of [p.shortcuts, p.focusTargets, p.applications])

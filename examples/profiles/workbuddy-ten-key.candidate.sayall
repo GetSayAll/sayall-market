@@ -2,27 +2,26 @@
   "format": "sayall-transfer",
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
-  "packageID": "com.getsayall.candidate.codex-ten-key",
+  "packageID": "com.getsayall.candidate.workbuddy-ten-key",
   "version": "0.1.0",
-  "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
-    "id": "com.getsayall.candidate.codex-ten-key",
-    "name": "Codex 10键",
+    "id": "com.getsayall.candidate.workbuddy-ten-key",
+    "name": "WorkBuddy 10键",
     "remoteModel": "xiaomi-remote-2-pro",
     "mode": "automatic",
     "applicationBundleIdentifiers": [
-      "com.openai.codex"
+      "com.tencent.workbuddy.mac",
+      "com.workbuddy.workbuddy"
     ],
     "bindings": [
       {
         "controlID": "up",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.up"
+          "kind": "disabled"
         }
       },
       {
@@ -37,7 +36,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.left"
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.left"
         }
       },
       {
@@ -45,7 +44,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.right"
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.right"
         }
       },
       {
@@ -53,7 +52,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.ok"
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.ok"
         }
       },
       {
@@ -61,7 +60,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.back"
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.back"
         }
       },
       {
@@ -76,7 +75,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.volume-up"
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.volume-up"
         }
       },
       {
@@ -84,7 +83,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.volume-down"
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.volume-down"
         }
       },
       {
@@ -92,7 +91,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.power"
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.power"
         }
       }
     ]
@@ -101,64 +100,54 @@
     "macros": [],
     "shortcuts": [
       {
-        "id": "com.getsayall.candidate.codex-ten-key.up",
-        "displayName": "Steer 补充指令（候选）",
-        "keyCode": 36,
-        "keyLabel": "Return",
+        "id": "com.getsayall.candidate.workbuddy-ten-key.left",
+        "displayName": "上一个任务（方向待验）",
+        "keyCode": 33,
+        "keyLabel": "[",
         "modifiers": [
           "command"
         ]
       },
       {
-        "id": "com.getsayall.candidate.codex-ten-key.left",
-        "displayName": "上一个会话",
-        "keyCode": 48,
-        "keyLabel": "Tab",
+        "id": "com.getsayall.candidate.workbuddy-ten-key.right",
+        "displayName": "下一个任务（方向待验）",
+        "keyCode": 30,
+        "keyLabel": "]",
         "modifiers": [
-          "control",
-          "shift"
+          "command"
         ]
       },
       {
-        "id": "com.getsayall.candidate.codex-ten-key.right",
-        "displayName": "下一个会话",
-        "keyCode": 48,
-        "keyLabel": "Tab",
-        "modifiers": [
-          "control"
-        ]
-      },
-      {
-        "id": "com.getsayall.candidate.codex-ten-key.ok",
+        "id": "com.getsayall.candidate.workbuddy-ten-key.ok",
         "displayName": "提交 / 确认",
         "keyCode": 36,
         "keyLabel": "Return",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.codex-ten-key.back",
+        "id": "com.getsayall.candidate.workbuddy-ten-key.back",
         "displayName": "删除光标前的字符",
         "keyCode": 51,
         "keyLabel": "Backspace",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.codex-ten-key.volume-up",
+        "id": "com.getsayall.candidate.workbuddy-ten-key.volume-up",
         "displayName": "向上翻一屏",
         "keyCode": 116,
         "keyLabel": "Page Up",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.codex-ten-key.volume-down",
+        "id": "com.getsayall.candidate.workbuddy-ten-key.volume-down",
         "displayName": "向下翻一屏",
         "keyCode": 121,
         "keyLabel": "Page Down",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.codex-ten-key.power",
-        "displayName": "停止 / 取消",
+        "id": "com.getsayall.candidate.workbuddy-ten-key.power",
+        "displayName": "停止生成",
         "keyCode": 53,
         "keyLabel": "Esc",
         "modifiers": []
@@ -166,5 +155,10 @@
     ],
     "focusTargets": [],
     "applications": []
+  },
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.21",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
   }
 }
