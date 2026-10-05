@@ -4,155 +4,105 @@
   "packageID": "com.getsayall.compatibility.frozen-v1",
   "version": "1.0.0",
   "minimumRemoteMicVersion": "1.9.21",
-  "exportPurpose": "personalBackup",
-  "roots": [
-    {
-      "kind": "macro",
-      "id": "example.root"
-    },
-    {
-      "kind": "application",
-      "id": "example.editor"
-    },
-    {
-      "kind": "buttonProfile",
-      "id": "example.profile"
-    },
-    {
-      "kind": "hostSettings",
-      "id": "host.settings"
-    }
-  ],
-  "macros": [
-    {
-      "schemaVersion": "1.0",
-      "macroID": "example.root",
-      "version": "1.0.0",
-      "name": "打开编辑器并执行子动作",
-      "scope": {
-        "kind": "global"
+  "exportPurpose": "share",
+  "type": "buttonProfile",
+  "profile": {
+    "id": "example.profile",
+    "name": "First version",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "manual",
+    "applicationBundleIdentifiers": [
+      "com.example.editor"
+    ],
+    "bindings": [
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "macro",
+          "referenceID": "example.root"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [
+      {
+        "schemaVersion": "1.0",
+        "macroID": "example.root",
+        "version": "1.0.0",
+        "name": "打开编辑器并执行子动作",
+        "scope": {
+          "kind": "global"
+        },
+        "steps": [
+          {
+            "stepID": "open",
+            "action": "openApplication",
+            "parameters": {
+              "bundleIdentifier": "com.example.editor"
+            }
+          },
+          {
+            "stepID": "child",
+            "action": "runMacro",
+            "parameters": {
+              "nestedMacroID": "example.child",
+              "nestedMacroName": "发送快捷键"
+            }
+          },
+          {
+            "stepID": "focus",
+            "action": "focusLearnedTarget",
+            "parameters": {
+              "bundleIdentifier": "com.example.editor",
+              "localProfileKey": "example.focus"
+            }
+          }
+        ]
       },
-      "steps": [
-        {
-          "stepID": "open",
-          "action": "openApplication",
-          "parameters": {
-            "bundleIdentifier": "com.example.editor"
+      {
+        "schemaVersion": "1.0",
+        "macroID": "example.child",
+        "version": "2.0.0",
+        "name": "发送快捷键",
+        "steps": [
+          {
+            "stepID": "send",
+            "action": "sendKeyboardShortcut",
+            "parameters": {
+              "shortcutProfileKey": "example.shortcut"
+            }
           }
-        },
-        {
-          "stepID": "child",
-          "action": "runMacro",
-          "parameters": {
-            "nestedMacroID": "example.child",
-            "nestedMacroName": "发送快捷键"
-          }
-        },
-        {
-          "stepID": "focus",
-          "action": "focusLearnedTarget",
-          "parameters": {
-            "bundleIdentifier": "com.example.editor",
-            "localProfileKey": "example.focus"
-          }
-        }
-      ]
-    },
-    {
-      "schemaVersion": "1.0",
-      "macroID": "example.child",
-      "version": "2.0.0",
-      "name": "发送快捷键",
-      "steps": [
-        {
-          "stepID": "send",
-          "action": "sendKeyboardShortcut",
-          "parameters": {
-            "shortcutProfileKey": "example.shortcut"
-          }
-        }
-      ]
-    }
-  ],
-  "shortcuts": [
-    {
-      "id": "example.shortcut",
-      "displayName": "聚焦输入框",
-      "keyCode": 37,
-      "keyLabel": "L",
-      "modifiers": [
-        "command"
-      ]
-    }
-  ],
-  "focusTargets": [
-    {
-      "id": "example.focus",
-      "displayName": "Composer",
-      "bundleIdentifier": "com.example.editor"
-    }
-  ],
-  "applications": [
-    {
-      "id": "example.editor",
-      "displayName": "示例编辑器",
-      "bundleIdentifier": "com.example.editor",
-      "focusStrategy": "keyboardShortcut",
-      "shortcutID": "example.shortcut"
-    }
-  ],
-  "buttonProfiles": [
-    {
-      "id": "example.profile",
-      "name": "First version",
-      "remoteModel": "xiaomi-remote-2-pro",
-      "mode": "manual",
-      "applicationBundleIdentifiers": [
-        "com.example.editor"
-      ],
-      "bindings": [
-        {
-          "controlID": "home",
-          "gesture": "singlePress",
-          "target": {
-            "kind": "macro",
-            "referenceID": "example.root"
-          }
-        }
-      ]
-    }
-  ],
-  "hostSettings": {
-    "id": "host.settings",
-    "general": {
-      "applicationLanguage": "zh-Hans",
-      "appIconIdentifier": "default",
-      "showDockIcon": true,
-      "showStatusBarIcon": true,
-      "openMainWindowAtLaunch": false,
-      "checksForPreReleaseUpdates": false
-    },
-    "audio": {
-      "gainDB": 12
-    },
-    "voice": {
-      "voiceKeyMode": "fn",
-      "voiceFnTapModeEnabled": false
-    },
-    "mappings": {
-      "remoteModel": "xiaomi-remote-2-pro",
-      "customMappingEnabled": true,
-      "bindings": [
-        {
-          "controlID": "home",
-          "gesture": "doublePress",
-          "target": {
-            "kind": "application",
-            "referenceID": "example.editor"
-          }
-        }
-      ],
-      "rapidPressControls": []
-    }
+        ]
+      }
+    ],
+    "shortcuts": [
+      {
+        "id": "example.shortcut",
+        "displayName": "聚焦输入框",
+        "keyCode": 37,
+        "keyLabel": "L",
+        "modifiers": [
+          "command"
+        ]
+      }
+    ],
+    "focusTargets": [
+      {
+        "id": "example.focus",
+        "displayName": "Composer",
+        "bundleIdentifier": "com.example.editor"
+      }
+    ],
+    "applications": [
+      {
+        "id": "example.editor",
+        "displayName": "示例编辑器",
+        "bundleIdentifier": "com.example.editor",
+        "focusStrategy": "keyboardShortcut",
+        "shortcutID": "example.shortcut"
+      }
+    ]
   }
 }

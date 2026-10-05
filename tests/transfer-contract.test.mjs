@@ -35,29 +35,25 @@ test('方案来源链接可选且仅用 HTTPS；不放行其他字段或嵌套�
   assert.equal(valid(p), false);
 });
 
-test('v2 文件只允许一个主对象；键位方案可携带组合动作依赖', () => {
-  const profile = JSON.parse(JSON.stringify(fixtureRaw));
-  profile.type = 'buttonProfile';
-  profile.profile = profile.buttonProfiles[0];
-  profile.dependencies = { macros: profile.macros, shortcuts: profile.shortcuts, focusTargets: profile.focusTargets, applications: profile.applications };
-  delete profile.roots; delete profile.buttonProfiles; delete profile.macros; delete profile.shortcuts; delete profile.focusTargets; delete profile.applications;
-  profile.schemaVersion = '2.0'; profile.exportPurpose = 'share'; delete profile.hostSettings;
+test('1.0 文件只允许一个主对象；键位方案可携带组合动作依赖', () => {
+  const profile = structuredClone(fixtureRaw);
   assert.equal(validate(profile), true);
   assert.equal(transferIssues(profile).length, 0);
   assert.equal(validate({ ...profile, macro: profile.profile }), false);
-  assert.equal(validate({ ...profile, schemaVersion: '1.0' }), false);
+  assert.equal(validate({ ...profile, schemaVersion: '2.0' }), false);
 });
 
-test('冻结第一版样例可读；兼容此前导出，拒绝未知版本和混合步骤版本', async () => {
+test('当前 1.0 样例可读；拒绝旧版结构和未知版本', async () => {
   const frozen = JSON.parse(await readFile(new URL('./fixtures/transfer-v1.json', import.meta.url)));
-  assert.equal(sha256CanonicalJson(frozen), 'sha256:58261cfff9baf8f7cdb0fe5f6ee026f7cb931f0c86cc826aa4966aad51d707e5');
+  assert.equal(sha256CanonicalJson(frozen), 'sha256:0823f874c14ec54a53f395f0aef6609142a5ecc17162e895694d72d2119a0223');
   assert.equal(frozen.schemaVersion, '1.0');
   assert.equal(valid(frozen), true);
   const previous = structuredClone(frozen);
-  previous.schemaVersion = '0.2-draft';
-  previous.macros.forEach(macro => { macro.schemaVersion = '0.3-draft'; });
-  assert.equal(valid(previous), true);
-  previous.macros[0].schemaVersion = '1.0';
+  delete previous.type;
+  delete previous.profile;
+  delete previous.dependencies;
+  previous.roots = [{ kind: 'buttonProfile', id: previous.packageID }];
+  previous.buttonProfiles = [frozen.profile];
   assert.equal(valid(previous), false);
   frozen.schemaVersion = '1.1';
   assert.equal(valid(frozen), false);
@@ -111,15 +107,13 @@ test('拒绝原机 App 路径、任意 payload、未知格式与缺失内部依�
   }
 });
 
-test('分享不含个人设置，个人备份分组使用同一合同', () => {
+test('公开方案不含个人设置或个人备份', () => {
   const p = structuredClone(fixture);
   p.exportPurpose = 'share';
   p.hostSettings = { id: 'host.settings', audio: { gainDB: 12 } };
   p.roots.push({ kind: 'hostSettings', id: 'host.settings' });
   assert.equal(valid(p), false);
   p.exportPurpose = 'personalBackup';
-  assert.equal(valid(p), true);
-  p.hostSettings.audio.gainDB = 25;
   assert.equal(valid(p), false);
 });
 

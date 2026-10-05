@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.18",
   "exportPurpose": "share",
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
     "id": "com.getsayall.candidate.netease-music-media-controls",

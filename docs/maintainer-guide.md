@@ -52,7 +52,7 @@ Full Keyboard Access 文件来源固定到提交 `4be8928eca066bcbb876bc15ffeffc
 
 单个或批量方案、组合动作、App 配置和个人备份使用统一合同。
 合同详见 [导入导出标准](portable-transfer-standard.html)。
-分享包使用 `format: sayall-transfer` 和 `schemaVersion: 2.0`。
+分享包使用 `format: sayall-transfer` 和 `schemaVersion: 1.0`。
 公开市场只接受分享用途，不提交个人备份。
 
 8 套 App 候选方案位于 `examples/profiles/`。

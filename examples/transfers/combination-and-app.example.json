@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "type": "macro",
   "macro": {
-    "schemaVersion": "2.0",
+    "schemaVersion": "1.0",
     "macroID": "example.root",
     "version": "1.0.0",
     "name": "打开编辑器并执行子动作",
@@ -35,7 +35,7 @@
   "dependencies": {
     "macros": [
       {
-        "schemaVersion": "2.0",
+        "schemaVersion": "1.0",
         "macroID": "example.child",
         "version": "2.0.0",
         "name": "发送快捷键",

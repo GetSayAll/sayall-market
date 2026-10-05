@@ -6,7 +6,7 @@
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
     "id": "com.getsayall.candidate.douyin-ten-key",

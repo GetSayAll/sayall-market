@@ -6,7 +6,7 @@
   "version": "0.1.0",
   "minimumRemoteMicVersion": "1.9.21",
   "exportPurpose": "share",
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
     "id": "com.getsayall.candidate.netease-music-ten-key",
@@ -101,7 +101,7 @@
   "dependencies": {
     "macros": [
       {
-        "schemaVersion": "2.0",
+        "schemaVersion": "1.0",
         "macroID": "com.getsayall.candidate.netease-music-ten-key.previousTrack",
         "version": "0.1.0",
         "name": "上一曲（系统媒体键）",
@@ -116,7 +116,7 @@
         ]
       },
       {
-        "schemaVersion": "2.0",
+        "schemaVersion": "1.0",
         "macroID": "com.getsayall.candidate.netease-music-ten-key.nextTrack",
         "version": "0.1.0",
         "name": "下一曲（系统媒体键）",

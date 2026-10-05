@@ -1,11 +1,11 @@
 ---
-title: SayAll v2 导入导出格式
+title: SayAll 1.0 导入导出格式
 subtitle: 一个文件只声明一个主对象
 ---
 
 ## 结论
 
-SayAll 方案文件使用 `format: sayall-transfer` 和 `schemaVersion: "2.0"`。客户端只读取 v2。旧 v1 文件不再读取。
+SayAll 方案文件使用 `format: sayall-transfer` 和 `schemaVersion: "1.0"`。客户端只读取当前单主对象格式。旧版 Market 文件不再读取。
 
 ## 主对象
 
@@ -29,7 +29,7 @@ SayAll 方案文件使用 `format: sayall-transfer` 和 `schemaVersion: "2.0"`�
 ```json
 {
   "format": "sayall-transfer",
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {},
   "dependencies": {

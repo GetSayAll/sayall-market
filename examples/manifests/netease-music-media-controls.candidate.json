@@ -20,7 +20,7 @@
     ]
   },
   "contentPath": "examples/profiles/netease-music-media-controls.candidate.json",
-  "contentDigest": "sha256:32609ea95dc37607cc54c29590fe45db6a4082623e60cc91562c79b7899cde2d",
+  "contentDigest": "sha256:522bb2992f08b11c05b895f06fc55e1efb45f0211bdef0bc2d187345b3675807",
   "license": "CC-BY-NC-4.0",
   "releaseNotes": "无线麦SayAll.app 的首套官方 App 键位预设候选，仅完成公开合同与客户端 API 验证；尚未通过网易云音乐和实体遥控器验收，不是官方精选或正式发布内容。 First official App profile candidate for 无线麦SayAll.app; contract and client API validation only, with real App and hardware verification still required.",
   "declaredCapabilities": [
@@ -32,6 +32,6 @@
   "signature": {
     "algorithm": "ed25519",
     "keyID": "portable-transfer-v1-fixture-01",
-    "value": "X6kMnjaOYhVvYbWpnzu/KPvPG6u02BtXQy5PMtq3jo+vZVWQV82klZe5gX4568hoKbbqjEFNvQ4jdaCmfLlzAQ=="
+    "value": "TidOJ+geaNerepIH3OwwV0zdOGhzf7YfmvQJS/4XHZ1+iFYpy8WhAgLRmdtwKHjCZA483sGR+6mEI9SNC4XqCQ=="
   }
 }

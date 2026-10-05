@@ -19,7 +19,7 @@
     ]
   },
   "contentPath": "examples/profiles/codex-basic.example.json",
-  "contentDigest": "sha256:5b3ba30f4af622d82baa6b9528b30e60c75c33b051830e82b4d9d7fb99259656",
+  "contentDigest": "sha256:c412f881302496680bb073c1ebb061dde1c2e3193326c2284a47864442dc5e83",
   "license": "CC-BY-NC-4.0",
   "releaseNotes": "仅用于演示第一版 App 键位方案格式，不代表已验证兼容性。",
   "declaredCapabilities": [

@@ -1,6 +1,9 @@
 import { forbiddenContractKeyPattern, forbiddenContractValuePattern } from './marketplace-contract.mjs';
 
 export function normalizeTransfer(p) {
+  if (p?.type !== undefined && Array.isArray(p.roots) && Array.isArray(p.macros)
+      && Array.isArray(p.shortcuts) && Array.isArray(p.focusTargets)
+      && Array.isArray(p.applications) && Array.isArray(p.buttonProfiles)) return p;
   if (p?.type === 'buttonProfile') return { ...p, roots: [{ kind: 'buttonProfile', id: p.profile.id }], macros: p.dependencies?.macros ?? [], shortcuts: p.dependencies?.shortcuts ?? [], focusTargets: p.dependencies?.focusTargets ?? [], applications: p.dependencies?.applications ?? [], buttonProfiles: [p.profile] };
   if (p?.type === 'macro') return { ...p, roots: [{ kind: 'macro', id: p.macro.macroID }], macros: [p.macro, ...(p.dependencies?.macros ?? [])], shortcuts: p.dependencies?.shortcuts ?? [], focusTargets: p.dependencies?.focusTargets ?? [], applications: p.dependencies?.applications ?? [], buttonProfiles: [] };
   if (p?.type === 'application') return { ...p, roots: [{ kind: 'application', id: p.application.id }], macros: p.dependencies?.macros ?? [], shortcuts: p.dependencies?.shortcuts ?? [], focusTargets: p.dependencies?.focusTargets ?? [], applications: [p.application, ...(p.dependencies?.applications ?? [])], buttonProfiles: [] };
@@ -33,6 +36,7 @@ export function transferIssues(input) {
   const p = normalizeTransfer(input);
   const errors = [];
   const fail = (path) => errors.push(path);
+  if (input.type === undefined) return ['type'];
   for (const key of ['website', 'github']) if (Object.prototype.hasOwnProperty.call(p, key)) {
     if (typeof p[key] !== 'string') { fail(key); continue; }
     try {
@@ -41,20 +45,15 @@ export function transferIssues(input) {
     } catch { fail(key); }
   }
   if (input.type !== undefined) {
-    if (p.schemaVersion !== '2.0') fail('schemaVersion');
+    if (p.schemaVersion !== '1.0') fail('schemaVersion');
     if (!['buttonProfile', 'macro', 'application', 'personalBackup'].includes(input.type)) fail('type');
     if (input.type === 'buttonProfile' && (!input.profile || input.macro || input.application || input.backup)) fail('主对象只能是键位方案');
     if (input.type === 'macro' && (!input.macro || input.profile || input.application || input.backup)) fail('主对象只能是组合动作');
     if (input.type === 'application' && (!input.application || input.profile || input.macro || input.backup)) fail('主对象只能是 App');
     if (input.type === 'personalBackup' && (!input.backup || input.profile || input.macro || input.application)) fail('主对象只能是个人备份');
-  } else {
-    if (!['1.0', '0.2-draft'].includes(p.schemaVersion)) fail('schemaVersion');
-    const macroVersion = p.schemaVersion === '0.2-draft' ? '0.3-draft' : '1.0';
-    for (const macro of p.macros ?? []) if (macro.schemaVersion !== macroVersion) fail(`macro:${macro.macroID}:schemaVersion`);
-    if (p.exportPurpose === 'share' && p.hostSettings) fail('分享不允许个人设置');
-    if (p.hostSettings?.audio && (!Number.isFinite(p.hostSettings.audio.gainDB) || p.hostSettings.audio.gainDB < 0 || p.hostSettings.audio.gainDB > 24)) fail('hostSettings.audio');
+    if (input.type !== 'personalBackup' && (p.exportPurpose !== 'share' || p.hostSettings)) fail('公开方案不允许个人备份内容');
   }
-  if (input.type !== undefined) for (const macro of p.macros) if (!['1.0', '2.0'].includes(macro.schemaVersion)) fail(`macro:${macro.macroID}:schemaVersion`);
+  if (input.type !== undefined) for (const macro of p.macros) if (macro.schemaVersion !== '1.0') fail(`macro:${macro.macroID}:schemaVersion`);
   const maps = {};
   const text = (value) => typeof value === 'string' && value.trim().length > 0 && !/[\u0000-\u001f\u007f-\u009f]/u.test(value);
   for (const values of [p.shortcuts, p.focusTargets, p.applications])
