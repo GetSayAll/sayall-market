@@ -18,6 +18,8 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 - 官网：[sayall.app](https://sayall.app)
 - GitHub：[sayall-market/common-phrases](https://github.com/sayall-market/common-phrases)
 
+## 键位方案
+
 **[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
 包含下方 8 套 App 方案和 Full Keyboard Access 方案。
@@ -40,6 +42,16 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 | 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/douyin-ten-key.sayall) |
 | Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/chrome-ten-key.sayall) |
 | 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall) |
+
+### 方案配图
+
+#### Codex
+
+![Codex 键位方案](docs/images/keyboard-profile-codex.png)
+
+#### Chrome
+
+![Chrome 键位方案](docs/images/keyboard-profile-chrome.png)
 
 10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
 没有合适动作的位置设为“不设置”。
