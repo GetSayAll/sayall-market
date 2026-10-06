@@ -1,0 +1,98 @@
+{
+  "bindings": {
+    "down": "builtin-5",
+    "left": "builtin-2",
+    "ok": "builtin-1",
+    "right": "builtin-4",
+    "up": "builtin-3"
+  },
+  "entries": [
+    {
+      "chineseLabel": "好的",
+      "chineseText": "好的",
+      "englishLabel": "OK",
+      "englishText": "OK",
+      "id": "builtin-1"
+    },
+    {
+      "chineseLabel": "继续",
+      "chineseText": "继续",
+      "englishLabel": "Continue",
+      "englishText": "Continue",
+      "id": "builtin-2"
+    },
+    {
+      "chineseLabel": "说清楚一点",
+      "chineseText": "看不懂，说清楚一点",
+      "englishLabel": "Explain clearly",
+      "englishText": "I don't understand. Explain it more clearly",
+      "id": "builtin-3"
+    },
+    {
+      "chineseLabel": "按你的来",
+      "chineseText": "按照你的意思做",
+      "englishLabel": "Follow your lead",
+      "englishText": "Do it the way you suggested",
+      "id": "builtin-4"
+    },
+    {
+      "chineseLabel": "思路可以，我补充一点",
+      "chineseText": "你的思路可以，按照你的思路来，但是我补充一点：",
+      "englishLabel": "One more thing",
+      "englishText": "Your approach works. Let's go with it, but I want to add one thing:",
+      "id": "builtin-5"
+    },
+    {
+      "chineseLabel": "不对吧？",
+      "chineseText": "不对吧？为什么？",
+      "englishLabel": "Why?",
+      "englishText": "That doesn't seem right. Why?",
+      "id": "builtin-6"
+    },
+    {
+      "chineseLabel": "其他方案",
+      "chineseText": "还有没有别的方案？",
+      "englishLabel": "Other options",
+      "englishText": "Are there any other options?",
+      "id": "builtin-7"
+    },
+    {
+      "chineseLabel": "你会怎么选？",
+      "chineseText": "如果是你，你会怎么选？",
+      "englishLabel": "What would you choose?",
+      "englishText": "What would you choose if it were up to you?",
+      "id": "builtin-8"
+    },
+    {
+      "chineseLabel": "总结结论",
+      "chineseText": "总结一下我们刚才的结论",
+      "englishLabel": "Summarize",
+      "englishText": "Summarize what we just concluded",
+      "id": "builtin-9"
+    },
+    {
+      "chineseLabel": "先说怎么做",
+      "chineseText": "先别做，告诉我你准备怎么做",
+      "englishLabel": "Show me the plan",
+      "englishText": "Don't do it yet. Tell me how you plan to approach it",
+      "id": "builtin-10"
+    },
+    {
+      "chineseLabel": "都不接受，重新考虑",
+      "chineseText": "你给的方案都不接受，重新考虑",
+      "englishLabel": "Reconsider",
+      "englishText": "I don't accept any of these options. Reconsider",
+      "id": "builtin-11"
+    },
+    {
+      "chineseLabel": "确认",
+      "chineseText": "确认",
+      "englishLabel": "Confirm",
+      "englishText": "Confirm",
+      "id": "builtin-12"
+    }
+  ],
+  "github": "https://github.com/sayall-market/common-phrases",
+  "schemaVersion": 1,
+  "website": "https://sayall.app"
+}
