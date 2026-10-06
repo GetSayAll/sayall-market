@@ -5,6 +5,19 @@
 
 当前提供 1.0 键位方案。在线市场尚未上线，社区投稿暂未开放。
 
+## 常用语
+
+SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
+
+- [目录说明](common-phrases/README.md)：来源和使用说明。
+- [内置常用语源](common-phrases/built-in.md)：12 条中英文常用语及默认五键绑定。
+- [常用语导入文件](common-phrases/common-phrases.json)：可用于常用语备份导入。
+
+来源：
+
+- 官网：[sayall.app](https://sayall.app)
+- GitHub：[sayall-market/common-phrases](https://github.com/sayall-market/common-phrases)
+
 **[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
 包含下方 8 套 App 方案和 Full Keyboard Access 方案。
