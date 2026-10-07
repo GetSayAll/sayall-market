@@ -45,13 +45,25 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 ### 方案配图
 
-#### Codex
+以下图片按每行三张显示。图片文件保留原始尺寸，README 只缩小显示宽度。
 
-![Codex 键位方案](docs/images/keyboard-profile-codex.png)
-
-#### Chrome
-
-![Chrome 键位方案](docs/images/keyboard-profile-chrome.png)
+<table>
+<tr>
+<td align="center"><img src="docs/images/keyboard-profile-codex.png" alt="Codex 键位方案" width="220"><br><sub>Codex</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-claude-code.png" alt="Claude Code desktop 键位方案" width="220"><br><sub>Claude Code desktop</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-workbuddy.png" alt="WorkBuddy 键位方案" width="220"><br><sub>WorkBuddy</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/images/keyboard-profile-wechat.png" alt="微信键位方案" width="220"><br><sub>微信</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-capcut.png" alt="剪映桌面版键位方案" width="220"><br><sub>剪映桌面版</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-douyin.png" alt="抖音 Mac 客户端键位方案" width="220"><br><sub>抖音 Mac 客户端</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/images/keyboard-profile-chrome.png" alt="Chrome 键位方案" width="220"><br><sub>Chrome</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-netease-music.png" alt="网易云音乐键位方案" width="220"><br><sub>网易云音乐</sub></td>
+<td></td>
+</tr>
+</table>
 
 10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
 没有合适动作的位置设为“不设置”。
