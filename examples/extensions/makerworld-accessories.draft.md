@@ -26,6 +26,14 @@
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/3017370?appSharePlatform=sayall.app)
 
+### 3D 打印带壳适配底座
+
+为安装 3D 打印外壳后的遥控器提供直立放置方案。
+
+![3D 打印带壳适配底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN954b30364fb30d/design/740a96c4a2ed4e6a.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/zh/models/3079776-xiao-mi-lan-ya-yao-kong-qi-2-pro-dai-wai-ke-di-zuo?appSharePlatform=sayall.app#profileId-3624439)
+
 ## 公开边界
 
 - 这里只做外部页面索引，不复制模型文件、图片或页面正文；
