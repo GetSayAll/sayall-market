@@ -4,4 +4,9 @@
 
 Schema 状态、签名规则、测试边界和兼容门禁见 [第一版数据合同](README.html)。尚未实现的布局模板仍为草案。
 
-`.sayall` 内部使用 JSON。文件版本、最低读取版本和 App 版本独立判断。完整规则见 [首版文件格式与兼容规则](../docs/portable-transfer-standard.html)。
+`.sayall` 内部使用 JSON。文件版本、最低读取版本和 App 版本独立判断。
+键位方案使用 `com.getsayall:platform` 扩展标记 `macOS`。
+macOS 快捷键使用 macOS CGKeyCode。
+
+Draft Layout 使用 `platforms` 数组标记运行平台。
+完整规则见 [首版文件格式与兼容规则](../docs/portable-transfer-standard.html)。

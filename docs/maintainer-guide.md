@@ -57,13 +57,22 @@ Full Keyboard Access 方案保存在 `examples/profiles/`。
 公开市场只接受分享用途，不提交个人备份。
 
 8 套 App 候选方案位于 `examples/profiles/`。
+本轮候选方案只面向 macOS。
+平台写入现有 `com.getsayall:platform` 扩展。
 它们是自包含分享包，每个文件包含一套方案及其所需动作。
+
 每套仅使用指定的 10 个位置，手势为单击。
 禁用位置明确使用 `disabled`，避免继承普通映射。
 集合版本为 `1.0.0`，最低客户端版本字段为 `1.9.21`。
 格式检查不构成已发布客户端的界面兼容声明。
 
-网易云 10 键文件为 `netease-music-ten-key.candidate.sayall`。
+网易云 10 键文件为 `netease-music-ten-key-mac.sayall`。
+网易云签名测试样例仍为 `netease-music-media-controls.candidate.sayall`。
+该文件只用于 Manifest 和签名回归测试。
+`codex-basic.example.sayall` 同样保留原字节。
+这两个旧样例不添加平台字段，以保留已有摘要和签名。
+对应的 macOS 文件带有平台标记。
+
 喜欢歌曲快捷键由上键和主页键共同引用。
 上一曲与下一曲各用一个内置媒体动作步骤表示。
 共享包内嵌所需动作，导入无需另行下载依赖。

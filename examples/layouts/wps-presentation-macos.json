@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "0.1-draft",
+  "layoutID": "com.getsayall.example.wps-presentation-macos",
+  "version": "0.1.0",
+  "name": "WPS 演示 · macOS",
+  "summary": "面向 macOS WPS 演示放映。按键只描述快捷键，不声明真实硬件兼容性。",
+  "remoteModel": "xiaomi-remote-2-pro",
+  "minimumRemoteMicVersion": "1.9.21",
+  "platforms": [
+    "macOS"
+  ],
+  "targetApplication": {
+    "displayName": "WPS Office Presentation",
+    "bundleIdentifier": "com.kingsoft.wpsoffice.mac",
+    "documentType": "presentation"
+  },
+  "bindings": [
+    {
+      "controlID": "home",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "F5",
+        "modifiers": []
+      }
+    },
+    {
+      "controlID": "home",
+      "gesture": "doublePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "F5",
+        "modifiers": [
+          "shift"
+        ]
+      }
+    },
+    {
+      "controlID": "ok",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "Space",
+        "modifiers": []
+      }
+    },
+    {
+      "controlID": "up",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "ArrowUp",
+        "modifiers": []
+      }
+    },
+    {
+      "controlID": "down",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "ArrowDown",
+        "modifiers": []
+      }
+    },
+    {
+      "controlID": "left",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "Tab",
+        "modifiers": [
+          "control",
+          "shift"
+        ]
+      }
+    },
+    {
+      "controlID": "right",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "Tab",
+        "modifiers": [
+          "control"
+        ]
+      }
+    },
+    {
+      "controlID": "back",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "Escape",
+        "modifiers": []
+      }
+    },
+    {
+      "controlID": "tv",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "shortcut",
+        "key": "B",
+        "modifiers": [
+          "command"
+        ]
+      }
+    },
+    {
+      "controlID": "volume-up",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "volumeUp"
+      }
+    },
+    {
+      "controlID": "volume-down",
+      "gesture": "singlePress",
+      "target": {
+        "kind": "builtIn",
+        "actionID": "volumeDown"
+      }
+    }
+  ]
+}

@@ -119,5 +119,10 @@
     "minimumRemoteMicVersion": "1.9.21",
     "minimumReaderVersion": "1.0",
     "capabilities": []
+  },
+  "extensions": {
+    "com.getsayall:platform": {
+      "platform": "macOS"
+    }
   }
 }
