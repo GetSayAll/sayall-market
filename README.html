@@ -488,7 +488,7 @@ body.am-lightbox-open { overflow: hidden; }
 <section class="am-panel" id="panel-B">
 <header class="am-panel-head"><span class="am-panel-id">B</span><h2>键位方案</h2></header>
 <div class="am-panel-body"><div class="am-md"><p><strong><a href="https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip">一键下载全部方案 ZIP</a></strong></p>
-<p>包含下方 8 套 App 方案和 Full Keyboard Access 方案。
+<p>包含下方 8 套已发布 App 方案和 Full Keyboard Access 方案。
 本轮方案只面向 macOS。仓库源文件写明 <code>macOS</code> 平台。
 已发布附件仍使用原文件名；本 PR 不替换现有 Release。</p>
 <p>下载后先解压，再按需导入其中的方案文件。
@@ -497,9 +497,9 @@ body.am-lightbox-open { overflow: hidden; }
 </div></div>
 </section>
 <section class="am-panel" id="panel-C">
-<header class="am-panel-head"><span class="am-panel-id">C</span><h2>8 个 App 的 10 键方案</h2></header>
+<header class="am-panel-head"><span class="am-panel-id">C</span><h2>9 个 App 的 10 键方案</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>选择常用 App，下载对应方案。每个文件包含一套完整方案。
-以下方案适用于小米遥控器 2 Pro（RC003），全部使用单击。</p>
+以下方案适用于小米遥控器 2 Pro（RC003）。已发布方案使用单击；WPS 方案另使用主页键双击从当前页放映。</p>
 <div class="am-table-wrap"><table>
 <thead>
 <tr>
@@ -548,6 +548,11 @@ body.am-lightbox-open { overflow: hidden; }
 <td>喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口</td>
 <td><a href="https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall">下载方案</a></td>
 </tr>
+<tr>
+<td>WPS 演示放映</td>
+<td>启动放映、翻页、切换 WPS 窗口、结束放映、黑屏</td>
+<td><a href="examples/profiles/wps-presentation-mac.sayall">查看方案</a></td>
+</tr>
 </tbody></table></div>
 <h3>方案配图</h3>
 <p>以下图片按每行三张显示。图片文件保留原始尺寸，README 只缩小显示宽度。</p>
@@ -571,18 +576,13 @@ body.am-lightbox-open { overflow: hidden; }
 没有合适动作的位置设为“不设置”。
 这些方案使用已有快捷键，无需在目标 App 添加快捷键。</p>
 <p>查看 <a href="docs/seven-app-10-key-presets.html">完整按键和导入说明</a>（<a href="docs/seven-app-10-key-presets.md">在线文字版</a>）。
-剪映的音量+暂不设置，待确认放大时间线的默认按键。</p>
+剪映的音量+暂不设置，待确认放大时间线的默认按键。
+WPS 方案是单独的 macOS <code>.sayall</code> 文件，暂不在现有 Release ZIP 中。
+<a href="docs/wps-presentation-mac-shortcuts.html">查看 WPS Mac 快捷键调研</a>。</p>
 </div></div>
 </section>
 <section class="am-panel" id="panel-D">
-<header class="am-panel-head"><span class="am-panel-id">D</span><h2>WPS 演示放映 · macOS</h2></header>
-<div class="am-panel-body"><div class="am-md"><p><a href="docs/wps-presentation-mac-shortcuts.html">查看 WPS Mac 快捷键调研</a>。
-<a href="examples/profiles/wps-presentation-mac.sayall">查看 macOS 键位方案</a>。
-该方案仍待真实遥控器和 WPS 验收。</p>
-</div></div>
-</section>
-<section class="am-panel" id="panel-E">
-<header class="am-panel-head"><span class="am-panel-id">E</span><h2>Full Keyboard Access · 全键盘控制</h2></header>
+<header class="am-panel-head"><span class="am-panel-id">D</span><h2>Full Keyboard Access · 全键盘控制</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>用遥控器选择屏幕上的按钮、输入框和其他可操作项目。
 此方案适用于小米遥控器 2 Pro（RC003），供手动选择使用。</p>
 <p><a href="https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/full-keyboard-access.sayall">下载全键盘控制方案</a></p>
@@ -627,8 +627,8 @@ body.am-lightbox-open { overflow: hidden; }
 此方案仍待实体遥控器和目标 App 验收。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-F">
-<header class="am-panel-head"><span class="am-panel-id">F</span><h2>如何导入方案</h2></header>
+<section class="am-panel" id="panel-E">
+<header class="am-panel-head"><span class="am-panel-id">E</span><h2>如何导入方案</h2></header>
 <div class="am-panel-body"><div class="am-md"><ol>
 <li>下载单套方案，或下载全部方案 ZIP。</li>
 <li>若下载了 ZIP，先解压。</li>
@@ -643,8 +643,8 @@ body.am-lightbox-open { overflow: hidden; }
 导入后，请检查预览中的提示，再启用所需方案。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-G">
-<header class="am-panel-head"><span class="am-panel-id">G</span><h2>配件</h2></header>
+<section class="am-panel" id="panel-F">
+<header class="am-panel-head"><span class="am-panel-id">F</span><h2>配件</h2></header>
 <div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
 <thead>
 <tr>
@@ -663,8 +663,8 @@ body.am-lightbox-open { overflow: hidden; }
 请在具体项目页面核对适配型号、制作说明及作者许可。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-H">
-<header class="am-panel-head"><span class="am-panel-id">H</span><h2>使用提示</h2></header>
+<section class="am-panel" id="panel-G">
+<header class="am-panel-head"><span class="am-panel-id">G</span><h2>使用提示</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>这些方案属于 1.0 内容。请先检查每个按键的实际效果，再用于日常操作。</p>
 <p>翻页、删除和方向移动会受到当前选中位置的影响。
 Codex 的上键是否立即补充运行中指令，取决于现有发送行为。
@@ -677,13 +677,13 @@ Codex 的上键是否立即补充运行中指令，取决于现有发送行为�
 请写明 App、遥控器型号、按键和实际结果。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-I">
-<header class="am-panel-head"><span class="am-panel-id">I</span><h2>技术与维护文档</h2></header>
+<section class="am-panel" id="panel-H">
+<header class="am-panel-head"><span class="am-panel-id">H</span><h2>技术与维护文档</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>开发和维护人员请查看 <a href="docs/maintainer-guide.html">技术与维护说明</a>（<a href="docs/maintainer-guide.md">在线文字版</a>）。</p>
 </div></div>
 </section>
-<section class="am-panel am-span-wide" id="panel-J" style="grid-column: span 3">
-<header class="am-panel-head"><span class="am-panel-id">J</span><h2>使用许可</h2></header>
+<section class="am-panel" id="panel-I">
+<header class="am-panel-head"><span class="am-panel-id">I</span><h2>使用许可</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>本站整理的内容采用 <a href="LICENSE">CC BY-NC 4.0</a> 许可。
 分享或改编时，请署名并标明修改。商业使用需另行取得书面许可。
 外部配件、图片和模型按原作者及平台规则使用。</p>
@@ -693,7 +693,7 @@ Codex 的上键是否立即补充运行中指令，取决于现有发送行为�
 </div>
 </div>
 </main>
-<footer class="am-colophon">Generated by Answer me with HTML 0.4.6 · 2026-10-11 14:02</footer>
+<footer class="am-colophon">Generated by Answer me with HTML 0.4.6 · 2026-10-11 17:46</footer>
 <textarea id="am-source" hidden readonly aria-hidden="true"># SayAll Market · 遥控器方案与配件
 
 为无线麦SayAll.app 选择遥控器键位方案，用按键操作常用 App。
@@ -718,7 +718,7 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 **[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
-包含下方 8 套 App 方案和 Full Keyboard Access 方案。
+包含下方 8 套已发布 App 方案和 Full Keyboard Access 方案。
 本轮方案只面向 macOS。仓库源文件写明 `macOS` 平台。
 已发布附件仍使用原文件名；本 PR 不替换现有 Release。
 
@@ -726,10 +726,10 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 方案文件以 `.sayall` 结尾。请使用本次提供的新版客户端。
 [查看打包下载与导入说明](docs/download-bundle.html)（[在线文字版](docs/download-bundle.md)）。
 
-## 8 个 App 的 10 键方案
+## 9 个 App 的 10 键方案
 
 选择常用 App，下载对应方案。每个文件包含一套完整方案。
-以下方案适用于小米遥控器 2 Pro（RC003），全部使用单击。
+以下方案适用于小米遥控器 2 Pro（RC003）。已发布方案使用单击；WPS 方案另使用主页键双击从当前页放映。
 
 | App | 常用操作 | 下载 |
 |---|---|---|
@@ -741,6 +741,7 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 | 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/douyin-ten-key.sayall) |
 | Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/chrome-ten-key.sayall) |
 | 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall) |
+| WPS 演示放映 | 启动放映、翻页、切换 WPS 窗口、结束放映、黑屏 | [查看方案](examples/profiles/wps-presentation-mac.sayall) |
 
 ### 方案配图
 
@@ -770,12 +771,8 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 查看 [完整按键和导入说明](docs/seven-app-10-key-presets.html)（[在线文字版](docs/seven-app-10-key-presets.md)）。
 剪映的音量+暂不设置，待确认放大时间线的默认按键。
-
-## WPS 演示放映 · macOS
-
+WPS 方案是单独的 macOS `.sayall` 文件，暂不在现有 Release ZIP 中。
 [查看 WPS Mac 快捷键调研](docs/wps-presentation-mac-shortcuts.html)。
-[查看 macOS 键位方案](examples/profiles/wps-presentation-mac.sayall)。
-该方案仍待真实遥控器和 WPS 验收。
 
 ## Full Keyboard Access · 全键盘控制
 

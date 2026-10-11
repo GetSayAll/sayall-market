@@ -22,7 +22,7 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 **[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
-包含下方 8 套 App 方案和 Full Keyboard Access 方案。
+包含下方 8 套已发布 App 方案和 Full Keyboard Access 方案。
 本轮方案只面向 macOS。仓库源文件写明 `macOS` 平台。
 已发布附件仍使用原文件名；本 PR 不替换现有 Release。
 
@@ -30,10 +30,10 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 方案文件以 `.sayall` 结尾。请使用本次提供的新版客户端。
 [查看打包下载与导入说明](docs/download-bundle.html)（[在线文字版](docs/download-bundle.md)）。
 
-## 8 个 App 的 10 键方案
+## 9 个 App 的 10 键方案
 
 选择常用 App，下载对应方案。每个文件包含一套完整方案。
-以下方案适用于小米遥控器 2 Pro（RC003），全部使用单击。
+以下方案适用于小米遥控器 2 Pro（RC003）。已发布方案使用单击；WPS 方案另使用主页键双击从当前页放映。
 
 | App | 常用操作 | 下载 |
 |---|---|---|
@@ -45,6 +45,7 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 | 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/douyin-ten-key.sayall) |
 | Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/chrome-ten-key.sayall) |
 | 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall) |
+| WPS 演示放映 | 启动放映、翻页、切换 WPS 窗口、结束放映、黑屏 | [查看方案](examples/profiles/wps-presentation-mac.sayall) |
 
 ### 方案配图
 
@@ -74,12 +75,8 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 查看 [完整按键和导入说明](docs/seven-app-10-key-presets.html)（[在线文字版](docs/seven-app-10-key-presets.md)）。
 剪映的音量+暂不设置，待确认放大时间线的默认按键。
-
-## WPS 演示放映 · macOS
-
+WPS 方案是单独的 macOS `.sayall` 文件，暂不在现有 Release ZIP 中。
 [查看 WPS Mac 快捷键调研](docs/wps-presentation-mac-shortcuts.html)。
-[查看 macOS 键位方案](examples/profiles/wps-presentation-mac.sayall)。
-该方案仍待真实遥控器和 WPS 验收。
 
 ## Full Keyboard Access · 全键盘控制
 

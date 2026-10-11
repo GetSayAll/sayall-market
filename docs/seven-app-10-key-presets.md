@@ -1,5 +1,5 @@
 ---
-title: 8 个 App · 遥控器 10 键方案
+title: 9 个 App · 遥控器 10 键方案
 subtitle: 无线麦SayAll.app · 下载 .sayall 后在 Mac App 导入
 lang: zh
 template: doc
@@ -11,14 +11,17 @@ status: 1.0 方案，部分真机验收待完成
 
 **[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
-ZIP 包含本页 8 套 App 方案和 Full Keyboard Access 方案。
+ZIP 包含本页 8 套已发布 App 方案和 Full Keyboard Access 方案。
 先解压 ZIP，再按需导入其中的 `.sayall` 文件。
 完整步骤见 [打包下载与导入说明](download-bundle.html)。
+
+WPS 是本页第 9 套 macOS 方案。它作为独立 `.sayall` 文件提供，暂不在现有 Release ZIP 中。
 
 每个 `.sayall` 文件包含一套方案及其所需动作。
 适用遥控器：小米遥控器 2 Pro（RC003）。
 目标平台为 macOS。源文件用现有扩展字段标明平台。
-全部使用单击，不设置双击或长按。
+
+已发布方案使用单击。WPS 方案使用主页键双击从当前页放映，不设置长按。
 这些文件供手动导入，市场尚未上线。
 
 | App | 下载文件 |
@@ -31,6 +34,7 @@ ZIP 包含本页 8 套 App 方案和 Full Keyboard Access 方案。
 | 抖音 Mac 客户端 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/douyin-ten-key.sayall) |
 | Chrome | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/chrome-ten-key.sayall) |
 | 网易云音乐 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall) |
+| WPS 演示放映 | [查看方案](../examples/profiles/wps-presentation-mac.sayall) |
 
 单套入口下载独立 `.sayall` 附件。
 ZIP 不直接导入 Mac App。
@@ -145,14 +149,43 @@ Esc 的效果取决于当前界面或弹层。
 来源：用户提供的网易云音乐 Mac 快捷键页。
 尚未完成实体遥控器和目标 App 的可见响应验收。
 
-## F 验证状态和 App 识别
+## F WPS 演示放映 · 第 9 套方案
+
+适用 macOS WPS Office 演示放映。
+方案文件为 `examples/profiles/wps-presentation-mac.sayall`。
+文件使用 `app.sayall:platform = macOS` 声明平台。
+该方案仍待真实遥控器和 WPS 验收。
+
+| 遥控器按键 | 操作 | 发出的键值 |
+|---|---|---|
+| 上 | 上一页候选 | ↑ |
+| 下 | 下一页 | ↓ |
+| 左 | 上一个 WPS 窗口 | ⌃ ⇧ Tab |
+| 右 | 下一个 WPS 窗口 | ⌃ Tab |
+| OK | 下一页 | Space |
+| 返回 | 结束放映并回到编辑状态 | Esc |
+| 主页单击 | 从头放映 | F5 |
+| 主页双击 | 从当前页放映 | ⇧ F5 |
+| 音量+ | 增大系统音量 | 系统 Volume Up |
+| 音量- | 减小系统音量 | 系统 Volume Down |
+| TV | 黑屏切换 | ⌘ B |
+| 三条横线 | 不设置 | 需要用户目录和新的白名单能力 |
+| 语音键 | 不设置 | 需要新的转写和批注能力 |
+
+查看 [WPS Mac 快捷键调研](wps-presentation-mac-shortcuts.html)。
+固定目录跳转和语音转写批注暂不绑定。
+当前示例使用 Home 双击切换放映模式，不使用三击。
+
+## G 验证状态和 App 识别
 
 这些文件是 1.0 数据。
 
 部分实体遥控器和目标 App 仍需验收。
 市场合同检查和 16 项合同测试已通过。
 Mac 端已有的 8 项导入导出测试已通过。
-8 个文件均通过 Debug 和 Release 库的解析、预览和安装准备。
+8 个已发布 App 文件均通过 Debug 和 Release 库的解析、预览和安装准备。
+
+WPS 文件通过格式解析和安装准备，但仍待真实遥控器和 WPS 验收。
 已核对全部 80 个按键位置。
 重复导入、缺失 App 提示及规则停用检查已通过。
 
@@ -175,6 +208,7 @@ Mac 端已有的 8 项导入导出测试已通过。
 | 抖音 Mac 客户端 | `com.bytedance.douyin.desktop` |
 | Chrome | `com.google.Chrome` |
 | 网易云音乐 | `com.netease.163music` |
+| WPS 演示放映 | `com.kingsoft.wpsoffice.mac` |
 
 WorkBuddy 保留当前和已知旧版标识。
 只安装其中一个版本时，另一标识可能产生缺失提示。
