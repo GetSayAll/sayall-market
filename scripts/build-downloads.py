@@ -21,7 +21,7 @@ def build(output):
         document = json.loads(data)
         if len(data) > 4 * 1024 * 1024 or document["format"] != "sayall-transfer" or document["schemaVersion"] != "1.0" or document["type"] != "buttonProfile" or document["exportPurpose"] != "share":
             raise ValueError(f"Invalid download profile: {name}")
-        if document.get("extensions", {}).get("com.getsayall:platform", {}).get("platform") != "macOS":
+        if document.get("extensions", {}).get("app.sayall:platform", {}).get("platform") != "macOS":
             raise ValueError(f"Missing macOS platform: {name}")
     files["导入说明.html"] = (ROOT / "docs/download-bundle.html").read_bytes()
     files["LICENSE"] = (ROOT / "LICENSE").read_bytes()

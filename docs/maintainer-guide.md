@@ -19,6 +19,9 @@ README 面向普通用户，提供 1.0 方案和配件入口。
 旧 GitHub 地址仅保留平台重定向兼容。
 新文档和客户端配置统一使用当前名称。
 
+普通用户看到的官网、域名、来源链接和下载入口统一使用 `sayall.app`。
+`getsayall.com` 只供中国大陆普通用户场景使用。
+
 Full Keyboard Access 方案保存在 `examples/profiles/`。
 本次下载包与 App 方案使用同一文件合同。
 该方案仍待实体遥控器验收。
@@ -58,7 +61,7 @@ Full Keyboard Access 方案保存在 `examples/profiles/`。
 
 8 套 App 候选方案位于 `examples/profiles/`。
 本轮候选方案只面向 macOS。
-平台写入现有 `com.getsayall:platform` 扩展。
+平台写入现有 `app.sayall:platform` 扩展。
 它们是自包含分享包，每个文件包含一套方案及其所需动作。
 
 每套仅使用指定的 10 个位置，手势为单击。
