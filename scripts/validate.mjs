@@ -232,7 +232,7 @@ for (const [schemaType, files, destination] of [
       if (content.exportPurpose !== 'share') errors.push(`${relativePath(filePath)}: 市场不接受个人备份`);
       errors.push(...transferIssues(content).map(e => `${relativePath(filePath)}: ${e}`));
       if (schemaType === 'buttonProfile') {
-        const declaredPlatform = content.extensions?.['com.getsayall:platform']?.platform;
+        const declaredPlatform = content.extensions?.['app.sayall:platform']?.platform;
         const filenamePlatform = relativePath(filePath).endsWith('-mac.sayall')
           ? 'macOS'
           : relativePath(filePath).endsWith('-windows.sayall')

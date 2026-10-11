@@ -5,6 +5,10 @@
 - App 中文名统一为「无线麦」，英文名统一为「SayAll」。
 - 面向用户的产品名称、界面文案、帮助文档、发布说明和宣传文案统一写作「无线麦SayAll.app」，以同时包含中文名、英文名和官网域名记忆点。
 - 代码标识符、Bundle ID 和历史兼容字段可保留既有技术名称，不应误改。
+- 面向普通用户的官网、域名、来源链接和下载入口统一使用 `sayall.app`。
+- `getsayall.com` 只供中国大陆普通用户场景使用，不放入普通用户默认入口。
+- Schema `$id`、`$ref`、Bundle ID 和 package ID 等技术标识不属于普通用户入口，可保留历史值。
+- 平台扩展统一使用 `app.sayall:platform`，例如 `platform: "macOS"`。
 
 ## Approval gate
 

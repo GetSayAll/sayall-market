@@ -172,7 +172,7 @@
     "capabilities": []
   },
   "extensions": {
-    "com.getsayall:platform": {
+    "app.sayall:platform": {
       "platform": "macOS"
     }
   }

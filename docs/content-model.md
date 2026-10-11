@@ -36,7 +36,9 @@ App 键位方案使用稳定 `profileID`，声明目标 App 和一个标准遥�
 macOS 方案可以使用 Bundle ID 自动匹配。
 方案只声明按键、手势及其宏或内建动作引用，不携带 App 安装路径、窗口内容、用户快捷键库或设备身份。
 本轮键位方案只面向 macOS。
-平台记录在 `com.getsayall:platform` 扩展中。
+平台记录在 `app.sayall:platform` 扩展中。
+普通用户入口统一使用 `sayall.app`。
+`getsayall.com` 只供中国大陆普通用户场景使用。
 macOS 使用 macOS CGKeyCode。
 扩展用于选择文件，不改变 1.0 读取器的动作语义。
 
