@@ -2,19 +2,18 @@
   "format": "sayall-transfer",
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
-  "packageID": "com.getsayall.candidate.workbuddy-ten-key",
+  "packageID": "com.getsayall.candidate.claude-code-desktop-ten-key",
   "version": "0.1.0",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
-    "id": "com.getsayall.candidate.workbuddy-ten-key",
-    "name": "WorkBuddy 10键",
+    "id": "com.getsayall.candidate.claude-code-desktop-ten-key",
+    "name": "Claude Code 10键",
     "remoteModel": "xiaomi-remote-2-pro",
     "mode": "automatic",
     "applicationBundleIdentifiers": [
-      "com.tencent.workbuddy.mac",
-      "com.workbuddy.workbuddy"
+      "com.anthropic.claudefordesktop"
     ],
     "bindings": [
       {
@@ -36,7 +35,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.left"
+          "referenceID": "com.getsayall.candidate.claude-code-desktop-ten-key.left"
         }
       },
       {
@@ -44,7 +43,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.right"
+          "referenceID": "com.getsayall.candidate.claude-code-desktop-ten-key.right"
         }
       },
       {
@@ -52,7 +51,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.ok"
+          "referenceID": "com.getsayall.candidate.claude-code-desktop-ten-key.ok"
         }
       },
       {
@@ -60,7 +59,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.back"
+          "referenceID": "com.getsayall.candidate.claude-code-desktop-ten-key.back"
         }
       },
       {
@@ -75,7 +74,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.volume-up"
+          "referenceID": "com.getsayall.candidate.claude-code-desktop-ten-key.volume-up"
         }
       },
       {
@@ -83,7 +82,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.volume-down"
+          "referenceID": "com.getsayall.candidate.claude-code-desktop-ten-key.volume-down"
         }
       },
       {
@@ -91,7 +90,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.power"
+          "referenceID": "com.getsayall.candidate.claude-code-desktop-ten-key.power"
         }
       }
     ]
@@ -100,54 +99,55 @@
     "macros": [],
     "shortcuts": [
       {
-        "id": "com.getsayall.candidate.workbuddy-ten-key.left",
-        "displayName": "上一个任务（方向待验）",
-        "keyCode": 33,
-        "keyLabel": "[",
+        "id": "com.getsayall.candidate.claude-code-desktop-ten-key.left",
+        "displayName": "上一个会话",
+        "keyCode": 48,
+        "keyLabel": "Tab",
         "modifiers": [
-          "command"
+          "control",
+          "shift"
         ]
       },
       {
-        "id": "com.getsayall.candidate.workbuddy-ten-key.right",
-        "displayName": "下一个任务（方向待验）",
-        "keyCode": 30,
-        "keyLabel": "]",
+        "id": "com.getsayall.candidate.claude-code-desktop-ten-key.right",
+        "displayName": "下一个会话",
+        "keyCode": 48,
+        "keyLabel": "Tab",
         "modifiers": [
-          "command"
+          "control"
         ]
       },
       {
-        "id": "com.getsayall.candidate.workbuddy-ten-key.ok",
+        "id": "com.getsayall.candidate.claude-code-desktop-ten-key.ok",
         "displayName": "提交 / 确认",
         "keyCode": 36,
         "keyLabel": "Return",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.workbuddy-ten-key.back",
+        "id": "com.getsayall.candidate.claude-code-desktop-ten-key.back",
         "displayName": "删除光标前的字符",
         "keyCode": 51,
         "keyLabel": "Backspace",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.workbuddy-ten-key.volume-up",
+        "id": "com.getsayall.candidate.claude-code-desktop-ten-key.volume-up",
         "displayName": "向上翻一屏",
         "keyCode": 116,
         "keyLabel": "Page Up",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.workbuddy-ten-key.volume-down",
+        "id": "com.getsayall.candidate.claude-code-desktop-ten-key.volume-down",
         "displayName": "向下翻一屏",
         "keyCode": 121,
         "keyLabel": "Page Down",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.workbuddy-ten-key.power",
-        "displayName": "停止生成",
+        "id": "com.getsayall.candidate.claude-code-desktop-ten-key.power",
+        "displayName": "停止回复",
         "keyCode": 53,
         "keyLabel": "Esc",
         "modifiers": []
@@ -160,5 +160,10 @@
     "minimumRemoteMicVersion": "1.9.21",
     "minimumReaderVersion": "1.0",
     "capabilities": []
+  },
+  "extensions": {
+    "com.getsayall:platform": {
+      "platform": "macOS"
+    }
   }
 }

@@ -13,14 +13,16 @@ NAMES = ["codex", "claude-code-desktop", "workbuddy", "wechat", "jianying", "dou
 def build(output):
     files = {}
     for name in NAMES:
-        source_name = f"{name}-ten-key.candidate.sayall"
+        source_name = f"{name}-ten-key-mac.sayall"
         filename = f"{name}-ten-key.sayall"
         files[filename] = (ROOT / "examples/profiles" / source_name).read_bytes()
-    files["full-keyboard-access.sayall"] = (ROOT / "examples/profiles/full-keyboard-access.candidate.sayall").read_bytes()
+    files["full-keyboard-access.sayall"] = (ROOT / "examples/profiles/full-keyboard-access-mac.sayall").read_bytes()
     for name, data in files.items():
         document = json.loads(data)
         if len(data) > 4 * 1024 * 1024 or document["format"] != "sayall-transfer" or document["schemaVersion"] != "1.0" or document["type"] != "buttonProfile" or document["exportPurpose"] != "share":
             raise ValueError(f"Invalid download profile: {name}")
+        if document.get("extensions", {}).get("com.getsayall:platform", {}).get("platform") != "macOS":
+            raise ValueError(f"Missing macOS platform: {name}")
     files["导入说明.html"] = (ROOT / "docs/download-bundle.html").read_bytes()
     files["LICENSE"] = (ROOT / "LICENSE").read_bytes()
     files["SHA256SUMS"] = "".join(f"{hashlib.sha256(data).hexdigest()}  {name}\n" for name, data in sorted(files.items())).encode()

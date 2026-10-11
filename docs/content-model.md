@@ -32,13 +32,25 @@ LocalInstalledLayout（某台 Mac / 某只遥控器的本地实例）
 
 ## App 键位方案
 
-App 键位方案使用稳定 `profileID`，绑定一个目标 App 的 bundle identifier 和一个标准遥控器型号。方案只声明按键、手势及其宏或内建动作引用，不携带 App 安装路径、窗口内容、用户快捷键库或设备身份。
+App 键位方案使用稳定 `profileID`，声明目标 App 和一个标准遥控器型号。
+macOS 方案可以使用 Bundle ID 自动匹配。
+方案只声明按键、手势及其宏或内建动作引用，不携带 App 安装路径、窗口内容、用户快捷键库或设备身份。
+本轮键位方案只面向 macOS。
+平台记录在 `com.getsayall:platform` 扩展中。
+macOS 使用 macOS CGKeyCode。
+扩展用于选择文件，不改变 1.0 读取器的动作语义。
 
 同一键位方案中的 `controlID + gesture` 必须唯一。第一版合成与候选示例放在 `examples/profiles/`；正式系统、官方和社区内容未来分别进入 `profiles/system/`、`profiles/official/` 与 `profiles/community/`。
 
 ## 布局
 
-布局声明遥控器标准型号、控制项、单击/双击/长按和宏引用。布局不包含具体遥控器序列号、蓝牙地址或用户本地覆盖。
+布局声明遥控器标准型号、目标平台、目标 App、控制项、单击/双击/三击/长按和宏或快捷键引用。
+本轮布局的 `platforms` 使用 `["macOS"]`。
+布局不包含具体遥控器序列号、蓝牙地址或用户本地覆盖。
+
+正式 `sayall-transfer 1.0` 不把平台扩展解释为执行参数。
+客户端必须选择正确的平台文件。
+Draft Layout 使用 `platforms` 数组表达目标平台。
 
 ## 发布版本
 

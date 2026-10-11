@@ -178,6 +178,14 @@ const buttonProfileFiles = [...(await listFiles("profiles")), ...(await listFile
 const manifestFiles = [...(await listFiles("catalog/manifests")), ...(await listFiles("examples/manifests"))].filter(file => path.extname(file) === '.json');
 const catalogFiles = (await listFiles("examples/catalog")).filter(file => path.extname(file) === '.json');
 const transferFiles = (await listFiles("examples/transfers")).filter(file => path.extname(file) === '.sayall');
+
+const forbiddenProfileNamePattern = /(?:draft|xiaomi|2[-_.]?pro|rc003)/i;
+for (const filePath of [...buttonProfileFiles, ...layoutFiles]) {
+  if (forbiddenProfileNamePattern.test(path.basename(filePath))) {
+    errors.push(`${relativePath(filePath)}: 键位方案文件名不得包含 Draft 或设备型号`);
+  }
+}
+
 const classifiedJsonFiles = new Set(
   [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles, ...catalogFiles, ...transferFiles].map((filePath) =>
     path.resolve(filePath)
@@ -223,6 +231,17 @@ for (const [schemaType, files, destination] of [
       errors.push(...publicTransferSensitivePaths(content).map(p => `${relativePath(filePath)}: 敏感内容 ${p}`));
       if (content.exportPurpose !== 'share') errors.push(`${relativePath(filePath)}: 市场不接受个人备份`);
       errors.push(...transferIssues(content).map(e => `${relativePath(filePath)}: ${e}`));
+      if (schemaType === 'buttonProfile') {
+        const declaredPlatform = content.extensions?.['com.getsayall:platform']?.platform;
+        const filenamePlatform = relativePath(filePath).endsWith('-mac.sayall')
+          ? 'macOS'
+          : relativePath(filePath).endsWith('-windows.sayall')
+            ? 'Windows'
+            : null;
+        if (filenamePlatform && filenamePlatform !== declaredPlatform) {
+          errors.push(`${relativePath(filePath)}: 文件名平台与扩展平台不一致`);
+        }
+      }
     } else {
       assertUnique(
         content.bindings.map((binding) => `${binding.controlID}:${binding.gesture}`),

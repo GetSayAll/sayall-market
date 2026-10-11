@@ -2,34 +2,32 @@
   "format": "sayall-transfer",
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
-  "packageID": "com.getsayall.candidate.wechat-ten-key",
+  "packageID": "com.getsayall.candidate.jianying-ten-key",
   "version": "0.1.0",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
-    "id": "com.getsayall.candidate.wechat-ten-key",
-    "name": "微信 10键",
+    "id": "com.getsayall.candidate.jianying-ten-key",
+    "name": "剪映桌面版 10键",
     "remoteModel": "xiaomi-remote-2-pro",
     "mode": "automatic",
     "applicationBundleIdentifiers": [
-      "com.tencent.xinWeChat"
+      "com.lemon.lvpro"
     ],
     "bindings": [
       {
         "controlID": "up",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.up"
+          "kind": "disabled"
         }
       },
       {
         "controlID": "down",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.down"
+          "kind": "disabled"
         }
       },
       {
@@ -37,7 +35,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.left"
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.left"
         }
       },
       {
@@ -45,7 +43,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.right"
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.right"
         }
       },
       {
@@ -53,7 +51,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.ok"
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.ok"
         }
       },
       {
@@ -61,7 +59,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.back"
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.back"
         }
       },
       {
@@ -75,8 +73,7 @@
         "controlID": "volume-up",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.volume-up"
+          "kind": "disabled"
         }
       },
       {
@@ -84,7 +81,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.volume-down"
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.volume-down"
         }
       },
       {
@@ -92,7 +89,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.power"
+          "referenceID": "com.getsayall.candidate.jianying-ten-key.power"
         }
       }
     ]
@@ -101,66 +98,45 @@
     "macros": [],
     "shortcuts": [
       {
-        "id": "com.getsayall.candidate.wechat-ten-key.up",
-        "displayName": "光标上移 / 列表上一项",
-        "keyCode": 126,
-        "keyLabel": "↑",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.wechat-ten-key.down",
-        "displayName": "光标下移 / 列表下一项",
-        "keyCode": 125,
-        "keyLabel": "↓",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.wechat-ten-key.left",
-        "displayName": "光标左移",
+        "id": "com.getsayall.candidate.jianying-ten-key.left",
+        "displayName": "上一帧",
         "keyCode": 123,
         "keyLabel": "←",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.wechat-ten-key.right",
-        "displayName": "光标右移",
+        "id": "com.getsayall.candidate.jianying-ten-key.right",
+        "displayName": "下一帧",
         "keyCode": 124,
         "keyLabel": "→",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.wechat-ten-key.ok",
-        "displayName": "发送 / 确认",
-        "keyCode": 36,
-        "keyLabel": "Return",
+        "id": "com.getsayall.candidate.jianying-ten-key.ok",
+        "displayName": "播放 / 暂停",
+        "keyCode": 49,
+        "keyLabel": "Space",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.wechat-ten-key.back",
-        "displayName": "删除光标前的字符",
+        "id": "com.getsayall.candidate.jianying-ten-key.back",
+        "displayName": "删除选中片段（待验）",
         "keyCode": 51,
         "keyLabel": "Backspace",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.wechat-ten-key.volume-up",
-        "displayName": "向上翻一屏",
-        "keyCode": 116,
-        "keyLabel": "Page Up",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.wechat-ten-key.volume-down",
+        "id": "com.getsayall.candidate.jianying-ten-key.volume-down",
         "displayName": "向下翻一屏",
         "keyCode": 121,
         "keyLabel": "Page Down",
         "modifiers": []
       },
       {
-        "id": "com.getsayall.candidate.wechat-ten-key.power",
-        "displayName": "隐藏 App 全部窗口",
-        "keyCode": 4,
-        "keyLabel": "H",
+        "id": "com.getsayall.candidate.jianying-ten-key.power",
+        "displayName": "撤销上一步操作",
+        "keyCode": 6,
+        "keyLabel": "Z",
         "modifiers": [
           "command"
         ]
@@ -173,5 +149,10 @@
     "minimumRemoteMicVersion": "1.9.21",
     "minimumReaderVersion": "1.0",
     "capabilities": []
+  },
+  "extensions": {
+    "com.getsayall:platform": {
+      "platform": "macOS"
+    }
   }
 }

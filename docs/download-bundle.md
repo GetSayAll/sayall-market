@@ -12,6 +12,9 @@ status: 1.0 方案，部分真实验收待完成
 [一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)
 
 ZIP 包含下表 9 个独立方案文件。
+目标平台为 macOS。
+仓库源文件写明平台；现有 Release 附件暂未更新。
+
 每个文件都包含该方案所需的动作。
 适用遥控器：小米遥控器 2 Pro（RC003）。
 包内同时提供本说明、内容许可和文件摘要。

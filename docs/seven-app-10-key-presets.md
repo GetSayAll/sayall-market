@@ -1,6 +1,6 @@
 ---
 title: 8 个 App · 遥控器 10 键方案
-subtitle: 无线麦SayAll.app · 下载 JSON 后在 Mac App 导入
+subtitle: 无线麦SayAll.app · 下载 .sayall 后在 Mac App 导入
 lang: zh
 template: doc
 theme: shadcn
@@ -15,8 +15,9 @@ ZIP 包含本页 8 套 App 方案和 Full Keyboard Access 方案。
 先解压 ZIP，再按需导入其中的 `.sayall` 文件。
 完整步骤见 [打包下载与导入说明](download-bundle.html)。
 
-每个 JSON 文件包含一套方案及其所需动作。
+每个 `.sayall` 文件包含一套方案及其所需动作。
 适用遥控器：小米遥控器 2 Pro（RC003）。
+目标平台为 macOS。源文件用现有扩展字段标明平台。
 全部使用单击，不设置双击或长按。
 这些文件供手动导入，市场尚未上线。
 
@@ -40,9 +41,9 @@ ZIP 不直接导入 Mac App。
 
 ## B 在 Mac App 导入
 
-1. 下载需要的 JSON 文件。
+1. 下载需要的 `.sayall` 文件。
 2. 打开无线麦SayAll.app 的「键位方案」。
-3. 选择导入，再选择 JSON 文件。
+3. 选择导入，再选择 `.sayall` 文件。
 4. 检查方案名称、遥控器型号和全部按键。
 5. 确认后保存，再按需要选择或启用方案。
 

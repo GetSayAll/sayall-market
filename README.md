@@ -23,6 +23,9 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 **[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
 包含下方 8 套 App 方案和 Full Keyboard Access 方案。
+本轮方案只面向 macOS。仓库源文件写明 `macOS` 平台。
+已发布附件仍使用原文件名；本 PR 不替换现有 Release。
+
 下载后先解压，再按需导入其中的方案文件。
 方案文件以 `.sayall` 结尾。请使用本次提供的新版客户端。
 [查看打包下载与导入说明](docs/download-bundle.html)（[在线文字版](docs/download-bundle.md)）。
@@ -71,6 +74,12 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 查看 [完整按键和导入说明](docs/seven-app-10-key-presets.html)（[在线文字版](docs/seven-app-10-key-presets.md)）。
 剪映的音量+暂不设置，待确认放大时间线的默认按键。
+
+## WPS 演示放映 · macOS
+
+[查看 WPS Mac 快捷键调研](docs/wps-presentation-mac-shortcuts.html)。
+[查看 macOS 键位方案](examples/profiles/wps-presentation-mac.sayall)。
+该方案仍待真实遥控器和 WPS 验收。
 
 ## Full Keyboard Access · 全键盘控制
 

@@ -1,10 +1,18 @@
 {
   "schemaVersion": "0.1-draft",
-  "layoutID": "com.getsayall.example.xiaomi-2pro-codex",
+  "layoutID": "com.getsayall.example.codex-macos",
   "version": "0.1.0",
-  "name": "小米遥控器 2 Pro · Codex",
+  "name": "Codex · macOS",
   "remoteModel": "xiaomi-remote-2-pro",
   "minimumRemoteMicVersion": "1.8.3",
+  "platforms": [
+    "macOS"
+  ],
+  "targetApplication": {
+    "displayName": "Codex",
+    "bundleIdentifier": "com.openai.codex",
+    "documentType": "chat"
+  },
   "bindings": [
     {
       "controlID": "tv",
@@ -23,5 +31,6 @@
         "actionID": "escape"
       }
     }
-  ]
+  ],
+  "summary": "Codex macOS 键位布局。"
 }

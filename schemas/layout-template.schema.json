@@ -12,6 +12,7 @@
     "name",
     "remoteModel",
     "minimumRemoteMicVersion",
+    "platforms",
     "bindings"
   ],
   "properties": {
@@ -27,6 +28,28 @@
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     },
     "minimumRemoteMicVersion": { "$ref": "#/$defs/semanticVersion" },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "enum": ["macOS", "Windows"] }
+    },
+    "targetApplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["displayName"],
+      "properties": {
+        "displayName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "bundleIdentifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]*(\\.[A-Za-z0-9][A-Za-z0-9-]*)+$"
+        },
+        "documentType": { "type": "string", "minLength": 1, "maxLength": 40 }
+      }
+    },
     "bindings": {
       "type": "array",
       "minItems": 1,
@@ -56,11 +79,12 @@
           "maxLength": 80,
           "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
         },
-        "gesture": { "enum": ["singlePress", "doublePress", "longPress"] },
+        "gesture": { "enum": ["singlePress", "doublePress", "triplePress", "longPress"] },
         "target": {
           "oneOf": [
             { "$ref": "#/$defs/macroTarget" },
-            { "$ref": "#/$defs/builtInTarget" }
+            { "$ref": "#/$defs/builtInTarget" },
+            { "$ref": "#/$defs/shortcutTarget" }
           ]
         }
       }
@@ -86,6 +110,26 @@
         "kind": { "const": "builtIn" },
         "actionID": {
           "enum": ["escape", "playPause", "volumeUp", "volumeDown", "mute"]
+        }
+      }
+    },
+    "shortcutTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "key", "modifiers"],
+      "properties": {
+        "kind": { "const": "shortcut" },
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]*$"
+        },
+        "modifiers": {
+          "type": "array",
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": { "enum": ["command", "control", "option", "shift", "function"] }
         }
       }
     }

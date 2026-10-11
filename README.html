@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="generator" content="Answer me with HTML 0.4.4">
+<meta name="generator" content="Answer me with HTML 0.4.6">
 <title>SayAll Market · 遥控器方案与配件</title>
 <style>
 html[data-theme="blueprint"], html[data-theme="blueprint"][data-mode="light"] {
@@ -144,6 +144,13 @@ html[data-theme="shadcn"][data-mode="auto"] {
 }
 }
 
+html[lang="ja"][data-theme][data-mode] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, "Noto Sans CJK JP", "Noto Sans JP", "PingFang SC", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+html[lang="ja"][data-theme="3b1b"][data-mode] {
+  --v-title-font: "CMU Serif", "Latin Modern Roman", "Iowan Old Style", "Palatino", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", "Noto Serif JP", "Songti SC", serif;
+}
+
 /* Answer me with HTML base — 只引用主题变量，禁止写死颜色（主题 token 见 themes/index.js） */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -228,6 +235,13 @@ html[data-theme="shadcn"] .am-panel-head { border-bottom-width: 1px; }
 .am-md blockquote { margin: 0 0 8px; padding: 2px 12px; border-left: 3px solid var(--line-2); color: var(--ink-2); }
 .am-md :not(pre) > code { font-size: 0.9em; background: var(--fill); padding: 1px 5px; border-radius: 4px; }
 .am-md hr { border: 0; border-top: 1px solid var(--line-2); margin: 12px 0; }
+.am-md img, .am-intro img, .am-panel-body img {
+  display: block; width: auto; max-width: 100%; height: auto; max-height: min(72vh, 760px);
+  object-fit: contain; margin: 10px auto; cursor: zoom-in; border-radius: var(--radius);
+}
+.am-md img:focus-visible, .am-intro img:focus-visible, .am-panel-body img:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px;
+}
 .am-md table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .am-md th {
   text-align: left; font: 11px/1.3 var(--font-mono); color: var(--ink-2); font-weight: 400;
@@ -421,6 +435,25 @@ html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var
 .am-panel--bare > .am-panel-body { padding: 0; }
 .am-panel--bare .am-kv { background: var(--paper); }
 
+/* ── 图片大图预览 ────────────────────────── */
+.am-lightbox[hidden] { display: none; }
+.am-lightbox {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  padding: clamp(16px, 4vw, 48px); background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(4px);
+}
+.am-lightbox img {
+  display: block; width: auto; max-width: 100%; max-height: 100%; height: auto;
+  object-fit: contain; cursor: zoom-out; box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+}
+.am-lightbox-close {
+  position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.45); border-radius: 50%; background: rgba(0, 0, 0, 0.35);
+  color: #fff; font: 24px/1 var(--font-sans); cursor: pointer;
+}
+.am-lightbox-close:hover { background: rgba(0, 0, 0, 0.6); }
+.am-lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+body.am-lightbox-open { overflow: hidden; }
+
 </style>
 </head>
 <body>
@@ -433,17 +466,38 @@ html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var
 <header class="am-head"><h1>SayAll Market · 遥控器方案与配件</h1><div class="am-intro am-md"><div class="am-md"><p>为无线麦SayAll.app 选择遥控器键位方案，用按键操作常用 App。
 这里也收录全键盘控制方案，以及外壳、底座等配件入口。</p>
 <p>当前提供 1.0 键位方案。在线市场尚未上线，社区投稿暂未开放。</p>
-<p><strong><a href="https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip">一键下载全部方案 ZIP</a></strong></p>
-<p>包含下方 8 套 App 方案和 Full Keyboard Access 方案。
-下载后先解压，再按需导入其中的方案文件。
-方案文件以 <code>.sayall</code> 结尾。请使用本次提供的新版客户端。
-<a href="docs/download-bundle.html">查看打包下载与导入说明</a>（<a href="docs/download-bundle.md">在线文字版</a>）。</p>
 </div></div></header>
 <div class="am-frame">
 <div class="am-ruler am-ruler--top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div class="am-ruler am-ruler--bottom" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div class="am-ruler am-ruler--left" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div><div class="am-ruler am-ruler--right" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
 <div class="am-grid" style="--cols: 3">
 <section class="am-panel" id="panel-A">
-<header class="am-panel-head"><span class="am-panel-id">A</span><h2>8 个 App 的 10 键方案</h2></header>
+<header class="am-panel-head"><span class="am-panel-id">A</span><h2>常用语</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：</p>
+<ul>
+<li><a href="common-phrases/README.md">目录说明</a>：来源和使用说明。</li>
+<li><a href="common-phrases/built-in.md">内置常用语源</a>：12 条中英文常用语及默认五键绑定。</li>
+<li><a href="common-phrases/common-phrases.json">常用语导入文件</a>：可用于常用语备份导入。</li>
+</ul>
+<p>来源：</p>
+<ul>
+<li>官网：<a href="https://sayall.app">sayall.app</a></li>
+<li>GitHub：<a href="https://github.com/sayall-market/common-phrases">sayall-market/common-phrases</a></li>
+</ul>
+</div></div>
+</section>
+<section class="am-panel" id="panel-B">
+<header class="am-panel-head"><span class="am-panel-id">B</span><h2>键位方案</h2></header>
+<div class="am-panel-body"><div class="am-md"><p><strong><a href="https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip">一键下载全部方案 ZIP</a></strong></p>
+<p>包含下方 8 套 App 方案和 Full Keyboard Access 方案。
+本轮方案只面向 macOS。仓库源文件写明 <code>macOS</code> 平台。
+已发布附件仍使用原文件名；本 PR 不替换现有 Release。</p>
+<p>下载后先解压，再按需导入其中的方案文件。
+方案文件以 <code>.sayall</code> 结尾。请使用本次提供的新版客户端。
+<a href="docs/download-bundle.html">查看打包下载与导入说明</a>（<a href="docs/download-bundle.md">在线文字版</a>）。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-C">
+<header class="am-panel-head"><span class="am-panel-id">C</span><h2>8 个 App 的 10 键方案</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>选择常用 App，下载对应方案。每个文件包含一套完整方案。
 以下方案适用于小米遥控器 2 Pro（RC003），全部使用单击。</p>
 <div class="am-table-wrap"><table>
@@ -495,15 +549,40 @@ html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var
 <td><a href="https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall">下载方案</a></td>
 </tr>
 </tbody></table></div>
-<p>10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
+<h3>方案配图</h3>
+<p>以下图片按每行三张显示。图片文件保留原始尺寸，README 只缩小显示宽度。</p>
+<div class="am-table-wrap"><table>
+<tr>
+<td align="center"><img src="docs/images/keyboard-profile-codex.png" alt="Codex 键位方案" width="220"><br><sub>Codex</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-claude-code.png" alt="Claude Code desktop 键位方案" width="220"><br><sub>Claude Code desktop</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-workbuddy.png" alt="WorkBuddy 键位方案" width="220"><br><sub>WorkBuddy</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/images/keyboard-profile-wechat.png" alt="微信键位方案" width="220"><br><sub>微信</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-capcut.png" alt="剪映桌面版键位方案" width="220"><br><sub>剪映桌面版</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-douyin.png" alt="抖音 Mac 客户端键位方案" width="220"><br><sub>抖音 Mac 客户端</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/images/keyboard-profile-chrome.png" alt="Chrome 键位方案" width="220"><br><sub>Chrome</sub></td>
+<td align="center"><img src="docs/images/keyboard-profile-netease-music.png" alt="网易云音乐键位方案" width="220"><br><sub>网易云音乐</sub></td>
+<td></td>
+</tr>
+</table></div><p>10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
 没有合适动作的位置设为“不设置”。
 这些方案使用已有快捷键，无需在目标 App 添加快捷键。</p>
 <p>查看 <a href="docs/seven-app-10-key-presets.html">完整按键和导入说明</a>（<a href="docs/seven-app-10-key-presets.md">在线文字版</a>）。
 剪映的音量+暂不设置，待确认放大时间线的默认按键。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-B">
-<header class="am-panel-head"><span class="am-panel-id">B</span><h2>Full Keyboard Access · 全键盘控制</h2></header>
+<section class="am-panel" id="panel-D">
+<header class="am-panel-head"><span class="am-panel-id">D</span><h2>WPS 演示放映 · macOS</h2></header>
+<div class="am-panel-body"><div class="am-md"><p><a href="docs/wps-presentation-mac-shortcuts.html">查看 WPS Mac 快捷键调研</a>。
+<a href="examples/profiles/wps-presentation-mac.sayall">查看 macOS 键位方案</a>。
+该方案仍待真实遥控器和 WPS 验收。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-E">
+<header class="am-panel-head"><span class="am-panel-id">E</span><h2>Full Keyboard Access · 全键盘控制</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>用遥控器选择屏幕上的按钮、输入框和其他可操作项目。
 此方案适用于小米遥控器 2 Pro（RC003），供手动选择使用。</p>
 <p><a href="https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/full-keyboard-access.sayall">下载全键盘控制方案</a></p>
@@ -548,8 +627,8 @@ html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var
 此方案仍待实体遥控器和目标 App 验收。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-C">
-<header class="am-panel-head"><span class="am-panel-id">C</span><h2>如何导入方案</h2></header>
+<section class="am-panel" id="panel-F">
+<header class="am-panel-head"><span class="am-panel-id">F</span><h2>如何导入方案</h2></header>
 <div class="am-panel-body"><div class="am-md"><ol>
 <li>下载单套方案，或下载全部方案 ZIP。</li>
 <li>若下载了 ZIP，先解压。</li>
@@ -564,8 +643,8 @@ html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var
 导入后，请检查预览中的提示，再启用所需方案。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-D">
-<header class="am-panel-head"><span class="am-panel-id">D</span><h2>配件</h2></header>
+<section class="am-panel" id="panel-G">
+<header class="am-panel-head"><span class="am-panel-id">G</span><h2>配件</h2></header>
 <div class="am-panel-body"><div class="am-md"><div class="am-table-wrap"><table>
 <thead>
 <tr>
@@ -584,8 +663,8 @@ html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var
 请在具体项目页面核对适配型号、制作说明及作者许可。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-E">
-<header class="am-panel-head"><span class="am-panel-id">E</span><h2>使用提示</h2></header>
+<section class="am-panel" id="panel-H">
+<header class="am-panel-head"><span class="am-panel-id">H</span><h2>使用提示</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>这些方案属于 1.0 内容。请先检查每个按键的实际效果，再用于日常操作。</p>
 <p>翻页、删除和方向移动会受到当前选中位置的影响。
 Codex 的上键是否立即补充运行中指令，取决于现有发送行为。
@@ -598,13 +677,13 @@ Codex 的上键是否立即补充运行中指令，取决于现有发送行为�
 请写明 App、遥控器型号、按键和实际结果。</p>
 </div></div>
 </section>
-<section class="am-panel" id="panel-F">
-<header class="am-panel-head"><span class="am-panel-id">F</span><h2>技术与维护文档</h2></header>
+<section class="am-panel" id="panel-I">
+<header class="am-panel-head"><span class="am-panel-id">I</span><h2>技术与维护文档</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>开发和维护人员请查看 <a href="docs/maintainer-guide.html">技术与维护说明</a>（<a href="docs/maintainer-guide.md">在线文字版</a>）。</p>
 </div></div>
 </section>
-<section class="am-panel am-span-wide" id="panel-G" style="grid-column: span 3">
-<header class="am-panel-head"><span class="am-panel-id">G</span><h2>使用许可</h2></header>
+<section class="am-panel am-span-wide" id="panel-J" style="grid-column: span 3">
+<header class="am-panel-head"><span class="am-panel-id">J</span><h2>使用许可</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>本站整理的内容采用 <a href="LICENSE">CC BY-NC 4.0</a> 许可。
 分享或改编时，请署名并标明修改。商业使用需另行取得书面许可。
 外部配件、图片和模型按原作者及平台规则使用。</p>
@@ -614,7 +693,7 @@ Codex 的上键是否立即补充运行中指令，取决于现有发送行为�
 </div>
 </div>
 </main>
-<footer class="am-colophon">Generated by Answer me with HTML 0.4.4 · 2026-10-05 23:34</footer>
+<footer class="am-colophon">Generated by Answer me with HTML 0.4.6 · 2026-10-11 14:02</footer>
 <textarea id="am-source" hidden readonly aria-hidden="true"># SayAll Market · 遥控器方案与配件
 
 为无线麦SayAll.app 选择遥控器键位方案，用按键操作常用 App。
@@ -622,9 +701,27 @@ Codex 的上键是否立即补充运行中指令，取决于现有发送行为�
 
 当前提供 1.0 键位方案。在线市场尚未上线，社区投稿暂未开放。
 
+## 常用语
+
+SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
+
+- [目录说明](common-phrases/README.md)：来源和使用说明。
+- [内置常用语源](common-phrases/built-in.md)：12 条中英文常用语及默认五键绑定。
+- [常用语导入文件](common-phrases/common-phrases.json)：可用于常用语备份导入。
+
+来源：
+
+- 官网：[sayall.app](https://sayall.app)
+- GitHub：[sayall-market/common-phrases](https://github.com/sayall-market/common-phrases)
+
+## 键位方案
+
 **[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/sayall-key-profiles.zip)**
 
 包含下方 8 套 App 方案和 Full Keyboard Access 方案。
+本轮方案只面向 macOS。仓库源文件写明 `macOS` 平台。
+已发布附件仍使用原文件名；本 PR 不替换现有 Release。
+
 下载后先解压，再按需导入其中的方案文件。
 方案文件以 `.sayall` 结尾。请使用本次提供的新版客户端。
 [查看打包下载与导入说明](docs/download-bundle.html)（[在线文字版](docs/download-bundle.md)）。
@@ -645,12 +742,40 @@ Codex 的上键是否立即补充运行中指令，取决于现有发送行为�
 | Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/chrome-ten-key.sayall) |
 | 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.0/netease-music-ten-key.sayall) |
 
+### 方案配图
+
+以下图片按每行三张显示。图片文件保留原始尺寸，README 只缩小显示宽度。
+
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-codex.png&quot; alt=&quot;Codex 键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;Codex&lt;/sub&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-claude-code.png&quot; alt=&quot;Claude Code desktop 键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;Claude Code desktop&lt;/sub&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-workbuddy.png&quot; alt=&quot;WorkBuddy 键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;WorkBuddy&lt;/sub&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-wechat.png&quot; alt=&quot;微信键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;微信&lt;/sub&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-capcut.png&quot; alt=&quot;剪映桌面版键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;剪映桌面版&lt;/sub&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-douyin.png&quot; alt=&quot;抖音 Mac 客户端键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;抖音 Mac 客户端&lt;/sub&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-chrome.png&quot; alt=&quot;Chrome 键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;Chrome&lt;/sub&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;img src=&quot;docs/images/keyboard-profile-netease-music.png&quot; alt=&quot;网易云音乐键位方案&quot; width=&quot;220&quot;&gt;&lt;br&gt;&lt;sub&gt;网易云音乐&lt;/sub&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
 10 个位置为：上、下、左、右、OK、返回、主页、音量+、音量-、关机。
 没有合适动作的位置设为“不设置”。
 这些方案使用已有快捷键，无需在目标 App 添加快捷键。
 
 查看 [完整按键和导入说明](docs/seven-app-10-key-presets.html)（[在线文字版](docs/seven-app-10-key-presets.md)）。
 剪映的音量+暂不设置，待确认放大时间线的默认按键。
+
+## WPS 演示放映 · macOS
+
+[查看 WPS Mac 快捷键调研](docs/wps-presentation-mac-shortcuts.html)。
+[查看 macOS 键位方案](examples/profiles/wps-presentation-mac.sayall)。
+该方案仍待真实遥控器和 WPS 验收。
 
 ## Full Keyboard Access · 全键盘控制
 
@@ -768,6 +893,66 @@ Copyright © 2026 GetSayAll.
     copyBtn.textContent = copyBtn.dataset.done;
     setTimeout(() => { copyBtn.textContent = original; }, 1400);
   });
+
+  // Markdown / HTML 中的图片按内容区和视口缩放；点击后在遮罩层中查看大图。
+  const images = [...document.querySelectorAll('.am-md img, .am-intro img, .am-panel-body img[src]')];
+  if (images.length && document.body) {
+    const lang = (root.getAttribute('lang') || '').toLowerCase();
+    const closeLabel = lang.startsWith('zh') ? '关闭大图' : lang.startsWith('ja') ? '大きな画像を閉じる' : 'Close image';
+    const openLabel = lang.startsWith('zh') ? '点击查看大图' : lang.startsWith('ja') ? 'クリックして拡大表示' : 'Open image';
+    const labelSeparator = lang.startsWith('zh') ? '，' : ': ';
+    const lightbox = document.createElement('div');
+    lightbox.className = 'am-lightbox';
+    lightbox.hidden = true;
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', closeLabel);
+    lightbox.innerHTML = '<button class="am-lightbox-close" type="button" aria-label="' + closeLabel + '">×</button><img alt="">';
+    document.body.append(lightbox);
+    const large = lightbox.querySelector('img');
+    const close = lightbox.querySelector('.am-lightbox-close');
+    let active = null;
+
+    const hide = () => {
+      if (lightbox.hidden) return;
+      lightbox.hidden = true;
+      document.body.classList.remove('am-lightbox-open');
+      active?.focus();
+      active = null;
+    };
+    const show = (image) => {
+      active = image;
+      large.src = image.currentSrc || image.src;
+      large.alt = image.alt || '';
+      lightbox.hidden = false;
+      document.body.classList.add('am-lightbox-open');
+      close.focus();
+    };
+
+    for (const image of images) {
+      image.loading ||= 'lazy';
+      image.decoding ||= 'async';
+      image.tabIndex = 0;
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', image.alt ? `${image.alt}${labelSeparator}${openLabel}` : openLabel);
+      image.addEventListener('click', (event) => {
+        event.preventDefault();
+        show(image);
+      });
+      image.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        show(image);
+      });
+    }
+    close.addEventListener('click', hide);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox || event.target === large) hide();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') hide();
+    });
+  }
 })();
 </script>
 </body>

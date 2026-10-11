@@ -1,0 +1,210 @@
+{
+  "format": "sayall-transfer",
+  "packageID": "com.getsayall.example.wps-presentation-mac",
+  "version": "0.1.0",
+  "exportPurpose": "share",
+  "schemaVersion": "1.0",
+  "type": "buttonProfile",
+  "extensions": {
+    "com.getsayall:platform": {
+      "platform": "macOS"
+    }
+  },
+  "profile": {
+    "id": "com.getsayall.example.wps-presentation-mac",
+    "name": "WPS 演示放映 · macOS",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "manual",
+    "applicationBundleIdentifiers": [
+      "com.kingsoft.wpsoffice.mac"
+    ],
+    "bindings": [
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.home-start"
+        }
+      },
+      {
+        "controlID": "home",
+        "gesture": "doublePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.home-current"
+        }
+      },
+      {
+        "controlID": "ok",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.next"
+        }
+      },
+      {
+        "controlID": "up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.previous-up"
+        }
+      },
+      {
+        "controlID": "down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.next-down"
+        }
+      },
+      {
+        "controlID": "left",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.previous-window"
+        }
+      },
+      {
+        "controlID": "right",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.next-window"
+        }
+      },
+      {
+        "controlID": "back",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.escape"
+        }
+      },
+      {
+        "controlID": "tv",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "wps-presentation.black-screen"
+        }
+      },
+      {
+        "controlID": "menu",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "menu",
+        "gesture": "doublePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "volume-up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "volumeUp"
+        }
+      },
+      {
+        "controlID": "volume-down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "host",
+          "actionID": "volumeDown"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [],
+    "shortcuts": [
+      {
+        "id": "wps-presentation.home-start",
+        "displayName": "从头放映",
+        "keyCode": 96,
+        "keyLabel": "F5",
+        "modifiers": []
+      },
+      {
+        "id": "wps-presentation.home-current",
+        "displayName": "从当前页放映",
+        "keyCode": 96,
+        "keyLabel": "⇧F5",
+        "modifiers": [
+          "shift"
+        ]
+      },
+      {
+        "id": "wps-presentation.next",
+        "displayName": "下一页",
+        "keyCode": 49,
+        "keyLabel": "Space",
+        "modifiers": []
+      },
+      {
+        "id": "wps-presentation.next-down",
+        "displayName": "下一页",
+        "keyCode": 125,
+        "keyLabel": "↓",
+        "modifiers": []
+      },
+      {
+        "id": "wps-presentation.previous-up",
+        "displayName": "上一页",
+        "keyCode": 126,
+        "keyLabel": "↑",
+        "modifiers": []
+      },
+      {
+        "id": "wps-presentation.escape",
+        "displayName": "结束放映",
+        "keyCode": 53,
+        "keyLabel": "Esc",
+        "modifiers": []
+      },
+      {
+        "id": "wps-presentation.black-screen",
+        "displayName": "黑屏切换",
+        "keyCode": 11,
+        "keyLabel": "B",
+        "modifiers": [
+          "command"
+        ]
+      },
+      {
+        "id": "wps-presentation.next-window",
+        "displayName": "下一个 WPS 窗口",
+        "keyCode": 48,
+        "keyLabel": "⌃Tab",
+        "modifiers": [
+          "control"
+        ]
+      },
+      {
+        "id": "wps-presentation.previous-window",
+        "displayName": "上一个 WPS 窗口",
+        "keyCode": 48,
+        "keyLabel": "⇧⌃Tab",
+        "modifiers": [
+          "control",
+          "shift"
+        ]
+      }
+    ],
+    "focusTargets": [],
+    "applications": []
+  },
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.21",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
+  }
+}
