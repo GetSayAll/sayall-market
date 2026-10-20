@@ -1,7 +1,7 @@
 {
   "schemaVersion": "0.1-draft",
   "layoutID": "com.getsayall.example.wps-presentation-macos",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "name": "WPS 演示 · macOS",
   "summary": "面向 macOS WPS 演示放映。按键只描述快捷键，不声明真实硬件兼容性。",
   "remoteModel": "xiaomi-remote-2-pro",
@@ -22,17 +22,6 @@
         "kind": "shortcut",
         "key": "F5",
         "modifiers": []
-      }
-    },
-    {
-      "controlID": "home",
-      "gesture": "doublePress",
-      "target": {
-        "kind": "shortcut",
-        "key": "F5",
-        "modifiers": [
-          "shift"
-        ]
       }
     },
     {
