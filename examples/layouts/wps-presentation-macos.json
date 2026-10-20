@@ -1,7 +1,7 @@
 {
   "schemaVersion": "0.1-draft",
   "layoutID": "com.getsayall.example.wps-presentation-macos",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "WPS 演示 · macOS",
   "summary": "面向 macOS WPS 演示放映。按键只描述快捷键，不声明真实硬件兼容性。",
   "remoteModel": "xiaomi-remote-2-pro",

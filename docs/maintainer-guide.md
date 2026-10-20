@@ -158,12 +158,12 @@ Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
 附件响应应带 `Content-Disposition: attachment`。
 这样浏览器会下载文件，不直接展示 JSON。
 
-集合版本为 `key-profiles-v1.0.0`，作为正式版本发布。
-ZIP 包含 8 个 App 分享包、全键盘控制包、说明、许可和摘要。
+集合版本为 `key-profiles-v1.0.1`，作为正式版本发布。
+ZIP 包含 9 个 App 分享包、全键盘控制包、说明、许可和摘要。
 它不是客户端安装包，也不加入生产 Catalog。
-8 套 App 使用本仓库方案文件。
+9 套 App 使用本仓库方案文件。
 全键盘控制方案在固定来源文件上新增两个来源字段。
-所有按键和动作保持不变。
+WPS 方案 0.1.1 将黑屏动作移至关机键，并移除菜单绑定。
 
 `website` 和 `github` 是可选的顶层 HTTPS URL。
 Mac 读取并保存字段，在键位方案首页和详情页显示链接。

@@ -203,6 +203,8 @@ test('WPS 放映示例仅绑定通用十键，布局保留相同黑屏动作', a
   const commonButtons = new Set(['up', 'down', 'left', 'right', 'ok', 'back', 'home', 'power', 'volume-up', 'volume-down']);
   const transfer = JSON.parse(await readFile(new URL('../examples/profiles/wps-presentation-mac.sayall', import.meta.url)));
   const layout = JSON.parse(await readFile(new URL('../examples/layouts/wps-presentation-macos.json', import.meta.url)));
+  assert.equal(transfer.version, '0.1.1');
+  assert.equal(layout.version, '0.1.1');
   assert.equal(validate(transfer), true);
   assert.deepEqual(transferIssues(transfer), []);
   for (const profile of [transfer.profile, layout]) {

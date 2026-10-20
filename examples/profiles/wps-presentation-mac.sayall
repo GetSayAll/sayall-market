@@ -1,7 +1,7 @@
 {
   "format": "sayall-transfer",
   "packageID": "com.getsayall.example.wps-presentation-mac",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",

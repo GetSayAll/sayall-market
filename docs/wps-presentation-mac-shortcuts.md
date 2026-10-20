@@ -16,7 +16,7 @@ WPS 官方 Mac 快捷键页列出 F5、Shift+F5、方向键、Esc、⌘B 和窗�
 当前仓库新增 macOS 平台维度。
 WPS 方案放在 `examples/profiles/`。
 macOS 使用 `.sayall` 文件。
-该方案尚未完成验收，也不进入下载包。
+该方案已包含在下载集合 v1.0.1 中，真实遥控器和 WPS 验收仍待完成。
 
 ## B 平台维度
 
