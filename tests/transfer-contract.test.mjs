@@ -198,3 +198,20 @@ test('稳定目录同时列出 1.x 和 2.x；旧读取器选择最新可用方�
   assert.equal(selectCompatibleManifest(catalog,'unknown','2.0.0'),null);
   assert.equal(selectCompatibleManifest({manifests:[catalog.manifests[0]]},'example.profile','2.0.0'),null);
 });
+
+test('WPS 放映示例仅绑定通用十键，布局保留相同黑屏动作', async () => {
+  const commonButtons = new Set(['up', 'down', 'left', 'right', 'ok', 'back', 'home', 'power', 'volume-up', 'volume-down']);
+  const transfer = JSON.parse(await readFile(new URL('../examples/profiles/wps-presentation-mac.sayall', import.meta.url)));
+  const layout = JSON.parse(await readFile(new URL('../examples/layouts/wps-presentation-macos.json', import.meta.url)));
+  assert.equal(transfer.version, '0.1.1');
+  assert.equal(layout.version, '0.1.1');
+  assert.equal(validate(transfer), true);
+  assert.deepEqual(transferIssues(transfer), []);
+  for (const profile of [transfer.profile, layout]) {
+    assert.deepEqual(profile.bindings.filter(b => !commonButtons.has(b.controlID)), []);
+    const blackScreen = profile.bindings.find(b => b.controlID === 'power' && b.gesture === 'singlePress');
+    assert.ok(blackScreen);
+    if (profile === transfer.profile) assert.equal(blackScreen.target.referenceID, 'wps-presentation.black-screen');
+    else assert.deepEqual(blackScreen.target, {kind: 'shortcut', key: 'B', modifiers: ['command']});
+  }
+});

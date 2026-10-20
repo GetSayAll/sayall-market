@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the nine public 1.0 profiles and a reproducible download ZIP."""
+"""Build the ten public 1.0 profiles and a reproducible download ZIP."""
 import hashlib
 import json
 from pathlib import Path
@@ -17,6 +17,7 @@ def build(output):
         filename = f"{name}-ten-key.sayall"
         files[filename] = (ROOT / "examples/profiles" / source_name).read_bytes()
     files["full-keyboard-access.sayall"] = (ROOT / "examples/profiles/full-keyboard-access-mac.sayall").read_bytes()
+    files["wps-presentation-mac.sayall"] = (ROOT / "examples/profiles/wps-presentation-mac.sayall").read_bytes()
     for name, data in files.items():
         document = json.loads(data)
         if len(data) > 4 * 1024 * 1024 or document["format"] != "sayall-transfer" or document["schemaVersion"] != "1.0" or document["type"] != "buttonProfile" or document["exportPurpose"] != "share":
@@ -39,7 +40,7 @@ def build(output):
     with ZipFile(archive) as bundle:
         if set(bundle.namelist()) != set(files) or any(bundle.read(name) != data for name, data in files.items()):
             raise ValueError("ZIP verification failed")
-    print(f"Verified {len(NAMES) + 1} profiles: {archive}")
+    print(f"Verified {len(NAMES) + 2} profiles: {archive}")
 
 
 if __name__ == "__main__":

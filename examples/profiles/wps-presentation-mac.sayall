@@ -1,7 +1,7 @@
 {
   "format": "sayall-transfer",
   "packageID": "com.getsayall.example.wps-presentation-mac",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -84,25 +84,11 @@
         }
       },
       {
-        "controlID": "tv",
+        "controlID": "power",
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
           "referenceID": "wps-presentation.black-screen"
-        }
-      },
-      {
-        "controlID": "menu",
-        "gesture": "singlePress",
-        "target": {
-          "kind": "disabled"
-        }
-      },
-      {
-        "controlID": "menu",
-        "gesture": "doublePress",
-        "target": {
-          "kind": "disabled"
         }
       },
       {
