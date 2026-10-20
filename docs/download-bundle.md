@@ -32,7 +32,7 @@ ZIP 包含下表方案及 WPS，共 10 个独立方案文件。
 | Full Keyboard Access · 全键盘控制 | `full-keyboard-access.sayall` | [查看方案](../examples/profiles/full-keyboard-access-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/full-keyboard-access.sayall) |
 
 WPS 演示放映已包含在 ZIP 中，也可独立下载。
-[查看方案](wps-presentation-mac-shortcuts.html) · [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/wps-presentation-mac.sayall)。
+[查看方案](images/keyboard-profile-wps-presentation.png) · [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/wps-presentation-mac.sayall)。
 
 方案文件带有官网和 GitHub 链接。
 Mac 的键位方案首页和详情页显示这些链接。

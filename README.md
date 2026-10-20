@@ -45,7 +45,7 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 | 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [查看方案](docs/images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/douyin-ten-key.sayall) |
 | Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [查看方案](docs/images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/chrome-ten-key.sayall) |
 | 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [查看方案](docs/images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/netease-music-ten-key.sayall) |
-| WPS 演示放映 | 启动放映、翻页、切换 WPS 窗口、结束放映、黑屏 | [查看方案](docs/wps-presentation-mac-shortcuts.html) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/wps-presentation-mac.sayall) |
+| WPS 演示放映 | 启动放映、翻页、切换 WPS 窗口、结束放映、黑屏 | [查看方案](docs/images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.1/wps-presentation-mac.sayall) |
 
 ### 方案配图
 
@@ -65,7 +65,7 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 <tr>
 <td align="center"><img src="docs/images/keyboard-profile-chrome.png" alt="Chrome 键位方案" width="220"><br><sub>Chrome</sub></td>
 <td align="center"><img src="docs/images/keyboard-profile-netease-music.png" alt="网易云音乐键位方案" width="220"><br><sub>网易云音乐</sub></td>
-<td></td>
+<td align="center"><img src="docs/images/keyboard-profile-wps-presentation.png" alt="WPS 演示放映键位方案" width="220"><br><sub>WPS 演示放映</sub></td>
 </tr>
 </table>
 
