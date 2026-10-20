@@ -65,11 +65,9 @@ WPS 官方页面说明，部分 macOS 系统的快捷键可能与其他 App 冲�
 | 左 | ⌃⇧Tab | 上一个 WPS 窗口 |
 | 右 | ⌃Tab | 下一个 WPS 窗口 |
 | 返回 | Esc | 结束放映，回到编辑状态 |
-| TV | ⌘B | 黑屏切换 |
+| 关机 | ⌘B | 黑屏切换 |
 | 音量+ | 系统音量增加 | 不发送 WPS 文档快捷键 |
 | 音量− | 系统音量减少 | 不发送 WPS 文档快捷键 |
-| 三条横线单击 | 禁用 | 固定目录需要用户目录和新的白名单能力 |
-| 三条横线双击 | 禁用 | 固定目录需要用户目录和新的白名单能力 |
 
 macOS 文件是 `examples/profiles/wps-presentation-mac.sayall`。
 macOS 文件使用 `com.kingsoft.wpsoffice.mac` 作为候选 Bundle ID。

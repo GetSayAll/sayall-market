@@ -84,25 +84,11 @@
         }
       },
       {
-        "controlID": "tv",
+        "controlID": "power",
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
           "referenceID": "wps-presentation.black-screen"
-        }
-      },
-      {
-        "controlID": "menu",
-        "gesture": "singlePress",
-        "target": {
-          "kind": "disabled"
-        }
-      },
-      {
-        "controlID": "menu",
-        "gesture": "doublePress",
-        "target": {
-          "kind": "disabled"
         }
       },
       {

@@ -95,7 +95,7 @@
       }
     },
     {
-      "controlID": "tv",
+      "controlID": "power",
       "gesture": "singlePress",
       "target": {
         "kind": "shortcut",
