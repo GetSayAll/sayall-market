@@ -1,7 +1,7 @@
 {
   "format": "sayall-transfer",
   "packageID": "com.getsayall.example.wps-presentation-mac",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -25,14 +25,6 @@
         "target": {
           "kind": "shortcut",
           "referenceID": "wps-presentation.home-start"
-        }
-      },
-      {
-        "controlID": "home",
-        "gesture": "doublePress",
-        "target": {
-          "kind": "shortcut",
-          "referenceID": "wps-presentation.home-current"
         }
       },
       {
@@ -118,15 +110,6 @@
         "keyCode": 96,
         "keyLabel": "F5",
         "modifiers": []
-      },
-      {
-        "id": "wps-presentation.home-current",
-        "displayName": "从当前页放映",
-        "keyCode": 96,
-        "keyLabel": "⇧F5",
-        "modifiers": [
-          "shift"
-        ]
       },
       {
         "id": "wps-presentation.next",
