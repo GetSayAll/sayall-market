@@ -52,8 +52,7 @@
         "controlID": "ok",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.chrome-ten-key.ok"
+          "kind": "disabled"
         }
       },
       {
@@ -77,7 +76,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.chrome-ten-key.up"
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.volume-up"
         }
       },
       {
@@ -85,7 +84,7 @@
         "gesture": "singlePress",
         "target": {
           "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.chrome-ten-key.down"
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.volume-down"
         }
       },
       {
@@ -136,26 +135,17 @@
         ]
       },
       {
-        "id": "com.getsayall.candidate.chrome-ten-key.ok",
-        "displayName": "刷新当前标签页",
-        "keyCode": 15,
-        "keyLabel": "R",
-        "modifiers": [
-          "command"
-        ]
-      },
-      {
         "id": "com.getsayall.candidate.chrome-ten-key.back",
-        "displayName": "返回上一页",
-        "keyCode": 123,
-        "keyLabel": "←",
+        "displayName": "新建标签页",
+        "keyCode": 17,
+        "keyLabel": "T",
         "modifiers": [
           "command"
         ]
       },
       {
         "id": "com.getsayall.candidate.chrome-ten-key.home",
-        "displayName": "打开现有主页",
+        "displayName": "打开 Chrome 主页",
         "keyCode": 4,
         "keyLabel": "H",
         "modifiers": [
@@ -171,6 +161,20 @@
         "modifiers": [
           "command"
         ]
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.volume-up",
+        "displayName": "跳到页面顶部",
+        "keyCode": 115,
+        "keyLabel": "Home",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.chrome-ten-key.volume-down",
+        "displayName": "跳到页面底部",
+        "keyCode": 119,
+        "keyLabel": "End",
+        "modifiers": []
       }
     ],
     "focusTargets": [],
