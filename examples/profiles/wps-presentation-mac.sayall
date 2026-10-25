@@ -12,7 +12,7 @@
   },
   "profile": {
     "id": "com.getsayall.example.wps-presentation-mac",
-    "name": "WPS 演示放映 · macOS",
+    "name": "WPS 演示放映",
     "remoteModel": "xiaomi-remote-2-pro",
     "mode": "manual",
     "applicationBundleIdentifiers": [
