@@ -12,5 +12,6 @@ token.json
 cookie.json
 *-secret.*
 .codex-screenshots/
+.workbuddy/
 .build/
 DerivedData/
