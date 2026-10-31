@@ -28,6 +28,8 @@
 
 用于展示与无线麦使用场景相关的外部 3D 打印底座项目。
 
+![3D 打印底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN4b99068316a00c/design/43b13633fadca206.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
 [在 MakerWorld 查看](https://makerworld.com.cn/models/3017370?appSharePlatform=sayall.app)
 
 ### 3D 打印带壳适配底座
