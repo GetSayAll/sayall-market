@@ -244,6 +244,15 @@ test("Schema 严格拒绝未知字段、URL、绝对路径、脚本路径和无�
   assert.deepEqual(forbiddenContractPaths({ secretToken: "redacted" }), ["$.secretToken"]);
 });
 
+test("Manifest 允许声明 buttonHoldModes，仍拒绝未知能力", async () => {
+  const validateManifest = await loadValidator("schemas/marketplace-manifest.schema.json");
+  const signature = { algorithm: "ed25519", keyID: "fixture-key-01", value: "A".repeat(86) + "==" };
+  const manifest = { ...baseManifest(), signature };
+  assert.equal(validateManifest(manifest), true);
+  assert.equal(validateManifest({ ...manifest, declaredCapabilities: ["buttonHoldModes"] }), true);
+  assert.equal(validateManifest({ ...manifest, declaredCapabilities: ["holdEverything"] }), false);
+});
+
 test("共享路径 fixture 与 Catalog、Manifest Schema 保持一致", async () => {
   const validateManifest = await loadValidator("schemas/marketplace-manifest.schema.json");
   const validateCatalog = await loadValidator("schemas/marketplace-catalog.schema.json");

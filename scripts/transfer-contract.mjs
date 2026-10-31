@@ -1,7 +1,7 @@
 import { forbiddenContractKeyPattern, forbiddenContractValuePattern } from './marketplace-contract.mjs';
 
 
-export const supportedTransferCapabilities = new Set(['openApplication', 'waitForApplication', 'focusLearnedTarget', 'sendKeyboardShortcut', 'builtInAction', 'invokeMacro', 'openURL', 'runShortcut', 'runMacro']);
+export const supportedTransferCapabilities = new Set(['openApplication', 'waitForApplication', 'focusLearnedTarget', 'sendKeyboardShortcut', 'builtInAction', 'invokeMacro', 'openURL', 'runShortcut', 'runMacro', 'buttonHoldModes']);
 export function versionParts(value, count) {
   if (typeof value !== 'string') return null;
   const parts = value.split('.');
@@ -86,6 +86,8 @@ export function transferIssues(input) {
     if (input.type === 'application' && (!input.application || input.profile || input.macro || input.backup)) fail('主对象只能是 App');
     if (input.type === 'personalBackup' && (!input.backup || input.profile || input.macro || input.application)) fail('主对象只能是个人备份');
     if (input.type !== 'personalBackup' && (p.exportPurpose !== 'share' || p.hostSettings)) fail('公开方案不允许个人备份内容');
+    // 旧读取器不认识 buttonHoldModes：未声明就带按住，等于让旧客户端静默丢掉按住效果。
+    if (p.buttonProfiles.some(hasHoldModes) && !(p.requirements?.capabilities ?? []).includes('buttonHoldModes')) fail('requirements:buttonHoldModes');
   }
   if (input.type !== undefined) for (const macro of p.macros) if (macro.schemaVersion !== '1.0') fail(`macro:${macro.macroID}:schemaVersion`);
   if (p.extensions !== undefined) {
@@ -190,13 +192,22 @@ export function transferIssues(input) {
   return errors;
 }
 
+/** 按住设置只在确有取值时才算一项能力；空对象与缺字段同义。 */
+function hasHoldModes(profile) {
+  const modes = profile?.holdModes;
+  return !!modes && typeof modes === 'object' && !Array.isArray(modes) && Object.keys(modes).length > 0;
+}
+
 export function transferCapabilities(input) {
   const p = normalizeTransfer(input);
   const result = new Set();
   for (const m of p.macros) for (const s of m.steps) result.add(s.action);
-  for (const profile of p.buttonProfiles) for (const b of profile.bindings) {
-    const c = { macro: 'invokeMacro', shortcut: 'sendKeyboardShortcut', application: 'openApplication', host: 'builtInAction' }[b.target.kind];
-    if (c) result.add(c);
+  for (const profile of p.buttonProfiles) {
+    for (const b of profile.bindings) {
+      const c = { macro: 'invokeMacro', shortcut: 'sendKeyboardShortcut', application: 'openApplication', host: 'builtInAction' }[b.target.kind];
+      if (c) result.add(c);
+    }
+    if (hasHoldModes(profile)) result.add('buttonHoldModes');
   }
   for (const a of p.applications) {
     result.add('openApplication');

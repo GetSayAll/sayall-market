@@ -216,3 +216,44 @@ test('WPS 放映示例仅绑定通用十键单击，布局保留相同黑屏动�
     else assert.deepEqual(blackScreen.target, {kind: 'shortcut', key: 'B', modifiers: ['command']});
   }
 });
+
+test('按住设置推导 buttonHoldModes；未声明则拒绝，无按住时不改变原有能力', () => {
+  const baseline = transferCapabilities(structuredClone(fixtureRaw));
+  const held = structuredClone(fixtureRaw);
+  held.profile.holdModes = { home: 'repeatSingle' };
+  assert.equal(validate(held), true);
+  assert.deepEqual(
+    transferCapabilities(held).filter(capability => !baseline.includes(capability)),
+    ['buttonHoldModes']
+  );
+  assert.ok(transferIssues(held).includes('requirements:buttonHoldModes'));
+
+  held.requirements.capabilities = [...baseline, 'buttonHoldModes'];
+  assert.deepEqual(transferIssues(held), []);
+  assert.deepEqual(transferCompatibilityIssues(held.schemaVersion, held.requirements), []);
+
+  const cleared = structuredClone(fixtureRaw);
+  cleared.profile.holdModes = {};
+  assert.equal(validate(cleared), true);
+  assert.deepEqual(transferCapabilities(cleared), baseline);
+  assert.deepEqual(transferIssues(cleared), []);
+});
+
+test('按住设置只接受已知控制项和三种取值', () => {
+  const p = structuredClone(fixtureRaw);
+  p.profile.holdModes = { 'volume-up': 'once', yes: 'repeatLong' };
+  assert.equal(validate(p), false);
+
+  p.profile.holdModes = { home: 'repeatForever' };
+  assert.equal(validate(p), false);
+
+  p.profile.holdModes = { home: 'once', '1': 'once' };
+  assert.equal(validate(p), false);
+
+  const controls = ['power', 'up', 'left', 'ok', 'right', 'down', 'back', 'volume-up', 'home', 'volume-down', 'menu', 'tv', 'play-pause', 'mute', 'youtube', 'netflix', 'input'];
+  p.profile.holdModes = Object.fromEntries(controls.map(control => [control, 'once']));
+  assert.equal(validate(p), true);
+  p.profile.holdModes.home = 'once';
+  p.profile.holdModes.power = 'once';
+  assert.equal(Object.keys(p.profile.holdModes).length, 17);
+});

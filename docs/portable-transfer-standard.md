@@ -97,6 +97,11 @@ ZIP 只用于批量下载。用户先解压，再导入其中的 `.sayall` 文�
 依赖 ID 只在文件内有效。导入时生成或复用本机 ID。
 缺失依赖、重复 ID、循环和超过八层的组合动作均拒绝。
 
+按住效果保存在 `profile.holdModes`：键为 `controlID`，值为 `once`、`repeatLong` 或 `repeatSingle`。
+最多 32 项。缺字段和空对象都表示未设置，宿主继续继承基础映射。
+带非空 `holdModes` 的方案必须在 `requirements.capabilities` 声明 `buttonHoldModes`。
+旧读取器不认识该能力，会拒绝整个包；没有按住设置的方案不声明，行为不变。
+
 校验和预览不执行动作。保存使用现有事务保护。
 
 `extensions` 使用 `org.example:notes` 这样的命名空间。

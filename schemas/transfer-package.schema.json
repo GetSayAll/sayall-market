@@ -522,6 +522,20 @@
           "items": {
             "$ref": "#/$defs/binding"
           }
+        },
+        "holdModes": {
+          "type": "object",
+          "maxProperties": 32,
+          "propertyNames": {
+            "$ref": "#/$defs/controlID"
+          },
+          "additionalProperties": {
+            "enum": [
+              "once",
+              "repeatLong",
+              "repeatSingle"
+            ]
+          }
         }
       }
     },
