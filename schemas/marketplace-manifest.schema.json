@@ -141,7 +141,8 @@
           "invokeMacro",
           "openURL",
           "runShortcut",
-          "runMacro"
+          "runMacro",
+          "buttonHoldModes"
         ]
       }
     },

@@ -144,6 +144,7 @@ Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
 | 文档 | 内容 |
 |---|---|
 | [导入导出标准](portable-transfer-standard.html) | 第一版分享、批量传输与个人备份合同 |
+| [按住模式能力](key-profile-hold-modes.md) | 按住模式的字段、能力与校验 |
 | [内容模型](content-model.md) | 内容类型和引用关系 |
 | [仓库范围](repository-scope.md) | 公开与私有内容边界 |
 | [发布流程](release-process.md) | 内容发布阶段和审核条件 |
