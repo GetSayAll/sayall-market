@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.chrome-ten-key",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -20,16 +20,16 @@
         "controlID": "up",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.chrome-ten-key.up"
+          "kind": "host",
+          "actionID": "pageUp"
         }
       },
       {
         "controlID": "down",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.chrome-ten-key.down"
+          "kind": "host",
+          "actionID": "pageDown"
         }
       },
       {
@@ -64,6 +64,14 @@
         }
       },
       {
+        "controlID": "back",
+        "gesture": "longPress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.chrome-ten-key.back-reopen"
+        }
+      },
+      {
         "controlID": "home",
         "gesture": "singlePress",
         "target": {
@@ -75,16 +83,16 @@
         "controlID": "volume-up",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.chrome-ten-key.volume-up"
+          "kind": "host",
+          "actionID": "scrollToTop"
         }
       },
       {
         "controlID": "volume-down",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.chrome-ten-key.volume-down"
+          "kind": "host",
+          "actionID": "scrollToBottom"
         }
       },
       {
@@ -95,25 +103,14 @@
           "referenceID": "com.getsayall.candidate.chrome-ten-key.power"
         }
       }
-    ]
+    ],
+    "holdModes": {
+      "back": "once"
+    }
   },
   "dependencies": {
     "macros": [],
     "shortcuts": [
-      {
-        "id": "com.getsayall.candidate.chrome-ten-key.up",
-        "displayName": "向上翻一屏",
-        "keyCode": 116,
-        "keyLabel": "Page Up",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.chrome-ten-key.down",
-        "displayName": "向下翻一屏",
-        "keyCode": 121,
-        "keyLabel": "Page Down",
-        "modifiers": []
-      },
       {
         "id": "com.getsayall.candidate.chrome-ten-key.left",
         "displayName": "上一个标签页",
@@ -144,6 +141,16 @@
         ]
       },
       {
+        "id": "com.getsayall.candidate.chrome-ten-key.back-reopen",
+        "displayName": "重新打开关闭的标签页",
+        "keyCode": 17,
+        "keyLabel": "T",
+        "modifiers": [
+          "command",
+          "shift"
+        ]
+      },
+      {
         "id": "com.getsayall.candidate.chrome-ten-key.home",
         "displayName": "打开 Chrome 主页",
         "keyCode": 4,
@@ -161,20 +168,6 @@
         "modifiers": [
           "command"
         ]
-      },
-      {
-        "id": "com.getsayall.candidate.chrome-ten-key.volume-up",
-        "displayName": "跳到页面顶部",
-        "keyCode": 115,
-        "keyLabel": "Home",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.chrome-ten-key.volume-down",
-        "displayName": "跳到页面底部",
-        "keyCode": 119,
-        "keyLabel": "End",
-        "modifiers": []
       }
     ],
     "focusTargets": [],
@@ -183,7 +176,9 @@
   "requirements": {
     "minimumRemoteMicVersion": "1.9.21",
     "minimumReaderVersion": "1.0",
-    "capabilities": []
+    "capabilities": [
+      "buttonHoldModes"
+    ]
   },
   "extensions": {
     "app.sayall:platform": {
