@@ -60,8 +60,10 @@ lang: zh
 1. 在 App 里打开该方案，设置按住
 2. 重新导出共享包，覆盖 `examples/profiles/<name>-ten-key-mac.sayall`
 3. 运行 `scripts/build-downloads.py` 重新打包
-4. 递增 release 版本（例如 `key-profiles-v1.0.3`），同步更新写死旧版本的四处下载链接：
-   `README.md`、`README.html`、`docs/seven-app-10-key-presets.md`、`docs/seven-app-10-key-presets.html`
+4. 更新仓库根 `VERSION`（例如 `1.0.4`），同步更新写死旧版本与旧文件名的六处下载链接：
+   `README.md`、`README.html`、`docs/seven-app-10-key-presets.md`、`docs/seven-app-10-key-presets.html`、
+   `docs/download-bundle.md`、`docs/download-bundle.html`；
+   附件名由 `VERSION` 决定（`<name>-v1.0.4.sayall`、`sayall-key-profiles-v1.0.4.zip`）
 5. `npm run validate` 必须通过，且清单里的 `declaredCapabilities` 与实际内容一致
 
 ## F 验收

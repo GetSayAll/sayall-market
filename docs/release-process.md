@@ -54,4 +54,4 @@
 
 按 [首版文件格式与兼容规则](portable-transfer-standard.html) 执行。兼容小版本必须声明最低读取版本。新主版本保留旧格式变体。不得改写已发布资产或只改版本号降级。
 
-运行 `python3 scripts/build-downloads.py /absolute/output/directory` 生成单文件下载和 ZIP。输出目录必须不存在。发布附件后，逐项检查公开下载和摘要。
+先更新仓库根 `VERSION`（裸语义版本，如 `1.0.4`），再运行 `python3 scripts/build-downloads.py /absolute/output/directory` 生成带版本号的单文件附件和 ZIP。输出目录必须不存在。发布附件后，逐项检查公开下载和摘要。

@@ -9,7 +9,7 @@ status: 1.0 方案，部分真机验收待完成
 
 ## A 下载方案
 
-**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/sayall-key-profiles.zip)**
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/sayall-key-profiles-v1.0.4.zip)**
 
 ZIP 包含本页 9 套 App 方案和 Full Keyboard Access 方案。
 先解压 ZIP，再按需导入其中的 `.sayall` 文件。
@@ -26,15 +26,15 @@ WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1
 
 | App | 查看 | 下载 |
 |---|---|---|
-| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/codex-ten-key.sayall) |
-| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/claude-code-desktop-ten-key.sayall) |
-| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/workbuddy-ten-key.sayall) |
-| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/wechat-ten-key.sayall) |
-| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/jianying-ten-key.sayall) |
-| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/douyin-ten-key.sayall) |
-| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/chrome-ten-key.sayall) |
-| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/netease-music-ten-key.sayall) |
-| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.3/wps-presentation-mac.sayall) |
+| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/codex-ten-key-v1.0.4.sayall) |
+| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/claude-code-desktop-ten-key-v1.0.4.sayall) |
+| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/workbuddy-ten-key-v1.0.4.sayall) |
+| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/wechat-ten-key-v1.0.4.sayall) |
+| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/jianying-ten-key-v1.0.4.sayall) |
+| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/douyin-ten-key-v1.0.4.sayall) |
+| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/chrome-ten-key-v1.0.4.sayall) |
+| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/netease-music-ten-key-v1.0.4.sayall) |
+| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/wps-presentation-mac-v1.0.4.sayall) |
 
 单套入口下载独立 `.sayall` 附件。
 ZIP 不直接导入 Mac App。
