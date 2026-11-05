@@ -63,7 +63,7 @@ lang: zh
 4. 更新仓库根 `VERSION`（例如 `1.0.4`），同步更新写死旧版本与旧文件名的六处下载链接：
    `README.md`、`README.html`、`docs/seven-app-10-key-presets.md`、`docs/seven-app-10-key-presets.html`、
    `docs/download-bundle.md`、`docs/download-bundle.html`；
-   附件名由 `VERSION` 决定（`<name>-v1.0.4.sayall`、`sayall-key-profiles-v1.0.4.zip`）
+   附件名由 `VERSION` 决定（`<name>-v1.0.5.sayall`、`sayall-key-profiles-v1.0.5.zip`）
 5. `npm run validate` 必须通过，且清单里的 `declaredCapabilities` 与实际内容一致
 
 ## F 验收

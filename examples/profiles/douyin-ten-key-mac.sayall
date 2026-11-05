@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.douyin-ten-key",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -137,14 +137,14 @@
       },
       {
         "id": "com.getsayall.candidate.douyin-ten-key.back",
-        "displayName": "退出全屏（候选）",
+        "displayName": "退出全屏",
         "keyCode": 53,
         "keyLabel": "Esc",
         "modifiers": []
       },
       {
         "id": "com.getsayall.candidate.douyin-ten-key.power",
-        "displayName": "隐藏 App 全部窗口",
+        "displayName": "隐藏窗口",
         "keyCode": 4,
         "keyLabel": "H",
         "modifiers": [

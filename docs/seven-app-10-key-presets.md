@@ -9,7 +9,7 @@ status: 1.0 方案，部分真机验收待完成
 
 ## A 下载方案
 
-**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/sayall-key-profiles-v1.0.4.zip)**
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/sayall-key-profiles-v1.0.5.zip)**
 
 ZIP 包含本页 9 套 App 方案和 Full Keyboard Access 方案。
 先解压 ZIP，再按需导入其中的 `.sayall` 文件。
@@ -26,19 +26,19 @@ WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1
 
 | App | 查看 | 下载 |
 |---|---|---|
-| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/codex-ten-key-v1.0.4.sayall) |
-| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/claude-code-desktop-ten-key-v1.0.4.sayall) |
-| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/workbuddy-ten-key-v1.0.4.sayall) |
-| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/wechat-ten-key-v1.0.4.sayall) |
-| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/jianying-ten-key-v1.0.4.sayall) |
-| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/douyin-ten-key-v1.0.4.sayall) |
-| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/chrome-ten-key-v1.0.4.sayall) |
-| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/netease-music-ten-key-v1.0.4.sayall) |
-| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.4/wps-presentation-mac-v1.0.4.sayall) |
+| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/codex-ten-key-v1.0.5.sayall) |
+| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/claude-code-desktop-ten-key-v1.0.5.sayall) |
+| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/workbuddy-ten-key-v1.0.5.sayall) |
+| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/wechat-ten-key-v1.0.5.sayall) |
+| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/jianying-ten-key-v1.0.5.sayall) |
+| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/douyin-ten-key-v1.0.5.sayall) |
+| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/chrome-ten-key-v1.0.5.sayall) |
+| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/netease-music-ten-key-v1.0.5.sayall) |
+| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/wps-presentation-mac-v1.0.5.sayall) |
 
 单套入口下载独立 `.sayall` 附件。
 ZIP 不直接导入 Mac App。
-格式为 `sayall-transfer 1.0`，方案版本为 `0.1.0`（Chrome 为 `0.1.1`，WPS 为 `0.1.3`）。
+格式为 `sayall-transfer 1.0`；方案版本见各文件 `version` 字段（本次集合 `key-profiles-v1.0.5`）。
 文件的最低客户端版本字段为 `1.9.21`。
 需使用已包含第一版导入功能的客户端。
 格式验证不代表已安装客户端的界面验收。
@@ -78,8 +78,8 @@ ZIP 不直接导入 Mac App。
 | OK | Return：提交 / 确认 | Return：提交 / 确认 | Return：发送 / 确认 |
 | 返回 | ⌫：删除字符 | ⌫：删除字符 | ⌫：删除字符 |
 | 主页 | 不设置 | 不设置 | 不设置 |
-| 音量+ | Page Up：向上翻一屏 | Page Up：向上翻一屏 | Page Up：向上翻一屏 |
-| 音量- | Page Down：向下翻一屏 | Page Down：向下翻一屏 | Page Down：向下翻一屏 |
+| 音量+ | Page Up：向上翻页 | Page Up：向上翻页 | Page Up：向上翻页 |
+| 音量- | Page Down：向下翻页 | Page Down：向下翻页 | Page Down：向下翻页 |
 | 关机 | Esc：停止 / 取消 | Esc：停止回复 | Esc：停止生成 |
 
 Claude 方案面向 Claude Desktop 的 Code 页。
@@ -92,13 +92,13 @@ WorkBuddy 的任务切换方向仍需实际验收。
 
 | 遥控器按键 | 微信 | 剪映桌面版 | 抖音 Mac 客户端 | Chrome |
 |---|---|---|---|---|
-| 上 | ↑：光标 / 列表上移 | 不设置 | ↑：上一条视频 | 向上翻一屏：内建翻页动作 |
-| 下 | ↓：光标 / 列表下移 | 不设置 | ↓：下一条视频 | 向下翻一屏：内建翻页动作 |
+| 上 | ↑：光标 / 列表上移 | 不设置 | ↑：上一条视频 | 向上翻页：内建翻页动作 |
+| 下 | ↓：光标 / 列表下移 | 不设置 | ↓：下一条视频 | 向下翻页：内建翻页动作 |
 | 左 | ←：光标左移 | ←：上一帧 | ←：视频后退 | ⌘ ⌥ ←：上一个标签页 |
 | 右 | →：光标右移 | →：下一帧 | →：视频快进 | ⌘ ⌥ →：下一个标签页 |
 | OK | Return：发送 / 确认 | Space：播放 / 暂停 | Space：播放 / 暂停 | 不设置，保留原始 Enter |
 | 返回 | ⌫：删除字符 | ⌫：删除选中片段，待验 | Esc：退出全屏，候选 | ⌘ T：新建标签页；长按 ⌘ ⇧ T：重新打开关闭的标签页 |
-| 主页 | 不设置 | 不设置 | 不设置 | ⌘ ⇧ H：打开 Chrome 主页 |
+| 主页 | 不设置 | 不设置 | 不设置 | ⌘ ⇧ H：打开主页 |
 | 音量+ | Page Up | 不设置：放大键值待确认 | 增大系统音量 | 跳到页面顶部：内建滚动动作 |
 | 音量- | Page Down | Page Down | 减小系统音量 | 跳到页面底部：内建滚动动作 |
 | 关机 | ⌘ H：隐藏窗口 | ⌘ Z：撤销 | ⌘ H：隐藏窗口 | ⌘ W：关闭当前标签页 |
@@ -115,7 +115,7 @@ WorkBuddy 的任务切换方向仍需实际验收。
 Chrome 上下翻页与跳顶/跳底使用 App 内建滚动动作，不依赖键盘焦点，deepseek 这类嵌套滚动页面也能生效。
 Chrome 返回键长按依赖按住能力（buttonHoldModes），旧客户端会拒绝导入该方案，需更新到带按住能力的版本。
 
-Chrome 主页键使用 ⌘ ⇧ H 打开 Chrome 主页。
+Chrome 主页键使用 ⌘ ⇧ H 打开主页。
 关闭最后一个标签页时，Chrome 可能关闭窗口。
 
 ## E 网易云音乐 · 第 8 套方案
@@ -135,7 +135,7 @@ Chrome 主页键使用 ⌘ ⇧ H 打开 Chrome 主页。
 | 主页 | 喜欢歌曲 | ⌥ ⌘ L |
 | 音量+ | 增大系统音量 | 系统 Volume Up 媒体键 |
 | 音量- | 减小系统音量 | 系统 Volume Down 媒体键 |
-| 关机 | 隐藏网易云音乐窗口 | ⌘ H |
+| 关机 | 隐藏窗口 | ⌘ H |
 
 上键和主页键引用同一个快捷键。
 无需修改网易云音乐的快捷键设置。
@@ -162,8 +162,8 @@ Esc 的效果取决于当前界面或弹层。
 |---|---|---|
 | 上 | 上一页候选 | ↑ |
 | 下 | 下一页 | ↓ |
-| 左 | 上一个 WPS 窗口 | ⌃ ⇧ Tab |
-| 右 | 下一个 WPS 窗口 | ⌃ Tab |
+| 左 | 上一个窗口 | ⌃ ⇧ Tab |
+| 右 | 下一个窗口 | ⌃ Tab |
 | OK | 下一页 | Space |
 | 返回 | 结束放映并回到编辑状态 | Esc |
 | 主页单击 | 从头放映 | F5 |

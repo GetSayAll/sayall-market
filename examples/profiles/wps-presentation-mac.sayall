@@ -1,7 +1,7 @@
 {
   "format": "sayall-transfer",
   "packageID": "com.getsayall.example.wps-presentation-mac",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -150,7 +150,7 @@
       },
       {
         "id": "wps-presentation.next-window",
-        "displayName": "下一个 WPS 窗口",
+        "displayName": "下一个窗口",
         "keyCode": 48,
         "keyLabel": "⌃Tab",
         "modifiers": [
@@ -159,7 +159,7 @@
       },
       {
         "id": "wps-presentation.previous-window",
-        "displayName": "上一个 WPS 窗口",
+        "displayName": "上一个窗口",
         "keyCode": 48,
         "keyLabel": "⇧⌃Tab",
         "modifiers": [

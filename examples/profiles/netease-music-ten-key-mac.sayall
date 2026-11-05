@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.netease-music-ten-key",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -150,7 +150,7 @@
       },
       {
         "id": "com.getsayall.candidate.netease-music-ten-key.hide",
-        "displayName": "隐藏网易云音乐窗口",
+        "displayName": "隐藏窗口",
         "keyCode": 4,
         "keyLabel": "H",
         "modifiers": [
