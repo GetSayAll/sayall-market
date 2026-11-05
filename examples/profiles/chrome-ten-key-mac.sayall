@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.chrome-ten-key",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -152,7 +152,7 @@
       },
       {
         "id": "com.getsayall.candidate.chrome-ten-key.home",
-        "displayName": "打开 Chrome 主页",
+        "displayName": "打开主页",
         "keyCode": 4,
         "keyLabel": "H",
         "modifiers": [

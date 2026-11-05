@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.example.full-keyboard-access-rc003",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -106,7 +106,7 @@
       },
       {
         "id": "full-keyboard-access.escape",
-        "displayName": "返回或取消",
+        "displayName": "返回 / 取消",
         "keyCode": 53,
         "keyLabel": "Esc",
         "modifiers": []

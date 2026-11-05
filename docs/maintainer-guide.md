@@ -159,15 +159,15 @@ Pull Request 和 main 推送运行同一套 GitHub Actions 检查。
 附件响应应带 `Content-Disposition: attachment`。
 这样浏览器会下载文件，不直接展示 JSON。
 
-集合版本为 `key-profiles-v1.0.4`，作为正式版本发布。
+集合版本为 `key-profiles-v1.0.5`，作为正式版本发布。
 ZIP 包含 9 个 App 分享包、全键盘控制包、说明、许可和摘要。
 它不是客户端安装包，也不加入生产 Catalog。
 9 套 App 使用本仓库方案文件。
 全键盘控制方案在固定来源文件上新增两个来源字段。
-WPS 方案 0.1.3 沿用 0.1.2 的按键（黑屏动作保留在关机键，移除 Home 双击绑定），只去掉方案名里的平台后缀。
+WPS 方案 0.1.4 沿用 0.1.2 的按键（黑屏动作保留在关机键，移除 Home 双击绑定）：0.1.3 去掉方案名里的平台后缀，0.1.4 统一窗口类动作名。
 
 仓库根 `VERSION` 是集合版本的唯一来源，构建脚本按它给附件命名：
-单套附件为 `<name>-v1.0.4.sayall`，ZIP 为 `sayall-key-profiles-v1.0.4.zip`，
+单套附件为 `<name>-v1.0.5.sayall`，ZIP 为 `sayall-key-profiles-v1.0.5.zip`，
 解压后的文件同样带版本号；`导入说明.html`、`LICENSE`、`SHA256SUMS` 保持固定名称。
 
 `website` 和 `github` 是可选的顶层 HTTPS URL。
