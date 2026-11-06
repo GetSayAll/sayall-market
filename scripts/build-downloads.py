@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Build the ten public profiles and a reproducible, version-named download ZIP.
 
-附件文件名带集合版本号（仓库根 `VERSION`），避免用户下载后无法区分新旧版本。
+附件文件名统一为 `<名称>-mac-v<集合版本>.sayall`（与 wps-presentation-mac-v<版本>.sayall 同构）。
+文件名带集合版本号（仓库根 `VERSION`），避免用户下载后无法区分新旧版本。
 """
 import hashlib
 import json
@@ -21,9 +22,9 @@ def build(output):
     files = {}
     for name in NAMES:
         source_name = f"{name}-ten-key-mac.sayall"
-        filename = f"{name}-ten-key-v{VERSION}.sayall"
+        filename = f"{name}-mac-v{VERSION}.sayall"
         files[filename] = (ROOT / "examples/profiles" / source_name).read_bytes()
-    files[f"full-keyboard-access-v{VERSION}.sayall"] = (ROOT / "examples/profiles/full-keyboard-access-mac.sayall").read_bytes()
+    files[f"full-keyboard-access-mac-v{VERSION}.sayall"] = (ROOT / "examples/profiles/full-keyboard-access-mac.sayall").read_bytes()
     files[f"wps-presentation-mac-v{VERSION}.sayall"] = (ROOT / "examples/profiles/wps-presentation-mac.sayall").read_bytes()
     for name, data in files.items():
         document = json.loads(data)
