@@ -20,8 +20,11 @@
       "gesture": "singlePress",
       "target": {
         "kind": "shortcut",
-        "key": "F5",
-        "modifiers": []
+        "key": "Return",
+        "modifiers": [
+          "shift",
+          "command"
+        ]
       }
     },
     {

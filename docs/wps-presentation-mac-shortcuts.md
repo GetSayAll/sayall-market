@@ -10,13 +10,13 @@ status: Draft，未完成真机验收
 ## A 结论
 
 WPS Office for Mac 支持用键盘启动和控制 PPT 放映。
-WPS 官方 Mac 快捷键页列出 F5、Shift+F5、方向键、Esc、⌘B 和窗口切换键。
-这些快捷键可以表达遥控器的主要 macOS 放映操作。
+WPS Office for Mac 的「放映」菜单显示：「从头开始」为 ⇧⌘↵（Shift + Command + Enter），「当页开始」为 ⌘↵。
+方向键、Esc、⌘B 和窗口切换键可以继续用于放映控制。
 
 当前仓库新增 macOS 平台维度。
 WPS 方案放在 `examples/profiles/`。
 macOS 使用 `.sayall` 文件。
-该方案已包含在下载集合 v1.0.2 中，真实遥控器和 WPS 验收仍待完成。
+该方案已包含在下载集合 v1.0.6 中，真实遥控器和 WPS 验收仍待完成。
 
 ## B 平台维度
 
@@ -34,8 +34,8 @@ Windows 方案暂不作为本轮验证目标。
 
 | 操作 | 快捷键 | 用途 | 证据状态 |
 |---|---|---|---|
-| 从头放映 | F5 | 从第 1 页开始放映 | ok 官方列出 |
-| 从当前页放映 | ⇧F5 | 从当前页开始放映 | ok 官方列出 |
+| 从头放映 | ⇧⌘↵ | 从第 1 页开始放映 | ok 本机菜单显示 |
+| 从当前页放映 | ⌘↵ | 从当前页开始放映 | ok 本机菜单显示 |
 | 下一页 | Space、Return、↓、→ | 播放下一页或下一动画 | ok 官方列出 |
 | 上一页 | Delete、↑、← | 返回上一页或上一动画 | warn 官方页面的方向键表存在文字冲突，需实机确认 |
 | 跳到指定页 | 数字 + Return | 跳到指定页 | ok 官方列出 |
@@ -45,11 +45,12 @@ Windows 方案暂不作为本轮验证目标。
 | 下一个窗口 | ⌃Tab | 切换到下一个窗口或工作区 | warn 需在当前 WPS 版本确认 |
 | 上一个窗口 | ⇧⌃Tab | 切换到上一个窗口或工作区 | warn 需在当前 WPS 版本确认 |
 
-Mac 键盘可能把 F5 用作系统功能键。
-如果 WPS 没有收到 F5，按 Fn+F5，或检查 macOS 的功能键设置。
+⇧ = Shift，⌘ = Command，↵ = 主键盘 Return（Enter，keyCode 36）。
+WPS 官方 Mac 快捷键页仍列出 F5 和 ⇧F5，与本机 macOS 菜单显示不一致。
+本轮 macOS 方案以本机菜单为准，不再使用 F5 和 ⇧F5。
 
 WPS 官方页面说明，部分 macOS 系统的快捷键可能与其他 App 冲突。
-因此，表格中的 `ok` 只表示公开资料有记录，不表示本机验收完成。
+因此，表格中的 `ok` 只表示官方页面或本机菜单有记录，不表示本机验收完成。
 `⌘B` 在编辑状态也可能表示粗体。
 客户端必须只在放映状态发送这个映射。
 
@@ -57,7 +58,7 @@ WPS 官方页面说明，部分 macOS 系统的快捷键可能与其他 App 冲�
 
 | 遥控器按键 | 动作 | 说明 |
 |---|---|---|
-| Home 单击 | F5 | 从第 1 页进入放映 |
+| Home 单击 | ⇧⌘↵ | 从第 1 页进入放映 |
 | OK | Space | 下一页 |
 | 上 | ↑ | 上一页候选 |
 | 下 | ↓ | 下一页 |
@@ -87,7 +88,7 @@ macOS 文件使用 `com.kingsoft.wpsoffice.mac` 作为候选 Bundle ID。
 
 1. 在 macOS 打开 WPS 演示文稿。
 2. 记录 WPS 版本、macOS 版本和显示器数量。
-3. 在编辑状态测试 F5 和 ⇧F5。
+3. 在编辑状态测试 ⇧⌘↵ 和 ⌘↵。
 4. 在放映状态测试 Space、方向键、Esc 和 ⌘B。
 5. 打开两个 PPT，测试 ⌃Tab 和 ⇧⌃Tab。
 6. 使用真实遥控器逐键测试单击。
@@ -101,3 +102,4 @@ macOS 文件使用 `com.kingsoft.wpsoffice.mac` 作为候选 Bundle ID。
 - [WPS Presentation 快捷键](https://help.wps.com/articles/list-of-keyboard-shortcuts-for-presentation)
 - [WPS 放映快捷技巧](https://www.wps.com/academy/must-have-shortcut-tricks-in-showing-slides/1862885/)
 - [WPS Office Mac Bundle ID 参考](https://bbs.wps.cn/topic/82203)
+- WPS Office for Mac「放映」菜单（本机界面核对，2026-11-06）：「从头开始」⇧⌘↵、「当页开始」⌘↵。

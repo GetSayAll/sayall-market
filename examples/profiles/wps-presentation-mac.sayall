@@ -107,9 +107,12 @@
       {
         "id": "wps-presentation.home-start",
         "displayName": "从头放映",
-        "keyCode": 96,
-        "keyLabel": "F5",
-        "modifiers": []
+        "keyCode": 36,
+        "keyLabel": "⇧⌘Return",
+        "modifiers": [
+          "shift",
+          "command"
+        ]
       },
       {
         "id": "wps-presentation.next",

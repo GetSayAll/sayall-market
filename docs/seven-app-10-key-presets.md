@@ -9,13 +9,13 @@ status: 1.0 方案，部分真机验收待完成
 
 ## A 下载方案
 
-**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/sayall-key-profiles-v1.0.5.zip)**
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/sayall-key-profiles-v1.0.6.zip)**
 
 ZIP 包含本页 9 套 App 方案和 Full Keyboard Access 方案。
 先解压 ZIP，再按需导入其中的 `.sayall` 文件。
 完整步骤见 [打包下载与导入说明](download-bundle.html)。
 
-WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1.0.2 ZIP 中。
+WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1.0.6 ZIP 中。
 
 每个 `.sayall` 文件包含一套方案及其所需动作。
 适用遥控器：小米遥控器 2 Pro（RC003）。
@@ -26,19 +26,19 @@ WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1
 
 | App | 查看 | 下载 |
 |---|---|---|
-| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/codex-ten-key-v1.0.5.sayall) |
-| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/claude-code-desktop-ten-key-v1.0.5.sayall) |
-| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/workbuddy-ten-key-v1.0.5.sayall) |
-| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/wechat-ten-key-v1.0.5.sayall) |
-| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/jianying-ten-key-v1.0.5.sayall) |
-| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/douyin-ten-key-v1.0.5.sayall) |
-| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/chrome-ten-key-v1.0.5.sayall) |
-| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/netease-music-ten-key-v1.0.5.sayall) |
-| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.5/wps-presentation-mac-v1.0.5.sayall) |
+| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/codex-ten-key-v1.0.6.sayall) |
+| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/claude-code-desktop-ten-key-v1.0.6.sayall) |
+| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/workbuddy-ten-key-v1.0.6.sayall) |
+| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/wechat-ten-key-v1.0.6.sayall) |
+| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/jianying-ten-key-v1.0.6.sayall) |
+| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/douyin-ten-key-v1.0.6.sayall) |
+| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/chrome-ten-key-v1.0.6.sayall) |
+| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/netease-music-ten-key-v1.0.6.sayall) |
+| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.6/wps-presentation-mac-v1.0.6.sayall) |
 
 单套入口下载独立 `.sayall` 附件。
 ZIP 不直接导入 Mac App。
-格式为 `sayall-transfer 1.0`；方案版本见各文件 `version` 字段（本次集合 `key-profiles-v1.0.5`）。
+格式为 `sayall-transfer 1.0`；方案版本见各文件 `version` 字段（本次集合 `key-profiles-v1.0.6`）。
 文件的最低客户端版本字段为 `1.9.21`。
 需使用已包含第一版导入功能的客户端。
 格式验证不代表已安装客户端的界面验收。
@@ -154,6 +154,7 @@ Esc 的效果取决于当前界面或弹层。
 ## F WPS 演示放映 · 第 9 套方案
 
 适用 macOS WPS Office 演示放映。
+本机「放映」菜单显示「从头开始」为 ⇧⌘↵（Shift + Command + Enter），方案不再使用 F5。
 方案文件为 `examples/profiles/wps-presentation-mac.sayall`。
 文件使用 `app.sayall:platform = macOS` 声明平台。
 该方案仍待真实遥控器和 WPS 验收。
@@ -166,7 +167,7 @@ Esc 的效果取决于当前界面或弹层。
 | 右 | 下一个窗口 | ⌃ Tab |
 | OK | 下一页 | Space |
 | 返回 | 结束放映并回到编辑状态 | Esc |
-| 主页单击 | 从头放映 | F5 |
+| 主页单击 | 从头放映 | ⇧⌘↵ |
 | 音量+ | 增大系统音量 | 系统 Volume Up |
 | 音量- | 减小系统音量 | 系统 Volume Down |
 | 关机 | 黑屏切换 | ⌘ B |
@@ -175,7 +176,7 @@ Esc 的效果取决于当前界面或弹层。
 
 查看 [WPS Mac 快捷键调研](wps-presentation-mac-shortcuts.html)。
 固定目录跳转和语音转写批注暂不绑定。
-从当前页放映的 `Shift + F5` 未绑定。专用方案只执行单击动作。
+从当前页放映的 `⌘↵` 未绑定。专用方案只执行单击动作。
 
 ## G 验证状态和 App 识别
 
