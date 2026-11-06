@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.cmux-ten-key",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -60,7 +60,8 @@
         "controlID": "back",
         "gesture": "singlePress",
         "target": {
-          "kind": "disabled"
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.back"
         }
       },
       {
@@ -144,6 +145,13 @@
         "displayName": "回车 / 确认",
         "keyCode": 36,
         "keyLabel": "Return",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.back",
+        "displayName": "删除字符",
+        "keyCode": 51,
+        "keyLabel": "Backspace",
         "modifiers": []
       },
       {
