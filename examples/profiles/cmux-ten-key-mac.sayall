@@ -1,0 +1,186 @@
+{
+  "format": "sayall-transfer",
+  "website": "https://sayall.app/market/",
+  "github": "https://github.com/GetSayAll/sayall-market",
+  "packageID": "com.getsayall.candidate.cmux-ten-key",
+  "version": "0.1.2",
+  "exportPurpose": "share",
+  "schemaVersion": "1.0",
+  "type": "buttonProfile",
+  "profile": {
+    "id": "com.getsayall.candidate.cmux-ten-key",
+    "name": "cmux 10键",
+    "remoteModel": "xiaomi-remote-2-pro",
+    "mode": "automatic",
+    "applicationBundleIdentifiers": [
+      "com.cmuxterm.app"
+    ],
+    "bindings": [
+      {
+        "controlID": "up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.up"
+        }
+      },
+      {
+        "controlID": "down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.down"
+        }
+      },
+      {
+        "controlID": "left",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.left"
+        }
+      },
+      {
+        "controlID": "right",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.right"
+        }
+      },
+      {
+        "controlID": "ok",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.ok"
+        }
+      },
+      {
+        "controlID": "back",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "home",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "disabled"
+        }
+      },
+      {
+        "controlID": "volume-up",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.volume-up"
+        }
+      },
+      {
+        "controlID": "volume-down",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.volume-down"
+        }
+      },
+      {
+        "controlID": "power",
+        "gesture": "singlePress",
+        "target": {
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.cmux-ten-key.power"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "macros": [],
+    "shortcuts": [
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.up",
+        "displayName": "上一个工作区",
+        "keyCode": 33,
+        "keyLabel": "[",
+        "modifiers": [
+          "control",
+          "command"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.down",
+        "displayName": "下一个工作区",
+        "keyCode": 30,
+        "keyLabel": "]",
+        "modifiers": [
+          "control",
+          "command"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.left",
+        "displayName": "分屏焦点向左",
+        "keyCode": 123,
+        "keyLabel": "←",
+        "modifiers": [
+          "option",
+          "command"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.right",
+        "displayName": "分屏焦点向右",
+        "keyCode": 124,
+        "keyLabel": "→",
+        "modifiers": [
+          "option",
+          "command"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.ok",
+        "displayName": "回车 / 确认",
+        "keyCode": 36,
+        "keyLabel": "Return",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.volume-up",
+        "displayName": "向上翻页",
+        "keyCode": 116,
+        "keyLabel": "Page Up",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.volume-down",
+        "displayName": "向下翻页",
+        "keyCode": 121,
+        "keyLabel": "Page Down",
+        "modifiers": []
+      },
+      {
+        "id": "com.getsayall.candidate.cmux-ten-key.power",
+        "displayName": "关闭当前标签页",
+        "keyCode": 13,
+        "keyLabel": "W",
+        "modifiers": [
+          "command"
+        ]
+      }
+    ],
+    "focusTargets": [],
+    "applications": []
+  },
+  "requirements": {
+    "minimumRemoteMicVersion": "1.9.21",
+    "minimumReaderVersion": "1.0",
+    "capabilities": []
+  },
+  "extensions": {
+    "app.sayall:platform": {
+      "platform": "macOS"
+    }
+  }
+}
