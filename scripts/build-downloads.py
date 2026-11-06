@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the ten public profiles and a reproducible, version-named download ZIP.
+"""Build the public profiles and a reproducible, version-named download ZIP.
 
 附件文件名统一为 `<名称>-mac-v<集合版本>.sayall`（与 wps-presentation-mac-v<版本>.sayall 同构）。
 文件名带集合版本号（仓库根 `VERSION`），避免用户下载后无法区分新旧版本。
@@ -12,7 +12,7 @@ import sys
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 
 ROOT = Path(__file__).resolve().parent.parent
-NAMES = ["codex", "claude-code-desktop", "workbuddy", "wechat", "jianying", "douyin", "chrome", "netease-music"]
+NAMES = ["codex", "claude-code-desktop", "workbuddy", "wechat", "jianying", "douyin", "chrome", "netease-music", "cmux", "qoder", "deepseek-harness"]
 VERSION = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
 if re.fullmatch(r"\d+\.\d+\.\d+", VERSION) is None:
     raise SystemExit(f"Invalid VERSION file: {VERSION!r}")

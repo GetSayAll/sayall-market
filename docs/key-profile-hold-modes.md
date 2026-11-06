@@ -52,8 +52,8 @@ lang: zh
 
 ## E 已发布的 1.0 方案要不要重发
 
-**不需要。** 仓库现有 15 个方案样例，其中 10 套在 `key-profiles-v1.0.9` 发布包里。
-这 10 套既没有 `holdModes`，`requirements.capabilities` 也是空数组，新旧客户端都能导入。
+**不需要。** `key-profiles-v1.0.10` 发布包包含 13 套方案。
+这 13 套既没有 `holdModes`，`requirements.capabilities` 也是空数组，新旧客户端都能导入。
 
 需要重发只有一种情况：想给某个已发布方案加上按住效果。步骤固定：
 
@@ -63,7 +63,7 @@ lang: zh
 4. 更新仓库根 `VERSION`（例如 `1.0.4`），同步更新写死旧版本与旧文件名的六处下载链接：
    `README.md`、`README.html`、`docs/seven-app-10-key-presets.md`、`docs/seven-app-10-key-presets.html`、
    `docs/download-bundle.md`、`docs/download-bundle.html`；
-   附件名由 `VERSION` 决定（`<name>-mac-v1.0.9.sayall`、`sayall-key-profiles-v1.0.9.zip`）
+   附件名由 `VERSION` 决定（`<name>-mac-v1.0.10.sayall`、`sayall-key-profiles-v1.0.10.zip`）
 5. `npm run validate` 必须通过，且清单里的 `declaredCapabilities` 与实际内容一致
 
 ## F 验收

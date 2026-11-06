@@ -16,7 +16,7 @@ WPS Office for Mac 的「放映」菜单显示：「从头开始」为 ⇧⌘↵
 当前仓库新增 macOS 平台维度。
 WPS 方案放在 `examples/profiles/`。
 macOS 使用 `.sayall` 文件。
-该方案已包含在下载集合 v1.0.9 中，真实遥控器和 WPS 验收仍待完成。
+该方案已包含在下载集合 v1.0.10 中，真实遥控器和 WPS 验收仍待完成。
 
 ## B 平台维度
 

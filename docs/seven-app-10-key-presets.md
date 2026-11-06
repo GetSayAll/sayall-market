@@ -1,5 +1,5 @@
 ---
-title: 9 个 App · 遥控器 10 键方案
+title: 12 个 App · 遥控器 10 键方案
 subtitle: 无线麦SayAll.app · 下载 .sayall 后在 Mac App 导入
 lang: zh
 template: doc
@@ -9,13 +9,13 @@ status: 1.0 方案，部分真机验收待完成
 
 ## A 下载方案
 
-**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/sayall-key-profiles-v1.0.9.zip)**
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/sayall-key-profiles-v1.0.10.zip)**
 
-ZIP 包含本页 9 套 App 方案和 Full Keyboard Access 方案。
+ZIP 包含本页 12 套 App 方案和 Full Keyboard Access 方案。
 先解压 ZIP，再按需导入其中的 `.sayall` 文件。
 完整步骤见 [打包下载与导入说明](download-bundle.html)。
 
-WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1.0.9 ZIP 中。
+WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1.0.10 ZIP 中。
 
 每个 `.sayall` 文件包含一套方案及其所需动作。
 适用遥控器：小米遥控器 2 Pro（RC003）。
@@ -26,19 +26,23 @@ WPS 是本页第 9 套 macOS 方案。它提供独立下载，也已包含在 v1
 
 | App | 查看 | 下载 |
 |---|---|---|
-| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/codex-mac-v1.0.9.sayall) |
-| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/claude-code-desktop-mac-v1.0.9.sayall) |
-| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/workbuddy-mac-v1.0.9.sayall) |
-| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/wechat-mac-v1.0.9.sayall) |
-| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/jianying-mac-v1.0.9.sayall) |
-| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/douyin-mac-v1.0.9.sayall) |
-| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/chrome-mac-v1.0.9.sayall) |
-| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/netease-music-mac-v1.0.9.sayall) |
-| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.9/wps-presentation-mac-v1.0.9.sayall) |
+| Codex | [查看方案](images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/codex-mac-v1.0.10.sayall) |
+| Claude Code desktop | [查看方案](images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/claude-code-desktop-mac-v1.0.10.sayall) |
+| WorkBuddy | [查看方案](images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/workbuddy-mac-v1.0.10.sayall) |
+| 微信 | [查看方案](images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/wechat-mac-v1.0.10.sayall) |
+| 剪映桌面版 | [查看方案](images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/jianying-mac-v1.0.10.sayall) |
+| 抖音 Mac 客户端 | [查看方案](images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/douyin-mac-v1.0.10.sayall) |
+| Chrome | [查看方案](images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/chrome-mac-v1.0.10.sayall) |
+| 网易云音乐 | [查看方案](images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/netease-music-mac-v1.0.10.sayall) |
+| WPS 演示放映 | [查看方案](images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/wps-presentation-mac-v1.0.10.sayall) |
+| cmux | [查看方案](../examples/profiles/cmux-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/cmux-mac-v1.0.10.sayall) |
+| Qoder | [查看方案](../examples/profiles/qoder-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/qoder-mac-v1.0.10.sayall) |
+| DeepSeek Harness | [查看方案](../examples/profiles/deepseek-harness-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/deepseek-harness-mac-v1.0.10.sayall) |
 
 单套入口下载独立 `.sayall` 附件。
 ZIP 不直接导入 Mac App。
-格式为 `sayall-transfer 1.0`；方案版本见各文件 `version` 字段（本次集合 `key-profiles-v1.0.9`）。
+
+格式为 `sayall-transfer 1.0`；方案版本见各文件 `version` 字段（本次集合 `key-profiles-v1.0.10`）。
 文件的最低客户端版本字段为 `1.9.21`。
 需使用已包含第一版导入功能的客户端。
 格式验证不代表已安装客户端的界面验收。
@@ -72,7 +76,7 @@ ZIP 不直接导入 Mac App。
 | 遥控器按键 | Codex | Claude Code desktop | WorkBuddy |
 |---|---|---|---|
 | 上 | ⌘ Return：Steer 候选 | 不设置 | 不设置 |
-| 下 | 不设置 | 不设置 | 不设置 |
+| 下 | ⌘ F：在会话中查找 | 不设置 | ⌘ K：全局搜索 |
 | 左 | ⌃ ⇧ Tab：上一个会话 | ⌃ ⇧ Tab：上一个会话 | ⌘ [：上一个任务，方向待验 |
 | 右 | ⌃ Tab：下一个会话 | ⌃ Tab：下一个会话 | ⌘ ]：下一个任务，方向待验 |
 | OK | Return：提交 / 确认 | Return：提交 / 确认 | Return：发送 / 确认 |
@@ -178,7 +182,25 @@ Esc 的效果取决于当前界面或弹层。
 固定目录跳转和语音转写批注暂不绑定。
 从当前页放映的 `⌘↵` 未绑定。专用方案只执行单击动作。
 
-## G 验证状态和 App 识别
+
+## G 新增 AI App 的按键
+
+| 遥控器按键 | cmux | Qoder | DeepSeek Harness |
+|---|---|---|---|
+| 上 | ⌃ ⌘ [：上一个工作区 | ⌘ Return：运行中插话 | ⌘ Return：运行中插话 |
+| 下 | ⌘ F：查找 | ⌘ F：搜索当前任务 | ⌘ F：查找会话内容 |
+| 左 | ⌥ ⌘ ←：分屏焦点向左 | ⌘ G：切换任务 | ⌘ K：会话快速切换 |
+| 右 | ⌥ ⌘ →：分屏焦点向右 | ⌘ G：切换任务 | ⌘ K：会话快速切换 |
+| OK | Return：回车 / 确认 | Return：回车 / 确认 | Return：回车 / 发送 |
+| 返回 | ⌫：删除字符 | ⌫：删除字符 | ⌫：删除字符 |
+| 主页 | 不设置 | 不设置 | 不设置 |
+| 音量+ | Page Up：向上翻页 | Page Up：向上翻页 | Page Up：向上翻页 |
+| 音量- | Page Down：向下翻页 | Page Down：向下翻页 | Page Down：向下翻页 |
+| 关机 | ⌘ W：关闭当前标签页 | ⌘ N：新任务 | ⌘ .：停止当前任务 |
+
+这些方案仍待真实遥控器和目标 App 验收。
+
+## H 验证状态和 App 识别
 
 这些文件是 1.0 数据。
 
@@ -211,6 +233,9 @@ WPS 文件通过格式解析和安装准备，但仍待真实遥控器和 WPS �
 | Chrome | `com.google.Chrome` |
 | 网易云音乐 | `com.netease.163music` |
 | WPS 演示放映 | `com.kingsoft.wpsoffice.mac` |
+| cmux | `com.cmuxterm.app` |
+| Qoder | `com.qoder.app` |
+| DeepSeek Harness | `com.deepseek.dsh` |
 
 WorkBuddy 保留当前和已知旧版标识。
 只安装其中一个版本时，另一标识可能产生缺失提示。
