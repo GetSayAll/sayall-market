@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.wechat-ten-key",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -52,8 +52,8 @@
         "controlID": "ok",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.wechat-ten-key.ok"
+          "kind": "host",
+          "actionID": "returnKey"
         }
       },
       {
@@ -126,13 +126,6 @@
         "displayName": "光标右移",
         "keyCode": 124,
         "keyLabel": "→",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.wechat-ten-key.ok",
-        "displayName": "发送 / 确认",
-        "keyCode": 36,
-        "keyLabel": "Return",
         "modifiers": []
       },
       {
