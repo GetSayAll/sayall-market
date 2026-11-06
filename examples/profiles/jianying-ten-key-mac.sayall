@@ -3,13 +3,13 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.jianying-ten-key",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
   "profile": {
     "id": "com.getsayall.candidate.jianying-ten-key",
-    "name": "剪映桌面版 10键",
+    "name": "剪映桌面版",
     "remoteModel": "xiaomi-remote-2-pro",
     "mode": "automatic",
     "applicationBundleIdentifiers": [
