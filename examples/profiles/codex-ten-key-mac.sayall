@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.codex-ten-key",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -28,7 +28,8 @@
         "controlID": "down",
         "gesture": "singlePress",
         "target": {
-          "kind": "disabled"
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.codex-ten-key.down"
         }
       },
       {
@@ -125,6 +126,15 @@
         "keyLabel": "Tab",
         "modifiers": [
           "control"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.codex-ten-key.down",
+        "displayName": "在会话中查找",
+        "keyCode": 3,
+        "keyLabel": "F",
+        "modifiers": [
+          "command"
         ]
       },
       {

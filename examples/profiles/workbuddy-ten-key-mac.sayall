@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.workbuddy-ten-key",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -28,7 +28,8 @@
         "controlID": "down",
         "gesture": "singlePress",
         "target": {
-          "kind": "disabled"
+          "kind": "shortcut",
+          "referenceID": "com.getsayall.candidate.workbuddy-ten-key.down"
         }
       },
       {
@@ -113,6 +114,15 @@
         "displayName": "下一个任务",
         "keyCode": 30,
         "keyLabel": "]",
+        "modifiers": [
+          "command"
+        ]
+      },
+      {
+        "id": "com.getsayall.candidate.workbuddy-ten-key.down",
+        "displayName": "全局搜索",
+        "keyCode": 40,
+        "keyLabel": "K",
         "modifiers": [
           "command"
         ]
