@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.wechat-ten-key",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -95,7 +95,13 @@
           "referenceID": "com.getsayall.candidate.wechat-ten-key.power"
         }
       }
-    ]
+    ],
+    "holdModes": {
+      "up": "repeatSingle",
+      "down": "repeatSingle",
+      "left": "repeatSingle",
+      "right": "repeatSingle"
+    }
   },
   "dependencies": {
     "macros": [],
@@ -165,7 +171,9 @@
   "requirements": {
     "minimumRemoteMicVersion": "1.9.21",
     "minimumReaderVersion": "1.0",
-    "capabilities": []
+    "capabilities": [
+      "buttonHoldModes"
+    ]
   },
   "extensions": {
     "app.sayall:platform": {

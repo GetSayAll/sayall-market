@@ -20,11 +20,11 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 ## 键位方案
 
-**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/sayall-key-profiles-v1.0.10.zip)**
+**[一键下载全部方案 ZIP](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/sayall-key-profiles-v1.0.11.zip)**
 
 包含下方 12 套 App 方案和 Full Keyboard Access 方案。
 本轮方案只面向 macOS。仓库源文件写明 `macOS` 平台。
-本次下载集合为 v1.0.10。旧版附件保留原文件名和内容。
+本次下载集合为 v1.0.11。旧版附件保留原文件名和内容。
 
 下载后先解压，再按需导入其中的方案文件。
 方案文件以 `.sayall` 结尾。请使用本次提供的新版客户端。
@@ -37,18 +37,18 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 | App | 常用操作 | 查看 | 下载 |
 |---|---|---|---|
-| Codex | 会话切换、搜索、提交、删除、翻页、停止 | [查看方案](docs/images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/codex-mac-v1.0.10.sayall) |
-| Claude Code desktop | Code 页会话切换、提交、删除、翻页、停止 | [查看方案](docs/images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/claude-code-desktop-mac-v1.0.10.sayall) |
-| WorkBuddy | 任务切换、搜索、发送、删除、翻页、停止 | [查看方案](docs/images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/workbuddy-mac-v1.0.10.sayall) |
-| 微信 | 光标移动、发送、删除、翻页、隐藏窗口 | [查看方案](docs/images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/wechat-mac-v1.0.10.sayall) |
-| 剪映桌面版 | 逐帧移动、播放暂停、删除片段、撤销 | [查看方案](docs/images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/jianying-mac-v1.0.10.sayall) |
-| 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [查看方案](docs/images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/douyin-mac-v1.0.10.sayall) |
-| Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [查看方案](docs/images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/chrome-mac-v1.0.10.sayall) |
-| 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [查看方案](docs/images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/netease-music-mac-v1.0.10.sayall) |
-| WPS 演示放映 | 启动放映、翻页、切换 WPS 窗口、结束放映、黑屏 | [查看方案](docs/images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/wps-presentation-mac-v1.0.10.sayall) |
-| cmux | 工作区切换、分屏焦点、查找、删除字符 | [查看方案](examples/profiles/cmux-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/cmux-mac-v1.0.10.sayall) |
-| Qoder | 任务切换、搜索、插话、确认、新任务 | [查看方案](examples/profiles/qoder-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/qoder-mac-v1.0.10.sayall) |
-| DeepSeek Harness | 会话切换、搜索、插话、发送、停止 | [查看方案](examples/profiles/deepseek-harness-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/deepseek-harness-mac-v1.0.10.sayall) |
+| Codex | 会话切换、搜索、提交、删除、翻页、停止 | [查看方案](docs/images/keyboard-profile-codex.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/codex-mac-v1.0.11.sayall) |
+| Claude Code desktop | Code 页会话切换、提交、删除、翻页、停止 | [查看方案](docs/images/keyboard-profile-claude-code.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/claude-code-desktop-mac-v1.0.11.sayall) |
+| WorkBuddy | 任务切换、搜索、发送、删除、翻页、停止 | [查看方案](docs/images/keyboard-profile-workbuddy.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/workbuddy-mac-v1.0.11.sayall) |
+| 微信 | 光标移动、发送、删除、翻页、隐藏窗口 | [查看方案](docs/images/keyboard-profile-wechat.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/wechat-mac-v1.0.11.sayall) |
+| 剪映桌面版 | 逐帧移动、播放暂停、删除片段、撤销 | [查看方案](docs/images/keyboard-profile-capcut.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/jianying-mac-v1.0.11.sayall) |
+| 抖音 Mac 客户端 | 切换视频、快进后退、播放暂停、音量、隐藏窗口 | [查看方案](docs/images/keyboard-profile-douyin.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/douyin-mac-v1.0.11.sayall) |
+| Chrome | 切换标签、刷新、后退、主页、翻页、关闭标签 | [查看方案](docs/images/keyboard-profile-chrome.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/chrome-mac-v1.0.11.sayall) |
+| 网易云音乐 | 喜欢歌曲、切换歌曲、播放暂停、音量、隐藏窗口 | [查看方案](docs/images/keyboard-profile-netease-music.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/netease-music-mac-v1.0.11.sayall) |
+| WPS 演示放映 | 启动放映、翻页、切换 WPS 窗口、结束放映、黑屏 | [查看方案](docs/images/keyboard-profile-wps-presentation.png) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/wps-presentation-mac-v1.0.11.sayall) |
+| cmux | 工作区切换、分屏焦点、查找、删除字符 | [查看方案](examples/profiles/cmux-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/cmux-mac-v1.0.11.sayall) |
+| Qoder | 任务切换、搜索、插话、确认、新任务 | [查看方案](examples/profiles/qoder-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/qoder-mac-v1.0.11.sayall) |
+| DeepSeek Harness | 会话切换、搜索、插话、发送、停止 | [查看方案](examples/profiles/deepseek-harness-ten-key-mac.sayall) | [下载方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/deepseek-harness-mac-v1.0.11.sayall) |
 
 ### 方案配图
 
@@ -78,7 +78,7 @@ SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：
 
 查看 [完整按键和导入说明](docs/seven-app-10-key-presets.html)（[在线文字版](docs/seven-app-10-key-presets.md)）。
 剪映的音量+暂不设置，待确认放大时间线的默认按键。
-WPS 方案提供独立下载，也已包含在 v1.0.10 ZIP 中。
+WPS 方案提供独立下载，也已包含在 v1.0.11 ZIP 中。
 [查看 WPS Mac 快捷键调研](docs/wps-presentation-mac-shortcuts.html)。
 
 ## Full Keyboard Access · 全键盘控制
@@ -86,7 +86,7 @@ WPS 方案提供独立下载，也已包含在 v1.0.10 ZIP 中。
 用遥控器选择屏幕上的按钮、输入框和其他可操作项目。
 此方案适用于小米遥控器 2 Pro（RC003），供手动选择使用。
 
-[查看全键盘控制方案](examples/profiles/full-keyboard-access-mac.sayall) · [下载全键盘控制方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.10/full-keyboard-access-mac-v1.0.10.sayall)
+[查看全键盘控制方案](examples/profiles/full-keyboard-access-mac.sayall) · [下载全键盘控制方案](https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.11/full-keyboard-access-mac-v1.0.11.sayall)
 
 使用前，打开 Mac 的「系统设置 → 辅助功能 → 键盘」。
 开启「全键盘控制」，再导入并选择此方案。
