@@ -537,7 +537,9 @@
             "enum": [
               "once",
               "repeatLong",
-              "repeatSingle"
+              "repeatSingle",
+              "singleHold",
+              "longHold"
             ]
           }
         }
