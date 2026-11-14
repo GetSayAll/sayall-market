@@ -142,7 +142,8 @@
           "openURL",
           "runShortcut",
           "runMacro",
-          "buttonHoldModes"
+          "buttonHoldModes",
+          "buttonHoldDirectionalModes"
         ]
       }
     },

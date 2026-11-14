@@ -1,7 +1,8 @@
 import { forbiddenContractKeyPattern, forbiddenContractValuePattern } from './marketplace-contract.mjs';
 
 
-export const supportedTransferCapabilities = new Set(['openApplication', 'waitForApplication', 'focusLearnedTarget', 'sendKeyboardShortcut', 'builtInAction', 'invokeMacro', 'openURL', 'runShortcut', 'runMacro', 'buttonHoldModes']);
+export const directionalHoldModes = new Set(['singleHold', 'longHold']);
+export const supportedTransferCapabilities = new Set(['openApplication', 'waitForApplication', 'focusLearnedTarget', 'sendKeyboardShortcut', 'builtInAction', 'invokeMacro', 'openURL', 'runShortcut', 'runMacro', 'buttonHoldModes', 'buttonHoldDirectionalModes']);
 export function versionParts(value, count) {
   if (typeof value !== 'string') return null;
   const parts = value.split('.');
@@ -87,7 +88,10 @@ export function transferIssues(input) {
     if (input.type === 'personalBackup' && (!input.backup || input.profile || input.macro || input.application)) fail('主对象只能是个人备份');
     if (input.type !== 'personalBackup' && (p.exportPurpose !== 'share' || p.hostSettings)) fail('公开方案不允许个人备份内容');
     // 旧读取器不认识 buttonHoldModes：未声明就带按住，等于让旧客户端静默丢掉按住效果。
-    if (p.buttonProfiles.some(hasHoldModes) && !(p.requirements?.capabilities ?? []).includes('buttonHoldModes')) fail('requirements:buttonHoldModes');
+    const capabilities = p.requirements?.capabilities ?? [];
+    if (p.buttonProfiles.some(hasHoldModes) && !capabilities.includes('buttonHoldModes')) fail('requirements:buttonHoldModes');
+    const holdModes = p.buttonProfiles.flatMap(profile => Object.values(profile.holdModes ?? {}));
+    if (holdModes.some(mode => directionalHoldModes.has(mode)) && !capabilities.includes('buttonHoldDirectionalModes')) fail('requirements:buttonHoldDirectionalModes');
   }
   if (input.type !== undefined) for (const macro of p.macros) if (macro.schemaVersion !== '1.0') fail(`macro:${macro.macroID}:schemaVersion`);
   if (p.extensions !== undefined) {
@@ -208,6 +212,9 @@ export function transferCapabilities(input) {
       if (c) result.add(c);
     }
     if (hasHoldModes(profile)) result.add('buttonHoldModes');
+    if (Object.values(profile.holdModes ?? {}).some(mode => directionalHoldModes.has(mode))) {
+      result.add('buttonHoldDirectionalModes');
+    }
   }
   for (const a of p.applications) {
     result.add('openApplication');

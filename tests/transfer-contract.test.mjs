@@ -239,13 +239,36 @@ test('按住设置推导 buttonHoldModes；未声明则拒绝，无按住时不�
   assert.deepEqual(transferIssues(cleared), []);
 });
 
-test('按住设置只接受已知控制项和三种取值', () => {
+test('方向键按住要求额外的能力声明', () => {
+  const baseline = transferCapabilities(structuredClone(fixtureRaw));
+  const held = structuredClone(fixtureRaw);
+  held.profile.holdModes = { right: 'singleHold', left: 'longHold', home: 'repeatSingle' };
+  assert.equal(validate(held), true);
+  assert.deepEqual(
+    transferCapabilities(held).filter(capability => !baseline.includes(capability)).sort(),
+    ['buttonHoldDirectionalModes', 'buttonHoldModes']
+  );
+  assert.ok(transferIssues(held).includes('requirements:buttonHoldDirectionalModes'));
+  held.requirements.capabilities = [...baseline, 'buttonHoldModes', 'buttonHoldDirectionalModes'];
+  assert.deepEqual(transferIssues(held), []);
+  assert.deepEqual(transferCompatibilityIssues(held.schemaVersion, held.requirements), []);
+
+  const repeatOnly = structuredClone(held);
+  repeatOnly.profile.holdModes = { home: 'repeatSingle' };
+  repeatOnly.requirements.capabilities = [...baseline, 'buttonHoldModes'];
+  assert.deepEqual(transferIssues(repeatOnly), []);
+});
+
+test('按住设置只接受已知控制项和五种取值', () => {
   const p = structuredClone(fixtureRaw);
   p.profile.holdModes = { 'volume-up': 'once', yes: 'repeatLong' };
   assert.equal(validate(p), false);
 
   p.profile.holdModes = { home: 'repeatForever' };
   assert.equal(validate(p), false);
+
+  p.profile.holdModes = { right: 'singleHold', left: 'longHold' };
+  assert.equal(validate(p), true);
 
   p.profile.holdModes = { home: 'once', '1': 'once' };
   assert.equal(validate(p), false);
