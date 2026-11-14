@@ -48,6 +48,14 @@
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/3095313?appSharePlatform=sayall.app)
 
+### 3D 打印 2 Pro 倾斜底座
+
+原始页面标题为「小米蓝牙遥控器2Pro 倾斜底座」，用于查看 75 度倾斜底座项目的原始页面。
+
+![3D 打印 2 Pro 倾斜底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNcbb6dd3e65e8ba/design/75c1dabdac740821.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/2975566?appSharePlatform=sayall.app)
+
 ### 3D 打印 Apple TV 遥控器底座
 
 原始页面为 Apple TV 遥控器底座项目，用于查看一体成型底座的原始页面。
