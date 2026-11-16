@@ -64,6 +64,46 @@
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/1463694?appSharePlatform=sayall.app)
 
+### 3D 打印 2 Pro 保护壳
+
+原始页面标题为「小米遥控器 2 Pro 保护壳｜防滑防摔方格纹理全包壳」，原始页面标注适配小米遥控器 2 Pro。
+
+![3D 打印 2 Pro 保护壳的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNfdfd406a0bc0cb/design/89647c371c0a71e7.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/3236284?appSharePlatform=sayall.app)
+
+### 3D 打印 2 代保护壳收纳
+
+原始页面标题为「【小米遥控器 2】保护壳收纳」，原始页面标注适用于小米蓝牙遥控器 2（非 2 Pro），并说明底座需用双面胶固定、需安装 6 颗 5×2 磁铁。
+
+![3D 打印 2 代保护壳收纳的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN6d1f569f76f7d/design/9b2243e7b2a64d72.png?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/3265499?appSharePlatform=sayall.app)
+
+### 3D 打印 2 代低重心底座
+
+原始页面标题同为「小米蓝牙遥控器2底座」，作者为解决轻底座易翻倒问题重新绘制，重量约 15.17g。
+
+![3D 打印 2 代低重心底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN3ca9dc9e1970db/design/710eaaa4f62d44fc.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/3194159?appSharePlatform=sayall.app)
+
+### 3D 打印 DJI Mic 2 组合支架
+
+原始页面标题为「小米2Pro DJI Mic2 打破语音1分钟限制」，展示把 DJI Mic 2 固定在小米蓝牙遥控器 2 Pro 上的打印支架。
+
+![3D 打印 DJI Mic 2 组合支架的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN9bd3af181a6ac3/design/a078286185b815dd.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/3244771?appSharePlatform=sayall.app)
+
+### 3D 打印桌面设备收纳底座
+
+原始页面标题为「vibe coding设备收纳底座小米遥控器 2 ProAI Passport」，原始页面标注可同时收纳小米蓝牙遥控器 2 Pro、小米 27 英寸显示器遥控器、AirPods Pro 2 与 AI Passport，并计划后续增加 AirPods Pro 2 充电位。
+
+![3D 打印桌面设备收纳底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN8fcf4b892a314b/design/a2960c031d705fa3.png?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/3183926?appSharePlatform=sayall.app)
+
 ## 公开边界
 
 - 这里只做外部页面索引，不复制模型文件、图片或页面正文；
