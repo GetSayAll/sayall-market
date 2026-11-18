@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.codex-ten-key",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -16,14 +16,6 @@
       "com.openai.codex"
     ],
     "bindings": [
-      {
-        "controlID": "up",
-        "gesture": "singlePress",
-        "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.codex-ten-key.up"
-        }
-      },
       {
         "controlID": "down",
         "gesture": "singlePress",
@@ -101,31 +93,23 @@
     "macros": [],
     "shortcuts": [
       {
-        "id": "com.getsayall.candidate.codex-ten-key.up",
-        "displayName": "补充指令",
-        "keyCode": 36,
-        "keyLabel": "Return",
+        "id": "com.getsayall.candidate.codex-ten-key.left",
+        "displayName": "上一个侧栏项目",
+        "keyCode": 33,
+        "keyLabel": "[",
         "modifiers": [
+          "option",
           "command"
         ]
       },
       {
-        "id": "com.getsayall.candidate.codex-ten-key.left",
-        "displayName": "上一个会话",
-        "keyCode": 48,
-        "keyLabel": "Tab",
-        "modifiers": [
-          "control",
-          "shift"
-        ]
-      },
-      {
         "id": "com.getsayall.candidate.codex-ten-key.right",
-        "displayName": "下一个会话",
-        "keyCode": 48,
-        "keyLabel": "Tab",
+        "displayName": "下一个侧栏项目",
+        "keyCode": 30,
+        "keyLabel": "]",
         "modifiers": [
-          "control"
+          "option",
+          "command"
         ]
       },
       {
@@ -167,7 +151,7 @@
       },
       {
         "id": "com.getsayall.candidate.codex-ten-key.power",
-        "displayName": "停止 / 取消",
+        "displayName": "取消 / 关闭",
         "keyCode": 53,
         "keyLabel": "Esc",
         "modifiers": []
