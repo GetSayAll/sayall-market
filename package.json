@@ -8,6 +8,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "sync:market": "node scripts/sync-market-draft.mjs",
     "validate": "node scripts/validate.mjs && node --test tests/*.test.mjs"
   },
   "devDependencies": {

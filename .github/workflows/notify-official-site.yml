@@ -1,0 +1,42 @@
+name: Rebuild official market
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - examples/extensions/makerworld-accessories.json
+      - examples/extensions/makerworld-accessories.draft.md
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sayall-official-market
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    name: Validate and trigger sayall.app
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install validator dependencies
+        run: npm ci
+
+      - name: Validate market feed
+        run: npm run validate
+
+      - name: Trigger sayall.app production deployment
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        run: |
+          test -n "$DEPLOY_HOOK"
+          curl --fail --silent --show-error --retry 3 --retry-delay 2 --max-time 30 \
+            --request POST "$DEPLOY_HOOK"

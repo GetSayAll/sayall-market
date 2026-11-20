@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 import Ajv2020 from "ajv/dist/2020.js";
 import { transferIssues, transferCapabilities, transferManifestIssues, publicTransferSensitivePaths } from './transfer-contract.mjs';
+import { MARKET_DRAFT_PATH, MARKET_FEED_PATH, marketFeedIssues, renderDraft } from "./market-feed.mjs";
 
 import {
   canonicalizeJson,
@@ -23,7 +24,8 @@ const schemaFiles = {
   buttonProfile: "schemas/button-profile.schema.json",
   layout: "schemas/layout-template.schema.json",
   manifest: "schemas/marketplace-manifest.schema.json",
-  catalog: "schemas/marketplace-catalog.schema.json"
+  catalog: "schemas/marketplace-catalog.schema.json",
+  marketFeed: "schemas/market-feed.schema.json"
 };
 
 const contentDirectories = ["macros", "profiles", "layouts", "catalog", "examples"];
@@ -186,11 +188,32 @@ for (const filePath of [...buttonProfileFiles, ...layoutFiles]) {
   }
 }
 
+const marketFeedPath = path.join(repositoryRoot, MARKET_FEED_PATH);
+const marketDraftPath = path.join(repositoryRoot, MARKET_DRAFT_PATH);
+
 const classifiedJsonFiles = new Set(
-  [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles, ...catalogFiles, ...transferFiles].map((filePath) =>
+  [...macroFiles, ...buttonProfileFiles, ...layoutFiles, ...manifestFiles, ...catalogFiles, ...transferFiles, marketFeedPath].map((filePath) =>
     path.resolve(filePath)
   )
 );
+
+const marketFeed = await loadJson(marketFeedPath);
+if (marketFeed) {
+  const validate = validators.marketFeed;
+  if (!validate || !validate(marketFeed)) {
+    errors.push(`${MARKET_FEED_PATH}: 不符合 marketFeed Schema：${formatAjvErrors(validate?.errors)}`);
+  } else {
+    errors.push(...marketFeedIssues(marketFeed).map((issue) => `${MARKET_FEED_PATH}: ${issue}`));
+    const draft = await readFile(marketDraftPath, "utf8");
+    try {
+      if (renderDraft(draft, marketFeed) !== draft) {
+        errors.push(`${MARKET_DRAFT_PATH}: 与 ${MARKET_FEED_PATH} 不一致，请运行 npm run sync:market`);
+      }
+    } catch (error) {
+      errors.push(`${MARKET_DRAFT_PATH}: ${error.message}`);
+    }
+  }
+}
 
 const macros = new Map();
 const buttonProfiles = new Map();

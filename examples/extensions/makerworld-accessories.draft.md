@@ -10,9 +10,9 @@
 
 ### 3D 打印外壳
 
-用于展示与无线麦SayAll.app 语音遥控器相关的 3D 打印外壳项目。
+用于展示与无线麦 SayAll App 语音遥控器相关的 3D 打印外壳项目。
 
-![3D 打印外壳的实物预览](https://makerworld.bblmw.cn/makerworld/model/DSM00000002959835/design/58603c32df673d7a.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+![3D 打印外壳的外观预览](https://makerworld.bblmw.cn/makerworld/model/DSM00000002959835/design/58603c32df673d7a.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
 
 [在 MakerWorld 查看](https://makerworld.com.cn/zh/models/2959835-vibegrip-ma-shang-wo-wei-vibe-coding-zuo-de-xiao-m?appSharePlatform=sayall.app)
 
@@ -20,7 +20,7 @@
 
 作为第二个外部 3D 打印外壳入口，用于查看原始页面与图片。
 
-![3D 打印外壳握持视角的实物预览](https://makerworld.bblmw.cn/makerworld/model/DSM00000002959835/design/3c9cd7eb831fc197.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+![3D 打印外壳迭代版的外观预览](https://makerworld.bblmw.cn/makerworld/model/DSM00000002959835/design/3c9cd7eb831fc197.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
 
 [在 MakerWorld 查看](https://makerworld.com.cn/zh/models/2959835-vibegrip-ma-shang-wo-wei-vibe-coding-zuo-de-xiao-m?appSharePlatform=wx#profileId-3474299)
 
@@ -28,7 +28,7 @@
 
 用于展示与无线麦使用场景相关的外部 3D 打印底座项目。
 
-![3D 打印底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN4b99068316a00c/design/43b13633fadca206.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+![3D 打印底座实物预览](https://makerworld.bblmw.cn/makerworld/model/CN4b99068316a00c/design/43b13633fadca206.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/3017370?appSharePlatform=sayall.app)
 
@@ -48,14 +48,6 @@
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/3095313?appSharePlatform=sayall.app)
 
-### 3D 打印 2 Pro 倾斜底座
-
-原始页面标题为「小米蓝牙遥控器2Pro 倾斜底座」，用于查看 75 度倾斜底座项目的原始页面。
-
-![3D 打印 2 Pro 倾斜底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNcbb6dd3e65e8ba/design/75c1dabdac740821.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
-
-[在 MakerWorld 查看](https://makerworld.com.cn/models/2975566?appSharePlatform=sayall.app)
-
 ### 3D 打印 Apple TV 遥控器底座
 
 原始页面为 Apple TV 遥控器底座项目，用于查看一体成型底座的原始页面。
@@ -63,6 +55,14 @@
 ![3D 打印 Apple TV 遥控器底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN5adbfd8c5a23ba/design/2025-08-04_7d62fdf7eaeb78.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/1463694?appSharePlatform=sayall.app)
+
+### 3D 打印 2 Pro 倾斜底座
+
+原始页面标题为「小米蓝牙遥控器2Pro 倾斜底座」，用于查看 75 度倾斜底座项目的原始页面。
+
+![3D 打印 2 Pro 倾斜底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNcbb6dd3e65e8ba/design/75c1dabdac740821.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/2975566?appSharePlatform=sayall.app)
 
 ### 3D 打印 2 Pro 保护壳
 
@@ -82,7 +82,7 @@
 
 ### 3D 打印 2 代低重心底座
 
-原始页面标题同为「小米蓝牙遥控器2底座」，作者为解决轻底座易翻倒问题重新绘制，重量约 15.17g。
+原始页面标题同为「小米蓝牙遥控器2底座」，作者为解决轻底座易翻倒问题重新绘制，重量约 15.17 克。
 
 ![3D 打印 2 代低重心底座的实物预览](https://makerworld.bblmw.cn/makerworld/model/CN3ca9dc9e1970db/design/710eaaa4f62d44fc.jpg?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
 
@@ -106,7 +106,7 @@
 
 ### 3D 打印大哥大外壳
 
-原始页面标题为「小米蓝牙遥控 2pro 大哥大外壳」，把小米蓝牙遥控器 2 Pro 装入复古手持电话造型的外壳，原始页面说明这是配合遥控器进行 Vibe Coding 的心情件。
+把小米蓝牙遥控器 2 Pro 装入复古手持电话造型的外壳项目，用于查看原始页面与图片。
 
 ![3D 打印大哥大外壳的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNabf8ff09ce4b3a/design/29e2ec2036fde149.png?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
 
