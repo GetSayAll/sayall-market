@@ -5,6 +5,10 @@
 
 当前提供 1.0 键位方案。在线市场尚未上线，社区投稿暂未开放。
 
+## 机器可读数据
+
+官网开放市场读取 [`feeds/market-profiles.json`](feeds/market-profiles.json)。修改键位方案时，同时更新本 README 和该 JSON；`npm run validate` 会检查字段、日期、链接和图片尺寸。
+
 ## 常用语
 
 SayAll-Market 提供无线麦SayAll.app 的内置常用语目录：

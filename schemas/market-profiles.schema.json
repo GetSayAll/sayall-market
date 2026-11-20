@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://getsayall.com/schemas/v1/market-profiles.schema.json",
+  "title": "SayAll key profile market feed 1.0",
+  "description": "Public feed of macOS key profiles shown on the SayAll open market page.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "profiles"],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "draft"
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 200,
+      "items": {
+        "$ref": "#/$defs/profile"
+      }
+    }
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "slug",
+        "title",
+        "titleEn",
+        "description",
+        "descriptionEn",
+        "addedAt",
+        "sourceUrl",
+        "downloadUrl"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "titleEn": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "descriptionEn": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "addedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "imageUrl": {
+          "type": "string",
+          "pattern": "^https://raw\\.githubusercontent\\.com/GetSayAll/sayall-market/main/docs/images/keyboard-profile-[a-z0-9-]+\\.png$"
+        },
+        "imageWidth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "imageHeight": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "sourceUrl": {
+          "type": "string",
+          "pattern": "^https://github\\.com/GetSayAll/sayall-market/blob/main/examples/profiles/[A-Za-z0-9-]+\\.sayall$"
+        },
+        "downloadUrl": {
+          "type": "string",
+          "pattern": "^https://github\\.com/GetSayAll/sayall-market/releases/download/key-profiles-v1\\.0\\.12/[A-Za-z0-9-]+-mac-v1\\.0\\.12\\.sayall$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "imageUrl": {
+                "type": "string"
+              }
+            },
+            "required": ["imageUrl"]
+          },
+          "then": {
+            "properties": {
+              "imageWidth": {
+                "type": "integer"
+              },
+              "imageHeight": {
+                "type": "integer"
+              }
+            },
+            "required": ["imageWidth", "imageHeight"]
+          }
+        }
+      ]
+    }
+  }
+}

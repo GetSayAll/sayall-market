@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import { transferIssues, transferCapabilities, transferManifestIssues, publicTransferSensitivePaths } from './transfer-contract.mjs';
 import { MARKET_DRAFT_PATH, MARKET_FEED_PATH, marketFeedIssues, renderDraft } from "./market-feed.mjs";
+import { MARKET_PROFILES_PATH, marketProfileIssues } from "./market-profiles.mjs";
 
 import {
   canonicalizeJson,
@@ -25,7 +26,8 @@ const schemaFiles = {
   layout: "schemas/layout-template.schema.json",
   manifest: "schemas/marketplace-manifest.schema.json",
   catalog: "schemas/marketplace-catalog.schema.json",
-  marketFeed: "schemas/market-feed.schema.json"
+  marketFeed: "schemas/market-feed.schema.json",
+  marketProfiles: "schemas/market-profiles.schema.json"
 };
 
 const contentDirectories = ["macros", "profiles", "layouts", "catalog", "examples"];
@@ -211,6 +213,29 @@ if (marketFeed) {
       }
     } catch (error) {
       errors.push(`${MARKET_DRAFT_PATH}: ${error.message}`);
+    }
+  }
+}
+
+const marketProfilesPath = path.join(repositoryRoot, MARKET_PROFILES_PATH);
+const marketProfiles = await loadJson(marketProfilesPath);
+if (marketProfiles) {
+  const validate = validators.marketProfiles;
+  if (!validate || !validate(marketProfiles)) {
+    errors.push(`${MARKET_PROFILES_PATH}: 不符合 marketProfiles Schema：${formatAjvErrors(validate?.errors)}`);
+  } else {
+    errors.push(...marketProfileIssues(marketProfiles).map((issue) => `${MARKET_PROFILES_PATH}: ${issue}`));
+    for (const [index, profile] of marketProfiles.profiles.entries()) {
+      for (const [field, marker] of [
+        ["sourceUrl", "/blob/main/"],
+        ["imageUrl", "/main/"],
+      ]) {
+        if (typeof profile[field] !== "string") continue;
+        const relative = profile[field].split(marker)[1];
+        if (!relative || !(await exists(path.join(repositoryRoot, relative)))) {
+          errors.push(`${MARKET_PROFILES_PATH}: profiles[${index}].${field} 指向的文件不存在`);
+        }
+      }
     }
   }
 }
