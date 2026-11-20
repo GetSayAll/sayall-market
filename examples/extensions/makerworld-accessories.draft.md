@@ -108,7 +108,7 @@
 
 把小米蓝牙遥控器 2 Pro 装入复古手持电话造型的外壳项目，用于查看原始页面与图片。
 
-![3D 打印大哥大外壳的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNabf8ff09ce4b3a/design/29e2ec2036fde149.png?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+![3D 打印大哥大外壳的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNabf8ff09ce4b3a/design/7e9674ad4d89e57f.png?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/2947087?appSharePlatform=sayall.app)
 
