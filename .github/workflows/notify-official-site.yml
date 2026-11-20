@@ -6,6 +6,8 @@ on:
     paths:
       - examples/extensions/makerworld-accessories.json
       - examples/extensions/makerworld-accessories.draft.md
+      - feeds/market-profiles.json
+      - docs/images/keyboard-profile-*.png
 
 permissions:
   contents: read
