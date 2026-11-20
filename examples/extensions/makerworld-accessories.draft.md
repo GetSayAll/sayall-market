@@ -104,6 +104,14 @@
 
 [在 MakerWorld 查看](https://makerworld.com.cn/models/3183926?appSharePlatform=sayall.app)
 
+### 3D 打印大哥大外壳
+
+原始页面标题为「小米蓝牙遥控 2pro 大哥大外壳」，把小米蓝牙遥控器 2 Pro 装入复古手持电话造型的外壳，原始页面说明这是配合遥控器进行 Vibe Coding 的心情件。
+
+![3D 打印大哥大外壳的实物预览](https://makerworld.bblmw.cn/makerworld/model/CNabf8ff09ce4b3a/design/29e2ec2036fde149.png?x-oss-process=image/resize,w_1000/format,webp/ignore-error,1)
+
+[在 MakerWorld 查看](https://makerworld.com.cn/models/2947087?appSharePlatform=sayall.app)
+
 ## 公开边界
 
 - 这里只做外部页面索引，不复制模型文件、图片或页面正文；
