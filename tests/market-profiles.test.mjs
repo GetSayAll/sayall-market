@@ -31,8 +31,8 @@ test("重复 ID、错误日期和错误下载文件名会被拒绝", async () =>
   broken.profiles[1].id = broken.profiles[0].id;
   broken.profiles[1].addedAt = "2026-02-31";
   broken.profiles[2].downloadUrl = broken.profiles[2].downloadUrl.replace(
-    `${broken.profiles[2].slug}-mac-v1.0.12.sayall`,
-    "wrong-mac-v1.0.12.sayall",
+    `${broken.profiles[2].slug}-mac-v1.0.13.sayall`,
+    "wrong-mac-v1.0.13.sayall",
   );
   const issues = marketProfileIssues(broken).join("\n");
   assert.match(issues, /profiles\[1\]\.id 与 profiles\[0\] 重复/);

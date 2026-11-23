@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.jianying-ten-key",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -80,8 +80,8 @@
         "controlID": "volume-down",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.jianying-ten-key.volume-down"
+          "kind": "host",
+          "actionID": "pageDown"
         }
       },
       {
@@ -123,13 +123,6 @@
         "displayName": "删除选中片段",
         "keyCode": 51,
         "keyLabel": "Backspace",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.jianying-ten-key.volume-down",
-        "displayName": "向下翻页",
-        "keyCode": 121,
-        "keyLabel": "Page Down",
         "modifiers": []
       },
       {

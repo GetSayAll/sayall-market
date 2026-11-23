@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.deepseek-harness-ten-key",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -75,16 +75,16 @@
         "controlID": "volume-up",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.deepseek-harness-ten-key.volume-up"
+          "kind": "host",
+          "actionID": "pageUp"
         }
       },
       {
         "controlID": "volume-down",
         "gesture": "singlePress",
         "target": {
-          "kind": "shortcut",
-          "referenceID": "com.getsayall.candidate.deepseek-harness-ten-key.volume-down"
+          "kind": "host",
+          "actionID": "pageDown"
         }
       },
       {
@@ -139,20 +139,6 @@
         "displayName": "删除字符",
         "keyCode": 51,
         "keyLabel": "Backspace",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.deepseek-harness-ten-key.volume-up",
-        "displayName": "向上翻页",
-        "keyCode": 116,
-        "keyLabel": "Page Up",
-        "modifiers": []
-      },
-      {
-        "id": "com.getsayall.candidate.deepseek-harness-ten-key.volume-down",
-        "displayName": "向下翻页",
-        "keyCode": 121,
-        "keyLabel": "Page Down",
         "modifiers": []
       },
       {
