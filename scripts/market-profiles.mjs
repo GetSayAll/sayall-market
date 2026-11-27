@@ -55,7 +55,7 @@ export function marketProfileIssues(feed) {
     if (!httpsHost(profile?.downloadUrl, "github.com")) {
       errors.push(`${label}.downloadUrl 必须指向 https://github.com/`);
     }
-    if (typeof profile?.downloadUrl === "string" && typeof profile?.slug === "string" && !profile.downloadUrl.endsWith(`/${profile.slug}-mac-v1.0.13.sayall`)) {
+    if (typeof profile?.downloadUrl === "string" && typeof profile?.slug === "string" && !profile.downloadUrl.endsWith(`/${profile.slug}-mac-v1.0.14.sayall`)) {
       errors.push(`${label}.downloadUrl 文件名必须与 slug 一致`);
     }
     if (typeof profile?.imageUrl === "string") {
