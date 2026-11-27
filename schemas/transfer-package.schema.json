@@ -406,6 +406,10 @@
                 "arrowDown",
                 "arrowLeft",
                 "arrowRight",
+                "mouseMoveRight",
+                "mouseMoveLeft",
+                "mouseMoveDown",
+                "mouseMoveUp",
                 "scrollUp",
                 "scrollDown",
                 "pageUp",
@@ -439,8 +443,40 @@
                 "openSafari",
                 "openZed"
               ]
+            },
+            "mouseMoveDistance": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Points for host mouseMoveUp/Down/Left/Right actions; other host actions must omit it."
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "type": "object",
+                "properties": {
+                  "actionID": {
+                    "enum": [
+                      "mouseMoveUp",
+                      "mouseMoveDown",
+                      "mouseMoveLeft",
+                      "mouseMoveRight"
+                    ]
+                  }
+                },
+                "required": [
+                  "actionID"
+                ]
+              },
+              "else": {
+                "type": "object",
+                "properties": {
+                  "mouseMoveDistance": false
+                }
+              }
+            }
+          ]
         },
         {
           "type": "object",

@@ -78,6 +78,28 @@ test('市场 App 声明包括关联、App 配置、输入框、步骤和作用�
   assert.deepEqual(transferManifestIssues(p,declaration([])),[]);
 });
 
+test('鼠标移动距离可选且需要能力声明；旧方案不带字段仍可读', () => {
+  const raw = structuredClone(fixtureRaw);
+  raw.profile.bindings[0].target = { kind: 'host', actionID: 'mouseMoveRight', mouseMoveDistance: 42 };
+  raw.requirements.capabilities = ['mouseMove'];
+  assert.equal(validate(raw), true);
+  let p = normalizeTransfer(raw);
+  assert.equal(valid(p), true);
+  assert.deepEqual(transferCapabilities(p), ['focusLearnedTarget', 'mouseMove', 'openApplication', 'runMacro', 'sendKeyboardShortcut']);
+  raw.profile.bindings[0].target = { kind: 'host', actionID: 'mouseMoveRight' };
+  assert.equal(validate(raw), true, '缺距离的鼠标动作按宿主默认值读取');
+  assert.equal(valid(normalizeTransfer(raw)), true);
+  raw.profile.bindings[0].target = { kind: 'host', actionID: 'mouseMoveRight', mouseMoveDistance: 0 };
+  assert.equal(validate(raw), false);
+  raw.profile.bindings[0].target = { kind: 'host', actionID: 'mouseMoveRight', mouseMoveDistance: 101 };
+  assert.equal(validate(raw), false);
+  raw.profile.bindings[0].target = { kind: 'host', actionID: 'escape', mouseMoveDistance: 42 };
+  assert.equal(validate(raw), false);
+  raw.requirements.capabilities = [];
+  raw.profile.bindings[0].target = { kind: 'host', actionID: 'mouseMoveRight', mouseMoveDistance: 42 };
+  assert.equal(valid(normalizeTransfer(raw)), false, '鼠标动作必须声明 mouseMove 能力');
+});
+
 test('组合动作与 App 包内部引用完整，能力按真实步骤计算', () => {
   assert.equal(valid(fixture), true);
   assert.deepEqual(transferCapabilities(fixture), ['focusLearnedTarget', 'invokeMacro', 'openApplication', 'runMacro', 'sendKeyboardShortcut']);

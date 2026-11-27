@@ -2,7 +2,7 @@ import { forbiddenContractKeyPattern, forbiddenContractValuePattern } from './ma
 
 
 export const directionalHoldModes = new Set(['singleHold', 'longHold']);
-export const supportedTransferCapabilities = new Set(['openApplication', 'waitForApplication', 'focusLearnedTarget', 'sendKeyboardShortcut', 'builtInAction', 'invokeMacro', 'openURL', 'runShortcut', 'runMacro', 'buttonHoldModes', 'buttonHoldDirectionalModes']);
+export const supportedTransferCapabilities = new Set(['openApplication', 'waitForApplication', 'focusLearnedTarget', 'sendKeyboardShortcut', 'builtInAction', 'invokeMacro', 'openURL', 'runShortcut', 'runMacro', 'buttonHoldModes', 'buttonHoldDirectionalModes', 'mouseMove']);
 export function versionParts(value, count) {
   if (typeof value !== 'string') return null;
   const parts = value.split('.');
@@ -92,6 +92,7 @@ export function transferIssues(input) {
     if (p.buttonProfiles.some(hasHoldModes) && !capabilities.includes('buttonHoldModes')) fail('requirements:buttonHoldModes');
     const holdModes = p.buttonProfiles.flatMap(profile => Object.values(profile.holdModes ?? {}));
     if (holdModes.some(mode => directionalHoldModes.has(mode)) && !capabilities.includes('buttonHoldDirectionalModes')) fail('requirements:buttonHoldDirectionalModes');
+    if (p.buttonProfiles.some(profile => profile.bindings.some(binding => isMouseMoveTarget(binding.target))) && !capabilities.includes('mouseMove')) fail('requirements:mouseMove');
   }
   if (input.type !== undefined) for (const macro of p.macros) if (macro.schemaVersion !== '1.0') fail(`macro:${macro.macroID}:schemaVersion`);
   if (p.extensions !== undefined) {
@@ -202,13 +203,18 @@ function hasHoldModes(profile) {
   return !!modes && typeof modes === 'object' && !Array.isArray(modes) && Object.keys(modes).length > 0;
 }
 
+function isMouseMoveTarget(target) {
+  return target?.kind === 'host' && ['mouseMoveUp', 'mouseMoveDown', 'mouseMoveLeft', 'mouseMoveRight'].includes(target.actionID);
+}
+
 export function transferCapabilities(input) {
   const p = normalizeTransfer(input);
   const result = new Set();
   for (const m of p.macros) for (const s of m.steps) result.add(s.action);
   for (const profile of p.buttonProfiles) {
     for (const b of profile.bindings) {
-      const c = { macro: 'invokeMacro', shortcut: 'sendKeyboardShortcut', application: 'openApplication', host: 'builtInAction' }[b.target.kind];
+      const c = b.target.kind === 'host' && isMouseMoveTarget(b.target) ? 'mouseMove'
+        : { macro: 'invokeMacro', shortcut: 'sendKeyboardShortcut', application: 'openApplication', host: 'builtInAction' }[b.target.kind];
       if (c) result.add(c);
     }
     if (hasHoldModes(profile)) result.add('buttonHoldModes');

@@ -25,6 +25,7 @@ LocalInstalledLayout（某台 Mac / 某只遥控器的本地实例）
 - `focusLearnedTarget`：只接受 bundle identifier 和本机 profile key；
 - `sendKeyboardShortcut`：只接受有限修饰键和普通按键名称；
 - `builtInAction`：只接受 Schema 中枚举的内建动作。
+- `mouseMove`：鼠标移动动作可选携带 `mouseMoveDistance`（1–100 点，缺省 20），并作为能力声明。
 
 `focusLearnedTarget` 只能引用本机 profile key；公开包不能携带实际 AX 学习数据。
 

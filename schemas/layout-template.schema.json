@@ -109,9 +109,33 @@
       "properties": {
         "kind": { "const": "builtIn" },
         "actionID": {
-          "enum": ["escape", "playPause", "volumeUp", "volumeDown", "mute"]
+          "enum": [
+            "escape", "playPause", "volumeUp", "volumeDown", "mute",
+            "mouseMoveUp", "mouseMoveDown", "mouseMoveLeft", "mouseMoveRight"
+          ]
+        },
+        "mouseMoveDistance": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Points for host mouseMoveUp/Down/Left/Right actions; other host actions must omit it."
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "actionID": { "enum": ["mouseMoveUp", "mouseMoveDown", "mouseMoveLeft", "mouseMoveRight"] }
+            },
+            "required": ["actionID"]
+          },
+          "else": {
+            "type": "object",
+            "properties": { "mouseMoveDistance": false }
+          }
+        }
+      ]
     },
     "shortcutTarget": {
       "type": "object",
