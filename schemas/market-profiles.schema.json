@@ -90,7 +90,7 @@
         },
         "downloadUrl": {
           "type": "string",
-          "pattern": "^https://github\\.com/GetSayAll/sayall-market/releases/download/key-profiles-v1\\.0\\.13/[A-Za-z0-9-]+-mac-v1\\.0\\.13\\.sayall$"
+          "pattern": "^https://github\\.com/GetSayAll/sayall-market/releases/download/key-profiles-v1\\.0\\.14/[A-Za-z0-9-]+-mac-v1\\.0\\.14\\.sayall$"
         }
       },
       "allOf": [

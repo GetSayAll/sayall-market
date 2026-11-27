@@ -14,7 +14,7 @@
       "imageWidth": 1055,
       "imageHeight": 1491,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/codex-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/codex-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/codex-mac-v1.0.14.sayall"
     },
     {
       "id": "claude-code",
@@ -28,7 +28,7 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/claude-code-desktop-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/claude-code-desktop-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/claude-code-desktop-mac-v1.0.14.sayall"
     },
     {
       "id": "workbuddy",
@@ -42,7 +42,7 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/workbuddy-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/workbuddy-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/workbuddy-mac-v1.0.14.sayall"
     },
     {
       "id": "wechat",
@@ -56,7 +56,7 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/wechat-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/wechat-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/wechat-mac-v1.0.14.sayall"
     },
     {
       "id": "capcut",
@@ -70,7 +70,7 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/jianying-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/jianying-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/jianying-mac-v1.0.14.sayall"
     },
     {
       "id": "douyin",
@@ -84,7 +84,7 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/douyin-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/douyin-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/douyin-mac-v1.0.14.sayall"
     },
     {
       "id": "chrome",
@@ -98,7 +98,7 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/chrome-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/chrome-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/chrome-mac-v1.0.14.sayall"
     },
     {
       "id": "netease-music",
@@ -112,7 +112,7 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/netease-music-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/netease-music-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/netease-music-mac-v1.0.14.sayall"
     },
     {
       "id": "wps-presentation",
@@ -126,18 +126,18 @@
       "imageWidth": 1122,
       "imageHeight": 1402,
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/wps-presentation-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/wps-presentation-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/wps-presentation-mac-v1.0.14.sayall"
     },
     {
       "id": "cmux",
       "slug": "cmux",
       "title": "cmux",
       "titleEn": "cmux",
-      "description": "工作区切换、分屏焦点、查找、删除字符",
-      "descriptionEn": "Switch workspaces, move focus between splits, find, and delete characters.",
+      "description": "工作区切换、分屏焦点、删除字符",
+      "descriptionEn": "Switch workspaces, move focus between splits, and delete characters.",
       "addedAt": "2026-10-04",
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/cmux-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/cmux-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/cmux-mac-v1.0.14.sayall"
     },
     {
       "id": "qoder",
@@ -148,7 +148,7 @@
       "descriptionEn": "Switch tasks, search, interject, confirm, and start a new task.",
       "addedAt": "2026-10-04",
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/qoder-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/qoder-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/qoder-mac-v1.0.14.sayall"
     },
     {
       "id": "deepseek-harness",
@@ -159,7 +159,7 @@
       "descriptionEn": "Switch sessions, search, interject, send, and stop.",
       "addedAt": "2026-10-04",
       "sourceUrl": "https://github.com/GetSayAll/sayall-market/blob/main/examples/profiles/deepseek-harness-ten-key-mac.sayall",
-      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.13/deepseek-harness-mac-v1.0.13.sayall"
+      "downloadUrl": "https://github.com/GetSayAll/sayall-market/releases/download/key-profiles-v1.0.14/deepseek-harness-mac-v1.0.14.sayall"
     }
   ]
 }
