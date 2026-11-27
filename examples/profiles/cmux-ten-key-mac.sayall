@@ -3,7 +3,7 @@
   "website": "https://sayall.app/market/",
   "github": "https://github.com/GetSayAll/sayall-market",
   "packageID": "com.getsayall.candidate.cmux-ten-key",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "exportPurpose": "share",
   "schemaVersion": "1.0",
   "type": "buttonProfile",
@@ -112,10 +112,11 @@
       },
       {
         "id": "com.getsayall.candidate.cmux-ten-key.down",
-        "displayName": "查找",
-        "keyCode": 3,
-        "keyLabel": "F",
+        "displayName": "下一个工作区",
+        "keyCode": 30,
+        "keyLabel": "]",
         "modifiers": [
+          "control",
           "command"
         ]
       },
