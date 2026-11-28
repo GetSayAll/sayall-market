@@ -139,6 +139,7 @@
           "sendKeyboardShortcut",
           "builtInAction",
           "invokeMacro",
+          "mouseMove",
           "openURL",
           "runShortcut",
           "runMacro",

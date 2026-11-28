@@ -140,7 +140,11 @@ function actualCapabilities(packageType, content) {
 
   const capabilities = new Set();
   for (const binding of content.bindings) {
-    capabilities.add(binding.target.kind === "macro" ? "invokeMacro" : "builtInAction");
+    if (binding.target.kind === "host" && ["mouseMoveUp", "mouseMoveDown", "mouseMoveLeft", "mouseMoveRight"].includes(binding.target.actionID)) {
+      capabilities.add("mouseMove");
+    } else {
+      capabilities.add(binding.target.kind === "macro" ? "invokeMacro" : "builtInAction");
+    }
   }
   return [...capabilities].sort();
 }

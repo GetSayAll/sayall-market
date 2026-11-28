@@ -62,7 +62,9 @@ ZIP 只用于批量下载。用户先解压，再导入其中的 `.sayall` 文�
 同一主版本承诺保留已有字段的类型、含义和默认行为。
 兼容新增说明信息放入 `extensions`。不能改变动作执行结果。
 
-新必需字段或动作须提高最低读取版本，并声明必需能力。
+新必需字段或动作原则上须提高最低读取版本，并声明必需能力。
+如果旧读取器会明确拒绝未知能力，而不会把未知动作当成默认动作，必需能力就是前置安全门。
+鼠标动作使用 `mouseMove` 能力；没有该能力的旧读取器必须拒绝整个包。
 更改已有字段含义、结构或默认行为时，使用新主版本。
 
 新 Mac 可以保留旧主版本解析器。不能只扩大版本白名单。
@@ -102,6 +104,16 @@ ZIP 只用于批量下载。用户先解压，再导入其中的 `.sayall` 文�
 带非空 `holdModes` 的方案必须在 `requirements.capabilities` 声明 `buttonHoldModes`。
 包含 `singleHold` / `longHold` 时还必须声明 `buttonHoldDirectionalModes`。
 旧读取器不认识这些能力，会拒绝整个包；没有按住设置的方案不声明，行为不变。
+
+鼠标移动动作使用宿主动作 `mouseMoveUp`、`mouseMoveDown`、`mouseMoveLeft`、`mouseMoveRight`。
+宿主动作目标可以带可选整数 `mouseMoveDistance`，单位为点，范围 `1...100`，缺省按宿主默认值 20 处理。
+只有鼠标移动动作可以带这个字段；其他宿主动作带该字段时，整个方案无效。
+带鼠标移动动作的方案必须在 `requirements.capabilities` 声明 `mouseMove`。
+旧读取器不支持该能力，会拒绝整个包，不会静默把鼠标动作改成默认动作。
+不带鼠标动作的旧方案不声明该能力，继续按原行为读取。
+新内容应写入完整解析后的距离，并递增方案内容版本；不得原地改写已发布方案。
+发布包含鼠标动作的新内容前，同步提高 `requirements.minimumRemoteMicVersion` 到实际支持该动作的 App 版本。
+市场清单的 `declaredCapabilities` 必须包含 `mouseMove`，并与包内能力一致。
 
 校验和预览不执行动作。保存使用现有事务保护。
 
